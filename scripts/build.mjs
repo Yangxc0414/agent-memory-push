@@ -236,7 +236,7 @@ async function makeDigestTitle(data) {
           { role: "system", content: "你是严谨的中文科技日报编辑。" },
           {
             role: "user",
-            content: `请根据今天的条目，拟一个 8-14 个汉字的日报标题。要求：具体、克制、有信息量；不要用“震撼/必读/首个/唯一/引关注/值得关注/重磅”等套话；不要引号、句号或冒号；只输出标题。\n日期：${data.date}\n导语：${data.lead || ""}\n重点：${JSON.stringify(picks.map((item) => ({ title: item.titleZh || item.title, summary: (item.summaryZh || item.summary || "").slice(0, 120), why: item.why || "" })))}`
+            content: `请根据今天的条目，拟一个 8-14 个汉字的日报标题。要求：具体、克制、有信息量；不要用“震撼/必读/首个/唯一/引关注/值得关注/重磅”等套话；不要引号、句号或冒号；只输出标题。标题里的时间表述必须和下面的时间窗口一致；窗口不是 7 天时不要写“七天/一周/7天”。\n日期：${data.date}\n时间窗口：${data.window?.label || "最近"}（${data.window?.hours || "?"} 小时）\n导语：${data.lead || ""}\n重点：${JSON.stringify(picks.map((item) => ({ title: item.titleZh || item.title, summary: (item.summaryZh || item.summary || "").slice(0, 120), why: item.why || "" })))}`
           }
         ]
       })
@@ -248,6 +248,10 @@ async function makeDigestTitle(data) {
       .split(/\r?\n/)[0]
       .replace(/^[\s"'“”‘’]+|[\s"'“”‘’。]+$/g, "")
       .trim();
+    const windowHours = Number(data.window?.hours || 0);
+    if (windowHours && windowHours < 24 * 7 && /(七天|7天|一周|7日)/.test(title)) {
+      throw new Error("title time window mismatch");
+    }
     if (title.length >= 4 && title.length <= 30) return title;
   } catch (error) {
     console.log(`Digest title fallback: ${error instanceof Error ? error.message : error}`);
@@ -317,6 +321,7 @@ function buildDigest() {
       titleZh: item.titleZh,
       url: item.url,
       siteUrl: `${baseUrl}#/item/${encodeURIComponent(item.id)}`,
+      summary: item.summary,
       summaryZh: item.summaryZh,
       why: item.why,
       kind: item.kind,
@@ -464,13 +469,7 @@ async function main() {
     builtAt,
     stats,
     sourcesOk: sources.sources.filter((source) => source.status === "ok").length,
-    sourcesTotal: sources.sources.length,
-    ntfy: process.env.NTFY_TOPIC
-      ? {
-          server: (process.env.NTFY_SERVER || "https://ntfy.sh").replace(/\/$/, ""),
-          topic: process.env.NTFY_TOPIC
-        }
-      : null
+    sourcesTotal: sources.sources.length
   };
 
   copyDir(path.join(SRC, "assets"), path.join(DIST, "assets"));

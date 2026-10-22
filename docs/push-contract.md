@@ -77,7 +77,7 @@
 
 | 栏目 | 触发 | 来源 | 产物 | 新鲜度 | 失败时 |
 | --- | --- | --- | --- | --- | --- |
-| 今日推送 | Actions cron `10 0 * * *`，北京时间 08:10 | `src/data/items.json` | `src/data/digests/YYYY-MM-DD.json` | `generatedAt` / `checkedAt` | 保留上一期；页面按 36 小时判断 stale |
+| 今日推送 | Actions cron `0 0 * * *`，北京时间 08:00 | `src/data/items.json` | `src/data/digests/YYYY-MM-DD.json` | `generatedAt` / `checkedAt` | 保留上一期；页面按 36 小时判断 stale |
 | 全部动态 | 随构建 | `src/data/items.json` | `dist/data/items.json` + `dist/api/v1/items.json` | `checkedAt` | 旧快照继续可读 |
 | 记忆安全 | 采集时规则命中 + 编辑复核 | 条目的 `security.angles` / `note` | 条目字段 | 随条目 | 没有命中就不显示，不硬凑 |
 | 主题地图 | 构建时汇总 | `taxonomy.json` + items | 计数、轨道图、维度说明 | `taxonomyVersion` | 分类非法则构建失败，不发布 |
@@ -96,7 +96,7 @@
 
 触发：
 
-- GitHub Actions `schedule`（`10 0 * * *`，北京时间 08:10）。
+- GitHub Actions `schedule`（`0 0 * * *`，北京时间 08:00）。
 - 手动 `workflow_dispatch`，可选择强制重新通知。
 
 流程：
@@ -179,7 +179,7 @@
 - 触发：`build` 之后，`notify.mjs` 读取 `dist/api/v1/digest.json`。
 - 飞书：自定义机器人 webhook，交互卡片 1.0，包含标题、日期、统计、6 条重点和“打开今日推送”按钮。
 - Telegram：`sendMessage` HTML，5 条重点。
-- 去重：`.state/notified.json` 按频道 + 日期记录；`--force` 可重发。
+- 去重：`src/data/notify-state.json` 按频道 + 日期记录；工作流在通知后提交它，跨天仍能去重；`--force` 可重发。
 - 重试：3 次，指数退避；失败只记日志，不阻塞部署。
 - 测试：`npm test` 启动本地 mock webhook，验证 payload 结构和去重，不访问外部服务。
 
@@ -187,8 +187,8 @@
 
 - 触发：`build` 之后，`notify.mjs` 读取 `dist/api/v1/digest.json`，向 `NTFY_SERVER`（默认 `https://ntfy.sh`）POST JSON。
 - 字段：`topic`、`title`、`message`（日报摘要 + 6 条重点 + 站点链接）、`priority`、`tags`、`click`。
-- 订阅：手机安装 ntfy app，或打开 `https://ntfy.sh/<topic>`；站点在构建时读取 `NTFY_TOPIC`，在 `#/pipeline` 显示订阅链接。
-- 去重：`.state/notified.json` 按频道 + 日期记录；`--force` 可重发。
+- 订阅：手机安装 ntfy app，或打开 `https://ntfy.sh/<topic>`；topic 只通过 Secrets / 本地 `.env` 配置，不写入公开页面或 JSON。
+- 去重：`src/data/notify-state.json` 按频道 + 日期记录；工作流在通知后提交它，跨天仍能去重；`--force` 可重发。
 - 测试：`npm test` 同时验证飞书和 ntfy 的 payload 与去重，只连本地 mock，不向公网发送。
 - topic 是公开地址，不是密码；用长随机串，避免被猜到。需要鉴权时换自建 ntfy 或改用飞书 / Telegram。
 

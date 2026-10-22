@@ -9,7 +9,7 @@ const DRY_RUN = args.has("--dry-run");
 const FORCE = args.has("--force");
 const site = readJson(path.join(ROOT, "src", "data", "site.json"));
 const digest = readJson(path.join(DIST, "api", "v1", "digest.json"));
-const stateFile = process.env.NOTIFY_STATE || path.join(ROOT, ".state", "notified.json");
+const stateFile = process.env.NOTIFY_STATE || path.join(ROOT, "src", "data", "notify-state.json");
 const state = fs.existsSync(stateFile) ? readJson(stateFile) : {};
 
 function log(message) {
@@ -75,7 +75,7 @@ function feishuPayload() {
   const pickText = picks
     .map(
       (pick, index) =>
-        `**${index + 1}. ${pick.titleZh || pick.title}**\n${pick.summaryZh || ""}\n[原文](${pick.url}) · ${pick.source} · ${pick.evidence || ""}`
+        `**${index + 1}. ${pick.titleZh || pick.title}**\n${pick.summaryZh || pick.summary || ""}\n[原文](${pick.url}) · ${pick.source} · ${pick.evidence || ""}`
     )
     .join("\n\n");
   const stats = digest.stats || {};
@@ -125,7 +125,7 @@ function telegramPayload() {
     "",
     ...picks.map(
       (pick, index) =>
-        `${index + 1}. <a href="${pick.url}">${pick.titleZh || pick.title}</a>\n${pick.summaryZh || ""}\n<i>${pick.source} · ${pick.evidence || ""}</i>`
+        `${index + 1}. <a href="${pick.url}">${pick.titleZh || pick.title}</a>\n${pick.summaryZh || pick.summary || ""}\n<i>${pick.source} · ${pick.evidence || ""}</i>`
     ),
     "",
     `<a href="${site.url}">打开今日推送</a>`
@@ -145,7 +145,7 @@ function ntfyPayload() {
     "",
     ...picks.map(
       (pick, index) =>
-        `${index + 1}. ${pick.titleZh || pick.title}\n${pick.summaryZh || ""}\n${pick.url}`
+        `${index + 1}. ${pick.titleZh || pick.title}\n${pick.summaryZh || pick.summary || ""}\n${pick.url}`
     ),
     "",
     `打开今日推送：${site.url}`

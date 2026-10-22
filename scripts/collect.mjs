@@ -35,7 +35,7 @@ const ARXIV_PAGE_SIZE = PROBE
 const ARXIV_PAGE_DELAY_MS = PROBE
   ? 0
   : Math.max(0, Number(process.env.ARXIV_PAGE_DELAY_MS || 3000));
-const ARXIV_CUTOFF = Date.now() - ARXIV_LOOKBACK_DAYS * 86400000;
+const COLLECT_CUTOFF = Date.now() - ARXIV_LOOKBACK_DAYS * 86400000;
 const ARXIV_ALLOWED_CATEGORY = /^(cs\.|eess\.|stat\.ML$)/;
 const LLM_ENRICH_LIMIT = Math.max(1, Number(process.env.LLM_ENRICH_LIMIT || 60));
 const LLM_BATCH_SIZE = Math.max(1, Number(process.env.LLM_BATCH_SIZE || 4));
@@ -114,7 +114,7 @@ function arxivPageUrl(source, page) {
 function freshArxivEntries(entries) {
   return entries.filter((entry) => {
     const published = Date.parse(entry.published);
-    return !Number.isFinite(published) || published >= ARXIV_CUTOFF;
+    return !Number.isFinite(published) || published >= COLLECT_CUTOFF;
   });
 }
 
@@ -139,7 +139,7 @@ async function collectArxiv(source) {
     const publishedTimes = pageEntries
       .map((entry) => Date.parse(entry.published))
       .filter(Number.isFinite);
-    if (publishedTimes.length && Math.min(...publishedTimes) < ARXIV_CUTOFF) break;
+    if (publishedTimes.length && Math.min(...publishedTimes) < COLLECT_CUTOFF) break;
   }
   const collected = entries.map((entry) => ({
     id: entry.id,
@@ -452,6 +452,7 @@ async function main() {
     for (const entry of result.entries) {
       const item = toItem(entry, result.source, result);
       if (!item) continue;
+      if (Date.parse(item.published) < COLLECT_CUTOFF) continue;
       if (!isAgentMemoryRelevant(item)) continue;
       raw.push(item);
     }

@@ -7,7 +7,7 @@
   "home": "https://yangxc0414.github.io/",
   "tagline": "记忆不该被遗忘。",
   "description": "每天把智能体记忆领域值得看的新论文、新项目与新动态，推到你的眼前。不是信息流，是一份有取舍的每日记忆。",
-  "intro": "追踪 Agent Memory 的论文、系统、评测与安全治理。每天 08:10 更新，按证据分级，留下值得记住的几条。",
+  "intro": "追踪 Agent Memory 的论文、系统、评测与安全治理。每天 08:00 更新，按证据分级，留下值得记住的几条。",
   "keywords": [
     "Agent Memory",
     "智能体记忆",
@@ -19,9 +19,9 @@
   "timezone": "Asia/Shanghai",
   "locale": "zh-CN",
   "schedule": {
-    "cron": "10 0 * * *",
-    "label": "每天 08:10（北京时间）",
-    "utc": "00:10 UTC",
+    "cron": "0 0 * * *",
+    "label": "每天 08:00（北京时间）",
+    "utc": "00:00 UTC",
     "description": "GitHub Actions 定时运行采集、去重、分类、成刊与部署；页面只读快照，不在读者端调用模型。"
   },
   "snapshot": {

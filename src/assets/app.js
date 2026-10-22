@@ -145,7 +145,7 @@ function highlight(text, query) {
 function nextRun() {
   const now = new Date();
   const next = new Date(
-    Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(), 0, 10, 0)
+    Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(), 0, 0, 0)
   );
   if (next <= now) next.setUTCDate(next.getUTCDate() + 1);
   return next;
@@ -467,7 +467,7 @@ function renderToday() {
         <div class="aside-stat"><span>今日更新 / 已收录</span><b>${today.items} / ${stats.items ?? items.length}</b></div>
         <div class="aside-stat"><span>论文 / 新闻 / 发布</span><b>${today.papers} / ${today.news} / ${today.releases}</b></div>
         <div class="aside-stat"><span>安全相关</span><b>${today.security}</b></div>
-        <div class="aside-stat"><span>更新节奏</span><b>每天 08:10</b></div>
+        <div class="aside-stat"><span>更新节奏</span><b>每天 08:00</b></div>
       </aside>
     </div>
   </section>
