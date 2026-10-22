@@ -87,9 +87,12 @@
 | RSS | 构建后 | items + digest | `dist/feed.xml` | `lastBuildDate` / `pubDate` | 订阅器继续读旧缓存 |
 | JSON | 构建后 | items + digest | `dist/api/v1/*.json` | `generatedAt` | 静态 404，不影响页面 |
 | 飞书 / Telegram | 成刊后 | `dist/api/v1/digest.json` | webhook 请求 | 按日期去重 | 3 次重试；失败只记日志 |
+| ntfy | 成刊后 | `dist/api/v1/digest.json` | `NTFY_SERVER` JSON 消息 | 按日期去重 | 3 次重试；失败只记日志 |
 | Web Push | 不支持 | 无服务端订阅存储 | — | — | 不提供假开关 |
 
-### 1. 今日推送
+### 1. 今日推送与真实采集
+
+每次 `collect.mjs` 会拉取 4 个 arXiv 查询、HF Daily Papers、GitHub Releases 和 RSS；每次最多合并 24 条新内容。配置 `LLM_API_KEY` 时，Agnes 给新条目写 `titleZh` / `summaryZh` / `why`。`build.mjs` 再从当前 items 自动成刊，不存在“前端预写死条目”。
 
 触发：
 
@@ -161,7 +164,7 @@
 - `status`：`ok` / `error` / `planned`。
 - `returned`：本次解析出的条目数；`scanned`：原始候选数（如果可得）。
 - 失败时保留 `lastSuccessAt`，让读者知道上次成功是什么时候。
-- 本地受限网络下 GitHub / Hugging Face 可能超时；首次 Actions 运行后会更新。
+- 本地受限网络下 GitHub / Hugging Face 可能超时；本次本地为 10/15 正常，Actions 会重试并更新。
 
 ### 8. RSS、JSON、llms.txt
 
@@ -179,9 +182,18 @@
 - 重试：3 次，指数退避；失败只记日志，不阻塞部署。
 - 测试：`npm test` 启动本地 mock webhook，验证 payload 结构和去重，不访问外部服务。
 
+### 10. ntfy（真实推送）
+
+- 触发：`build` 之后，`notify.mjs` 读取 `dist/api/v1/digest.json`，向 `NTFY_SERVER`（默认 `https://ntfy.sh`）POST JSON。
+- 字段：`topic`、`title`、`message`（日报摘要 + 6 条重点 + 站点链接）、`priority`、`tags`、`click`。
+- 订阅：手机安装 ntfy app，或打开 `https://ntfy.sh/<topic>`；站点在构建时读取 `NTFY_TOPIC`，在 `#/pipeline` 显示订阅链接。
+- 去重：`.state/notified.json` 按频道 + 日期记录；`--force` 可重发。
+- 测试：`npm test` 同时验证飞书和 ntfy 的 payload 与去重，只连本地 mock，不向公网发送。
+- topic 是公开地址，不是密码；用长随机串，避免被猜到。需要鉴权时换自建 ntfy 或改用飞书 / Telegram。
+
 IndexNow 未实现：它需要 key 文件、部署后回调与提交记录，当前不提供假开关。
 
-### 10. Web Push
+### 11. Web Push
 
 不做。原因：
 
@@ -191,7 +203,8 @@ IndexNow 未实现：它需要 key 文件、部署后回调与提交记录，当
 
 替代：
 
-- RSS（推荐）；
+- ntfy（推荐，真实手机/浏览器推送）；
+- RSS；
 - 飞书 / Telegram（Actions 发出）；
 - GitHub Watch（数据提交时通知）；
 - 页面打开时的快照巡检（发现新快照提示刷新，不自动改内容）。

@@ -1,18 +1,18 @@
 {
   "version": 1,
-  "checkedAt": "2026-10-21T22:00:05.891Z",
-  "lastSuccessAt": "2026-10-21T22:00:05.891Z",
-  "generatedAt": "2026-10-21T22:08:36.684Z",
+  "checkedAt": "2026-10-22T09:23:53.067Z",
+  "lastSuccessAt": "2026-10-22T09:23:53.067Z",
+  "generatedAt": "2026-10-22T09:23:53.067Z",
   "timezone": "Asia/Shanghai",
   "date": "2026-10-22",
-  "seed": true,
-  "added": 37,
-  "updated": 0,
-  "items": 37,
+  "seed": false,
+  "added": 24,
+  "updated": 34,
+  "items": 85,
   "sourcesOk": 10,
   "sourcesTotal": 15,
   "llm": {
-    "used": false,
+    "used": true,
     "error": null
   }
 }

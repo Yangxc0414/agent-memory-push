@@ -25,11 +25,11 @@
     "description": "GitHub Actions 定时运行采集、去重、分类、成刊与部署；页面只读快照，不在读者端调用模型。"
   },
   "snapshot": {
-    "checkedAt": "2026-10-21T22:00:05.891Z",
+    "checkedAt": "2026-10-22T09:23:00.000Z",
     "persistedAt": "2026-10-21T22:08:36.684Z",
-    "label": "2026-10-22 06:00（北京时间）",
-    "seed": true,
-    "note": "种子快照：内容选自 2026-10-20 至 10-21 的公开论文、官方发布与报道；首次 Actions 运行后由本站自己的采集结果替换。"
+    "label": "2026-10-22 17:23（北京时间）",
+    "seed": false,
+    "note": "本地真实采集快照；GitHub Actions 每日更新后以 data/meta.json 为准。"
   },
   "author": {
     "name": "YXC",
@@ -63,6 +63,13 @@
       "state": "optional",
       "cadence": "每日成刊后",
       "detail": "配置 TELEGRAM_BOT_TOKEN 与 TELEGRAM_CHAT_ID 后，Actions 发送日报摘要。"
+    },
+    {
+      "id": "ntfy",
+      "name": "ntfy",
+      "state": "optional",
+      "cadence": "每日成刊后",
+      "detail": "配置 NTFY_TOPIC 后，Actions 向该 topic 发布日报；手机安装 ntfy app 或打开订阅页即可，无需账号。"
     },
     {
       "id": "github",

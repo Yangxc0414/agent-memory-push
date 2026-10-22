@@ -8,6 +8,7 @@ import {
   dayInZone,
   fetchText,
   isMemoryRelevant,
+  loadEnvFile,
   normalizeUrl,
   parseArxiv,
   parseFeed,
@@ -22,8 +23,11 @@ import {
 } from "./lib.mjs";
 import { SOURCES } from "./sources.mjs";
 
+loadEnvFile();
+
 const PROBE = process.argv.includes("--probe");
 const USE_LLM = process.argv.includes("--llm") || Boolean(process.env.LLM_API_KEY);
+const MAX_NEW_ITEMS = Math.max(1, Number(process.env.MAX_NEW_ITEMS || 24));
 const NOW = new Date().toISOString();
 const FETCH_OPTIONS = PROBE
   ? { timeout: 10000, retries: 1 }
@@ -248,17 +252,19 @@ function mergeItems(existing, incoming) {
 
 async function enrichWithLlm(items) {
   if (!USE_LLM || !process.env.LLM_API_KEY) return { items, used: false, error: null };
-  const base = (process.env.LLM_BASE_URL || "https://api.deepseek.com/v1").replace(/\/$/, "");
-  const model = process.env.LLM_MODEL || "deepseek-chat";
-  const targets = items.filter((item) => !item.curated && !item.summaryZh).slice(0, 24);
+  const base = (process.env.LLM_BASE_URL || "https://api.agnes-ai.cn/v1").replace(/\/$/, "");
+  const model = process.env.LLM_MODEL || "agnes-3.0-flash";
+  const targets = items.filter((item) => !item.curated && (!item.summaryZh || !item.titleZh)).slice(0, 36);
   if (!targets.length) return { items, used: true, error: null };
-  try {
-    for (let index = 0; index < targets.length; index += 6) {
-      const batch = targets.slice(index, index + 6);
+  let lastError = null;
+  for (let index = 0; index < targets.length; index += 6) {
+    const batch = targets.slice(index, index + 6);
+    try {
       const prompt = `你在编辑一份中文的 Agent Memory 每日推送。请为下面每条内容写：
-1. summaryZh：1-2 句中文概括，只写原文明确支持的内容；不要写“首个/唯一/空白”；不要补充数字或结论；如果是厂商自测或媒体报道，要点明。
-2. why：一句“为什么推送”，说明它相对同行的新增点或阅读价值。
-只输出 JSON 数组，每项 {"id":"...","summaryZh":"...","why":"..."}，不要输出其他文字。
+1. titleZh：一个短中文标题，保留方法名/模型名/产品名，不夸大，不添加原文没有的结论。
+2. summaryZh：1-2 句中文概括，只写原文明确支持的内容；不要写“首个/唯一/空白”；不要补充数字或结论；如果是厂商自测或媒体报道，要点明。
+3. why：一句“为什么推送”，说明它相对同行的新增点或阅读价值。
+只输出 JSON 数组，每项 {"id":"...","titleZh":"...","summaryZh":"...","why":"..."}，不要输出其他文字。
 内容：${JSON.stringify(batch.map((item) => ({ id: item.id, title: item.title, summary: item.summary, source: item.source, kind: item.kind, evidence: item.evidence })))}`;
       const response = await fetch(`${base}/chat/completions`, {
         method: "POST",
@@ -266,10 +272,11 @@ async function enrichWithLlm(items) {
           "Content-Type": "application/json",
           Authorization: `Bearer ${process.env.LLM_API_KEY}`
         },
-        signal: AbortSignal.timeout(90000),
+        signal: AbortSignal.timeout(120000),
         body: JSON.stringify({
           model,
           temperature: 0.2,
+          max_tokens: 2400,
           messages: [
             { role: "system", content: "你是严谨的中文科技编辑，拒绝夸大，拒绝编造。" },
             { role: "user", content: prompt }
@@ -280,23 +287,29 @@ async function enrichWithLlm(items) {
       const json = await response.json();
       const content = json.choices?.[0]?.message?.content || "";
       const cleaned = content.replace(/```json|```/g, "").trim();
-      const parsed = JSON.parse(cleaned);
+      const start = cleaned.indexOf("[");
+      const end = cleaned.lastIndexOf("]");
+      const parsed = JSON.parse(start >= 0 && end > start ? cleaned.slice(start, end + 1) : cleaned);
       if (!Array.isArray(parsed)) throw new Error("LLM output is not an array");
       const byId = new Map(parsed.map((row) => [row.id, row]));
       for (const item of batch) {
         const row = byId.get(item.id);
         if (!row) continue;
+        if (typeof row.titleZh === "string" && row.titleZh.trim().length >= 4) {
+          item.titleZh = row.titleZh.trim();
+        }
         if (typeof row.summaryZh === "string" && row.summaryZh.length >= 12) {
           item.summaryZh = row.summaryZh.trim();
           item.summaryZhBasis = "原文摘要";
         }
         if (typeof row.why === "string" && row.why.length >= 8) item.why = row.why.trim();
       }
+    } catch (error) {
+      lastError = error instanceof Error ? error.message : String(error);
+      console.log(`LLM batch ${index / 6 + 1} failed: ${lastError}`);
     }
-    return { items, used: true, error: null };
-  } catch (error) {
-    return { items, used: true, error: error instanceof Error ? error.message : String(error) };
   }
+  return { items, used: true, error: lastError };
 }
 
 function sourceRecord(result) {
@@ -366,7 +379,14 @@ async function main() {
 
   const deduped = uniqueBy(raw, (item) => canonicalId(item));
   const existing = readJson(path.join(DATA, "items.json"));
-  const merged = mergeItems(existing, deduped);
+  const existingIds = new Set(existing.map((item) => item.id));
+  const newItems = deduped
+    .filter((item) => !existingIds.has(item.id))
+    .sort((a, b) => String(b.published).localeCompare(String(a.published)))
+    .slice(0, MAX_NEW_ITEMS);
+  const selectedIds = new Set(newItems.map((item) => item.id));
+  const incoming = deduped.filter((item) => existingIds.has(item.id) || selectedIds.has(item.id));
+  const merged = mergeItems(existing, incoming);
   const enriched = await enrichWithLlm(merged.items);
   writeJson(path.join(DATA, "items.json"), enriched.items);
 

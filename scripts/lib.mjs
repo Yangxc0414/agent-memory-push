@@ -6,6 +6,24 @@ export const SRC = path.join(ROOT, "src");
 export const DATA = path.join(SRC, "data");
 export const DIST = path.join(ROOT, "dist");
 
+export function loadEnvFile(file = path.join(ROOT, ".env")) {
+  if (!fs.existsSync(file)) return false;
+  for (const raw of fs.readFileSync(file, "utf8").split(/\r?\n/)) {
+    const match = raw.match(/^\s*([A-Za-z_][A-Za-z0-9_]*)\s*=\s*(.*)\s*$/);
+    if (!match) continue;
+    const key = match[1];
+    let value = match[2].trim();
+    if (
+      (value.startsWith('"') && value.endsWith('"')) ||
+      (value.startsWith("'") && value.endsWith("'"))
+    ) {
+      value = value.slice(1, -1);
+    }
+    if (process.env[key] === undefined) process.env[key] = value;
+  }
+  return true;
+}
+
 export function readJson(file) {
   return JSON.parse(fs.readFileSync(file, "utf8"));
 }

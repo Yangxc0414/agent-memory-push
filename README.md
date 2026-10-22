@@ -13,7 +13,7 @@
 
 - **页面**：今日推送、全部动态、记忆安全、主题地图、项目与发布、Benchmark、信源与推送、方法与反思。
 - **数据**：论文 / 新闻 / 官方发布三类条目，带中文摘要、推送理由、证据等级、主题标签和安全角度。
-- **推送**：RSS、JSON、飞书 / Telegram（可选）、GitHub Watch；没有 Web Push，也不假装有。
+- **推送**：RSS、JSON、ntfy（真实手机/浏览器推送）、飞书 / Telegram（可选）、GitHub Watch；没有 Web Push，也不假装有。
 - **编辑**：所有内容先落成可以 diff、可以回滚的文件，再由 GitHub Pages 发布；读者打开页面不触发任何模型调用。
 
 它不是实时系统，不是同行评审，不是投资建议，也不是安全认证。论文多为预印本；厂商自测与媒体报道单独标注证据等级。
@@ -35,7 +35,7 @@ arXiv API / HF Daily Papers / GitHub Releases / RSS
                     ├── 读者：页面筛选 / 搜索 / 详情
                     ├── 订阅器：RSS 轮询
                     ├── Agent：JSON / llms.txt
-                    └── scripts/notify.mjs → 飞书 / Telegram（可选）
+                    └── scripts/notify.mjs → ntfy / 飞书 / Telegram（可选）
 ```
 
 每个栏目都有一份“推送契约”：触发、来源、产物、新鲜度字段、失败方式。完整表格在页面 `#/pipeline`，这里给摘要：
@@ -71,9 +71,21 @@ arXiv API / HF Daily Papers / GitHub Releases / RSS
 | 成刊 | 数据库存 revisions | 按日期静态 JSON |
 | RSS | 按请求生成，带 ETag | 构建时生成 |
 | MCP | 匿名 Streamable HTTP | 无，不假装支持 |
-| Web Push | 没有 | 没有；用 RSS + 飞书 / Telegram 替代 |
+| Web Push | 没有 | 没有；用 ntfy + RSS + 飞书 / Telegram 替代 |
 
 更完整的分析写在站点的 `#/method` 页面，以及 [docs/push-contract.md](docs/push-contract.md)。
+
+### 每天会更新吗？
+
+会，前提是仓库发布到 GitHub、启用 Actions，并设置 `LLM_API_KEY`（可选但推荐）与 `NTFY_TOPIC`（真实推送）。每天北京时间 08:10 运行一次：
+
+1. 4 个 arXiv 查询（记忆与自进化、具身与多模态、安全与评测、记忆专用模型）各拉 100 条，外加 HF Daily Papers、GitHub Releases、媒体 RSS。
+2. 归一化、按 arXiv ID / URL 去重；只保留同时涉及“记忆”和“智能体/LLM”的内容。
+3. 每次最多合并 **24 条**新内容，避免一次抓取把页面撑爆；用 Agnes 给新条目写中文标题、摘要和推送理由。
+4. `build.mjs` 在 24 小时窗口内选 8 条重点、最多 24 条分栏，生成 `data/digests/<日期>.json`、RSS、JSON。
+5. 部署 GitHub Pages；配置了 ntfy / 飞书 / Telegram 的话，再按日期去重推送一次。
+
+当前本地已经跑过一次真实采集：**85 条**条目，2026-10-22 这一期由真实 arXiv 数据自动成刊（不是种子文案）。页面上的“全部动态”“今日推送”都从 `src/data/items.json` 和 `data/digests/*.json` 读取；前端不写死任何条目。
 
 ## 本地运行
 
@@ -104,7 +116,7 @@ npm test                 # 本地 mock webhook，验证飞书卡片结构与按�
 
 - 对 arXiv、HF Daily Papers、GitHub Releases、RSS 做归一化与去重；同一篇论文按 arXiv ID 合并。
 - 只保留同时涉及“记忆/情景/经验”和“智能体/LLM”的内容；官方 release 例外。
-- 新条目默认保留英文摘要，`summaryZh` 为 `null`；配置 `LLM_API_KEY` 后会生成 1–2 句中文概括。
+- 新条目默认保留英文标题/摘要；配置 `LLM_API_KEY` 后会生成中文标题、1–2 句中文概括和推送理由。
 - 已有条目里人工写的 `summaryZh`、`why`、`tags`、`security` 不会被覆盖（`curated: true`）。
 - 所有源状态写入 `src/data/sources.json`；失败保留上次成功时间，不隐藏错误。
 
@@ -133,12 +145,26 @@ npm test                 # 本地 mock webhook，验证飞书卡片结构与按�
 
 | Secret | 作用 |
 | --- | --- |
-| `LLM_BASE_URL` / `LLM_API_KEY` / `LLM_MODEL` | OpenAI 兼容接口，给新条目写中文摘要。不配置时保留英文摘要。 |
+| `LLM_API_KEY` | **推荐**。Agnes API Key；给新条目写中文标题、摘要和推送理由。不配置时保留英文摘要。 |
+| `LLM_BASE_URL` / `LLM_MODEL` | 可选；默认 `https://api.agnes-ai.cn/v1` / `agnes-3.0-flash`。 |
+| `MAX_NEW_ITEMS` | 可选；每次最多合并多少条新内容，默认 24。 |
+| `NTFY_TOPIC` | **推荐，真实推送**。一个随机字符串；Actions 每天向 `https://ntfy.sh/<topic>` 发布日报。 |
+| `NTFY_SERVER` | 可选；默认 `https://ntfy.sh`，可换自建 ntfy。 |
 | `FEISHU_WEBHOOK` | 飞书自定义机器人 webhook；每天成刊后发一张卡片。 |
 | `TELEGRAM_BOT_TOKEN` / `TELEGRAM_CHAT_ID` | Telegram 推送。 |
 | `GITHUB_TOKEN` | Actions 自带；用于 GitHub Search API 的项目索引。 |
 
-飞书卡片的结构和去重逻辑可以用 `npm test` 验证；测试只连本地 mock，不访问外部服务。
+本地把值写进 `.env` 即可，`scripts/collect.mjs`、`build.mjs`、`notify.mjs` 会自动加载；`.env` 已被 gitignore。不要把 key 写进 `src/`、前端 JS 或 workflow 文件。
+
+> 这个 key 在对话里出现过，建议发布前到 Agnes 控制台轮换一次，然后把新 key 放进 GitHub Secrets。
+
+### 订阅 ntfy（真实推送）
+
+1. 在仓库 Secrets 设置 `NTFY_TOPIC`，例如一个随机字符串。
+2. 手机安装 [ntfy](https://ntfy.sh/) app，或在浏览器打开 `https://ntfy.sh/<NTFY_TOPIC>`。
+3. 每天 Actions 成刊后会发布一条消息；站点 `#/pipeline` 会出现“订阅 ntfy”链接。
+
+ntfy 是公开 topic：知道地址的人都能订阅，所以用长随机串，不要把 topic 当成密码。飞书 / Telegram 的卡片结构和 ntfy 的去重逻辑可以用 `npm test` 验证；测试只连本地 mock，不访问外部服务。
 
 ## 数据与编辑
 
@@ -147,8 +173,8 @@ src/data/
   site.json         站点文案、时区、推送通道
   taxonomy.json     9 个主题 + 5 个辅助维度
   items.json        条目（种子 + 采集结果）
-  digest.json       种子期的手工日报
-  digests/          按日期冻结的日报（YYYY-MM-DD.json）
+  digest.json       首期人工基线（仅作回滚参考）
+  digests/          按日期冻结的日报（真实采集自动生成）
   sources.json      信源状态（collect 生成）
   projects.json     GitHub 项目快照
   benchmarks.json   Benchmark 索引（不含分数）
@@ -185,7 +211,7 @@ src/data/
 - `kind` 只能是 `paper` / `news` / `release`；`topics` 必须在 `taxonomy.json` 里。
 - `summaryZh` 不要写“首个/唯一/空白”这类无法证伪的话；厂商自测和媒体报道要降级。
 - 日报是冻结的：同一天重复构建会复用 `src/data/digests/YYYY-MM-DD.json`；新的一天由 `build.mjs` 自动成刊。
-- 种子期的 `digest.json` 已复制到 `digests/2026-10-22.json`，不会被后续采集覆盖。
+- 2026-10-22 这一期已经由真实采集生成，写入 `digests/2026-10-22.json`；`digest.json` 只保留为首期人工基线，不参与当前日期。
 
 ## 已知限制
 
@@ -193,10 +219,12 @@ src/data/
 - **没有实时性**：每天一次快照；arXiv 公告和 GitHub release 可能延迟一天。
 - **没有全文**：只展示摘要和原文链接，不做全文转载。
 - **没有个性化**：没有用户系统，也没有“只推我关心的主题”。
-- **模型摘要需要密钥**：不配置 `LLM_API_KEY` 时，新条目保留英文摘要。
-- **本地探针可能误报**：在受限网络里，GitHub / Hugging Face 可能超时；首次 Actions 运行后状态会更新。
+- **模型摘要需要密钥**：不配置 `LLM_API_KEY` 时，新条目保留英文摘要；当前本地 `.env` 已配置 Agnes，发布时需要把 key 加到 GitHub Secrets。
+- **本地探针可能误报**：在受限网络里，GitHub / Hugging Face 可能超时；本次本地状态是 10/15 正常，Actions 会重试并更新。
 - **Actions cron 不是精确时钟**：页面上的“下次推送”是计划时间，不是承诺。
-- **种子数据不是全量索引**：37 条种子来自 2026-10-20/21 的公开论文、官方发布与报道，中文摘要经过编辑整理；不代表同行评审结论。
+- **不是全量索引**：首期 37 条种子 + 真实采集后当前 85 条；2026-10-22 这一期由真实 arXiv 数据自动成刊。中文摘要由规则/Agnes 辅助，不代表同行评审结论。
+- **数据会增长**：每天最多 24 条新内容；目前没有自动清理旧条目的策略，长期运行需要定期归档或加保留窗口。
+- **arXiv 查询可能截断**：每个查询最多 100 条；如果一天的新论文超过窗口，会漏掉一部分，状态页会显示本次候选数。
 
 ## 目录结构
 

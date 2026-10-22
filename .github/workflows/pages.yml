@@ -45,11 +45,15 @@ jobs:
           LLM_BASE_URL: ${{ secrets.LLM_BASE_URL }}
           LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
           LLM_MODEL: ${{ secrets.LLM_MODEL }}
+          MAX_NEW_ITEMS: 24
 
       - name: Build static site
         run: node scripts/build.mjs
+        env:
+          NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
+          NTFY_SERVER: ${{ secrets.NTFY_SERVER }}
 
-      - name: Notify Feishu / Telegram
+      - name: Notify Feishu / Telegram / ntfy
         if: github.event_name != 'push' || inputs.force_notify
         continue-on-error: true
         run: node scripts/notify.mjs ${{ inputs.force_notify && '--force' || '' }}
@@ -57,6 +61,8 @@ jobs:
           FEISHU_WEBHOOK: ${{ secrets.FEISHU_WEBHOOK }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
+          NTFY_SERVER: ${{ secrets.NTFY_SERVER }}
 
       - name: Commit data changes
         if: github.event_name != 'push'

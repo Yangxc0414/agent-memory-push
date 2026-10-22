@@ -330,7 +330,7 @@ function statusPanel() {
     </div>
     <div class="status-main">
       <span class="status-number">${String(stats.items ?? items.length).padStart(2, "0")}</span>
-      <span class="status-unit">条本期条目<br />本期 ${esc(digest.window?.label || "快照")}</span>
+      <span class="status-unit">条快照条目<br />本期 ${esc(digest.window?.label || "快照")}新增 ${(digest.sections || []).reduce((sum, section) => sum + (section.itemIds?.length || 0), 0)} 条</span>
     </div>
     <div class="status-grid">
       <div class="status-cell"><b>${stats.papers ?? "—"}</b><span>论文</span></div>
@@ -406,10 +406,11 @@ function renderToday() {
       <div class="hero-actions">
         <a class="button" href="#/feed">看全部动态 <span aria-hidden="true">→</span></a>
         <a class="button secondary" href="feed.xml">订阅 RSS <span aria-hidden="true">↗</span></a>
+        ${meta.ntfy ? `<a class="button secondary" href="${safeUrl(`${meta.ntfy.server}/${meta.ntfy.topic}`)}" target="_blank" rel="noopener">ntfy 推送 <span aria-hidden="true">↗</span></a>` : ""}
         <a class="button secondary" href="#/pipeline">推送怎么做</a>
       </div>
       <div class="hero-meta">
-        <span><strong>${stats.items ?? items.length}</strong> 条本期</span>
+        <span><strong>${stats.items ?? items.length}</strong> 条快照</span>
         <span><strong>${stats.papers ?? "—"}</strong> 篇论文</span>
         <span><strong>${stats.security ?? "—"}</strong> 条安全</span>
         <span><strong>${esc(site.schedule.label)}</strong></span>
@@ -433,7 +434,7 @@ function renderToday() {
       <aside class="digest-aside reveal">
         <h3>本期目录</h3>
         <ol>${sectionsToc || "<li>暂无分栏</li>"}</ol>
-        <div class="aside-stat"><span>本期条目</span><b>${stats.items ?? items.length}</b></div>
+        <div class="aside-stat"><span>本期新增 / 快照</span><b>${(digest.sections || []).reduce((sum, section) => sum + (section.itemIds?.length || 0), 0)} / ${stats.items ?? items.length}</b></div>
         <div class="aside-stat"><span>论文 / 新闻 / 发布</span><b>${stats.papers ?? "—"} / ${stats.news ?? "—"} / ${stats.releases ?? "—"}</b></div>
         <div class="aside-stat"><span>安全相关</span><b>${stats.security ?? "—"}</b></div>
         <div class="aside-stat"><span>信源正常</span><b>${meta.sourcesOk ?? "—"} / ${meta.sourcesTotal ?? "—"}</b></div>
@@ -670,16 +671,16 @@ function renderOrbit() {
       const labelX = center + Math.cos(angle) * (radius + 28);
       const labelY = center + Math.sin(angle) * (radius + 28);
       const anchor = Math.cos(angle) > 0.2 ? "start" : Math.cos(angle) < -0.2 ? "end" : "middle";
-      return `<line x1="${center}" y1="${center}" x2="${x}" y2="${y}" stroke="#d7ff4f" stroke-opacity="${count ? 0.16 : 0.06}" />
-        <circle cx="${x}" cy="${y}" r="${size}" fill="${count ? "#d7ff4f" : "#6e786f"}" fill-opacity="${count ? 0.85 : 0.35}" />
+      return `<line x1="${center}" y1="${center}" x2="${x}" y2="${y}" stroke="#0f6b4f" stroke-opacity="${count ? 0.22 : 0.08}" />
+        <circle cx="${x}" cy="${y}" r="${size}" fill="${count ? "#0f6b4f" : "#8a938b"}" fill-opacity="${count ? 0.82 : 0.35}" />
         <text x="${labelX}" y="${labelY}" text-anchor="${anchor}">${esc(topic.short)}</text>
         <text class="orbit-count" x="${labelX}" y="${labelY + 12}" text-anchor="${anchor}">${count}</text>`;
     })
     .join("");
   return `<svg viewBox="0 0 400 400" role="img" aria-label="主题关系轨道图">
-    <circle cx="200" cy="200" r="138" fill="none" stroke="#ece7da" stroke-opacity=".15" />
-    <circle cx="200" cy="200" r="86" fill="none" stroke="#ece7da" stroke-opacity=".08" />
-    <circle cx="200" cy="200" r="44" fill="none" stroke="#ece7da" stroke-opacity=".08" />
+    <circle cx="200" cy="200" r="138" fill="none" stroke="#161b17" stroke-opacity=".14" />
+    <circle cx="200" cy="200" r="86" fill="none" stroke="#161b17" stroke-opacity=".08" />
+    <circle cx="200" cy="200" r="44" fill="none" stroke="#161b17" stroke-opacity=".08" />
     ${nodes}
     <text class="orbit-center" x="200" y="196" text-anchor="middle">AGENT</text>
     <text class="orbit-center" x="200" y="214" text-anchor="middle">MEMORY</text>
@@ -725,9 +726,9 @@ function renderTopics() {
       </div>
       <aside>
         <div class="orbit-panel reveal">
-          <h3>Topic orbit / 本期条目数</h3>
+          <h3>Topic orbit / 当前快照条目数</h3>
           <div class="orbit">${renderOrbit()}</div>
-          <p class="mono faint" style="margin-top:8px;line-height:1.7">圆点大小 = 本期条目数。轨道图只表示分布，不表示主题之间的因果或层级关系。</p>
+          <p class="mono faint" style="margin-top:8px;line-height:1.7">圆点大小 = 当前快照条目数。轨道图只表示分布，不表示主题之间的因果或层级关系。</p>
         </div>
         <div class="orbit-panel reveal" style="position:static;margin-top:16px">
           <h3>五个辅助维度</h3>
@@ -878,6 +879,21 @@ function renderPipeline() {
   const sourceList = sources.sources || [];
   const okCount = sourceList.filter((source) => source.status === "ok").length;
   const stats = meta.stats || {};
+  const ntfy = meta.ntfy;
+  const ntfyBlock = ntfy
+    ? `<div class="callout reveal" style="border-color:rgba(15,107,79,.35)">
+        <h4>真实推送：ntfy</h4>
+        <p>每天成刊后，Actions 会把日报发到 ntfy topic。手机安装 ntfy app，或直接打开订阅页；不需要账号，也不需要保持网页打开。</p>
+        <p class="mono" style="margin-top:8px;color:var(--muted)">${esc(ntfy.server)} / ${esc(ntfy.topic)}</p>
+        <div class="detail-actions" style="margin-top:14px">
+          <a class="button" href="${safeUrl(`${ntfy.server}/${ntfy.topic}`)}" target="_blank" rel="noopener">订阅 ntfy ↗</a>
+          <button class="button secondary" type="button" data-action="copy-ntfy">复制订阅地址</button>
+        </div>
+      </div>`
+    : `<div class="callout reveal">
+        <h4>真实推送：ntfy（待配置）</h4>
+        <p>在仓库 Secrets 里设置 <code>NTFY_TOPIC</code>（一个随机字符串），Actions 就会每天把日报推送到该 topic；页面这里会出现订阅链接。无需账号，也不需要 Web Push 服务端。</p>
+      </div>`;
   return `<section class="section" style="border-bottom:0;padding-top:44px">
     <div class="pipeline-hero">
       <div class="pipeline-copy reveal">
@@ -887,7 +903,7 @@ function renderPipeline() {
       </div>
       <div class="pipeline-stats reveal">
         <div class="pipeline-stat"><b>${okCount}/${sourceList.length}</b><span>信源正常</span></div>
-        <div class="pipeline-stat"><b>${stats.items ?? items.length}</b><span>本期条目</span></div>
+        <div class="pipeline-stat"><b>${stats.items ?? items.length}</b><span>快照条目</span></div>
         <div class="pipeline-stat"><b>08:10</b><span>北京时间 / 每日</span></div>
         <div class="pipeline-stat"><b>0</b><span>页面模型调用</span></div>
       </div>
@@ -900,7 +916,7 @@ function renderPipeline() {
         ["03", "筛选", "规则 + 可选模型", "相关性、主题、证据等级", "缺少 Agent/记忆交集的条目丢弃；厂商自测降级。"],
         ["04", "成刊", "同一运行", "digest + picks", "今日重点按主题分散；不把同一主题塞满。"],
         ["05", "构建", "同一运行", "JSON / RSS / llms.txt", "校验 ID、日期和栏目引用；构建失败不覆盖旧站。"],
-        ["06", "分发", "部署后", "RSS / 飞书 / Telegram", "按日期去重；通知失败不影响站点发布。"]
+        ["06", "分发", "部署后", "RSS / ntfy / 飞书 / Telegram", "按日期去重；通知失败不影响站点发布。"]
       ]
         .map(
           ([number, title, cadence, artifact, note]) => `<div class="station">
@@ -931,6 +947,7 @@ function renderPipeline() {
           ${flowRow("RSS", "构建后", "items + digest", "feed.xml", "lastBuildDate / pubDate", "订阅器继续读旧缓存")}
           ${flowRow("JSON", "构建后", "items + digest", "api/v1/*.json", "generatedAt", "静态 404，不影响页面")}
           ${flowRow("飞书 / Telegram", "成刊后", "notify.mjs", "卡片 / 消息", "按日期去重", "3 次重试；失败只记日志")}
+          ${flowRow("ntfy", "成刊后", "notify.mjs → NTFY_SERVER", "JSON 消息", "按日期去重", "3 次重试；失败只记日志")}
           ${flowRow("Web Push", "不支持", "无服务端订阅存储", "—", "—", "不提供假开关")}
         </tbody>
       </table>
@@ -966,7 +983,7 @@ function renderPipeline() {
     <div class="section" style="padding-bottom:0">
       <div class="section-head">
         <div><p class="index">CHANNELS</p><h2>读者侧的推送通道</h2></div>
-        <p class="section-note">能做的做，不能做的不装。RSS 和 JSON 是承诺；飞书 / Telegram 需要配置密钥；Web Push 在纯静态站上不成立。</p>
+        <p class="section-note">能做的做，不能做的不装。RSS 和 JSON 是承诺；飞书 / Telegram / ntfy 需要配置；Web Push 在纯静态站上不成立。</p>
       </div>
       <div class="channel-grid">
         ${site.channels
@@ -979,9 +996,10 @@ function renderPipeline() {
           )
           .join("")}
       </div>
+      ${ntfyBlock}
       <div class="callout reveal">
         <h4>为什么没有 Web Push</h4>
-        <p>Web Push 需要一个服务端保存订阅、持有 VAPID 私钥并发送通知。GitHub Pages 只托管静态文件，没有这个服务端。用 Service Worker 在本地“模拟”通知，用户关掉页面就失效，那是假 Push。这里的替代方案是 RSS、飞书 / Telegram（Actions 发出）和页面打开时的快照巡检。</p>
+        <p>Web Push 需要一个服务端保存订阅、持有 VAPID 私钥并发送通知。GitHub Pages 只托管静态文件，没有这个服务端。用 Service Worker 在本地“模拟”通知，用户关掉页面就失效，那是假 Push。这里的替代方案是 ntfy、RSS、飞书 / Telegram（Actions 发出）和页面打开时的快照巡检。</p>
       </div>
     </div>
 
@@ -1013,7 +1031,7 @@ function renderPipeline() {
         <p class="section-note">不需要数据库，不需要框架。Node 24 直接跑。</p>
       </div>
       <div class="prose" style="margin:0;max-width:none">
-        <pre style="overflow:auto;border:1px solid var(--line);background:var(--surface);padding:18px;font-family:var(--mono);font-size:12px;line-height:1.8;color:var(--muted)">node scripts/collect.mjs          # 采集真实信源，写 src/data
+        <pre style="overflow:auto;border:1px solid var(--line);background:var(--code-bg);padding:18px;font-family:var(--mono);font-size:12px;line-height:1.8;color:var(--code-text)">node scripts/collect.mjs          # 采集真实信源，写 src/data
 node scripts/build.mjs            # 生成 dist、RSS、JSON、llms.txt
 node scripts/notify.mjs --dry-run # 打印飞书卡片，不发送
 node scripts/serve.mjs            # http://127.0.0.1:4173/agent-memory-push/</pre>
@@ -1100,19 +1118,19 @@ function renderMethod() {
           <tr><td>日报</td><td>数据库存 revisions</td><td>按日期静态 JSON</td><td>不可在线改稿，改稿靠提交</td></tr>
           <tr><td>RSS</td><td>按请求生成，ETag</td><td>构建时生成</td><td>订阅可用，粒度更粗</td></tr>
           <tr><td>MCP</td><td>匿名 Streamable HTTP</td><td>无</td><td>不假装支持</td></tr>
-          <tr><td>Web Push</td><td>没有</td><td>没有</td><td>用 RSS + 飞书 / Telegram 替代</td></tr>
+          <tr><td>Web Push</td><td>没有</td><td>没有</td><td>用 ntfy + RSS + 飞书 / Telegram 替代</td></tr>
           <tr><td>失败恢复</td><td>重试、告警、补跑</td><td>保留上次构建 + 状态页</td><td>没有自动补跑</td></tr>
         </tbody>
       </table></div>
       <p>核心变化不是“功能变少”，而是<strong>把在线服务换成了构建产物</strong>。一旦接受这个约束，很多设计反而更清楚：每个栏目都必须有一个可以提交、可以 diff、可以回滚的文件；每个时间戳都必须写进文件，而不是只存在于内存；每次失败都必须留下状态，而不是静默重试。</p>
 
       <h2 id="method-limits">五、局限与下一步</h2>
-      <p>这份站点的种子数据来自 2026-10-20 至 10-21 的公开论文、官方发布与报道，中文摘要经过编辑整理；它不是全量索引，也不代表同行评审结论。正式运行后，Actions 会用 <code>scripts/collect.mjs</code> 抓取自己的信源，但仍有几个限制：</p>
+      <p>这份站点的数据来自公开论文、官方发布与报道；当前快照 ${items.length} 条，2026-10-22 这一期由真实采集自动成刊。它不是全量索引，也不代表同行评审结论。Actions 每天用 <code>scripts/collect.mjs</code> 抓取 arXiv、HF、GitHub Releases 与 RSS，并用 Agnes 辅助写中文标题和摘要；但仍有几个限制：</p>
       <ul>
         <li><strong>没有实时性</strong>：每天一次快照，arXiv 公告和 GitHub release 可能延迟一天。</li>
         <li><strong>没有全文</strong>：只展示摘要和链接，不做全文转载；这是版权和成本的双重选择。</li>
         <li><strong>没有个性化</strong>：没有用户系统，也没有“只推我关心的主题”。</li>
-        <li><strong>没有真正的 Web Push</strong>：如果需要，得加一个服务端（Cloudflare Worker、VPS 或 AIHOT 本身）来保存订阅和签名。</li>
+        <li><strong>没有浏览器 Web Push</strong>：纯静态 Pages 没有服务端保存订阅和签名 VAPID；真正的推送用 ntfy（Actions 发出），RSS / 飞书 / Telegram 作为补充，不提供 Web Push 假开关。</li>
         <li><strong>模型摘要需要密钥</strong>：不配置 <code>LLM_API_KEY</code> 时，新条目保留英文摘要；配置后才生成中文概括。</li>
         <li><strong>GitHub Actions 可能延迟</strong>：cron 不是精确时钟；页面上的“下次推送”是计划时间，不是承诺。</li>
       </ul>
@@ -1252,6 +1270,12 @@ function setupEvents() {
       navigator.clipboard
         ?.writeText(new URL("feed.xml", DATA_BASE).toString())
         .then(() => showToast("RSS 地址已复制。"))
+        .catch(() => showToast("复制失败，请手动复制。"));
+    } else if (action === "copy-ntfy" && meta.ntfy) {
+      const address = `${meta.ntfy.server}/${meta.ntfy.topic}`;
+      navigator.clipboard
+        ?.writeText(address)
+        .then(() => showToast("ntfy 订阅地址已复制。"))
         .catch(() => showToast("复制失败，请手动复制。"));
     }
   });

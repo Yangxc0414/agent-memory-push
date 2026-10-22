@@ -1,6 +1,8 @@
 import fs from "node:fs";
 import path from "node:path";
-import { DIST, ROOT, readJson, writeJson } from "./lib.mjs";
+import { DIST, ROOT, loadEnvFile, readJson, writeJson } from "./lib.mjs";
+
+loadEnvFile();
 
 const args = new Set(process.argv.slice(2));
 const DRY_RUN = args.has("--dry-run");
@@ -136,6 +138,29 @@ function telegramPayload() {
   };
 }
 
+function ntfyPayload() {
+  const picks = topPicks(6);
+  const message = [
+    digest.lead,
+    "",
+    ...picks.map(
+      (pick, index) =>
+        `${index + 1}. ${pick.titleZh || pick.title}\n${pick.summaryZh || ""}\n${pick.url}`
+    ),
+    "",
+    `打开今日推送：${site.url}`
+  ].join("\n");
+  return {
+    topic: process.env.NTFY_TOPIC,
+    title: `${site.name} · ${digest.date}`,
+    message,
+    priority: Number(process.env.NTFY_PRIORITY || 3),
+    tags: ["newspaper", "robot"],
+    click: site.url,
+    markdown: false
+  };
+}
+
 async function main() {
   let sent = 0;
   if (process.env.FEISHU_WEBHOOK) {
@@ -162,6 +187,18 @@ async function main() {
     }
   } else {
     log("TELEGRAM_BOT_TOKEN / TELEGRAM_CHAT_ID not set, skip telegram");
+  }
+
+  if (process.env.NTFY_TOPIC) {
+    if (alreadySent("ntfy")) log(`ntfy already sent for ${digest.date}, skip`);
+    else {
+      const server = (process.env.NTFY_SERVER || "https://ntfy.sh").replace(/\/$/, "");
+      await postJson(server, ntfyPayload(), "ntfy");
+      markSent("ntfy");
+      sent += 1;
+    }
+  } else {
+    log("NTFY_TOPIC not set, skip ntfy");
   }
 
   if (!sent && !DRY_RUN) log("no channel sent");

@@ -9,11 +9,14 @@ import {
   dayInZone,
   escapeXml,
   formatRssDate,
+  loadEnvFile,
   readJson,
   readText,
   writeJson,
   writeText
 } from "./lib.mjs";
+
+loadEnvFile();
 
 const site = readJson(path.join(DATA, "site.json"));
 const meta = readJson(path.join(DATA, "meta.json"));
@@ -155,23 +158,30 @@ function generateDigest() {
     picked.add(item.id);
   }
 
+  const sectionPool = [...picks];
+  for (const item of sorted) {
+    if (sectionPool.length >= 24) break;
+    if (!sectionPool.some((entry) => entry.id === item.id)) sectionPool.push(item);
+  }
+
   const counts = { paper: 0, news: 0, release: 0 };
   for (const item of candidates) counts[item.kind] = (counts[item.kind] || 0) + 1;
   const top = picks[0];
   const label = hours ? `过去 ${hours} 小时` : "最近快照";
   const lead = top
-    ? `${label}，共 ${candidates.length} 条新内容：${counts.paper || 0} 篇论文、${counts.news || 0} 条新闻、${counts.release || 0} 个发布。最值得先看的是《${top.titleZh || top.title}》——${top.why || "它与记忆的写入、读取或治理直接相关。"}`
+    ? `${label}，共 ${candidates.length} 条新内容：${counts.paper || 0} 篇论文、${counts.news || 0} 条新闻${counts.release ? `、${counts.release} 个发布` : ""}。最值得先看的是《${top.titleZh || top.title}》。`
     : site.description;
 
   const sections = GROUPS.map(([id, title, intro]) => ({
     title,
     intro,
-    itemIds: candidates
+    itemIds: sectionPool
       .filter((item) => groupForItem(item) === id)
       .sort((a, b) => Number(b.score || 0) - Number(a.score || 0))
       .map((item) => item.id)
   })).filter((section) => section.itemIds.length);
 
+  const llmNote = meta.llm?.used ? "由 Agnes 辅助概括" : "来自条目或保留英文原文";
   return {
     date: meta.date,
     seed: false,
@@ -182,8 +192,7 @@ function generateDigest() {
       label
     },
     lead,
-    editorNote:
-      "本期由规则成刊：按相关性、时效、来源与证据等级排序，并按主题分散重点。中文摘要来自条目；厂商自测与媒体报道单独标注，不进入结论区。",
+    editorNote: `本期按相关性、时效、来源与证据等级排序，并按主题分散重点；中文摘要${llmNote}。厂商自测与媒体报道单独标注，不进入结论区。`,
     picks: picks.map((item) => ({ id: item.id, note: item.why || "与记忆的写入、读取或治理直接相关。" })),
     sections
   };
@@ -386,7 +395,13 @@ function main() {
     builtAt,
     stats,
     sourcesOk: sources.sources.filter((source) => source.status === "ok").length,
-    sourcesTotal: sources.sources.length
+    sourcesTotal: sources.sources.length,
+    ntfy: process.env.NTFY_TOPIC
+      ? {
+          server: (process.env.NTFY_SERVER || "https://ntfy.sh").replace(/\/$/, ""),
+          topic: process.env.NTFY_TOPIC
+        }
+      : null
   };
 
   copyDir(path.join(SRC, "assets"), path.join(DIST, "assets"));
@@ -439,8 +454,8 @@ function main() {
     start_url: "./",
     scope: "./",
     display: "standalone",
-    background_color: "#0b0e0d",
-    theme_color: "#d7ff4f",
+    background_color: "#f7f4ec",
+    theme_color: "#0f6b4f",
     icons: [
       {
         src: "assets/icon.svg",
@@ -453,7 +468,7 @@ function main() {
   writeText(path.join(DIST, ".nojekyll"), "");
   writeText(
     path.join(DIST, "404.html"),
-    `<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>404 · ${site.name}</title><style>body{background:#0b0e0d;color:#eee9dc;font:16px/1.7 system-ui;display:grid;place-items:center;min-height:100vh;margin:0}a{color:#d7ff4f}</style><main><p>这一页没有被记住。</p><p><a href="./">回到 ${site.name}</a></p></main></html>`
+    `<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>404 · ${site.name}</title><style>body{background:#f7f4ec;color:#161b17;font:16px/1.7 system-ui;display:grid;place-items:center;min-height:100vh;margin:0}a{color:#0f6b4f}</style><main><p>这一页没有被记住。</p><p><a href="./">回到 ${site.name}</a></p></main></html>`
   );
 
   console.log(`Built ${publicItems.length} items, ${digest.picks.length} picks, ${sources.sources.length} sources -> ${DIST}`);

@@ -38,7 +38,9 @@ function run(args = []) {
         FEISHU_WEBHOOK: "http://127.0.0.1:8788/hook",
         NOTIFY_STATE: stateFile,
         TELEGRAM_BOT_TOKEN: "",
-        TELEGRAM_CHAT_ID: ""
+        TELEGRAM_CHAT_ID: "",
+        NTFY_SERVER: "http://127.0.0.1:8788",
+        NTFY_TOPIC: "test-topic"
       }
     });
     let stdout = "";
@@ -54,8 +56,12 @@ function run(args = []) {
 
 try {
   await run(["--force"]);
-  assert.equal(requests.length, 1, "force should send one webhook");
-  const payload = JSON.parse(requests[0].body);
+  assert.equal(requests.length, 2, "force should send feishu + ntfy");
+  const feishuRequest = requests.find((request) => request.url === "/hook");
+  const ntfyRequest = requests.find((request) => request.url === "/");
+  assert.ok(feishuRequest, "feishu webhook should be called");
+  assert.ok(ntfyRequest, "ntfy should be called");
+  const payload = JSON.parse(feishuRequest.body);
   assert.equal(payload.msg_type, "interactive");
   assert.equal(payload.card.header.title.tag, "plain_text");
   assert.match(payload.card.header.title.content, /Agent Memory/);
@@ -63,12 +69,18 @@ try {
   const joined = JSON.stringify(payload);
   assert.ok(joined.includes("为什么") || joined.includes("原文"), "card should link to sources");
 
+  const ntfy = JSON.parse(ntfyRequest.body);
+  assert.equal(ntfy.topic, "test-topic");
+  assert.match(ntfy.title, /Agent Memory/);
+  assert.ok(ntfy.message.includes("打开今日推送"));
+  assert.ok(ntfy.message.includes("http"));
+
   const second = await run();
-  assert.equal(requests.length, 1, "dedupe should skip the second send");
+  assert.equal(requests.length, 2, "dedupe should skip the second send");
   assert.match(second, /already sent/, "second run should log dedupe");
 
   assert.ok(fs.existsSync(stateFile), "state file should be written");
-  console.log("notify test passed: payload shape + date dedupe");
+  console.log("notify test passed: feishu + ntfy payloads + date dedupe");
 } finally {
   server.close();
   fs.rmSync(stateFile, { force: true });

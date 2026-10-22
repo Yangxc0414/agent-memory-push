@@ -1,7 +1,7 @@
 {
-  "checkedAt": "2026-10-22T08:54:08.521Z",
-  "probe": true,
-  "note": "本次为本地探针：GitHub / Hugging Face 在受限网络下可能超时；首次 Actions 运行后会更新。失败源会保留上次成功时间。",
+  "checkedAt": "2026-10-22T09:23:53.067Z",
+  "probe": false,
+  "note": "每次采集后写入的源状态；失败会保留上次成功时间，不隐藏错误。",
   "sources": [
     {
       "id": "arxiv-memory",
@@ -11,11 +11,11 @@
       "note": "滚动 30 天检索记忆、情景、经验、反思、技能与智能体/持续学习的交集。",
       "url": "https://export.arxiv.org/api/query?search_query=(all%3Amemory%20OR%20all%3Aepisodic%20OR%20all%3Aexperience%20OR%20all%3Areflection%20OR%20all%3Askill)%20AND%20(all%3Aagent%20OR%20all%3A%22recursive%20self-improvement%22%20OR%20all%3Aself-improving%20OR%20all%3A%22continual%20learning%22)&sortBy=submittedDate&sortOrder=descending&max_results=100",
       "status": "ok",
-      "lastCheckedAt": "2026-10-22T08:54:08.521Z",
-      "lastSuccessAt": "2026-10-22T08:54:08.521Z",
+      "lastCheckedAt": "2026-10-22T09:23:53.067Z",
+      "lastSuccessAt": "2026-10-22T09:23:53.067Z",
       "returned": 100,
       "scanned": 100,
-      "latencyMs": 2074,
+      "latencyMs": 2225,
       "error": null
     },
     {
@@ -26,11 +26,11 @@
       "note": "记忆、记忆化与 VLA、具身、多模态、机器人、导航的交集。",
       "url": "https://export.arxiv.org/api/query?search_query=(all%3Amemory%20OR%20all%3Amemorization)%20AND%20(all%3AVLA%20OR%20all%3A%22vision-language-action%22%20OR%20all%3Aembodied%20OR%20all%3Amultimodal%20OR%20all%3Arobot)&sortBy=submittedDate&sortOrder=descending&max_results=100",
       "status": "ok",
-      "lastCheckedAt": "2026-10-22T08:54:08.521Z",
-      "lastSuccessAt": "2026-10-22T08:54:08.521Z",
+      "lastCheckedAt": "2026-10-22T09:23:53.067Z",
+      "lastSuccessAt": "2026-10-22T09:23:53.067Z",
       "returned": 100,
       "scanned": 100,
-      "latencyMs": 2652,
+      "latencyMs": 1782,
       "error": null
     },
     {
@@ -41,11 +41,11 @@
       "note": "投毒、持久注入、隐私外泄、防御、访问隔离、溯源与安全评测。",
       "url": "https://export.arxiv.org/api/query?search_query=(all%3Amemory%20OR%20all%3Amemorization%20OR%20all%3A%22persistent%20state%22)%20AND%20(all%3Aagent%20OR%20all%3ALLM%20OR%20all%3A%22language%20model%22)%20AND%20(all%3Apoisoning%20OR%20all%3Ainjection%20OR%20all%3Abackdoor%20OR%20all%3Aattack%20OR%20all%3Adefense%20OR%20all%3Aprivacy%20OR%20all%3Aexfiltration%20OR%20all%3Awatermark%20OR%20all%3Aprovenance%20OR%20all%3Aunlearning%20OR%20all%3Asecurity)&sortBy=submittedDate&sortOrder=descending&max_results=100",
       "status": "ok",
-      "lastCheckedAt": "2026-10-22T08:54:08.521Z",
-      "lastSuccessAt": "2026-10-22T08:54:08.521Z",
+      "lastCheckedAt": "2026-10-22T09:23:53.067Z",
+      "lastSuccessAt": "2026-10-22T09:23:53.067Z",
       "returned": 100,
       "scanned": 100,
-      "latencyMs": 3192,
+      "latencyMs": 3111,
       "error": null
     },
     {
@@ -56,11 +56,11 @@
       "note": "记忆写入、检索、压缩、管理模型的训练、微调、蒸馏与强化学习。",
       "url": "https://export.arxiv.org/api/query?search_query=(all%3A%22memory%20writer%22%20OR%20all%3A%22memory%20writing%22%20OR%20all%3A%22memory%20manager%22%20OR%20all%3A%22memory%20management%22%20OR%20all%3A%22memory%20retriever%22%20OR%20all%3A%22memory%20compressor%22%20OR%20all%3A%22latent%20memory%22)%20AND%20(all%3Atraining%20OR%20all%3Alearning%20OR%20all%3A%22fine-tuning%22%20OR%20all%3Adistillation%20OR%20all%3A%22reinforcement%20learning%22)&sortBy=submittedDate&sortOrder=descending&max_results=100",
       "status": "ok",
-      "lastCheckedAt": "2026-10-22T08:54:08.521Z",
-      "lastSuccessAt": "2026-10-22T08:54:08.521Z",
+      "lastCheckedAt": "2026-10-22T09:23:53.067Z",
+      "lastSuccessAt": "2026-10-22T09:23:53.067Z",
       "returned": 100,
       "scanned": 100,
-      "latencyMs": 2073,
+      "latencyMs": 2030,
       "error": null
     },
     {
@@ -71,12 +71,12 @@
       "note": "社区每日推荐；按 arXiv 编号与 arXiv 结果合并。",
       "url": "https://huggingface.co/api/daily_papers",
       "status": "error",
-      "lastCheckedAt": "2026-10-22T08:54:08.521Z",
+      "lastCheckedAt": "2026-10-22T09:23:53.067Z",
       "lastSuccessAt": null,
       "returned": 0,
       "scanned": 0,
-      "latencyMs": 20819,
-      "error": "The operation was aborted due to timeout"
+      "latencyMs": 33934,
+      "error": "fetch failed"
     },
     {
       "id": "gh-mem0",
@@ -86,12 +86,12 @@
       "note": "官方 GitHub Releases。",
       "url": "https://github.com/mem0ai/mem0/releases.atom",
       "status": "error",
-      "lastCheckedAt": "2026-10-22T08:54:08.521Z",
+      "lastCheckedAt": "2026-10-22T09:23:53.067Z",
       "lastSuccessAt": null,
       "returned": 0,
       "scanned": 0,
-      "latencyMs": 20814,
-      "error": "The operation was aborted due to timeout"
+      "latencyMs": 38592,
+      "error": "fetch failed"
     },
     {
       "id": "gh-letta",
@@ -101,12 +101,12 @@
       "note": "官方 GitHub Releases。",
       "url": "https://github.com/letta-ai/letta/releases.atom",
       "status": "error",
-      "lastCheckedAt": "2026-10-22T08:54:08.521Z",
+      "lastCheckedAt": "2026-10-22T09:23:53.067Z",
       "lastSuccessAt": null,
       "returned": 0,
       "scanned": 0,
-      "latencyMs": 20816,
-      "error": "The operation was aborted due to timeout"
+      "latencyMs": 38393,
+      "error": "fetch failed"
     },
     {
       "id": "gh-graphiti",
@@ -116,12 +116,12 @@
       "note": "官方 GitHub Releases。",
       "url": "https://github.com/getzep/graphiti/releases.atom",
       "status": "error",
-      "lastCheckedAt": "2026-10-22T08:54:08.521Z",
+      "lastCheckedAt": "2026-10-22T09:23:53.067Z",
       "lastSuccessAt": null,
       "returned": 0,
       "scanned": 0,
-      "latencyMs": 20821,
-      "error": "The operation was aborted due to timeout"
+      "latencyMs": 34099,
+      "error": "fetch failed"
     },
     {
       "id": "gh-langmem",
@@ -131,12 +131,12 @@
       "note": "官方 GitHub Releases。",
       "url": "https://github.com/langchain-ai/langmem/releases.atom",
       "status": "error",
-      "lastCheckedAt": "2026-10-22T08:54:08.521Z",
+      "lastCheckedAt": "2026-10-22T09:23:53.067Z",
       "lastSuccessAt": null,
       "returned": 0,
       "scanned": 0,
-      "latencyMs": 20824,
-      "error": "The operation was aborted due to timeout"
+      "latencyMs": 34056,
+      "error": "fetch failed"
     },
     {
       "id": "gh-search",
@@ -146,11 +146,11 @@
       "note": "GitHub Search API；配置 GITHUB_TOKEN 提高限额，未配置时跳过。",
       "url": "https://api.github.com/search/repositories?q=agent+memory+in:name,description,readme&sort=stars&order=desc&per_page=30",
       "status": "ok",
-      "lastCheckedAt": "2026-10-22T08:54:08.521Z",
-      "lastSuccessAt": "2026-10-22T08:54:08.521Z",
+      "lastCheckedAt": "2026-10-22T09:23:53.067Z",
+      "lastSuccessAt": "2026-10-22T09:23:53.067Z",
       "returned": 30,
       "scanned": 30,
-      "latencyMs": 2281,
+      "latencyMs": 1954,
       "error": null
     },
     {
@@ -161,11 +161,11 @@
       "note": "智能体记忆与上下文工程的官方技术博客。",
       "url": "https://www.langchain.com/blog/rss.xml",
       "status": "ok",
-      "lastCheckedAt": "2026-10-22T08:54:08.521Z",
-      "lastSuccessAt": "2026-10-22T08:54:08.521Z",
+      "lastCheckedAt": "2026-10-22T09:23:53.067Z",
+      "lastSuccessAt": "2026-10-22T09:23:53.067Z",
       "returned": 100,
       "scanned": 100,
-      "latencyMs": 986,
+      "latencyMs": 678,
       "error": null
     },
     {
@@ -176,11 +176,11 @@
       "note": "研究博客；只保留同时涉及智能体与记忆的内容。",
       "url": "https://www.microsoft.com/en-us/research/feed/",
       "status": "ok",
-      "lastCheckedAt": "2026-10-22T08:54:08.521Z",
-      "lastSuccessAt": "2026-10-22T08:54:08.521Z",
+      "lastCheckedAt": "2026-10-22T09:23:53.067Z",
+      "lastSuccessAt": "2026-10-22T09:23:53.067Z",
       "returned": 10,
       "scanned": 10,
-      "latencyMs": 1856,
+      "latencyMs": 2227,
       "error": null
     },
     {
@@ -191,11 +191,11 @@
       "note": "中文 AI 媒体；按智能体与记忆相关性筛选。",
       "url": "https://www.qbitai.com/feed",
       "status": "ok",
-      "lastCheckedAt": "2026-10-22T08:54:08.521Z",
-      "lastSuccessAt": "2026-10-22T08:54:08.521Z",
+      "lastCheckedAt": "2026-10-22T09:23:53.067Z",
+      "lastSuccessAt": "2026-10-22T09:23:53.067Z",
       "returned": 10,
       "scanned": 10,
-      "latencyMs": 303,
+      "latencyMs": 245,
       "error": null
     },
     {
@@ -206,11 +206,11 @@
       "note": "中文科技媒体；按智能体与记忆相关性筛选。",
       "url": "https://www.ithome.com/rss/",
       "status": "ok",
-      "lastCheckedAt": "2026-10-22T08:54:08.521Z",
-      "lastSuccessAt": "2026-10-22T08:54:08.521Z",
+      "lastCheckedAt": "2026-10-22T09:23:53.067Z",
+      "lastSuccessAt": "2026-10-22T09:23:53.067Z",
       "returned": 60,
       "scanned": 60,
-      "latencyMs": 165,
+      "latencyMs": 69,
       "error": null
     },
     {
@@ -221,11 +221,11 @@
       "note": "英文科技媒体；按智能体与记忆相关性筛选。",
       "url": "https://techcrunch.com/feed/",
       "status": "ok",
-      "lastCheckedAt": "2026-10-22T08:54:08.521Z",
-      "lastSuccessAt": "2026-10-22T08:54:08.521Z",
+      "lastCheckedAt": "2026-10-22T09:23:53.067Z",
+      "lastSuccessAt": "2026-10-22T09:23:53.067Z",
       "returned": 20,
       "scanned": 20,
-      "latencyMs": 700,
+      "latencyMs": 466,
       "error": null
     }
   ]
