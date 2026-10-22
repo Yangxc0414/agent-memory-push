@@ -198,14 +198,80 @@ function generateDigest() {
   };
 }
 
-function resolveDigest() {
+function fallbackDigestTitle(data) {
+  const top = (data.picks || [])
+    .map((pick) => items.find((item) => item.id === pick.id))
+    .find(Boolean);
+  if (!top) return "今天的记忆推送";
+  const topic =
+    taxonomy.topics.find((entry) => entry.id === top.topics?.[0])?.label || "智能体记忆";
+  const title = String(top.titleZh || top.title || "").split(/[:：]/)[0].trim();
+  return `${topic}：${title.slice(0, 18)}`;
+}
+
+async function makeDigestTitle(data) {
+  if (data.title) return data.title;
+  const picks = (data.picks || [])
+    .map((pick) => items.find((item) => item.id === pick.id))
+    .filter(Boolean)
+    .slice(0, 8);
+  const fallback = fallbackDigestTitle(data);
+  if (!process.env.LLM_API_KEY) return fallback;
+  const base = (process.env.LLM_BASE_URL || "https://api.agnes-ai.cn/v1").replace(/\/$/, "");
+  const model = process.env.LLM_MODEL || "agnes-3.0-flash";
+  try {
+    const response = await fetch(`${base}/chat/completions`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${process.env.LLM_API_KEY}`
+      },
+      signal: AbortSignal.timeout(45000),
+      body: JSON.stringify({
+        model,
+        temperature: 0.35,
+        max_tokens: 80,
+        messages: [
+          { role: "system", content: "你是严谨的中文科技日报编辑。" },
+          {
+            role: "user",
+            content: `请根据今天的条目，拟一个 8-14 个汉字的日报标题。要求：具体、克制、有信息量；不要用“震撼/必读/首个/唯一/引关注/值得关注/重磅”等套话；不要引号、句号或冒号；只输出标题。\n日期：${data.date}\n导语：${data.lead || ""}\n重点：${JSON.stringify(picks.map((item) => ({ title: item.titleZh || item.title, summary: (item.summaryZh || item.summary || "").slice(0, 120), why: item.why || "" })))}`
+          }
+        ]
+      })
+    });
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    const json = await response.json();
+    const raw = json.choices?.[0]?.message?.content || "";
+    const title = raw
+      .split(/\r?\n/)[0]
+      .replace(/^[\s"'“”‘’]+|[\s"'“”‘’。]+$/g, "")
+      .trim();
+    if (title.length >= 4 && title.length <= 30) return title;
+  } catch (error) {
+    console.log(`Digest title fallback: ${error instanceof Error ? error.message : error}`);
+  }
+  return fallback;
+}
+
+async function resolveDigest() {
   const file = path.join(DATA, "digests", `${meta.date}.json`);
-  if (fs.existsSync(file)) return readJson(file);
-  if (meta.seed && seedDigest.date === meta.date) return seedDigest;
-  const generated = generateDigest();
-  writeJson(file, generated);
-  console.log(`Generated digest ${file} (${generated.picks.length} picks, ${generated.sections.length} sections)`);
-  return generated;
+  let data;
+  let generated = false;
+  if (fs.existsSync(file)) {
+    data = readJson(file);
+  } else if (meta.seed && seedDigest.date === meta.date) {
+    data = seedDigest;
+  } else {
+    data = generateDigest();
+    generated = true;
+    console.log(
+      `Generated digest ${file} (${data.picks.length} picks, ${data.sections.length} sections)`
+    );
+  }
+  if (!data.title) data.title = await makeDigestTitle(data);
+  if (generated || !fs.existsSync(file) || data.title) writeJson(file, data);
+  return data;
 }
 
 function buildDigestIndex() {
@@ -220,6 +286,7 @@ function buildDigestIndex() {
         label: entry.window?.label || "",
         picks: entry.picks?.length || 0,
         items: (entry.sections || []).reduce((sum, section) => sum + (section.itemIds?.length || 0), 0),
+        title: entry.title || "",
         url: `${baseUrl}data/digests/${file}`
       });
     }
@@ -230,6 +297,7 @@ function buildDigestIndex() {
       label: digest.window?.label || "",
       picks: digest.picks?.length || 0,
       items: (digest.sections || []).reduce((sum, section) => sum + (section.itemIds?.length || 0), 0),
+      title: digest.title || "",
       url: `${baseUrl}data/digests/${digest.date}.json`
     });
   }
@@ -381,8 +449,8 @@ function replaceTemplate(html) {
     .replaceAll("{{SCHEDULE}}", site.schedule.label);
 }
 
-function main() {
-  digest = resolveDigest();
+async function main() {
+  digest = await resolveDigest();
   validate();
   fs.rmSync(DIST, { recursive: true, force: true });
   fs.mkdirSync(DIST, { recursive: true });
@@ -420,6 +488,16 @@ function main() {
   writeJson(path.join(DIST, "data", "taxonomy.json"), taxonomy);
   writeJson(path.join(DIST, "data", "digests", "index.json"), buildDigestIndex());
   writeJson(path.join(DIST, "data", "digests", `${digest.date}.json`), publicDigest);
+  const digestSourceDir = path.join(DATA, "digests");
+  if (fs.existsSync(digestSourceDir)) {
+    for (const file of fs.readdirSync(digestSourceDir)) {
+      if (!/^\d{4}-\d{2}-\d{2}\.json$/.test(file) || file === `${digest.date}.json`) continue;
+      fs.copyFileSync(
+        path.join(digestSourceDir, file),
+        path.join(DIST, "data", "digests", file)
+      );
+    }
+  }
 
   writeJson(path.join(DIST, "api", "v1", "items.json"), {
     version: 1,
@@ -475,4 +553,7 @@ function main() {
   console.log(`Stats: ${JSON.stringify(stats)}`);
 }
 
-main();
+main().catch((error) => {
+  console.error(error);
+  process.exitCode = 1;
+});

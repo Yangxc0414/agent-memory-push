@@ -1,5 +1,5 @@
 const DATA_BASE = new URL("./", document.baseURI);
-const VIEWS = new Set(["today", "feed", "catalog", "security", "topics", "projects", "benchmarks"]);
+const VIEWS = new Set(["today", "feed", "catalog", "calendar", "security", "topics", "projects", "benchmarks"]);
 const KIND_LABELS = { paper: "论文", news: "新闻", release: "发布" };
 const ANGLE_LABELS = {
   attack: "攻击面",
@@ -18,6 +18,9 @@ let benchmarks;
 let surveys;
 let taxonomy;
 let digest;
+let digestIndex;
+let archiveDigest = null;
+let archiveDate = null;
 let byId = new Map();
 let topicById = new Map();
 let currentView = "today";
@@ -29,7 +32,8 @@ const state = {
   feed: { kind: "all", topic: "all", q: "", range: "all", sort: "newest", security: false, limit: 18 },
   securityAngle: "all",
   projectCategory: "all",
-  projectSort: "stars"
+  projectSort: "stars",
+  calendarMonth: null
 };
 
 const $ = (selector, root = document) => root.querySelector(selector);
@@ -166,7 +170,7 @@ async function loadData({ bust = false } = {}) {
   const freshMeta = await getJson("data/meta.json", true);
   const version = encodeURIComponent(freshMeta.checkedAt || freshMeta.builtAt || "1");
   const suffix = bust ? `?t=${Date.now()}` : `?v=${version}`;
-  const [nextSite, nextItems, nextProjects, nextBenchmarks, nextSurveys, nextTaxonomy, nextDigest, nextMeta] =
+  const [nextSite, nextItems, nextProjects, nextBenchmarks, nextSurveys, nextTaxonomy, nextDigest, nextDigestIndex, nextMeta] =
     await Promise.all([
       getJson(`data/site.json${suffix}`),
       getJson(`data/items.json${suffix}`),
@@ -175,6 +179,7 @@ async function loadData({ bust = false } = {}) {
       getJson(`data/surveys.json${suffix}`),
       getJson(`data/taxonomy.json${suffix}`),
       getJson(`data/digests/${freshMeta.date}.json${suffix}`).catch(() => getJson(`data/digests/index.json${suffix}`)),
+      getJson(`data/digests/index.json${suffix}`),
       getJson(`data/meta.json${suffix}`)
     ]);
   site = nextSite;
@@ -184,6 +189,7 @@ async function loadData({ bust = false } = {}) {
   surveys = nextSurveys;
   taxonomy = nextTaxonomy;
   digest = nextDigest.digests ? null : nextDigest;
+  digestIndex = nextDigestIndex;
   meta = nextMeta;
   byId = new Map(items.map((item) => [item.id, item]));
   topicById = new Map(taxonomy.topics.map((topic) => [topic.id, topic]));
@@ -278,12 +284,13 @@ function render(view = currentView, { scroll = true } = {}) {
     today: "今日推送",
     feed: "全部动态",
     catalog: "研究目录",
+    calendar: "日历",
     security: "记忆安全",
     topics: "主题地图",
     projects: "项目与发布",
     benchmarks: "Benchmark"
   };
-  document.title = `${titles[currentView]} · ${site.name}`;
+  document.title = `${currentView === "today" && digest?.title ? digest.title : titles[currentView]} · ${site.name}`;
   updateNav(currentView);
   const viewEl = $("#view");
   viewEl.innerHTML = renderView(currentView);
@@ -297,6 +304,7 @@ function render(view = currentView, { scroll = true } = {}) {
 function renderView(view) {
   if (view === "feed") return renderFeed();
   if (view === "catalog") return renderCatalog();
+  if (view === "calendar") return renderCalendar();
   if (view === "security") return renderSecurity();
   if (view === "topics") return renderTopics();
   if (view === "projects") return renderProjects();
@@ -418,7 +426,8 @@ function renderToday() {
   return `<section class="hero">
     <div class="hero-copy reveal">
       <p class="kicker">AGENT MEMORY / DAILY PUSH · ${esc(digest.date || meta.date)}</p>
-      <h1>记忆不该<br />被<span class="accent">遗忘</span>。</h1>
+      <h1 class="daily-title">${esc(digest.title || "今天的记忆推送")}</h1>
+      <p class="hero-tagline">记忆不该被遗忘。</p>
       <p class="lead">${esc(site.intro)}</p>
       <div class="hero-actions">
         <a class="button" href="#/feed">看全部动态 <span aria-hidden="true">→</span></a>
@@ -629,6 +638,101 @@ function renderFeed() {
     <div class="results-meta"><span id="feed-count"></span><span>更新于 ${esc(formatDate(meta.checkedAt, true))}</span></div>
     <div id="feed-results" class="item-list"></div>
     <div style="text-align:center;margin-top:24px"><button class="button secondary" id="feed-more" type="button" data-action="load-more" hidden>加载更多</button></div>
+  </section>`;
+}
+
+function renderArchiveDigest(data) {
+  const picks = (data.picks || []).map((pick, index) => pickCard(pick, index)).join("");
+  const sections = (data.sections || []).map(digestSection).join("");
+  return `<div class="archive-head">
+    <p class="kicker">ARCHIVE / ${esc(data.date || archiveDate)}</p>
+    <h3>${esc(data.title || "记忆日报")}</h3>
+    <p class="lead">${esc(data.lead || "")}</p>
+    <span class="mono">${esc(data.window?.label || "")}</span>
+  </div>
+  <div class="picks-grid">${picks}</div>
+  <div class="digest-sections">${sections}</div>`;
+}
+
+async function openArchiveDay(date) {
+  const container = $("#archive-day");
+  if (!container) return;
+  container.innerHTML = `<p class="muted">正在读取 ${esc(date)} 的推送…</p>`;
+  try {
+    const data = await getJson(`data/digests/${date}.json`, true);
+    archiveDate = date;
+    archiveDigest = data;
+    container.innerHTML = renderArchiveDigest(data);
+    document.querySelectorAll('[data-action="open-archive"]').forEach((button) => {
+      button.classList.toggle("active", button.dataset.date === date);
+    });
+    container.scrollIntoView({ behavior: "smooth", block: "start" });
+  } catch (error) {
+    container.innerHTML = `<div class="archive-placeholder"><strong>没有找到这一天的推送</strong><p>${esc(error.message)}</p></div>`;
+  }
+}
+
+function renderCalendar() {
+  const editions = [...(digestIndex?.digests || [])].sort((a, b) => String(b.date).localeCompare(String(a.date)));
+  const byDate = new Map(editions.map((edition) => [edition.date, edition]));
+  const latest = editions[0]?.date || meta.date;
+  if (!state.calendarMonth) state.calendarMonth = latest.slice(0, 7);
+  const [year, month] = state.calendarMonth.split("-").map(Number);
+  const firstDay = new Date(Date.UTC(year, month - 1, 1));
+  const offset = (firstDay.getUTCDay() + 6) % 7;
+  const daysInMonth = new Date(Date.UTC(year, month, 0)).getUTCDate();
+  const cells = [];
+  for (let index = 0; index < offset; index += 1) cells.push(`<span class="calendar-blank"></span>`);
+  for (let day = 1; day <= daysInMonth; day += 1) {
+    const date = `${year}-${String(month).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
+    const entry = byDate.get(date);
+    const classes = [
+      "calendar-day",
+      entry ? "has-entry" : "",
+      date === meta.date ? "today" : "",
+      date === archiveDate ? "active" : ""
+    ]
+      .filter(Boolean)
+      .join(" ");
+    cells.push(
+      `<button class="${classes}" type="button" ${entry ? `data-action="open-archive" data-date="${date}"` : "disabled"} aria-label="${date}${entry ? " 有推送" : ""}">${day}${entry ? "<i></i>" : ""}</button>`
+    );
+  }
+  const entries = editions
+    .map(
+      (edition) => `<button class="calendar-entry ${edition.date === archiveDate ? "active" : ""}" type="button" data-action="open-archive" data-date="${esc(edition.date)}">
+        <span>${esc(edition.date)}</span>
+        <strong>${esc(edition.title || edition.label || "记忆日报")}</strong>
+        <em>${edition.picks || 0} 个重点 · ${edition.items || 0} 条</em>
+      </button>`
+    )
+    .join("");
+  const archiveHtml = archiveDigest
+    ? renderArchiveDigest(archiveDigest)
+    : `<div class="archive-placeholder"><strong>选择日期，回看当天推送</strong><p>有标记的日期已发布；日历会随每日日报自动累积。</p></div>`;
+  return `<section class="section calendar-page" style="border-bottom:0;padding-top:44px">
+    <div class="section-head">
+      <div><p class="index">CALENDAR / ${editions.length} EDITIONS</p><h2>日历</h2></div>
+      <p class="section-note">选择日期，回看当天的重点文章与分栏；新的日报会自动出现在这里。</p>
+    </div>
+    <div class="calendar-layout">
+      <div class="calendar-panel">
+        <div class="calendar-toolbar">
+          <button class="icon-button" type="button" data-action="calendar-prev" aria-label="上个月">←</button>
+          <strong>${year} 年 ${month} 月</strong>
+          <button class="icon-button" type="button" data-action="calendar-next" aria-label="下个月">→</button>
+        </div>
+        <div class="calendar-weekdays">${["一", "二", "三", "四", "五", "六", "日"].map((day) => `<span>${day}</span>`).join("")}</div>
+        <div class="calendar-grid">${cells.join("")}</div>
+        <div class="calendar-legend"><span class="calendar-dot"></span> 已发布 <span class="calendar-dot today"></span> 最新</div>
+      </div>
+      <aside class="calendar-list">
+        <h3>已发布</h3>
+        ${entries || `<p class="muted">还没有历史日报。</p>`}
+        <a class="button secondary" href="#/today">回到今日推送</a>
+      </aside>
+    </div>
+    <div id="archive-day" class="archive-day">${archiveHtml}</div>
   </section>`;
 }
 
@@ -1124,6 +1228,13 @@ function setupEvents() {
       state.feed.limit = 18;
       state.feed.kind = "all";
       setHash("feed", feedParams());
+    } else if (action === "calendar-prev" || action === "calendar-next") {
+      const [year, month] = String(state.calendarMonth || meta.date.slice(0, 7)).split("-").map(Number);
+      const nextMonth = new Date(Date.UTC(year, month - 1 + (action === "calendar-next" ? 1 : -1), 1));
+      state.calendarMonth = `${nextMonth.getUTCFullYear()}-${String(nextMonth.getUTCMonth() + 1).padStart(2, "0")}`;
+      render("calendar", { scroll: false });
+    } else if (action === "open-archive") {
+      openArchiveDay(actionEl.dataset.date);
     } else if (action === "set-angle") {
       state.securityAngle = actionEl.dataset.angle || "all";
       render("security", { scroll: false });
