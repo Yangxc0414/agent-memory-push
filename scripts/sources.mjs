@@ -14,6 +14,7 @@ export const SOURCES = [
   {
     id: "arxiv-embodied",
     name: "arXiv · 具身与多模态记忆",
+    topicHint: "embodied",
     kind: "论文索引",
     type: "arxiv",
     cadence: "每日 08:10",
@@ -24,6 +25,7 @@ export const SOURCES = [
   {
     id: "arxiv-security",
     name: "arXiv · 记忆安全与评测",
+    topicHint: "security",
     kind: "论文索引",
     type: "arxiv",
     cadence: "每日 08:10",
@@ -34,12 +36,67 @@ export const SOURCES = [
   {
     id: "arxiv-models",
     name: "arXiv · 记忆专用模型",
+    topicHint: "mechanism",
     kind: "论文索引",
     type: "arxiv",
     cadence: "每日 08:10",
     note: "记忆写入、检索、压缩、管理模型的训练、微调、蒸馏与强化学习。",
     url: `${ARXIV_BASE}?search_query=${encodeURIComponent('(all:"memory writer" OR all:"memory writing" OR all:"memory manager" OR all:"memory management" OR all:"memory retriever" OR all:"memory compressor" OR all:"latent memory") AND (all:training OR all:learning OR all:"fine-tuning" OR all:distillation OR all:"reinforcement learning")')}&sortBy=submittedDate&sortOrder=descending&max_results=100`,
     query: '(all:"memory writer" OR all:"memory writing" OR all:"memory manager" OR all:"memory management" OR all:"memory retriever" OR all:"memory compressor" OR all:"latent memory") AND (all:training OR all:learning OR all:"fine-tuning" OR all:distillation OR all:"reinforcement learning")'
+  },
+  {
+    id: "arxiv-broad",
+    name: "arXiv · 智能体记忆泛检索",
+    kind: "论文索引",
+    type: "arxiv",
+    cadence: "每日 08:10",
+    note: "不限定子方向，检索 agent memory、long-term memory、persistent memory 等表述的最近论文。",
+    url: `${ARXIV_BASE}?search_query=${encodeURIComponent('(all:"agent memory" OR all:"memory agent" OR all:"long-term memory" OR all:"persistent memory" OR all:"episodic memory" OR all:"memory system") AND (all:agent OR all:LLM OR all:"language model")')}&sortBy=submittedDate&sortOrder=descending&max_results=100`,
+    query: '(all:"agent memory" OR all:"memory agent" OR all:"long-term memory" OR all:"persistent memory" OR all:"episodic memory" OR all:"memory system") AND (all:agent OR all:LLM OR all:"language model")'
+  },
+  {
+    id: "arxiv-multimodal",
+    name: "arXiv · 多模态记忆",
+    kind: "论文索引",
+    type: "arxiv",
+    cadence: "每日 08:10",
+    topicHint: "multimodal",
+    note: "视觉、视频、音频、图像与记忆的交叉；独立检索，避免被具身或评测方向淹没。",
+    url: `${ARXIV_BASE}?search_query=${encodeURIComponent('(all:memory OR all:"long-term memory" OR all:"episodic memory" OR all:"agent memory") AND (all:multimodal OR all:"multi-modal" OR all:"vision-language" OR all:visual OR all:video OR all:audio OR all:image)')}&sortBy=submittedDate&sortOrder=descending&max_results=100`,
+    query: '(all:memory OR all:"long-term memory" OR all:"episodic memory" OR all:"agent memory") AND (all:multimodal OR all:"multi-modal" OR all:"vision-language" OR all:visual OR all:video OR all:audio OR all:image)'
+  },
+  {
+    id: "arxiv-eval",
+    name: "arXiv · 记忆评测",
+    kind: "论文索引",
+    type: "arxiv",
+    cadence: "每日 08:10",
+    topicHint: "evaluation",
+    note: "记忆基准、评测方法、诊断和失败分析。",
+    url: `${ARXIV_BASE}?search_query=${encodeURIComponent('(all:memory OR all:"long-term memory" OR all:"agent memory") AND (all:benchmark OR all:evaluation OR all:evaluating OR all:diagnosis OR all:metric)')}&sortBy=submittedDate&sortOrder=descending&max_results=100`,
+    query: '(all:memory OR all:"long-term memory" OR all:"agent memory") AND (all:benchmark OR all:evaluation OR all:evaluating OR all:diagnosis OR all:metric)'
+  },
+  {
+    id: "arxiv-personal",
+    name: "arXiv · 对话与个性化记忆",
+    kind: "论文索引",
+    type: "arxiv",
+    cadence: "每日 08:10",
+    topicHint: "personal",
+    note: "长期对话、用户画像、偏好与个性化记忆。",
+    url: `${ARXIV_BASE}?search_query=${encodeURIComponent('(all:memory OR all:"long-term memory" OR all:"agent memory") AND (all:personalization OR all:"user profile" OR all:"user preference" OR all:conversation OR all:dialogue OR all:assistant)')}&sortBy=submittedDate&sortOrder=descending&max_results=100`,
+    query: '(all:memory OR all:"long-term memory" OR all:"agent memory") AND (all:personalization OR all:"user profile" OR all:"user preference" OR all:conversation OR all:dialogue OR all:assistant)'
+  },
+  {
+    id: "arxiv-survey",
+    name: "arXiv · 记忆综述",
+    kind: "论文索引",
+    type: "arxiv",
+    cadence: "每日 08:10",
+    topicHint: "survey",
+    note: "综述、分类体系和研究议程。",
+    url: `${ARXIV_BASE}?search_query=${encodeURIComponent('(all:survey OR all:"systematic review") AND (all:memory) AND (all:agent OR all:LLM)')}&sortBy=submittedDate&sortOrder=descending&max_results=100`,
+    query: '(all:survey OR all:"systematic review") AND (all:memory) AND (all:agent OR all:LLM)'
   },
   {
     id: "hf-daily",

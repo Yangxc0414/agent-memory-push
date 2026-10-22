@@ -92,7 +92,7 @@
 
 ### 1. 今日推送与真实采集
 
-每次 `collect.mjs` 会拉取 4 个 arXiv 查询、HF Daily Papers、GitHub Releases 和 RSS；每次最多合并 24 条新内容。配置 `LLM_API_KEY` 时，Agnes 给新条目写 `titleZh` / `summaryZh` / `why`。`build.mjs` 再从当前 items 自动成刊，不存在“前端预写死条目”。
+每次 `collect.mjs` 会拉取 9 个 arXiv 查询（泛检索、智能体记忆与自进化、具身、多模态、安全、记忆专用模型、评测、对话与个性化、综述）、HF Daily Papers、GitHub Releases 和 RSS；每次最多合并 36 条新内容，并且每个主主题最多 5 条，避免单一方向挤占其他方向。配置 `LLM_API_KEY` 时，Agnes 给新条目写 `titleZh` / `summaryZh` / `why`。`build.mjs` 再从当前 items 自动成刊，不存在“前端预写死条目”。
 
 触发：
 

@@ -262,11 +262,20 @@ export function isMemoryRelevant(text) {
 }
 
 export function classify(text) {
+  return classifyTopics(text)[0];
+}
+
+export function classifyTopics(text, hint = null) {
   const lower = String(text).toLowerCase();
+  const topics = [];
+  if (hint) topics.push(hint);
   for (const rule of TOPIC_RULES) {
-    if (rule.words.some((word) => lower.includes(word))) return rule.id;
+    if (!topics.includes(rule.id) && rule.words.some((word) => lower.includes(word))) {
+      topics.push(rule.id);
+    }
   }
-  return "adjacent";
+  if (!topics.length) topics.push("adjacent");
+  return topics.slice(0, 3);
 }
 
 export function securityAngles(text) {

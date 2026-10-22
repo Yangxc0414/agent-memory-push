@@ -11,7 +11,7 @@
 
 一个纯静态的“每日推送”站：
 
-- **页面**：今日推送、全部动态、记忆安全、主题地图、项目与发布、Benchmark。前端只展示内容与浏览入口，右上角是浏览器收藏按钮，不展示订阅页或建站细节。
+- **页面**：今日推送、全部动态、研究目录、记忆安全、主题地图、项目与发布、Benchmark。前端只展示内容与浏览入口，右上角是浏览器收藏按钮，不展示订阅页或建站细节。
 - **数据**：论文 / 新闻 / 官方发布三类条目，带中文摘要、推送理由、证据等级、主题标签和安全角度。
 - **推送**：RSS、JSON、ntfy（真实手机/浏览器推送）、飞书 / Telegram（可选）、GitHub Watch；没有 Web Push，也不假装有。
 - **编辑**：所有内容先落成可以 diff、可以回滚的文件，再由 GitHub Pages 发布；读者打开页面不触发任何模型调用。
@@ -79,9 +79,9 @@ arXiv API / HF Daily Papers / GitHub Releases / RSS
 
 会，前提是仓库发布到 GitHub、启用 Actions，并设置 `LLM_API_KEY`（可选但推荐）与 `NTFY_TOPIC`（真实推送）。每天北京时间 08:10 运行一次：
 
-1. 4 个 arXiv 查询（记忆与自进化、具身与多模态、安全与评测、记忆专用模型）各拉 100 条，外加 HF Daily Papers、GitHub Releases、媒体 RSS。
+1. 9 个 arXiv 查询（泛检索、智能体记忆与自进化、具身、多模态、安全、记忆专用模型、评测、对话与个性化、综述）各拉 100 条，外加 HF Daily Papers、GitHub Releases、媒体 RSS。
 2. 归一化、按 arXiv ID / URL 去重；只保留同时涉及“记忆”和“智能体/LLM”的内容。
-3. 每次最多合并 **24 条**新内容，避免一次抓取把页面撑爆；用 Agnes 给新条目写中文标题、摘要和推送理由。
+3. 每次最多合并 **36 条**新内容，并且每个主主题最多 **5 条**，让多模态、评测、个性化等方向都有位置；用 Agnes 给新条目写中文标题、摘要和推送理由。
 4. `build.mjs` 在 24 小时窗口内选 8 条重点、最多 24 条分栏，生成 `data/digests/<日期>.json`、RSS、JSON。
 5. 部署 GitHub Pages；配置了 ntfy / 飞书 / Telegram 的话，再按日期去重推送一次。
 
@@ -147,7 +147,8 @@ npm test                 # 本地 mock webhook，验证飞书卡片结构与按�
 | --- | --- |
 | `LLM_API_KEY` | **推荐**。Agnes API Key；给新条目写中文标题、摘要和推送理由。不配置时保留英文摘要。 |
 | `LLM_BASE_URL` / `LLM_MODEL` | 可选；默认 `https://api.agnes-ai.cn/v1` / `agnes-3.0-flash`。 |
-| `MAX_NEW_ITEMS` | 可选；每次最多合并多少条新内容，默认 24。 |
+| `MAX_NEW_ITEMS` | 可选；每次最多合并多少条新内容，默认 36。 |
+| `TOPIC_QUOTA` | 可选；每个主主题单次最多合并多少条，默认 5。 |
 | `NTFY_TOPIC` | **推荐，真实推送**。一个随机字符串；Actions 每天向 `https://ntfy.sh/<topic>` 发布日报。 |
 | `NTFY_SERVER` | 可选；默认 `https://ntfy.sh`，可换自建 ntfy。 |
 | `FEISHU_WEBHOOK` | 飞书自定义机器人 webhook；每天成刊后发一张卡片。 |

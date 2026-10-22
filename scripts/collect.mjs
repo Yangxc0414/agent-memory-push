@@ -3,7 +3,7 @@ import {
   DATA,
   ROOT,
   canonicalId,
-  classify,
+  classifyTopics,
   cleanText,
   dayInZone,
   fetchText,
@@ -27,7 +27,8 @@ loadEnvFile();
 
 const PROBE = process.argv.includes("--probe");
 const USE_LLM = process.argv.includes("--llm") || Boolean(process.env.LLM_API_KEY);
-const MAX_NEW_ITEMS = Math.max(1, Number(process.env.MAX_NEW_ITEMS || 24));
+const MAX_NEW_ITEMS = Math.max(1, Number(process.env.MAX_NEW_ITEMS || 36));
+const TOPIC_QUOTA = Math.max(1, Number(process.env.TOPIC_QUOTA || 5));
 const NOW = new Date().toISOString();
 const FETCH_OPTIONS = PROBE
   ? { timeout: 10000, retries: 1 }
@@ -178,7 +179,8 @@ async function runSource(source) {
 
 function toItem(entry, source, result) {
   const kind = entry.kind;
-  const topic = classify(`${entry.title} ${entry.summary || ""}`);
+  const topics = classifyTopics(`${entry.title} ${entry.summary || ""}`, source.topicHint);
+  const topic = topics[0];
   const angles = securityAngles(`${entry.title} ${entry.summary || ""}`);
   const sourceTier = sourceTierFor(source, kind);
   const published = entry.published || (kind === "release" ? NOW : null);
@@ -254,7 +256,7 @@ async function enrichWithLlm(items) {
   if (!USE_LLM || !process.env.LLM_API_KEY) return { items, used: false, error: null };
   const base = (process.env.LLM_BASE_URL || "https://api.agnes-ai.cn/v1").replace(/\/$/, "");
   const model = process.env.LLM_MODEL || "agnes-3.0-flash";
-  const targets = items.filter((item) => !item.curated && (!item.summaryZh || !item.titleZh)).slice(0, 36);
+  const targets = items.filter((item) => !item.curated && (!item.summaryZh || !item.titleZh)).slice(0, 24);
   if (!targets.length) return { items, used: true, error: null };
   let lastError = null;
   for (let index = 0; index < targets.length; index += 6) {
@@ -272,7 +274,7 @@ async function enrichWithLlm(items) {
           "Content-Type": "application/json",
           Authorization: `Bearer ${process.env.LLM_API_KEY}`
         },
-        signal: AbortSignal.timeout(120000),
+        signal: AbortSignal.timeout(45000),
         body: JSON.stringify({
           model,
           temperature: 0.2,
@@ -382,9 +384,22 @@ async function main() {
   const existingIds = new Set(existing.map((item) => item.id));
   const newItems = deduped
     .filter((item) => !existingIds.has(item.id))
-    .sort((a, b) => String(b.published).localeCompare(String(a.published)))
-    .slice(0, MAX_NEW_ITEMS);
-  const selectedIds = new Set(newItems.map((item) => item.id));
+    .sort((a, b) => String(b.published).localeCompare(String(a.published)));
+  const selectedNew = [];
+  const topicCounts = {};
+  for (const item of newItems) {
+    const primary = item.topics?.[0] || "adjacent";
+    if ((topicCounts[primary] || 0) >= TOPIC_QUOTA) continue;
+    selectedNew.push(item);
+    topicCounts[primary] = (topicCounts[primary] || 0) + 1;
+    if (selectedNew.length >= MAX_NEW_ITEMS) break;
+  }
+  for (const item of newItems) {
+    if (selectedNew.length >= MAX_NEW_ITEMS) break;
+    if (!selectedNew.includes(item)) selectedNew.push(item);
+  }
+  console.log("Selected new by primary topic:", JSON.stringify(topicCounts));
+  const selectedIds = new Set(selectedNew.map((item) => item.id));
   const incoming = deduped.filter((item) => existingIds.has(item.id) || selectedIds.has(item.id));
   const merged = mergeItems(existing, incoming);
   const enriched = await enrichWithLlm(merged.items);

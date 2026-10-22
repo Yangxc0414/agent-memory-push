@@ -1,5 +1,5 @@
 const DATA_BASE = new URL("./", document.baseURI);
-const VIEWS = new Set(["today", "feed", "security", "topics", "projects", "benchmarks"]);
+const VIEWS = new Set(["today", "feed", "catalog", "security", "topics", "projects", "benchmarks"]);
 const KIND_LABELS = { paper: "论文", news: "新闻", release: "发布" };
 const ANGLE_LABELS = {
   attack: "攻击面",
@@ -277,6 +277,7 @@ function render(view = currentView, { scroll = true } = {}) {
   const titles = {
     today: "今日推送",
     feed: "全部动态",
+    catalog: "研究目录",
     security: "记忆安全",
     topics: "主题地图",
     projects: "项目与发布",
@@ -295,6 +296,7 @@ function render(view = currentView, { scroll = true } = {}) {
 
 function renderView(view) {
   if (view === "feed") return renderFeed();
+  if (view === "catalog") return renderCatalog();
   if (view === "security") return renderSecurity();
   if (view === "topics") return renderTopics();
   if (view === "projects") return renderProjects();
@@ -627,6 +629,76 @@ function renderFeed() {
     <div class="results-meta"><span id="feed-count"></span><span>更新于 ${esc(formatDate(meta.checkedAt, true))}</span></div>
     <div id="feed-results" class="item-list"></div>
     <div style="text-align:center;margin-top:24px"><button class="button secondary" id="feed-more" type="button" data-action="load-more" hidden>加载更多</button></div>
+  </section>`;
+}
+
+function renderCatalog() {
+  const byTopic = new Map(taxonomy.topics.map((topic) => [topic.id, []]));
+  for (const item of items) {
+    for (const topic of item.topics || []) {
+      if (byTopic.has(topic)) byTopic.get(topic).push(item);
+    }
+  }
+  const latestFirst = (list) => [...list].sort((a, b) => String(b.published).localeCompare(String(a.published)));
+  const typeCounts = {
+    paper: items.filter((item) => item.kind === "paper").length,
+    news: items.filter((item) => item.kind === "news").length,
+    release: items.filter((item) => item.kind === "release").length
+  };
+  return `<section class="section" style="border-bottom:0;padding-top:44px">
+    <div class="section-head">
+      <div><p class="index">CATALOG / ${items.length} ITEMS</p><h2>研究目录</h2></div>
+      <p class="section-note">按主题浏览已收录的论文、项目与动态。每个主题先列最新几条，点进去看摘要、来源与推荐理由。</p>
+    </div>
+    <div class="catalog-type-strip">
+      <a class="chip active" href="#/feed">全部 <span class="count">${items.length}</span></a>
+      <a class="chip" href="#/feed?kind=paper">论文 <span class="count">${typeCounts.paper}</span></a>
+      <a class="chip" href="#/feed?kind=news">新闻 <span class="count">${typeCounts.news}</span></a>
+      <a class="chip" href="#/feed?kind=release">发布 <span class="count">${typeCounts.release}</span></a>
+    </div>
+    <div class="catalog-index" aria-label="主题索引">
+      ${taxonomy.topics
+        .map(
+          (topic) =>
+            `<a class="catalog-pill" href="#catalog-${esc(topic.id)}" data-scroll="catalog-${esc(topic.id)}">${esc(topic.label)}<span>${byTopic.get(topic.id).length}</span></a>`
+        )
+        .join("")}
+    </div>
+    <div class="catalog-grid">
+      ${taxonomy.topics
+        .map((topic) => {
+          const list = latestFirst(byTopic.get(topic.id));
+          const preview = list.slice(0, 4);
+          return `<section class="catalog-section" id="catalog-${esc(topic.id)}">
+            <div class="catalog-head">
+              <div>
+                <span class="catalog-count">${list.length} ITEMS</span>
+                <h3>${esc(topic.label)}</h3>
+                <p>${esc(topic.desc)}</p>
+              </div>
+              <a class="text-link" href="#/feed?topic=${esc(topic.id)}">查看全部 →</a>
+            </div>
+            <div class="catalog-items">
+              ${
+                preview.length
+                  ? preview
+                      .map(
+                        (item) => `<a class="catalog-item" href="${itemHref(item.id)}">
+                          <div class="catalog-item-top">${kindBadge(item)}<span class="catalog-date">${esc(formatDate(item.published))}</span></div>
+                          <strong>${esc(itemTitle(item))}</strong>
+                          <p>${esc(truncate(itemSummary(item), 88))}</p>
+                          <em>${esc(item.source)}</em>
+                        </a>`
+                      )
+                      .join("")
+                  : `<p class="catalog-empty">这个主题暂时没有条目。</p>`
+              }
+            </div>
+          </section>`;
+        })
+        .join("")}
+    </div>
+    <p class="catalog-foot">目录随每日采集更新；想按时间浏览，去 <a href="#/feed">全部动态</a>。</p>
   </section>`;
 }
 

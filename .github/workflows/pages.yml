@@ -45,7 +45,8 @@ jobs:
           LLM_BASE_URL: ${{ secrets.LLM_BASE_URL }}
           LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
           LLM_MODEL: ${{ secrets.LLM_MODEL }}
-          MAX_NEW_ITEMS: 24
+          MAX_NEW_ITEMS: 36
+          TOPIC_QUOTA: 5
 
       - name: Build static site
         run: node scripts/build.mjs
