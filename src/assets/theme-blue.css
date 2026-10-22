@@ -1083,3 +1083,176 @@ main {
     gap: 8px;
   }
 }
+
+/* ---------- mobile layout pass ---------- */
+
+@media (max-width: 900px) {
+  .filterbar {
+    position: static;
+  }
+}
+
+@media (max-width: 600px) {
+  .latest-float {
+    display: none;
+  }
+
+  .hero {
+    padding-bottom: 32px;
+  }
+
+  .hero-copy .lead {
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  .hero-actions {
+    gap: 8px;
+  }
+
+  .hero-actions .button {
+    min-height: 36px;
+    padding: 0 13px;
+    font-size: 11px;
+  }
+
+  .hero-meta {
+    gap: 6px 12px;
+    font-size: 10px;
+  }
+
+  .status-panel {
+    padding: 18px;
+  }
+
+  .status-head {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  .status-main {
+    padding: 16px 0 4px;
+  }
+
+  .status-number {
+    font-size: 48px;
+  }
+
+  .status-grid {
+    margin-top: 12px;
+  }
+
+  .status-foot {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 6px 12px;
+    font-size: 9px;
+  }
+
+  .status-foot span {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 4px;
+  }
+
+  .status-foot span br {
+    display: none;
+  }
+
+  .filterbar {
+    padding: 10px 0;
+    gap: 8px;
+  }
+
+  .filterbar .chips {
+    width: 100%;
+    gap: 6px;
+  }
+
+  .filterbar .chip {
+    min-height: 30px;
+    padding: 4px 9px;
+    font-size: 11px;
+  }
+
+  .search-wrap {
+    flex: 1 1 100%;
+  }
+
+  .select-wrap {
+    flex: 1 1 calc(50% - 4px);
+    min-width: 0;
+  }
+
+  .results-meta {
+    font-size: 10px;
+  }
+
+  .catalog-section {
+    padding: 16px;
+  }
+
+  .catalog-head h3 {
+    font-size: 22px;
+  }
+
+  .catalog-item p {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .detail-dialog {
+    width: 94vw;
+  }
+
+  .detail-inner {
+    padding: 20px 18px;
+  }
+
+  .detail-actions .button {
+    flex: 1 1 auto;
+  }
+
+  .site-footer {
+    padding-top: 36px;
+  }
+
+  .footer-grid {
+    gap: 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .filterbar {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: center;
+  }
+
+  .filterbar .chips,
+  .filterbar .search-wrap {
+    grid-column: 1 / -1;
+  }
+
+  .filterbar .select-wrap {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .filterbar > .chip {
+    justify-self: start;
+  }
+}
+
+.select-wrap label {
+  flex: 0 0 auto;
+  white-space: nowrap;
+}
+
+.select-wrap select {
+  min-width: 0;
+}
