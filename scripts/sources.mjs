@@ -62,6 +62,17 @@ export const SOURCES = [
     query: '(abs:"agent memory" OR abs:"memory agent" OR abs:"long-term memory" OR abs:"persistent memory" OR abs:"episodic memory" OR abs:"memory system") AND (abs:agent OR abs:LLM OR abs:"language model")'
   },
   {
+    id: "arxiv-recall",
+    name: "arXiv · 记忆召回补漏",
+    kind: "论文索引",
+    type: "arxiv",
+    cadence: "每日 08:00",
+    strict: true,
+    note: "检索窗口内自动翻页；用更宽的摘要表述补足标题检索漏掉的记忆论文，再按严格相关性过滤。",
+    url: arxivUrl('(abs:memory OR abs:memories OR abs:remember OR abs:recall OR abs:forget OR abs:memorization OR abs:episodic OR abs:"memory system" OR abs:"memory-native" OR abs:"parametric memory" OR abs:"hierarchical memory") AND (abs:agent OR abs:LLM OR abs:"language model" OR abs:"foundation model" OR abs:assistant)'),
+    query: '(abs:memory OR abs:memories OR abs:remember OR abs:recall OR abs:forget OR abs:memorization OR abs:episodic OR abs:"memory system" OR abs:"memory-native" OR abs:"parametric memory" OR abs:"hierarchical memory") AND (abs:agent OR abs:LLM OR abs:"language model" OR abs:"foundation model" OR abs:assistant)'
+  },
+  {
     id: "arxiv-multimodal",
     name: "arXiv · 多模态记忆",
     kind: "论文索引",

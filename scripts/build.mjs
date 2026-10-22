@@ -30,7 +30,6 @@ const seedDigest = readJson(path.join(DATA, "digest.json"));
 let digest;
 const builtAt = new Date().toISOString();
 const baseUrl = site.url.endsWith("/") ? site.url : `${site.url}/`;
-const DIGEST_SECTION_LIMIT = Math.max(8, Number(process.env.DIGEST_SECTION_LIMIT || 120));
 
 function fail(message) {
   throw new Error(message);
@@ -118,6 +117,7 @@ const GROUPS = [
 
 function generateDigest() {
   const to = new Date(meta.checkedAt || Date.now());
+  const addedIds = new Set(meta.addedIds || []);
   const windows = [24, 48, 72, 24 * 7];
   let hours = windows[0];
   let candidates = [];
@@ -137,6 +137,9 @@ function generateDigest() {
     hours = null;
     candidates = [...items].sort((a, b) => String(b.published).localeCompare(String(a.published))).slice(0, 8);
   }
+  const addedCandidates = items.filter(
+    (item) => addedIds.has(item.id) && !candidates.some((entry) => entry.id === item.id)
+  );
 
   const sorted = [...candidates].sort(
     (a, b) => Number(b.score || 0) - Number(a.score || 0) || String(b.published).localeCompare(String(a.published))
@@ -160,8 +163,13 @@ function generateDigest() {
   }
 
   const sectionPool = [...picks];
-  for (const item of sorted) {
-    if (sectionPool.length >= DIGEST_SECTION_LIMIT) break;
+  const sectionCandidates = [
+    ...sorted,
+    ...addedCandidates.sort(
+      (a, b) => Number(b.score || 0) - Number(a.score || 0) || String(b.published).localeCompare(String(a.published))
+    )
+  ];
+  for (const item of sectionCandidates) {
     if (!sectionPool.some((entry) => entry.id === item.id)) sectionPool.push(item);
   }
 
@@ -169,8 +177,9 @@ function generateDigest() {
   for (const item of candidates) counts[item.kind] = (counts[item.kind] || 0) + 1;
   const top = picks[0];
   const label = hours ? `过去 ${hours} 小时` : "最近快照";
+  const addedNote = addedCandidates.length ? `；另补采 ${addedCandidates.length} 条本次新发现的相关内容` : "";
   const lead = top
-    ? `${label}，共 ${candidates.length} 条新内容：${counts.paper || 0} 篇论文、${counts.news || 0} 条新闻${counts.release ? `、${counts.release} 个发布` : ""}。最值得先看的是《${top.titleZh || top.title}》。`
+    ? `${label}，共 ${candidates.length} 条新内容：${counts.paper || 0} 篇论文、${counts.news || 0} 条新闻${counts.release ? `、${counts.release} 个发布` : ""}${addedNote}。最值得先看的是《${top.titleZh || top.title}》。`
     : site.description;
 
   const sections = GROUPS.map(([id, title, intro]) => ({
@@ -192,6 +201,7 @@ function generateDigest() {
       hours: hours || null,
       label
     },
+    supplemental: { count: addedCandidates.length, label: "本次新发现" },
     lead,
     editorNote: `本期覆盖过去 ${hours || "最近"} 小时；论文多为预印本，观点与数据请回到原文核对。厂商自测与媒体报道单独标注。`,
     picks: picks.map((item) => ({ id: item.id, note: item.why || "与记忆的写入、读取或治理直接相关。" })),
@@ -312,7 +322,9 @@ function buildDigestIndex() {
 function buildDigest() {
   const pickIds = new Set((digest.picks || []).map((pick) => pick.id));
   const sectionIds = new Set((digest.sections || []).flatMap((section) => section.itemIds || []));
-  const uncovered = items.filter((item) => !pickIds.has(item.id) && !sectionIds.has(item.id));
+  const digestIds = new Set([...pickIds, ...sectionIds]);
+  const digestItems = items.filter((item) => digestIds.has(item.id));
+  const uncovered = items.filter((item) => !digestIds.has(item.id));
   const picks = (digest.picks || []).map((pick) => {
     const item = items.find((entry) => entry.id === pick.id);
     return {
@@ -333,7 +345,7 @@ function buildDigest() {
     ...digest,
     generatedAt: builtAt,
     checkedAt: meta.checkedAt,
-    stats: statsFor(items),
+    stats: statsFor(digestItems),
     picks,
     sections: (digest.sections || []).map((section) => ({
       ...section,

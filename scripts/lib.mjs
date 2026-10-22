@@ -224,8 +224,8 @@ const STRONG_MEMORY_TERMS = new RegExp(
     "\\bagent(?:'s|s')? memory\\b",
     "\\bmemory agents?\\b",
     "\\bmemory[- ]augmented\\b",
-    "\\b(long[- ]term|persistent|episodic|experience[d]?|experiential|procedural|autobiographical|external|collective|organizational|cognitive|spatial|visual|multimodal|temporal|semantic|hierarchical|working|3d) memory\\b",
-    "\\bmemory[- ](?:system|module|bank|layer|manager|retrieval|writing|writer|consolidation|governance|lifecycle|safety|security|poisoning|injection|architecture|framework|benchmark|evaluation|updates?|panel|store|state)\\b",
+    "\\b(long[- ]term|persistent|episodic|experience[d]?|experiential|procedural|autobiographical|external|collective|organizational|cognitive|spatial|visual|multimodal|temporal|semantic|hierarchical|working|parametric|3d) memory\\b",
+    "\\bmemory[- ](?:system|module|bank|layer|manager|retrieval|writing|writer|consolidation|governance|lifecycle|safety|security|poisoning|injection|architecture|framework|benchmark|evaluation|updates?|panel|store|state|replay|failure|native|internalization|compression|selection|organization)\\b",
     "\\bcontext engineering\\b",
     "\\bpersistent state\\b",
     "智能体记忆|长期记忆|持久记忆|情景记忆|经验记忆|记忆系统|记忆层|记忆库|记忆模块|记忆管理|记忆检索|记忆写入|记忆注入|记忆安全|记忆治理|记忆机制|记忆增强|记忆面板|记忆功能|记忆能力|记忆架构|记忆框架|记忆策略|记忆压缩|记忆更新|记忆演化|记忆遗忘|记忆评测|记忆基准"
@@ -281,6 +281,18 @@ export function isAgentMemoryRelevant(item) {
     return SELF_EVOLVING_TERMS.test(title) && /\bmemory\b|记忆/i.test(text);
   }
   return titleMemory || strong;
+}
+
+export function isAgentMemoryStrict(item) {
+  if (!isAgentMemoryRelevant(item)) return false;
+  const title = String(item?.title || "");
+  const text = `${title} ${String(item?.summary || "")}`;
+  const mentions = (
+    text.match(/\bmemor(?:y|ies)\b|\bremember(?:ing|s|ed)?\b|\brecall(?:ing|s|ed)?\b|\bforget(?:ting|s)?\b|记忆|记住|遗忘|回忆/gi) || []
+  ).length;
+  if (mentions < 2) return false;
+  const titleMemory = MEMORY_TITLE_TERMS.test(title) && !HARDWARE_MEMORY_TERMS.test(title);
+  return titleMemory || STRONG_MEMORY_TERMS.test(text) || SELF_EVOLVING_TERMS.test(title);
 }
 
 export function classify(text) {

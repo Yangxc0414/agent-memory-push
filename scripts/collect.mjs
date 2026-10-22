@@ -8,6 +8,7 @@ import {
   dayInZone,
   fetchText,
   isAgentMemoryRelevant,
+  isAgentMemoryStrict,
   loadEnvFile,
   normalizeUrl,
   parseArxiv,
@@ -35,6 +36,10 @@ const ARXIV_PAGE_SIZE = PROBE
 const ARXIV_PAGE_DELAY_MS = PROBE
   ? 0
   : Math.max(0, Number(process.env.ARXIV_PAGE_DELAY_MS || 3000));
+const ARXIV_FETCH_TIMEOUT_MS = Math.max(
+  15000,
+  Number(process.env.ARXIV_FETCH_TIMEOUT_MS || 45000)
+);
 const COLLECT_CUTOFF = Date.now() - ARXIV_LOOKBACK_DAYS * 86400000;
 const ARXIV_ALLOWED_CATEGORY = /^(cs\.|eess\.|stat\.ML$)/;
 const LLM_ENRICH_LIMIT = Math.max(1, Number(process.env.LLM_ENRICH_LIMIT || 60));
@@ -92,10 +97,27 @@ let lastArxivRequestAt = 0;
 
 async function fetchArxivPage(url) {
   const run = arxivQueue.then(async () => {
-    const wait = Math.max(0, lastArxivRequestAt + ARXIV_PAGE_DELAY_MS - Date.now());
-    if (wait) await new Promise((resolve) => setTimeout(resolve, wait));
-    lastArxivRequestAt = Date.now();
-    return fetchText(url, FETCH_OPTIONS);
+    let lastError;
+    for (let attempt = 0; attempt < 3; attempt += 1) {
+      const wait = Math.max(0, lastArxivRequestAt + ARXIV_PAGE_DELAY_MS - Date.now());
+      if (wait) await new Promise((resolve) => setTimeout(resolve, wait));
+      lastArxivRequestAt = Date.now();
+      try {
+        return await fetchText(url, {
+          ...FETCH_OPTIONS,
+          retries: 0,
+          timeout: ARXIV_FETCH_TIMEOUT_MS
+        });
+      } catch (error) {
+        lastError = error;
+        const message = error instanceof Error ? error.message : String(error);
+        if (attempt >= 2 || !/HTTP (429|503)|timeout/i.test(message)) throw error;
+        const pause = 8000 * (attempt + 1);
+        console.log(`  arXiv ${message}; retry ${attempt + 1}/2 in ${pause / 1000}s`);
+        await new Promise((resolve) => setTimeout(resolve, pause));
+      }
+    }
+    throw lastError;
   });
   arxivQueue = run.then(
     () => undefined,
@@ -453,7 +475,8 @@ async function main() {
       const item = toItem(entry, result.source, result);
       if (!item) continue;
       if (Date.parse(item.published) < COLLECT_CUTOFF) continue;
-      if (!isAgentMemoryRelevant(item)) continue;
+      const relevant = result.source.strict ? isAgentMemoryStrict(item) : isAgentMemoryRelevant(item);
+      if (!relevant) continue;
       raw.push(item);
     }
   }
@@ -468,6 +491,7 @@ async function main() {
   const newItems = deduped
     .filter((item) => !existingIds.has(item.id))
     .sort((a, b) => String(b.published).localeCompare(String(a.published)));
+  const addedIds = newItems.map((item) => item.id);
   const topicCounts = {};
   for (const item of newItems) {
     const primary = item.topics?.[0] || "adjacent";
@@ -528,6 +552,7 @@ async function main() {
     date: okCount > 0 ? dayInZone(NOW) : previousMeta.date,
     seed: okCount > 0 ? false : previousMeta.seed,
     added: merged.added,
+    addedIds,
     updated: merged.updated,
     items: enriched.items.length,
     sourcesOk: okCount,
