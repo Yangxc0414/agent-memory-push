@@ -817,14 +817,23 @@ main {
   place-items: center;
   width: 42px;
   height: 42px;
+  overflow: hidden;
   border-radius: 50%;
-  background: var(--gradient);
+  background: var(--surface-2);
   color: #fff;
   font-family: var(--mono);
   font-size: 11px;
   letter-spacing: 0.04em;
   box-shadow: 0 8px 20px rgba(37, 99, 235, 0.22);
   transition: transform 0.2s ease;
+}
+
+.footer-avatar img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
 }
 
 .footer-profile-copy {
