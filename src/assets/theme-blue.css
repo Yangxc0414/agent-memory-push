@@ -199,6 +199,17 @@ main {
   color: var(--accent);
 }
 
+.status-warning {
+  margin: 10px 0 0;
+  padding: 8px 10px;
+  border: 1px solid rgba(225, 29, 72, 0.14);
+  border-radius: 6px;
+  background: rgba(225, 29, 72, 0.05);
+  color: var(--coral);
+  font-size: 11px;
+  line-height: 1.6;
+}
+
  .latest-float {
   position: relative;
   z-index: 2;

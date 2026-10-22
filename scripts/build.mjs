@@ -271,20 +271,26 @@ async function makeDigestTitle(data) {
 
 async function resolveDigest() {
   const file = path.join(DATA, "digests", `${meta.date}.json`);
+  const coverageReady = meta.coverage
+    ? meta.coverage.coreComplete !== false && meta.coverage.recallOk !== false
+    : true;
+  const existing = fs.existsSync(file) ? readJson(file) : null;
   let data;
   let generated = false;
-  if (fs.existsSync(file)) {
-    data = readJson(file);
-  } else if (meta.seed && seedDigest.date === meta.date) {
+  if (existing && !existing.provisional) {
+    data = existing;
+  } else if (!existing && meta.seed && seedDigest.date === meta.date) {
     data = seedDigest;
   } else {
     data = generateDigest();
     generated = true;
     console.log(
-      `Generated digest ${file} (${data.picks.length} picks, ${data.sections.length} sections)`
+      `Generated digest ${file} (${data.picks.length} picks, ${data.sections.length} sections${coverageReady ? "" : ", provisional"})`
     );
   }
   if (!data.title) data.title = await makeDigestTitle(data);
+  if (!coverageReady) data.provisional = true;
+  else delete data.provisional;
   if (generated || !fs.existsSync(file) || data.title) writeJson(file, data);
   return data;
 }
@@ -302,6 +308,7 @@ function buildDigestIndex() {
         picks: entry.picks?.length || 0,
         items: (entry.sections || []).reduce((sum, section) => sum + (section.itemIds?.length || 0), 0),
         title: entry.title || "",
+        provisional: Boolean(entry.provisional),
         url: `${baseUrl}data/digests/${file}`
       });
     }
@@ -313,6 +320,7 @@ function buildDigestIndex() {
       picks: digest.picks?.length || 0,
       items: (digest.sections || []).reduce((sum, section) => sum + (section.itemIds?.length || 0), 0),
       title: digest.title || "",
+      provisional: Boolean(digest.provisional),
       url: `${baseUrl}data/digests/${digest.date}.json`
     });
   }
@@ -345,6 +353,8 @@ function buildDigest() {
     ...digest,
     generatedAt: builtAt,
     checkedAt: meta.checkedAt,
+    provisional: Boolean(digest.provisional),
+    coverage: meta.coverage || null,
     stats: statsFor(digestItems),
     picks,
     sections: (digest.sections || []).map((section) => ({

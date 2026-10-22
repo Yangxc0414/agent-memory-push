@@ -77,12 +77,12 @@
 
 | 栏目 | 触发 | 来源 | 产物 | 新鲜度 | 失败时 |
 | --- | --- | --- | --- | --- | --- |
-| 今日推送 | Actions cron `0 0 * * *`，北京时间 08:00 | `src/data/items.json` | `src/data/digests/YYYY-MM-DD.json` | `generatedAt` / `checkedAt` | 保留上一期；页面按 36 小时判断 stale |
+| 今日推送 | Actions cron `0 0 * * *`，北京时间 08:00；`0 4 * * *` 仅在核心采集不完整时补采 | `src/data/items.json` | `src/data/digests/YYYY-MM-DD.json` | `generatedAt` / `checkedAt` | 保留上一期；核心源不完整时生成临时版并跳过通知，页面按 36 小时判断 stale |
 | 全部动态 | 随构建 | `src/data/items.json` | `dist/data/items.json` + `dist/api/v1/items.json` | `checkedAt` | 旧快照继续可读 |
 | 主题地图 | 构建时汇总 | `taxonomy.json` + items | 计数、轨道图、维度说明 | `taxonomyVersion` | 分类非法则构建失败，不发布 |
 | 项目 | 每日 / 每周一 | GitHub Releases Atom + GitHub Search API | `src/data/projects.json` | `starsCheckedAt` | 保留上次星数并标时间 |
 | Benchmark | 人工核对 | 官方仓库 / 论文 | `src/data/benchmarks.json` | `checkedAt` | 不自动改分；保留上一定义 |
-| 信源状态 | 每次采集 | 每个源的请求结果 | `src/data/sources.json` | `lastCheckedAt` / `lastSuccessAt` | 错误直接展示，保留上次成功时间 |
+| 信源状态 | 每次采集 | 每个源的请求结果 | `src/data/sources.json` | `lastCheckedAt` / `lastSuccessAt` / `health` | 记录 `degraded` / `failing`、连续失败次数和错误；错误不隐藏 |
 | RSS | 构建后 | items + digest | `dist/feed.xml` | `lastBuildDate` / `pubDate` | 订阅器继续读旧缓存 |
 | JSON | 构建后 | items + digest | `dist/api/v1/*.json` | `generatedAt` | 静态 404，不影响页面 |
 | 飞书 / Telegram | 成刊后 | `dist/api/v1/digest.json` | webhook 请求 | 按日期去重 | 3 次重试；失败只记日志 |
@@ -96,22 +96,24 @@
 触发：
 
 - GitHub Actions `schedule`（`0 0 * * *`，北京时间 08:00）。
+- GitHub Actions `schedule`（`0 4 * * *`，北京时间 12:00）只做补采：如果今天核心 arXiv 查询和召回查询都已成功，`COLLECT_IF_INCOMPLETE=1` 会让采集直接跳过。
 - 手动 `workflow_dispatch`，可选择强制重新通知。
 
 流程：
 
-1. `collect.mjs` 拉取信源，写 `items.json` / `sources.json` / `meta.json`。
+1. `collect.mjs` 拉取信源，写 `items.json` / `sources.json` / `meta.json`。每个信源记录 `priority`（critical / supplemental / optional）、`failCount`、`health`（ok / degraded / failing）、`lastSuccessAt` 和 `lastErrorAt`；`meta.coverage` 汇总核心源、召回源和可选源的失败列表。
 2. `build.mjs` 先找 `src/data/digests/<meta.date>.json`。
 3. 找不到时，如果 `meta.seed` 为 true 且 `digest.json` 的日期匹配，就用种子期手工日报。
 4. 否则自动成刊：优先取 24 小时窗口；不足 30 条时依次扩到 48 小时、72 小时和 7 天。按分数排序，每个主题最多 2 条选 8 条重点；分栏再纳入窗口内全部相关条目，以及 `meta.addedIds` 标记的本次新发现条目，不再按条数截断。其余历史条目仍在“全部动态”中。
-5. 生成 `dist/data/digests/<date>.json` 和 `dist/api/v1/digest.json`。
+5. 生成 `dist/data/digests/<date>.json` 和 `dist/api/v1/digest.json`。核心 arXiv 查询未全部成功，或召回查询失败时，日报标记 `provisional`，页面显示临时版；核心失败时通知跳过，召回失败时仍通知但注明补漏未完成。12:00 重试成功后重新生成并转为正式版。
 
 失败：
 
 - 采集全部失败时，`meta.checkedAt` 不更新，`meta.date` 不前进；构建继续使用上一份快照。
+- 核心 arXiv 查询失败、召回查询失败或可选源失败不会隐藏：`sources.json` 记录连续失败次数和 health，`meta.coverage` 列出失败源；核心或召回失败时日报为临时版，12:00 自动补采。核心失败期间不发通知；召回失败期间通知会带补漏说明。
 - 页面在 `checkedAt` 超过 36 小时时显示 `STALE`。
-- 日报文件一旦写下，同一天重复构建不会覆盖；需要重做时手动删除该日文件。
-- arXiv 某页失败时保留前面已取到的页；第一页失败才把该信源标为失败。翻页请求之间默认间隔 3 秒，避免触发 arXiv 限流。
+- 正式日报文件一旦写下，同一天重复构建不会覆盖；临时版可以在同日重试时重新生成。需要重做正式版时手动删除该日文件。
+- arXiv 某页失败时保留前面已取到的页；第一页失败才把该信源标为失败。翻页请求之间默认间隔 3 秒，并对 429/503/timeout 做退避重试。
 
 ### 2. 全部动态
 
@@ -179,6 +181,7 @@
 - 飞书：自定义机器人 webhook，交互卡片 1.0，包含标题、日期、统计、6 条重点和“打开今日推送”按钮。
 - Telegram：`sendMessage` HTML，5 条重点。
 - 去重：`src/data/notify-state.json` 按频道 + 日期记录；工作流在通知后提交它，跨天仍能去重；`--force` 可重发。
+- 覆盖率闸门：核心采集不完整时，非 `--force` 通知直接跳过，等 12:00 重试；召回失败但核心成功时仍会发送，并在文案里注明“补漏查询未完成”。
 - 重试：3 次，指数退避；失败只记日志，不阻塞部署。
 - 测试：`npm test` 启动本地 mock webhook，验证 payload 结构和去重，不访问外部服务。
 
@@ -188,6 +191,7 @@
 - 字段：`topic`、`title`、`message`（日报摘要 + 6 条重点 + 站点链接）、`priority`、`tags`、`click`。
 - 订阅：手机安装 ntfy app，或打开 `https://ntfy.sh/<topic>`；topic 只通过 Secrets / 本地 `.env` 配置，不写入公开页面或 JSON。
 - 去重：`src/data/notify-state.json` 按频道 + 日期记录；工作流在通知后提交它，跨天仍能去重；`--force` 可重发。
+- 覆盖率闸门与飞书 / Telegram 相同：核心采集不完整时不发；召回失败仍发，并在消息里注明。
 - 测试：`npm test` 同时验证飞书和 ntfy 的 payload 与去重，只连本地 mock，不向公网发送。
 - topic 是公开地址，不是密码；用长随机串，避免被猜到。需要鉴权时换自建 ntfy 或改用飞书 / Telegram。
 

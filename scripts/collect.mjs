@@ -1,3 +1,4 @@
+import fs from "node:fs";
 import path from "node:path";
 import {
   DATA,
@@ -415,8 +416,12 @@ async function enrichWithLlm(items) {
   return { items, used: true, error: lastError };
 }
 
-function sourceRecord(result) {
+function sourceRecord(result, previous) {
   const { source } = result;
+  const failed = result.status !== "ok";
+  const failCount = failed ? Number(previous?.failCount || 0) + 1 : 0;
+  const priority =
+    source.priority || (source.type === "arxiv" ? "critical" : "optional");
   return {
     id: source.id,
     name: source.name,
@@ -424,9 +429,13 @@ function sourceRecord(result) {
     cadence: source.cadence,
     note: source.note,
     url: source.url,
+    priority,
     status: result.status,
+    health: failed ? (failCount >= 3 ? "failing" : "degraded") : "ok",
+    failCount,
     lastCheckedAt: NOW,
-    lastSuccessAt: result.status === "ok" ? NOW : null,
+    lastSuccessAt: result.status === "ok" ? NOW : previous?.lastSuccessAt || null,
+    lastErrorAt: failed ? NOW : previous?.lastErrorAt || null,
     returned: result.entries.length,
     scanned: result.rawCount,
     latencyMs: result.latencyMs,
@@ -435,10 +444,19 @@ function sourceRecord(result) {
 }
 
 async function main() {
+  if (process.env.COLLECT_IF_INCOMPLETE === "1") {
+    const metaPath = path.join(DATA, "meta.json");
+    if (fs.existsSync(metaPath)) {
+      const current = readJson(metaPath);
+      const today = dayInZone(new Date());
+      if (current.date === today && current.coverage?.coreComplete && current.coverage?.recallOk) {
+        console.log("Today's coverage is complete; skip retry collection.");
+        return;
+      }
+    }
+  }
   const previousSources = readJson(path.join(DATA, "sources.json")).sources || [];
-  const previousSuccess = new Map(
-    previousSources.filter((source) => source.lastSuccessAt).map((source) => [source.id, source.lastSuccessAt])
-  );
+  const previousById = new Map(previousSources.map((source) => [source.id, source]));
   const results = [];
   const collected = await mapLimit(SOURCES, PROBE ? 4 : 3, async (source) => {
     const result = await runSource(source);
@@ -448,13 +466,27 @@ async function main() {
   });
   results.push(...collected);
 
-  const records = results.map((result) => {
-    const record = sourceRecord(result);
-    if (record.status !== "ok" && previousSuccess.has(record.id)) {
-      record.lastSuccessAt = previousSuccess.get(record.id);
-    }
-    return record;
-  });
+  const records = results.map((result) =>
+    sourceRecord(result, previousById.get(result.source.id))
+  );
+  const criticalFailed = records
+    .filter((record) => record.priority === "critical" && record.status !== "ok")
+    .map((record) => record.id);
+  const supplementalFailed = records
+    .filter((record) => record.priority === "supplemental" && record.status !== "ok")
+    .map((record) => record.id);
+  const optionalFailed = records
+    .filter((record) => record.priority === "optional" && record.status !== "ok")
+    .map((record) => record.id);
+  const recallRecord = records.find((record) => record.id === "arxiv-recall");
+  const coverage = {
+    coreComplete: criticalFailed.length === 0,
+    recallOk: recallRecord ? recallRecord.status === "ok" : null,
+    degraded: criticalFailed.length > 0 || supplementalFailed.length > 0 || optionalFailed.length > 0,
+    criticalFailed,
+    supplementalFailed,
+    optionalFailed
+  };
   writeJson(path.join(DATA, "sources.json"), {
     checkedAt: NOW,
     probe: PROBE,
@@ -557,6 +589,7 @@ async function main() {
     items: enriched.items.length,
     sourcesOk: okCount,
     sourcesTotal: records.length,
+    coverage,
     llm: enriched.used ? { used: true, error: enriched.error } : { used: false, error: null }
   };
   writeJson(metaPath, meta);

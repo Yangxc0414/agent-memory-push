@@ -8,7 +8,12 @@ const args = new Set(process.argv.slice(2));
 const DRY_RUN = args.has("--dry-run");
 const FORCE = args.has("--force");
 const site = readJson(path.join(ROOT, "src", "data", "site.json"));
+const meta = readJson(path.join(ROOT, "src", "data", "meta.json"));
 const digest = readJson(path.join(DIST, "api", "v1", "digest.json"));
+const coverageNote =
+  meta.coverage?.recallOk === false
+    ? "（补漏查询未完成，本期可能少收部分论文。）"
+    : "";
 const stateFile = process.env.NOTIFY_STATE || path.join(ROOT, "src", "data", "notify-state.json");
 const state = fs.existsSync(stateFile) ? readJson(stateFile) : {};
 
@@ -90,7 +95,7 @@ function feishuPayload() {
       elements: [
         {
           tag: "div",
-          text: { tag: "lark_md", content: digest.lead }
+          text: { tag: "lark_md", content: `${digest.lead}${coverageNote}` }
         },
         { tag: "hr" },
         {
@@ -121,7 +126,7 @@ function telegramPayload() {
   const picks = topPicks(5);
   const text = [
     `<b>${site.name} · ${digest.date}</b>`,
-    digest.lead,
+    `${digest.lead}${coverageNote}`,
     "",
     ...picks.map(
       (pick, index) =>
@@ -141,7 +146,7 @@ function telegramPayload() {
 function ntfyPayload() {
   const picks = topPicks(6);
   const message = [
-    digest.lead,
+    `${digest.lead}${coverageNote}`,
     "",
     ...picks.map(
       (pick, index) =>
@@ -162,6 +167,10 @@ function ntfyPayload() {
 }
 
 async function main() {
+  if (!FORCE && meta.coverage && meta.coverage.coreComplete === false) {
+    log("core coverage incomplete; skip notification until the retry run");
+    return;
+  }
   let sent = 0;
   if (process.env.FEISHU_WEBHOOK) {
     if (alreadySent("feishu")) log(`feishu already sent for ${digest.date}, skip`);

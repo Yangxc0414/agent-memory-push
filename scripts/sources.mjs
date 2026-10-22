@@ -67,6 +67,7 @@ export const SOURCES = [
     kind: "论文索引",
     type: "arxiv",
     cadence: "每日 08:00",
+    priority: "supplemental",
     strict: true,
     note: "检索窗口内自动翻页；用更宽的摘要表述补足标题检索漏掉的记忆论文，再按严格相关性过滤。",
     url: arxivUrl('(abs:memory OR abs:memories OR abs:remember OR abs:recall OR abs:forget OR abs:memorization OR abs:episodic OR abs:"memory system" OR abs:"memory-native" OR abs:"parametric memory" OR abs:"hierarchical memory") AND (abs:agent OR abs:LLM OR abs:"language model" OR abs:"foundation model" OR abs:assistant)'),

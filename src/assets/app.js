@@ -341,10 +341,16 @@ function statusPanel() {
   const checked = meta.checkedAt || site.snapshot.checkedAt;
   const next = nextRun();
   const stale = isStale();
+  const coverage = meta.coverage;
+  const coreIncomplete = coverage ? coverage.coreComplete === false : false;
+  const recallIncomplete = coverage ? coverage.recallOk === false : false;
+  const provisional = Boolean(digest.provisional);
+  const liveLabel = stale ? "待更新" : coreIncomplete || provisional ? "临时版" : "已更新";
+  const liveClass = stale || coreIncomplete || provisional ? "stale" : "";
   return `<aside class="status-panel reveal" aria-label="今日更新状态">
     <div class="status-head">
       <span class="mono">TODAY / ${esc(meta.date || digest.date)}</span>
-      <span class="live ${stale ? "stale" : ""}">${stale ? "待更新" : "已更新"}</span>
+      <span class="live ${liveClass}">${liveLabel}</span>
     </div>
     <div class="status-main">
       <span class="status-number" data-count="${today.items}" data-pad="2">${String(today.items).padStart(2, "0")}</span>
@@ -360,6 +366,7 @@ function statusPanel() {
       <span>下次更新<br /><b>${esc(formatDate(next.toISOString(), true))}</b></span>
       <span>已收录<br /><b>${stats.items ?? items.length} 条</b></span>
     </div>
+    ${coreIncomplete || recallIncomplete || provisional ? `<p class="status-warning">${coreIncomplete ? "核心信源未全部成功，本期为临时版；12:00 会自动重试。" : "补漏查询未完成，本期可能少收少量论文；12:00 会自动重试。"}</p>` : ""}
   </aside>`;
 }
 
@@ -700,7 +707,7 @@ function renderCalendar() {
       (edition) => `<button class="calendar-entry ${edition.date === archiveDate ? "active" : ""}" type="button" data-action="open-archive" data-date="${esc(edition.date)}">
         <span>${esc(edition.date)}</span>
         <strong>${esc(edition.title || edition.label || "记忆日报")}</strong>
-        <em>${edition.picks || 0} 个重点 · ${edition.items || 0} 条</em>
+        <em>${edition.picks || 0} 个重点 · ${edition.items || 0} 条${edition.provisional ? " · 临时版" : ""}</em>
       </button>`
     )
     .join("");
