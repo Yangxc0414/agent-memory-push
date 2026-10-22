@@ -7,7 +7,7 @@ import {
   cleanText,
   dayInZone,
   fetchText,
-  isMemoryRelevant,
+  isAgentMemoryRelevant,
   loadEnvFile,
   normalizeUrl,
   parseArxiv,
@@ -27,8 +27,19 @@ loadEnvFile();
 
 const PROBE = process.argv.includes("--probe");
 const USE_LLM = process.argv.includes("--llm") || Boolean(process.env.LLM_API_KEY);
-const MAX_NEW_ITEMS = Math.max(1, Number(process.env.MAX_NEW_ITEMS || 36));
-const TOPIC_QUOTA = Math.max(1, Number(process.env.TOPIC_QUOTA || 5));
+const ARXIV_LOOKBACK_DAYS = Math.max(1, Number(process.env.ARXIV_LOOKBACK_DAYS || 14));
+const ARXIV_MAX_PAGES = PROBE ? 1 : Math.max(1, Number(process.env.ARXIV_MAX_PAGES || 12));
+const ARXIV_PAGE_SIZE = PROBE
+  ? 30
+  : Math.min(100, Math.max(1, Number(process.env.ARXIV_PAGE_SIZE || 100)));
+const ARXIV_PAGE_DELAY_MS = PROBE
+  ? 0
+  : Math.max(0, Number(process.env.ARXIV_PAGE_DELAY_MS || 3000));
+const ARXIV_CUTOFF = Date.now() - ARXIV_LOOKBACK_DAYS * 86400000;
+const ARXIV_ALLOWED_CATEGORY = /^(cs\.|eess\.|stat\.ML$)/;
+const LLM_ENRICH_LIMIT = Math.max(1, Number(process.env.LLM_ENRICH_LIMIT || 60));
+const LLM_BATCH_SIZE = Math.max(1, Number(process.env.LLM_BATCH_SIZE || 4));
+const LLM_TIMEOUT_MS = Math.max(10000, Number(process.env.LLM_TIMEOUT_MS || 120000));
 const NOW = new Date().toISOString();
 const FETCH_OPTIONS = PROBE
   ? { timeout: 10000, retries: 1 }
@@ -76,18 +87,76 @@ function autoWhy(item) {
   return `公开报道，主题命中「${label}」；数字与结论需回到原文核对。`;
 }
 
-async function collectArxiv(source, xml) {
-  const entries = parseArxiv(xml);
-  return entries.map((entry) => ({
+let arxivQueue = Promise.resolve();
+let lastArxivRequestAt = 0;
+
+async function fetchArxivPage(url) {
+  const run = arxivQueue.then(async () => {
+    const wait = Math.max(0, lastArxivRequestAt + ARXIV_PAGE_DELAY_MS - Date.now());
+    if (wait) await new Promise((resolve) => setTimeout(resolve, wait));
+    lastArxivRequestAt = Date.now();
+    return fetchText(url, FETCH_OPTIONS);
+  });
+  arxivQueue = run.then(
+    () => undefined,
+    () => undefined
+  );
+  return run;
+}
+
+function arxivPageUrl(source, page) {
+  const url = new URL(source.url);
+  url.searchParams.set("start", String(page * ARXIV_PAGE_SIZE));
+  url.searchParams.set("max_results", String(ARXIV_PAGE_SIZE));
+  return url.toString();
+}
+
+function freshArxivEntries(entries) {
+  return entries.filter((entry) => {
+    const published = Date.parse(entry.published);
+    return !Number.isFinite(published) || published >= ARXIV_CUTOFF;
+  });
+}
+
+async function collectArxiv(source) {
+  const entries = [];
+  let rawCount = 0;
+  let pages = 0;
+  for (let page = 0; page < ARXIV_MAX_PAGES; page += 1) {
+    let xml;
+    try {
+      xml = await fetchArxivPage(arxivPageUrl(source, page));
+    } catch (error) {
+      if (page === 0) throw error;
+      console.log(`  ${source.name}: page ${page + 1} failed, keeping previous pages (${error.message})`);
+      break;
+    }
+    pages = page + 1;
+    const pageEntries = parseArxiv(xml);
+    rawCount += pageEntries.length;
+    entries.push(...freshArxivEntries(pageEntries));
+    if (pageEntries.length < ARXIV_PAGE_SIZE) break;
+    const publishedTimes = pageEntries
+      .map((entry) => Date.parse(entry.published))
+      .filter(Number.isFinite);
+    if (publishedTimes.length && Math.min(...publishedTimes) < ARXIV_CUTOFF) break;
+  }
+  const collected = entries.map((entry) => ({
     id: entry.id,
     title: entry.title,
     url: entry.url,
     published: normalizeDate(entry.published),
     summary: truncate(entry.summary, 700),
     authors: entry.authors,
+    categories: entry.categories || [],
+    primaryCategory: entry.primaryCategory || "",
     sourceId: source.id,
     kind: "paper"
   }));
+  console.log(
+    `  ${source.name}: ${collected.length} in ${ARXIV_LOOKBACK_DAYS}d window (${rawCount} fetched, ${pages} page${pages === 1 ? "" : "s"})`
+  );
+  return { entries: collected, rawCount, pages };
 }
 
 async function collectRss(source, xml) {
@@ -143,9 +212,9 @@ async function runSource(source) {
     let entries = [];
     let rawCount = 0;
     if (source.type === "arxiv") {
-      const xml = await fetchText(source.url, FETCH_OPTIONS);
-      rawCount = (xml.match(/<entry>/g) || []).length;
-      entries = await collectArxiv(source, xml);
+      const collected = await collectArxiv(source);
+      entries = collected.entries;
+      rawCount = collected.rawCount;
     } else if (source.type === "hf") {
       entries = await collectHf(source);
       rawCount = entries.length;
@@ -179,6 +248,13 @@ async function runSource(source) {
 
 function toItem(entry, source, result) {
   const kind = entry.kind;
+  if (
+    kind === "paper" &&
+    entry.categories?.length &&
+    !entry.categories.some((category) => ARXIV_ALLOWED_CATEGORY.test(category))
+  ) {
+    return null;
+  }
   const topics = classifyTopics(`${entry.title} ${entry.summary || ""}`, source.topicHint);
   const topic = topics[0];
   const angles = securityAngles(`${entry.title} ${entry.summary || ""}`);
@@ -256,11 +332,14 @@ async function enrichWithLlm(items) {
   if (!USE_LLM || !process.env.LLM_API_KEY) return { items, used: false, error: null };
   const base = (process.env.LLM_BASE_URL || "https://api.agnes-ai.cn/v1").replace(/\/$/, "");
   const model = process.env.LLM_MODEL || "agnes-3.0-flash";
-  const targets = items.filter((item) => !item.curated && (!item.summaryZh || !item.titleZh)).slice(0, 24);
+  const targets = items
+    .filter((item) => !item.curated && (!item.summaryZh || !item.titleZh))
+    .slice(0, LLM_ENRICH_LIMIT);
   if (!targets.length) return { items, used: true, error: null };
+  console.log(`LLM enrichment: ${targets.length} items in batches of ${LLM_BATCH_SIZE}`);
   let lastError = null;
-  for (let index = 0; index < targets.length; index += 6) {
-    const batch = targets.slice(index, index + 6);
+  for (let index = 0; index < targets.length; index += LLM_BATCH_SIZE) {
+    const batch = targets.slice(index, index + LLM_BATCH_SIZE);
     try {
       const prompt = `你在编辑一份中文的 Agent Memory 每日推送。请为下面每条内容写：
 1. titleZh：一个短中文标题，保留方法名/模型名/产品名，不夸大，不添加原文没有的结论。
@@ -274,11 +353,11 @@ async function enrichWithLlm(items) {
           "Content-Type": "application/json",
           Authorization: `Bearer ${process.env.LLM_API_KEY}`
         },
-        signal: AbortSignal.timeout(45000),
+        signal: AbortSignal.timeout(LLM_TIMEOUT_MS),
         body: JSON.stringify({
           model,
           temperature: 0.2,
-          max_tokens: 2400,
+          max_tokens: 2200,
           messages: [
             { role: "system", content: "你是严谨的中文科技编辑，拒绝夸大，拒绝编造。" },
             { role: "user", content: prompt }
@@ -308,7 +387,7 @@ async function enrichWithLlm(items) {
       }
     } catch (error) {
       lastError = error instanceof Error ? error.message : String(error);
-      console.log(`LLM batch ${index / 6 + 1} failed: ${lastError}`);
+      console.log(`LLM batch ${index / LLM_BATCH_SIZE + 1} failed: ${lastError}`);
     }
   }
   return { items, used: true, error: lastError };
@@ -373,35 +452,29 @@ async function main() {
     for (const entry of result.entries) {
       const item = toItem(entry, result.source, result);
       if (!item) continue;
-      const text = `${item.title} ${item.summary}`;
-      if (item.kind !== "release" && !isMemoryRelevant(text)) continue;
+      if (!isAgentMemoryRelevant(item)) continue;
       raw.push(item);
     }
   }
 
   const deduped = uniqueBy(raw, (item) => canonicalId(item));
-  const existing = readJson(path.join(DATA, "items.json"));
+  const stored = readJson(path.join(DATA, "items.json"));
+  const existing = stored.filter((item) => isAgentMemoryRelevant(item));
+  if (existing.length !== stored.length) {
+    console.log(`Pruned ${stored.length - existing.length} stored items that no longer pass relevance`);
+  }
   const existingIds = new Set(existing.map((item) => item.id));
   const newItems = deduped
     .filter((item) => !existingIds.has(item.id))
     .sort((a, b) => String(b.published).localeCompare(String(a.published)));
-  const selectedNew = [];
   const topicCounts = {};
   for (const item of newItems) {
     const primary = item.topics?.[0] || "adjacent";
-    if ((topicCounts[primary] || 0) >= TOPIC_QUOTA) continue;
-    selectedNew.push(item);
     topicCounts[primary] = (topicCounts[primary] || 0) + 1;
-    if (selectedNew.length >= MAX_NEW_ITEMS) break;
   }
-  for (const item of newItems) {
-    if (selectedNew.length >= MAX_NEW_ITEMS) break;
-    if (!selectedNew.includes(item)) selectedNew.push(item);
-  }
-  console.log("Selected new by primary topic:", JSON.stringify(topicCounts));
-  const selectedIds = new Set(selectedNew.map((item) => item.id));
-  const incoming = deduped.filter((item) => existingIds.has(item.id) || selectedIds.has(item.id));
-  const merged = mergeItems(existing, incoming);
+  console.log(`Relevant in window: ${deduped.length}; new: ${newItems.length}`);
+  console.log("New by primary topic:", JSON.stringify(topicCounts));
+  const merged = mergeItems(existing, deduped);
   const enriched = await enrichWithLlm(merged.items);
   writeJson(path.join(DATA, "items.json"), enriched.items);
 

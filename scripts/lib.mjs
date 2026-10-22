@@ -145,6 +145,9 @@ export function parseArxiv(xml) {
     const authors = [...block.matchAll(/<author>[\s\S]*?<name>([\s\S]*?)<\/name>[\s\S]*?<\/author>/gi)].map(
       (item) => cleanText(item[1])
     );
+    const categories = [...block.matchAll(/<category\b[^>]*term=["']([^"']+)["']/gi)].map(
+      (item) => item[1]
+    );
     return {
       id: `arxiv:${abs}`,
       arxivId: abs,
@@ -153,7 +156,12 @@ export function parseArxiv(xml) {
       url: atomLink(block) || `https://arxiv.org/abs/${abs}`,
       published: tag(block, "published"),
       updated: tag(block, "updated"),
-      authors
+      authors,
+      categories,
+      primaryCategory:
+        block.match(/<arxiv:primary_category\b[^>]*term=["']([^"']+)["']/i)?.[1] ||
+        categories[0] ||
+        ""
     };
   });
   return entries.filter((entry) => entry.title && entry.arxivId);
@@ -206,34 +214,33 @@ export function parseHuggingFace(json) {
     .filter(Boolean);
 }
 
-const MEMORY_TERMS = [
-  "memory",
-  "memories",
-  "memor",
-  "episodic",
-  "experiential",
-  "context engineering",
-  "persistent state",
-  "long-term context",
-  "long-term knowledge",
-  "memory bank",
-  "memory layer",
-  "记忆"
-];
+const MEMORY_PROJECT_SOURCES = new Set(["gh-mem0", "gh-letta", "gh-graphiti", "gh-langmem"]);
 
-const AGENT_TERMS = [
-  "agent",
-  "llm",
-  "language model",
-  "assistant",
-  "robot",
-  "tool",
-  "mcp",
-  "智能体",
-  "大模型",
-  "语言模型",
-  "助手"
-];
+const MEMORY_TITLE_TERMS =
+  /\b(memory|memories|memoriz(?:ation|e|ing)|remember(?:ing|s|ed)?|recall(?:ing|s|ed)?|forget(?:ting|s)?|episodic)\b|记忆|记住|遗忘|回忆/i;
+
+const STRONG_MEMORY_TERMS = new RegExp(
+  [
+    "\\bagent(?:'s|s')? memory\\b",
+    "\\bmemory agents?\\b",
+    "\\bmemory[- ]augmented\\b",
+    "\\b(long[- ]term|persistent|episodic|experience[d]?|experiential|procedural|autobiographical|external|collective|organizational|cognitive|spatial|visual|multimodal|temporal|semantic|hierarchical|working|3d) memory\\b",
+    "\\bmemory[- ](?:system|module|bank|layer|manager|retrieval|writing|writer|consolidation|governance|lifecycle|safety|security|poisoning|injection|architecture|framework|benchmark|evaluation|updates?|panel|store|state)\\b",
+    "\\bcontext engineering\\b",
+    "\\bpersistent state\\b",
+    "智能体记忆|长期记忆|持久记忆|情景记忆|经验记忆|记忆系统|记忆层|记忆库|记忆模块|记忆管理|记忆检索|记忆写入|记忆注入|记忆安全|记忆治理|记忆机制|记忆增强|记忆面板|记忆功能|记忆能力|记忆架构|记忆框架|记忆策略|记忆压缩|记忆更新|记忆演化|记忆遗忘|记忆评测|记忆基准"
+  ].join("|"),
+  "i"
+);
+
+const AGENT_CONTEXT_TERMS =
+  /\bagents?\b|\bagentic\b|\bllms?\b|\blanguage models?\b|\bassistants?\b|\bchatbots?\b|\bmulti-agent\b|\bmcp\b|\bvla\b|\bvision-language-action\b|\bembodied\b|\brobots?\b|\bmanipulation\b|\bnavigation\b|\bAI\b|\b(deepseek|doubao|chatgpt|claude|gemini|qwen|kimi)\b|智能体|大模型|语言模型|模型|助手|具身|机器人|人工智能|多模态|豆包|通义|千问/i;
+
+const HARDWARE_MEMORY_TERMS =
+  /gpu memory|vram|hbm|dram|sram|memory bandwidth|memory footprint|memory usage|memory consumption|memory wall|memory barrier|memory safety|memory-constrained|memory conscious|memory-conscious|in-memory comput|memory device|memory cell|memory chips?|memory allocat|memory-efficient|memory efficient|memory access|unified memory|far memory|shared memory|cxl|numa|memory hierarchy|memory controller|memory bus|memory page|virtual memory|memory management unit|thermal memory|shape memory|memory foam|memrist|内存|显存|存储芯片|记忆泊车|座椅记忆|后视镜记忆|记忆座椅/i;
+
+const SELF_EVOLVING_TERMS =
+  /\b(self[- ]evolv(?:ing|e)?|continual learn(?:ing|er)|lifelong learn(?:ing|er)|persistent agents?|self[- ]improv)/i;
 
 const TOPIC_RULES = [
   { id: "security", words: ["security", "attack", "poison", "injection", "privacy", "defense", "defence", "provenance", "unlearning", "leak", "安全", "攻击", "隐私", "防护", "注入"] },
@@ -254,11 +261,26 @@ const SECURITY_RULES = [
   { angle: "evaluation", words: ["benchmark", "evaluat", "test", "评测", "基准", "测试"] }
 ];
 
-export function isMemoryRelevant(text) {
-  const lower = String(text).toLowerCase();
-  const hasMemory = MEMORY_TERMS.some((term) => lower.includes(term));
-  const hasAgent = AGENT_TERMS.some((term) => lower.includes(term));
-  return hasMemory && hasAgent;
+export function isAgentMemoryRelevant(item) {
+  const title = String(item?.title || "");
+  const summary = String(item?.summary || "");
+  const text = `${title} ${summary}`;
+  const strong = STRONG_MEMORY_TERMS.test(text);
+  if (item?.kind === "release" && MEMORY_PROJECT_SOURCES.has(item?.sourceId)) return strong;
+  if (
+    /false memories|witness interviews?|transactive memory/i.test(text) &&
+    !/\bagent memory\b|\bmemory system\b|智能体记忆|记忆系统/i.test(text)
+  ) {
+    return false;
+  }
+  if (!AGENT_CONTEXT_TERMS.test(text)) return false;
+  if (HARDWARE_MEMORY_TERMS.test(text) && !strong) return false;
+  const titleMemory = MEMORY_TITLE_TERMS.test(title) && !HARDWARE_MEMORY_TERMS.test(title);
+  if (item?.kind === "paper") {
+    if (titleMemory || strong) return true;
+    return SELF_EVOLVING_TERMS.test(title) && /\bmemory\b|记忆/i.test(text);
+  }
+  return titleMemory || strong;
 }
 
 export function classify(text) {

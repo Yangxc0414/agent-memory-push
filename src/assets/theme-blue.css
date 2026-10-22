@@ -1268,10 +1268,10 @@ main {
 
 
 .hero h1.daily-title {
-  max-width: 14ch;
+  max-width: none;
   font-size: clamp(38px, 5.2vw, 64px);
   line-height: 1.12;
-  letter-spacing: -0.035em;
+  letter-spacing: 0.01em;
 }
 
 .hero-tagline {
@@ -1287,9 +1287,10 @@ main {
 
 @media (max-width: 600px) {
   .hero h1.daily-title {
-    max-width: 12ch;
+    max-width: none;
     font-size: clamp(34px, 10vw, 52px);
     line-height: 1.15;
+    letter-spacing: 0.01em;
   }
   .hero-tagline {
     margin: -4px 0 14px;

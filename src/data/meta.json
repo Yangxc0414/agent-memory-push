@@ -1,18 +1,18 @@
 {
   "version": 1,
-  "checkedAt": "2026-10-22T10:36:46.084Z",
-  "lastSuccessAt": "2026-10-22T10:36:46.084Z",
-  "generatedAt": "2026-10-22T10:36:46.084Z",
+  "checkedAt": "2026-10-22T11:11:41.812Z",
+  "lastSuccessAt": "2026-10-22T11:11:41.812Z",
+  "generatedAt": "2026-10-22T11:11:41.812Z",
   "timezone": "Asia/Shanghai",
   "date": "2026-10-22",
   "seed": false,
-  "added": 36,
-  "updated": 60,
-  "items": 121,
-  "sourcesOk": 20,
+  "added": 0,
+  "updated": 170,
+  "items": 433,
+  "sourcesOk": 19,
   "sourcesTotal": 20,
   "llm": {
     "used": true,
-    "error": "The operation was aborted due to timeout"
+    "error": null
   }
 }

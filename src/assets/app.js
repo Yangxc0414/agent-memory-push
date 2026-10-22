@@ -290,7 +290,8 @@ function render(view = currentView, { scroll = true } = {}) {
     projects: "项目与发布",
     benchmarks: "Benchmark"
   };
-  document.title = `${currentView === "today" ? "AGENT MEMORY PUSH" : titles[currentView]} · ${site.name}`;
+  document.title =
+    currentView === "today" ? "智能体记忆推送" : `${titles[currentView]} · ${site.name}`;
   updateNav(currentView);
   const viewEl = $("#view");
   viewEl.innerHTML = renderView(currentView);
@@ -313,7 +314,7 @@ function renderView(view) {
 }
 
 function loadingMarkup() {
-  return `<section class="loading-shell"><p class="kicker">AGENT MEMORY / DAILY PUSH</p><h1>AGENT MEMORY PUSH</h1><p class="lead">正在读取今日推送…</p></section>`;
+  return `<section class="loading-shell"><p class="kicker">AGENT MEMORY / DAILY PUSH</p><h1>智能体记忆推送</h1><p class="lead">正在读取今日推送…</p></section>`;
 }
 
 /* ---------- components ---------- */
@@ -426,7 +427,7 @@ function renderToday() {
   return `<section class="hero">
     <div class="hero-copy reveal">
       <p class="kicker">AGENT MEMORY / DAILY PUSH · ${esc(digest.date || meta.date)}</p>
-      <h1 class="daily-title">AGENT MEMORY PUSH</h1>
+      <h1 class="daily-title">智能体记忆推送</h1>
       <p class="hero-tagline">记忆不该被遗忘。</p>
       <p class="lead">${esc(site.intro)}</p>
       <div class="hero-actions">
@@ -451,7 +452,7 @@ function renderToday() {
   <section class="section">
     <div class="section-head">
       <div><p class="index">01 / THE DAILY PUSH</p><h2>今天，记忆界发生了什么</h2></div>
-      <p class="section-note">不是把所有新论文堆在一起。先按证据分级，再选出今天值得占你几分钟的几条。</p>
+      <p class="section-note">今天检索窗口内的相关论文与动态都在这里：重点卡片是先看建议，分栏按方向列出完整清单。</p>
     </div>
     <div class="digest-shell">
       <div>

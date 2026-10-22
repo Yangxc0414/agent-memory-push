@@ -73,20 +73,21 @@ arXiv API / HF Daily Papers / GitHub Releases / RSS
 | MCP | 匿名 Streamable HTTP | 无，不假装支持 |
 | Web Push | 没有 | 没有；用 ntfy + RSS + 飞书 / Telegram 替代 |
 
-更完整的分析写在 [docs/push-contract.md](docs/push-contract.md)，前端只保留内容与订阅入口。
+更完整的分析写在 [docs/push-contract.md](docs/push-contract.md)，前端只保留内容与阅读入口。
 
 ### 每天会更新吗？
 
 会，前提是仓库发布到 GitHub、启用 Actions，并设置 `LLM_API_KEY`（可选但推荐）与 `NTFY_TOPIC`（真实推送）。每天北京时间 08:10 运行一次：
 
-1. 9 个 arXiv 查询（泛检索、智能体记忆与自进化、具身、多模态、安全、记忆专用模型、评测、对话与个性化、综述）各拉 100 条，外加 HF Daily Papers、GitHub Releases、媒体 RSS。
-2. 归一化、按 arXiv ID / URL 去重；只保留同时涉及“记忆”和“智能体/LLM”的内容。
-3. 每次最多合并 **36 条**新内容，并且每个主主题最多 **5 条**，让多模态、评测、个性化等方向都有位置；用 Agnes 给新条目写中文标题、摘要和推送理由。
-4. `build.mjs` 在 24 小时窗口内选 8 条重点、最多 24 条分栏，生成 `data/digests/<日期>.json`、RSS、JSON；同时让 Agnes 根据当天条目拟一个 8–14 字日报标题，失败时用主题 + 头条回退。
-5. 部署 GitHub Pages；日历读取 `data/digests/index.json`，自动累积往期，可以按日期回看。
-6. 配置了 ntfy / 飞书 / Telegram 的话，再按日期去重推送一次。
+1. 9 个 arXiv 查询（泛检索、智能体记忆与自进化、具身、多模态、安全、记忆专用模型、评测、对话与个性化、综述）在摘要字段和 AI 领域分类内检索；外加 HF Daily Papers、GitHub Releases、媒体 RSS。
+2. 每个 arXiv 查询按 `submittedDate` 自动翻页，直到检索窗口（默认最近 14 天）结束或没有更多结果；不再按“36 条 / 每主题 5 条”截断。
+3. 归一化、按 arXiv ID / URL 去重；用标题、摘要和证据语境判断是否真的属于智能体记忆，过滤显存、内存硬件、记忆泊车等误命中。
+4. 用 Agnes 给最新的一批条目写中文标题、摘要和推送理由（`LLM_ENRICH_LIMIT`，默认 60 条）；其余条目保留英文原文，后续运行继续补。
+5. `build.mjs` 优先取 24 小时窗口；不足 30 条时扩到 48/72 小时，最多回看 7 天。选 8 条重点，分栏最多容纳 120 条，生成 `src/data/digests/<日期>.json`、RSS、JSON；同时让 Agnes 根据当天条目拟一个 8–14 字日报标题，失败时用主题 + 头条回退。
+6. 部署 GitHub Pages；日历读取 `data/digests/index.json`，自动累积往期，可以按日期回看。
+7. 配置了 ntfy / 飞书 / Telegram 的话，再按日期去重推送一次。
 
-当前线上快照：**121 条**条目（多模态 12 条、安全 57 条），2026-10-22 这一期由真实 arXiv 数据自动成刊（不是种子文案）。页面上的“全部动态”“今日推送”都从 `src/data/items.json` 和 `data/digests/*.json` 读取；前端不写死任何条目。
+当前本地快照：**433 条**条目（418 篇论文、12 条新闻、3 个发布），2026-10-22 这一期覆盖 49 条、由真实 arXiv 数据自动成刊（不是种子文案）。页面上的“全部动态”“今日推送”都从 `src/data/items.json` 和 `data/digests/*.json` 读取；前端不写死任何条目。
 
 ## 本地运行
 
@@ -108,6 +109,7 @@ npm run serve
 
 ```bash
 npm run collect          # 采集并合并新条目（可选配置 LLM 中文摘要）
+ARXIV_LOOKBACK_DAYS=30 node scripts/collect.mjs   # 首次重建时回填 30 天
 npm run notify           # 按环境变量推送；没配置频道时只打印 skip
 node scripts/notify.mjs --dry-run
 npm test                 # 本地 mock webhook，验证飞书卡片结构与按日期去重
@@ -116,8 +118,9 @@ npm test                 # 本地 mock webhook，验证飞书卡片结构与按�
 `npm run collect` 的行为：
 
 - 对 arXiv、HF Daily Papers、GitHub Releases、RSS 做归一化与去重；同一篇论文按 arXiv ID 合并。
-- 只保留同时涉及“记忆/情景/经验”和“智能体/LLM”的内容；官方 release 例外。
-- 新条目默认保留英文标题/摘要；配置 `LLM_API_KEY` 后会生成中文标题、1–2 句中文概括和推送理由。
+- arXiv 查询按窗口翻页取完，窗口内全部相关结果都会合并，不设每日条数或主题配额。
+- 只保留真的以智能体记忆为中心的内容：标题或摘要要有记忆机制/系统表述，并处于智能体、LLM、机器人或多模态语境；显存、内存硬件、车载记忆等会被过滤。已知记忆项目的 release 单独放行。
+- 新条目默认保留英文标题/摘要；配置 `LLM_API_KEY` 后会为最新的 `LLM_ENRICH_LIMIT` 条生成中文标题、1–2 句中文概括和推送理由。
 - 已有条目里人工写的 `summaryZh`、`why`、`tags`、`security` 不会被覆盖（`curated: true`）。
 - 所有源状态写入 `src/data/sources.json`；失败保留上次成功时间，不隐藏错误。
 
@@ -148,8 +151,9 @@ npm test                 # 本地 mock webhook，验证飞书卡片结构与按�
 | --- | --- |
 | `LLM_API_KEY` | **推荐**。Agnes API Key；给新条目写中文标题、摘要和推送理由。不配置时保留英文摘要。 |
 | `LLM_BASE_URL` / `LLM_MODEL` | 可选；默认 `https://api.agnes-ai.cn/v1` / `agnes-3.0-flash`。 |
-| `MAX_NEW_ITEMS` | 可选；每次最多合并多少条新内容，默认 36。 |
-| `TOPIC_QUOTA` | 可选；每个主主题单次最多合并多少条，默认 5。 |
+| `ARXIV_LOOKBACK_DAYS` | 可选；arXiv 检索窗口，默认 14 天。窗口内的相关结果会翻页取完。 |
+| `ARXIV_MAX_PAGES` | 可选；单个 arXiv 查询的翻页安全上限，默认 12 页。 |
+| `LLM_ENRICH_LIMIT` | 可选；每次最多给多少条最新内容补中文摘要，默认 60。 |
 | `NTFY_TOPIC` | **推荐，真实推送**。一个随机字符串；Actions 每天向 `https://ntfy.sh/<topic>` 发布日报。 |
 | `NTFY_SERVER` | 可选；默认 `https://ntfy.sh`，可换自建 ntfy。 |
 | `FEISHU_WEBHOOK` | 飞书自定义机器人 webhook；每天成刊后发一张卡片。 |
@@ -224,9 +228,9 @@ src/data/
 - **模型摘要需要密钥**：不配置 `LLM_API_KEY` 时，新条目保留英文摘要；当前本地 `.env` 已配置 Agnes，发布时需要把 key 加到 GitHub Secrets。
 - **本地探针可能误报**：在受限网络里，GitHub / Hugging Face 可能超时；本次本地状态是 10/15 正常，Actions 会重试并更新。
 - **Actions cron 不是精确时钟**：页面上的“下次推送”是计划时间，不是承诺。
-- **不是全量索引**：首期 37 条种子 + 真实采集后当前 85 条；2026-10-22 这一期由真实 arXiv 数据自动成刊。中文摘要由规则/Agnes 辅助，不代表同行评审结论。
-- **数据会增长**：每天最多 24 条新内容；目前没有自动清理旧条目的策略，长期运行需要定期归档或加保留窗口。
-- **arXiv 查询可能截断**：每个查询最多 100 条；如果一天的新论文超过窗口，会漏掉一部分，状态页会显示本次候选数。
+- **不是全量索引**：只覆盖配置的检索窗口和信源；2026-10-22 这一期由真实 arXiv 数据自动成刊。中文摘要由规则/Agnes 辅助，不代表同行评审结论。
+- **数据会增长**：每次运行会合并窗口内所有相关新条目；目前没有自动清理旧条目的策略，长期运行需要定期归档或加保留窗口。
+- **arXiv 翻页有安全上限**：窗口内正常会提前停；如果结果异常多，单个查询最多 `ARXIV_MAX_PAGES` 页，状态页会显示本次抓取量。
 
 ## 目录结构
 

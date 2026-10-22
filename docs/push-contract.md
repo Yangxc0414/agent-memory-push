@@ -92,7 +92,7 @@
 
 ### 1. 今日推送与真实采集
 
-每次 `collect.mjs` 会拉取 9 个 arXiv 查询（泛检索、智能体记忆与自进化、具身、多模态、安全、记忆专用模型、评测、对话与个性化、综述）、HF Daily Papers、GitHub Releases 和 RSS；每次最多合并 36 条新内容，并且每个主主题最多 5 条，避免单一方向挤占其他方向。配置 `LLM_API_KEY` 时，Agnes 给新条目写 `titleZh` / `summaryZh` / `why`。`build.mjs` 再从当前 items 自动成刊，不存在“前端预写死条目”。
+每次 `collect.mjs` 会拉取 9 个 arXiv 查询（泛检索、智能体记忆与自进化、具身、多模态、安全、记忆专用模型、评测、对话与个性化、综述）、HF Daily Papers、GitHub Releases 和 RSS。arXiv 查询限定在摘要字段和 AI 相关分类内，按 `submittedDate` 翻页，直到检索窗口（默认 14 天）结束、返回不足一页或达到 `ARXIV_MAX_PAGES` 安全上限；窗口内所有相关结果都会合并，不再按条数或主题配额截断。首次重建可用 `ARXIV_LOOKBACK_DAYS=30` 回填更长的历史。条目先经过相关性判断：标题或摘要要有记忆机制/系统表述，并处于智能体、LLM、机器人或多模态语境；显存、内存硬件、车载记忆等误命中会被过滤，已知记忆项目的 release 单独放行。配置 `LLM_API_KEY` 时，Agnes 给最新 `LLM_ENRICH_LIMIT` 条写 `titleZh` / `summaryZh` / `why`。`build.mjs` 再从当前 items 自动成刊，不存在“前端预写死条目”。
 
 触发：
 
@@ -104,7 +104,7 @@
 1. `collect.mjs` 拉取信源，写 `items.json` / `sources.json` / `meta.json`。
 2. `build.mjs` 先找 `src/data/digests/<meta.date>.json`。
 3. 找不到时，如果 `meta.seed` 为 true 且 `digest.json` 的日期匹配，就用种子期手工日报。
-4. 否则自动成刊：在 24 小时窗口内按分数排序，每个主题最多 2 条，选 8 条重点，再按主题分栏。
+4. 否则自动成刊：优先取 24 小时窗口；不足 30 条时依次扩到 48 小时、72 小时和 7 天。按分数排序，每个主题最多 2 条选 8 条重点；分栏再容纳窗口内最多 120 条相关条目（`DIGEST_SECTION_LIMIT`），超出部分仍在“全部动态”中。
 5. 生成 `dist/data/digests/<date>.json` 和 `dist/api/v1/digest.json`。
 
 失败：
@@ -112,6 +112,7 @@
 - 采集全部失败时，`meta.checkedAt` 不更新，`meta.date` 不前进；构建继续使用上一份快照。
 - 页面在 `checkedAt` 超过 36 小时时显示 `STALE`。
 - 日报文件一旦写下，同一天重复构建不会覆盖；需要重做时手动删除该日文件。
+- arXiv 某页失败时保留前面已取到的页；第一页失败才把该信源标为失败。翻页请求之间默认间隔 3 秒，避免触发 arXiv 限流。
 
 ### 2. 全部动态
 

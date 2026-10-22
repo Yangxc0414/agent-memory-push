@@ -1,5 +1,12 @@
 export const ARXIV_BASE = "https://export.arxiv.org/api/query";
 
+const ARXIV_CATEGORIES =
+  "(cat:cs.AI OR cat:cs.CL OR cat:cs.LG OR cat:cs.RO OR cat:cs.CV OR cat:cs.MA OR cat:cs.SE OR cat:cs.IR OR cat:cs.HC OR cat:cs.CR OR cat:cs.NE OR cat:eess.SY OR cat:stat.ML)";
+
+function arxivUrl(query) {
+  return `${ARXIV_BASE}?search_query=${encodeURIComponent(`(${query}) AND ${ARXIV_CATEGORIES}`)}&sortBy=submittedDate&sortOrder=descending&max_results=100`;
+}
+
 export const SOURCES = [
   {
     id: "arxiv-memory",
@@ -7,9 +14,9 @@ export const SOURCES = [
     kind: "论文索引",
     type: "arxiv",
     cadence: "每日 08:10",
-    note: "滚动 30 天检索记忆、情景、经验、反思、技能与智能体/持续学习的交集。",
-    url: `${ARXIV_BASE}?search_query=${encodeURIComponent('(all:memory OR all:episodic OR all:experience OR all:reflection OR all:skill) AND (all:agent OR all:"recursive self-improvement" OR all:self-improving OR all:"continual learning")')}&sortBy=submittedDate&sortOrder=descending&max_results=100`,
-    query: '(all:memory OR all:episodic OR all:experience OR all:reflection OR all:skill) AND (all:agent OR all:"recursive self-improvement" OR all:self-improving OR all:"continual learning")'
+    note: "检索窗口内自动翻页；记忆、情景、经验、反思、技能与智能体/持续学习的交集。",
+    url: arxivUrl('(ti:memory OR ti:memories OR ti:episodic OR ti:experience OR ti:reflection OR ti:skill) AND (abs:agent OR abs:"recursive self-improvement" OR abs:self-improving OR abs:"continual learning")'),
+    query: '(ti:memory OR ti:memories OR ti:episodic OR ti:experience OR ti:reflection OR ti:skill) AND (abs:agent OR abs:"recursive self-improvement" OR abs:self-improving OR abs:"continual learning")'
   },
   {
     id: "arxiv-embodied",
@@ -18,9 +25,9 @@ export const SOURCES = [
     kind: "论文索引",
     type: "arxiv",
     cadence: "每日 08:10",
-    note: "记忆、记忆化与 VLA、具身、多模态、机器人、导航的交集。",
-    url: `${ARXIV_BASE}?search_query=${encodeURIComponent('(all:memory OR all:memorization) AND (all:VLA OR all:"vision-language-action" OR all:embodied OR all:multimodal OR all:robot)')}&sortBy=submittedDate&sortOrder=descending&max_results=100`,
-    query: '(all:memory OR all:memorization) AND (all:VLA OR all:"vision-language-action" OR all:embodied OR all:multimodal OR all:robot)'
+    note: "检索窗口内自动翻页；记忆、记忆化与 VLA、具身、多模态、机器人、导航的交集。",
+    url: arxivUrl('(ti:memory OR ti:memories OR ti:memorization) AND (abs:VLA OR abs:"vision-language-action" OR abs:embodied OR abs:multimodal OR abs:robot)'),
+    query: '(ti:memory OR ti:memories OR ti:memorization) AND (abs:VLA OR abs:"vision-language-action" OR abs:embodied OR abs:multimodal OR abs:robot)'
   },
   {
     id: "arxiv-security",
@@ -29,9 +36,9 @@ export const SOURCES = [
     kind: "论文索引",
     type: "arxiv",
     cadence: "每日 08:10",
-    note: "投毒、持久注入、隐私外泄、防御、访问隔离、溯源与安全评测。",
-    url: `${ARXIV_BASE}?search_query=${encodeURIComponent('(all:memory OR all:memorization OR all:"persistent state") AND (all:agent OR all:LLM OR all:"language model") AND (all:poisoning OR all:injection OR all:backdoor OR all:attack OR all:defense OR all:privacy OR all:exfiltration OR all:watermark OR all:provenance OR all:unlearning OR all:security)')}&sortBy=submittedDate&sortOrder=descending&max_results=100`,
-    query: '(all:memory OR all:memorization OR all:"persistent state") AND (all:agent OR all:LLM OR all:"language model") AND (all:poisoning OR all:injection OR all:backdoor OR all:attack OR all:defense OR all:privacy OR all:exfiltration OR all:watermark OR all:provenance OR all:unlearning OR all:security)'
+    note: "检索窗口内自动翻页；投毒、持久注入、隐私外泄、防御、访问隔离、溯源与安全评测。",
+    url: arxivUrl('(ti:memory OR ti:memories OR abs:"persistent state") AND (abs:agent OR abs:LLM OR abs:"language model") AND (abs:poisoning OR abs:injection OR abs:backdoor OR abs:attack OR abs:defense OR abs:privacy OR abs:exfiltration OR abs:watermark OR abs:provenance OR abs:unlearning OR abs:security)'),
+    query: '(ti:memory OR ti:memories OR abs:"persistent state") AND (abs:agent OR abs:LLM OR abs:"language model") AND (abs:poisoning OR abs:injection OR abs:backdoor OR abs:attack OR abs:defense OR abs:privacy OR abs:exfiltration OR abs:watermark OR abs:provenance OR abs:unlearning OR abs:security)'
   },
   {
     id: "arxiv-models",
@@ -40,9 +47,9 @@ export const SOURCES = [
     kind: "论文索引",
     type: "arxiv",
     cadence: "每日 08:10",
-    note: "记忆写入、检索、压缩、管理模型的训练、微调、蒸馏与强化学习。",
-    url: `${ARXIV_BASE}?search_query=${encodeURIComponent('(all:"memory writer" OR all:"memory writing" OR all:"memory manager" OR all:"memory management" OR all:"memory retriever" OR all:"memory compressor" OR all:"latent memory") AND (all:training OR all:learning OR all:"fine-tuning" OR all:distillation OR all:"reinforcement learning")')}&sortBy=submittedDate&sortOrder=descending&max_results=100`,
-    query: '(all:"memory writer" OR all:"memory writing" OR all:"memory manager" OR all:"memory management" OR all:"memory retriever" OR all:"memory compressor" OR all:"latent memory") AND (all:training OR all:learning OR all:"fine-tuning" OR all:distillation OR all:"reinforcement learning")'
+    note: "检索窗口内自动翻页；记忆写入、检索、压缩、管理模型的训练、微调、蒸馏与强化学习。",
+    url: arxivUrl('(abs:"memory writer" OR abs:"memory writing" OR abs:"memory manager" OR abs:"memory management" OR abs:"memory retriever" OR abs:"memory compressor" OR abs:"latent memory") AND (abs:training OR abs:learning OR abs:"fine-tuning" OR abs:distillation OR abs:"reinforcement learning")'),
+    query: '(abs:"memory writer" OR abs:"memory writing" OR abs:"memory manager" OR abs:"memory management" OR abs:"memory retriever" OR abs:"memory compressor" OR abs:"latent memory") AND (abs:training OR abs:learning OR abs:"fine-tuning" OR abs:distillation OR abs:"reinforcement learning")'
   },
   {
     id: "arxiv-broad",
@@ -50,9 +57,9 @@ export const SOURCES = [
     kind: "论文索引",
     type: "arxiv",
     cadence: "每日 08:10",
-    note: "不限定子方向，检索 agent memory、long-term memory、persistent memory 等表述的最近论文。",
-    url: `${ARXIV_BASE}?search_query=${encodeURIComponent('(all:"agent memory" OR all:"memory agent" OR all:"long-term memory" OR all:"persistent memory" OR all:"episodic memory" OR all:"memory system") AND (all:agent OR all:LLM OR all:"language model")')}&sortBy=submittedDate&sortOrder=descending&max_results=100`,
-    query: '(all:"agent memory" OR all:"memory agent" OR all:"long-term memory" OR all:"persistent memory" OR all:"episodic memory" OR all:"memory system") AND (all:agent OR all:LLM OR all:"language model")'
+    note: "检索窗口内自动翻页；不限定子方向，检索 agent memory、long-term memory、persistent memory 等表述的最近论文。",
+    url: arxivUrl('(abs:"agent memory" OR abs:"memory agent" OR abs:"long-term memory" OR abs:"persistent memory" OR abs:"episodic memory" OR abs:"memory system") AND (abs:agent OR abs:LLM OR abs:"language model")'),
+    query: '(abs:"agent memory" OR abs:"memory agent" OR abs:"long-term memory" OR abs:"persistent memory" OR abs:"episodic memory" OR abs:"memory system") AND (abs:agent OR abs:LLM OR abs:"language model")'
   },
   {
     id: "arxiv-multimodal",
@@ -61,9 +68,9 @@ export const SOURCES = [
     type: "arxiv",
     cadence: "每日 08:10",
     topicHint: "multimodal",
-    note: "视觉、视频、音频、图像与记忆的交叉；独立检索，避免被具身或评测方向淹没。",
-    url: `${ARXIV_BASE}?search_query=${encodeURIComponent('(all:memory OR all:"long-term memory" OR all:"episodic memory" OR all:"agent memory") AND (all:multimodal OR all:"multi-modal" OR all:"vision-language" OR all:visual OR all:video OR all:audio OR all:image)')}&sortBy=submittedDate&sortOrder=descending&max_results=100`,
-    query: '(all:memory OR all:"long-term memory" OR all:"episodic memory" OR all:"agent memory") AND (all:multimodal OR all:"multi-modal" OR all:"vision-language" OR all:visual OR all:video OR all:audio OR all:image)'
+    note: "检索窗口内自动翻页；视觉、视频、音频、图像与记忆的交叉；独立检索，避免被具身或评测方向淹没。",
+    url: arxivUrl('(ti:memory OR ti:memories OR abs:"agent memory" OR abs:"long-term memory" OR abs:"episodic memory") AND (abs:multimodal OR abs:"multi-modal" OR abs:"vision-language" OR abs:visual OR abs:video OR abs:audio OR abs:image)'),
+    query: '(ti:memory OR ti:memories OR abs:"agent memory" OR abs:"long-term memory" OR abs:"episodic memory") AND (abs:multimodal OR abs:"multi-modal" OR abs:"vision-language" OR abs:visual OR abs:video OR abs:audio OR abs:image)'
   },
   {
     id: "arxiv-eval",
@@ -72,9 +79,9 @@ export const SOURCES = [
     type: "arxiv",
     cadence: "每日 08:10",
     topicHint: "evaluation",
-    note: "记忆基准、评测方法、诊断和失败分析。",
-    url: `${ARXIV_BASE}?search_query=${encodeURIComponent('(all:memory OR all:"long-term memory" OR all:"agent memory") AND (all:benchmark OR all:evaluation OR all:evaluating OR all:diagnosis OR all:metric)')}&sortBy=submittedDate&sortOrder=descending&max_results=100`,
-    query: '(all:memory OR all:"long-term memory" OR all:"agent memory") AND (all:benchmark OR all:evaluation OR all:evaluating OR all:diagnosis OR all:metric)'
+    note: "检索窗口内自动翻页；记忆基准、评测方法、诊断和失败分析。",
+    url: arxivUrl('(ti:memory OR ti:memories OR abs:"agent memory" OR abs:"long-term memory") AND (abs:benchmark OR abs:evaluation OR abs:evaluating OR abs:diagnosis OR abs:metric)'),
+    query: '(ti:memory OR ti:memories OR abs:"agent memory" OR abs:"long-term memory") AND (abs:benchmark OR abs:evaluation OR abs:evaluating OR abs:diagnosis OR abs:metric)'
   },
   {
     id: "arxiv-personal",
@@ -83,9 +90,9 @@ export const SOURCES = [
     type: "arxiv",
     cadence: "每日 08:10",
     topicHint: "personal",
-    note: "长期对话、用户画像、偏好与个性化记忆。",
-    url: `${ARXIV_BASE}?search_query=${encodeURIComponent('(all:memory OR all:"long-term memory" OR all:"agent memory") AND (all:personalization OR all:"user profile" OR all:"user preference" OR all:conversation OR all:dialogue OR all:assistant)')}&sortBy=submittedDate&sortOrder=descending&max_results=100`,
-    query: '(all:memory OR all:"long-term memory" OR all:"agent memory") AND (all:personalization OR all:"user profile" OR all:"user preference" OR all:conversation OR all:dialogue OR all:assistant)'
+    note: "检索窗口内自动翻页；长期对话、用户画像、偏好与个性化记忆。",
+    url: arxivUrl('(ti:memory OR ti:memories OR abs:"agent memory" OR abs:"long-term memory") AND (abs:personalization OR abs:"user profile" OR abs:"user preference" OR abs:conversation OR abs:dialogue OR abs:assistant)'),
+    query: '(ti:memory OR ti:memories OR abs:"agent memory" OR abs:"long-term memory") AND (abs:personalization OR abs:"user profile" OR abs:"user preference" OR abs:conversation OR abs:dialogue OR abs:assistant)'
   },
   {
     id: "arxiv-survey",
@@ -94,9 +101,9 @@ export const SOURCES = [
     type: "arxiv",
     cadence: "每日 08:10",
     topicHint: "survey",
-    note: "综述、分类体系和研究议程。",
-    url: `${ARXIV_BASE}?search_query=${encodeURIComponent('(all:survey OR all:"systematic review") AND (all:memory) AND (all:agent OR all:LLM)')}&sortBy=submittedDate&sortOrder=descending&max_results=100`,
-    query: '(all:survey OR all:"systematic review") AND (all:memory) AND (all:agent OR all:LLM)'
+    note: "检索窗口内自动翻页；综述、分类体系和研究议程。",
+    url: arxivUrl('(abs:survey OR abs:"systematic review") AND ti:memory AND (abs:agent OR abs:LLM)'),
+    query: '(abs:survey OR abs:"systematic review") AND ti:memory AND (abs:agent OR abs:LLM)'
   },
   {
     id: "hf-daily",

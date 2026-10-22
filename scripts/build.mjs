@@ -30,6 +30,7 @@ const seedDigest = readJson(path.join(DATA, "digest.json"));
 let digest;
 const builtAt = new Date().toISOString();
 const baseUrl = site.url.endsWith("/") ? site.url : `${site.url}/`;
+const DIGEST_SECTION_LIMIT = Math.max(8, Number(process.env.DIGEST_SECTION_LIMIT || 120));
 
 function fail(message) {
   throw new Error(message);
@@ -117,7 +118,7 @@ const GROUPS = [
 
 function generateDigest() {
   const to = new Date(meta.checkedAt || Date.now());
-  const windows = [24, 48, 24 * 7];
+  const windows = [24, 48, 72, 24 * 7];
   let hours = windows[0];
   let candidates = [];
   for (const candidateHours of windows) {
@@ -130,7 +131,7 @@ function generateDigest() {
         published >= to.getTime() - candidateHours * 3600000
       );
     });
-    if (candidates.length >= 8) break;
+    if (candidates.length >= 30) break;
   }
   if (!candidates.length) {
     hours = null;
@@ -160,7 +161,7 @@ function generateDigest() {
 
   const sectionPool = [...picks];
   for (const item of sorted) {
-    if (sectionPool.length >= 24) break;
+    if (sectionPool.length >= DIGEST_SECTION_LIMIT) break;
     if (!sectionPool.some((entry) => entry.id === item.id)) sectionPool.push(item);
   }
 
