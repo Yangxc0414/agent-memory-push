@@ -86,7 +86,7 @@ arXiv API / HF Daily Papers / GitHub Releases / RSS
 5. 部署 GitHub Pages；日历读取 `data/digests/index.json`，自动累积往期，可以按日期回看。
 6. 配置了 ntfy / 飞书 / Telegram 的话，再按日期去重推送一次。
 
-当前本地已经跑过一次真实采集：**85 条**条目，2026-10-22 这一期由真实 arXiv 数据自动成刊（不是种子文案）。页面上的“全部动态”“今日推送”都从 `src/data/items.json` 和 `data/digests/*.json` 读取；前端不写死任何条目。
+当前线上快照：**121 条**条目（多模态 12 条、安全 57 条），2026-10-22 这一期由真实 arXiv 数据自动成刊（不是种子文案）。页面上的“全部动态”“今日推送”都从 `src/data/items.json` 和 `data/digests/*.json` 读取；前端不写死任何条目。
 
 ## 本地运行
 
