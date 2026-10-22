@@ -290,7 +290,7 @@ function render(view = currentView, { scroll = true } = {}) {
     projects: "项目与发布",
     benchmarks: "Benchmark"
   };
-  document.title = `${currentView === "today" && digest?.title ? digest.title : titles[currentView]} · ${site.name}`;
+  document.title = `${currentView === "today" ? "智能体记忆推送" : titles[currentView]} · ${site.name}`;
   updateNav(currentView);
   const viewEl = $("#view");
   viewEl.innerHTML = renderView(currentView);
@@ -313,7 +313,7 @@ function renderView(view) {
 }
 
 function loadingMarkup() {
-  return `<section class="loading-shell"><p class="kicker">AGENT MEMORY / DAILY PUSH</p><h1>记忆不该被遗忘。</h1><p class="lead">正在读取今日推送…</p></section>`;
+  return `<section class="loading-shell"><p class="kicker">每日更新</p><h1>智能体记忆推送</h1><p class="lead">正在读取今日推送…</p></section>`;
 }
 
 /* ---------- components ---------- */
