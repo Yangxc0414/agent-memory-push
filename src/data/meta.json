@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "checkedAt": "2026-10-21T22:00:05.891Z",
+  "lastSuccessAt": "2026-10-21T22:00:05.891Z",
+  "generatedAt": "2026-10-21T22:08:36.684Z",
+  "timezone": "Asia/Shanghai",
+  "date": "2026-10-22",
+  "seed": true,
+  "added": 37,
+  "updated": 0,
+  "items": 37,
+  "sourcesOk": 10,
+  "sourcesTotal": 15,
+  "llm": {
+    "used": false,
+    "error": null
+  }
+}

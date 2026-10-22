@@ -1,0 +1,95 @@
+{
+  "name": "Agent Memory 推送",
+  "shortName": "AM·PUSH",
+  "wordmark": "AGENT MEMORY / 推送",
+  "url": "https://yangxc0414.github.io/agent-memory-push/",
+  "repo": "https://github.com/yangxc0414/agent-memory-push",
+  "home": "https://yangxc0414.github.io/",
+  "tagline": "记忆不该被遗忘。",
+  "description": "每天把智能体记忆领域值得看的新论文、新项目与新动态，推到你的眼前。不是信息流，是一份有取舍的每日记忆。",
+  "intro": "追踪 Agent Memory 的论文、系统、评测与安全治理。每天一次快照，按证据分级，留下值得记住的几条。",
+  "keywords": [
+    "Agent Memory",
+    "智能体记忆",
+    "长期记忆",
+    "LLM Agent",
+    "记忆安全",
+    "每日推送"
+  ],
+  "timezone": "Asia/Shanghai",
+  "locale": "zh-CN",
+  "schedule": {
+    "cron": "10 0 * * *",
+    "label": "每天 08:10（北京时间）",
+    "utc": "00:10 UTC",
+    "description": "GitHub Actions 定时运行采集、去重、分类、成刊与部署；页面只读快照，不在读者端调用模型。"
+  },
+  "snapshot": {
+    "checkedAt": "2026-10-21T22:00:05.891Z",
+    "persistedAt": "2026-10-21T22:08:36.684Z",
+    "label": "2026-10-22 06:00（北京时间）",
+    "seed": true,
+    "note": "种子快照：内容选自 2026-10-20 至 10-21 的公开论文、官方发布与报道；首次 Actions 运行后由本站自己的采集结果替换。"
+  },
+  "author": {
+    "name": "YXC",
+    "url": "https://yangxc0414.github.io/"
+  },
+  "channels": [
+    {
+      "id": "rss",
+      "name": "RSS",
+      "state": "on",
+      "cadence": "随每日构建更新",
+      "detail": "feed.xml，订阅器每 30 分钟轮询一次即可；条目的 pubDate 用原始发表时间。"
+    },
+    {
+      "id": "json",
+      "name": "JSON",
+      "state": "on",
+      "cadence": "随每日构建更新",
+      "detail": "api/v1/items.json、latest.json、digest.json；静态文件，无需 API Key。"
+    },
+    {
+      "id": "feishu",
+      "name": "飞书",
+      "state": "optional",
+      "cadence": "每日成刊后",
+      "detail": "配置 FEISHU_WEBHOOK 后，Actions 推送一张日报卡片；按日期去重，可重试。"
+    },
+    {
+      "id": "telegram",
+      "name": "Telegram",
+      "state": "optional",
+      "cadence": "每日成刊后",
+      "detail": "配置 TELEGRAM_BOT_TOKEN 与 TELEGRAM_CHAT_ID 后，Actions 发送日报摘要。"
+    },
+    {
+      "id": "github",
+      "name": "GitHub Watch",
+      "state": "on",
+      "cadence": "提交时",
+      "detail": "Watch 仓库即可在数据提交时收到 GitHub 通知；这是代码仓库层面的推送。"
+    },
+    {
+      "id": "webpush",
+      "name": "Web Push",
+      "state": "off",
+      "cadence": "—",
+      "detail": "GitHub Pages 没有服务端保存订阅或签名 VAPID，纯静态站无法可靠实现 Web Push；不使用假开关。"
+    }
+  ],
+  "disclaimer": "本站是公开信息的聚合与阅读索引，不是同行评审、投资建议或安全认证。论文多为预印本；厂商自测与媒体报道单独标注证据等级。",
+  "credits": [
+    {
+      "label": "参考站",
+      "name": "Agent Memory Hot",
+      "url": "https://agent-memory-hot.pale-rook-5118.chatgpt.site/"
+    },
+    {
+      "label": "框架参考",
+      "name": "AIHOT（MIT）",
+      "url": "https://github.com/KKKKhazix/AIHOT"
+    }
+  ]
+}

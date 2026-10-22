@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <radialGradient id="glow" cx="78%" cy="18%" r="70%">
+      <stop offset="0" stop-color="#d7ff4f" stop-opacity=".18"/>
+      <stop offset="1" stop-color="#d7ff4f" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="#eee9dc" stroke-opacity=".055" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="630" fill="#0b0e0d"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+  <g transform="translate(1000 130)" fill="none" stroke="#d7ff4f">
+    <circle r="190" stroke-opacity=".18" stroke-width="1.2"/>
+    <circle r="130" stroke-opacity=".3" stroke-width="1.2"/>
+    <circle r="72" stroke-opacity=".5" stroke-width="1.2"/>
+    <circle r="18" fill="#d7ff4f" stroke="none"/>
+    <path d="M0-190v38M0 152v38M-190 0h38M152 0h38" stroke-opacity=".5" stroke-width="1.2"/>
+  </g>
+  <text x="88" y="122" fill="#d7ff4f" font-family="Consolas, SFMono-Regular, monospace" font-size="20" letter-spacing="5">AGENT MEMORY / DAILY PUSH</text>
+  <text x="84" y="300" fill="#eee9dc" font-family="Songti SC, Noto Serif CJK SC, serif" font-size="96" font-weight="700">记忆不该被遗忘。</text>
+  <text x="88" y="382" fill="#9aa49c" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="28">每天一次快照，按证据分级，留下值得记住的几条。</text>
+  <line x1="88" y1="452" x2="1112" y2="452" stroke="#eee9dc" stroke-opacity=".16"/>
+  <text x="88" y="510" fill="#eee9dc" font-family="Consolas, monospace" font-size="20" letter-spacing="2">论文 · 项目 · 记忆安全 · 评测 · 信源状态</text>
+  <text x="88" y="558" fill="#6f786f" font-family="Consolas, monospace" font-size="18">yangxc0414.github.io/agent-memory-push</text>
+</svg>

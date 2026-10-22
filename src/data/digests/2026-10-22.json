@@ -1,0 +1,120 @@
+{
+  "date": "2026-10-22",
+  "window": {
+    "from": "2026-10-20T00:00:00.000Z",
+    "to": "2026-10-21T22:00:00.000Z",
+    "hours": 46,
+    "label": "过去 48 小时（种子期）"
+  },
+  "lead": "过去 48 小时，记忆研究的主线不是“存得更多”，而是“谁来控制写入、读取和遗忘”。ClawMMU 把权限标签带进读写边界；CarryoverBench 证明一次注入可以在多轮会话后存活；Disclosure 显示记忆会反过来诱导披露。工程侧，Databricks、VAST 和 Graphiti 把记忆当成有状态基础设施来交付。",
+  "editorNote": "本期是种子快照，覆盖 48 小时；正式运行后按 24 小时滚动。论文多为预印本，厂商自测与媒体报道单独标注证据等级，不进入结论区。",
+  "picks": [
+    {
+      "id": "arxiv:2610.28093",
+      "note": "今天最值得读的机制论文：把 owner / scope / origins / authority 四个标签变成运行框架可检查的边界。"
+    },
+    {
+      "id": "arxiv:2610.28425",
+      "note": "评测设计很锋利：不测单轮拦截率，测载荷在会话结束后还能活多久。"
+    },
+    {
+      "id": "arxiv:2610.28315",
+      "note": "一个容易被忽略的隐私角度：记忆会通过回答里的预设，诱导用户继续披露。"
+    },
+    {
+      "id": "web:databricks-memcurrent",
+      "note": "工业界把“原始轨迹 + 提炼记忆 + 离线整合”串成了产品路径。"
+    },
+    {
+      "id": "arxiv:2610.27115",
+      "note": "来源类型不只用来说明出处，还进入工具动作的候选比较。"
+    },
+    {
+      "id": "arxiv:2610.28491",
+      "note": "长期记忆评测开始问：为什么记住了事实，却还是没把事做完？"
+    },
+    {
+      "id": "web:vast-sandbox",
+      "note": "把持久状态、共享记忆和临时算力拆开，是基础设施视角的“记忆”。"
+    },
+    {
+      "id": "release:graphiti-v0.31.2",
+      "note": "不是功能发布，而是证书链依赖的安全更新；已部署 Graphiti 的实例优先核查。"
+    }
+  ],
+  "sections": [
+    {
+      "title": "机制：把控制权放回运行框架",
+      "intro": "记忆不只是检索命中率，还是写入权限、状态边界和成本。",
+      "itemIds": [
+        "arxiv:2610.28093",
+        "arxiv:2610.28577",
+        "arxiv:2610.28069",
+        "web:databricks-memcurrent"
+      ]
+    },
+    {
+      "title": "安全：攻击在会话结束后仍然存在",
+      "intro": "从持久注入、隐私循环到来源与权限，安全开始沿记忆生命周期展开。",
+      "itemIds": [
+        "arxiv:2610.28425",
+        "arxiv:2610.28315",
+        "arxiv:2610.27115",
+        "web:hackernoon-persistent-injection",
+        "web:stepto-memory-governance",
+        "arxiv:2510.02373",
+        "web:vast-sandbox",
+        "release:graphiti-v0.31.2"
+      ]
+    },
+    {
+      "title": "评测：从问答正确率到任务闭环",
+      "intro": "记住事实不等于完成任务；长期记忆的失败需要分阶段定位。",
+      "itemIds": [
+        "arxiv:2610.28491",
+        "arxiv:2605.12493",
+        "arxiv:2511.03506",
+        "arxiv:2410.10813"
+      ]
+    },
+    {
+      "title": "具身与多模态：记忆要能指导行动",
+      "intro": "空间、事件、视频和工具证据进入记忆，检验的是下一步动作。",
+      "itemIds": [
+        "arxiv:2610.28624",
+        "arxiv:2610.27917",
+        "arxiv:2610.26860",
+        "arxiv:2610.25309",
+        "arxiv:2610.25282",
+        "web:baai-emem-bench",
+        "arxiv:2610.19366"
+      ]
+    },
+    {
+      "title": "工程：记忆成为有状态基础设施",
+      "intro": "官方发布与产品更新，关注接入方式和运维边界。",
+      "itemIds": [
+        "release:graphiti-mcp-v1.1.3",
+        "release:mem0-node-v3.3.1",
+        "release:mem0-python-v2.2.1",
+        "web:eastmoney-baidu-dazi",
+        "web:ifeng-doubao-memory",
+        "web:36kr-hela-mem",
+        "web:36kr-memt"
+      ]
+    },
+    {
+      "title": "坐标：综述与经典",
+      "intro": "把今天的工作放回长期记忆的研究脉络里。",
+      "itemIds": [
+        "arxiv:2602.06052",
+        "arxiv:2604.16548",
+        "arxiv:2310.08560",
+        "arxiv:2305.10250",
+        "arxiv:2405.14831",
+        "arxiv:2501.13956",
+        "web:prnewswire-pastdev"
+      ]
+    }
+  ]
+}

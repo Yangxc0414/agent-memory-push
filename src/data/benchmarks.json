@@ -1,0 +1,117 @@
+{
+  "checkedAt": "2026-10-20",
+  "note": "本站只做评测索引：链接到官方仓库/论文，不复刻榜单分数。覆盖维度是编辑整理，不是官方评分。",
+  "dimensions": [
+    { "id": "dialogue", "label": "长期对话" },
+    { "id": "multiSession", "label": "多会话" },
+    { "id": "temporal", "label": "时间推理" },
+    { "id": "update", "label": "知识更新" },
+    { "id": "abstention", "label": "拒答/遗忘" },
+    { "id": "longHorizon", "label": "长程任务" },
+    { "id": "embodied", "label": "具身/空间" },
+    { "id": "multimodal", "label": "多模态" },
+    { "id": "security", "label": "安全/隐私" },
+    { "id": "personalization", "label": "个性化" }
+  ],
+  "benchmarks": [
+    {
+      "id": "locomo",
+      "name": "LoCoMo",
+      "desc": "长期对话中的多跳、时间推理与事件总结。",
+      "url": "https://github.com/snap-research/locomo",
+      "kind": "对话",
+      "covers": ["dialogue", "multiSession", "temporal"],
+      "note": "常用作长期对话记忆的对照基准。"
+    },
+    {
+      "id": "longmemeval",
+      "name": "LongMemEval-S",
+      "desc": "跨会话记忆、知识更新、时间推理和拒答。",
+      "url": "https://github.com/xiaowu0162/LongMemEval",
+      "kind": "对话",
+      "covers": ["dialogue", "multiSession", "temporal", "update", "abstention"],
+      "note": "同时分析索引、检索与读取设计。"
+    },
+    {
+      "id": "longmemeval-v2",
+      "name": "LongMemEval-V2",
+      "desc": "评估智能体能否积累可复用的工作经验，覆盖环境状态、变化、流程、陷阱和错误前提。",
+      "url": "https://arxiv.org/abs/2605.12493",
+      "kind": "任务",
+      "covers": ["longHorizon", "update", "abstention"],
+      "note": "先给证据、再由固定 reader 回答，以聚焦记忆质量。"
+    },
+    {
+      "id": "beam",
+      "name": "BEAM 100K / 10M",
+      "desc": "长上下文中的事实覆盖与千万 token 级长期记忆。",
+      "url": "https://github.com/mohammadtavakoli78/BEAM",
+      "kind": "长上下文",
+      "covers": ["dialogue", "longHorizon", "temporal"],
+      "note": "100K 与 10M 是两个不同规模的配置，不能混为一谈。"
+    },
+    {
+      "id": "personamem",
+      "name": "PersonaMem v2",
+      "desc": "隐式偏好、个性化与遗忘请求。",
+      "url": "https://github.com/bowen-upenn/PersonaMem-v2",
+      "kind": "个性化",
+      "covers": ["personalization", "multiSession", "abstention"],
+      "note": "关注“该不该记住”而不只是“能不能记住”。"
+    },
+    {
+      "id": "halumem",
+      "name": "HaluMem",
+      "desc": "记忆系统中的幻觉：抽取、更新与问答三个环节。",
+      "url": "https://arxiv.org/abs/2511.03506",
+      "kind": "诊断",
+      "covers": ["update", "abstention", "multiSession"],
+      "note": "适合定位错误发生在记忆生命周期的哪一步。"
+    },
+    {
+      "id": "memoryagentbench",
+      "name": "MemoryAgentBench",
+      "desc": "增量交互中的准确检索、测试时学习、长程理解与选择性遗忘。",
+      "url": "https://github.com/HUST-AI-HYZ/MemoryAgentBench",
+      "kind": "综合",
+      "covers": ["multiSession", "longHorizon", "update", "abstention"],
+      "note": "官方成绩按基座模型和任务分表，阅读时先看配置。"
+    },
+    {
+      "id": "evermembench",
+      "name": "EverMemBench",
+      "desc": "多方群聊中的细粒度召回、记忆意识和用户画像。",
+      "url": "https://github.com/EverMind-AI/EverMemBench",
+      "kind": "多智能体",
+      "covers": ["multiSession", "personalization", "temporal"],
+      "note": "按回答模型分表，跨表比较要谨慎。"
+    },
+    {
+      "id": "memorybench",
+      "name": "MemoryBench",
+      "desc": "记忆与持续学习的领域及任务评测，官方 ELO 按基座模型分别展示。",
+      "url": "https://memorybench.thuir.cn/",
+      "kind": "综合",
+      "covers": ["longHorizon", "update", "multiSession"],
+      "note": "ELO 不是绝对分数，适合看相对排序。"
+    },
+    {
+      "id": "memoryarena",
+      "name": "MemoryArena",
+      "desc": "跨会话、互相依赖的智能体任务：购物、旅行、搜索与形式推理。",
+      "url": "https://memoryarena.github.io/",
+      "kind": "任务",
+      "covers": ["longHorizon", "multiSession", "update"],
+      "note": "强调任务之间的依赖，而不是单轮问答。"
+    },
+    {
+      "id": "optionworld",
+      "name": "OptionWorld",
+      "desc": "跨天个人助理任务：信息获取、判断、行动与结果闭环。",
+      "url": "https://arxiv.org/abs/2610.28491",
+      "kind": "任务",
+      "covers": ["longHorizon", "personalization", "temporal"],
+      "note": "诊断“记住事实却没完成任务”的失败模式。"
+    }
+  ]
+}

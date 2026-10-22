@@ -1,0 +1,42 @@
+{
+  "checkedAt": "2026-10-20",
+  "note": "引用规模来自参考站公开快照（2026-10-20），只作阅读入口，不代表质量或完整性。",
+  "surveys": [
+    {
+      "id": "2602.06052",
+      "title": "A Survey of Agent Memory in the Second Half: Towards Self-Evolving and Long-Horizon Agents",
+      "titleZh": "下半场的智能体记忆：走向自演化与长时任务",
+      "url": "https://arxiv.org/abs/2602.06052",
+      "published": "2026-01-14",
+      "referenceCount": 535,
+      "note": "按载体、认知功能、服务主体三条线组织。"
+    },
+    {
+      "id": "2411.00489",
+      "title": "Human-inspired Perspectives: A Survey on AI Long-term Memory",
+      "titleZh": "人类启发视角下的 AI 长期记忆综述",
+      "url": "https://arxiv.org/abs/2411.00489",
+      "published": "2024-11-01",
+      "referenceCount": 336,
+      "note": "偏认知科学与长期记忆机制的系统梳理。"
+    },
+    {
+      "id": "2610.19366",
+      "title": "Seeing, Maintaining, and Learning: The Evolution of Multimodal Agent Memory",
+      "titleZh": "看见、保持、学习：多模态智能体记忆的演化",
+      "url": "https://arxiv.org/abs/2610.19366",
+      "published": "2026-10-14",
+      "referenceCount": 299,
+      "note": "以“如何形成/表示”和“如何随经验管理”两个轴比较系统。"
+    },
+    {
+      "id": "2604.16548",
+      "title": "A Survey on Long-Term Memory Security in LLM Agents: Attacks, Defenses, and Governance Across the Memory Lifecycle",
+      "titleZh": "长期记忆安全综述：生命周期中的攻防与治理",
+      "url": "https://arxiv.org/abs/2604.16548",
+      "published": "2026-04-17",
+      "referenceCount": 92,
+      "note": "安全专题入口：写入、存储、检索、执行、共享、遗忘。"
+    }
+  ]
+}

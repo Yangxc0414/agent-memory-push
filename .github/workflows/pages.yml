@@ -1,0 +1,84 @@
+name: Build and deploy Agent Memory 推送
+
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: "10 0 * * *"
+  workflow_dispatch:
+    inputs:
+      force_notify:
+        description: "重新发送今天的飞书 / Telegram 推送（忽略去重）"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - name: Collect sources
+        if: github.event_name != 'push'
+        continue-on-error: true
+        run: node scripts/collect.mjs
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          LLM_BASE_URL: ${{ secrets.LLM_BASE_URL }}
+          LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
+          LLM_MODEL: ${{ secrets.LLM_MODEL }}
+
+      - name: Build static site
+        run: node scripts/build.mjs
+
+      - name: Notify Feishu / Telegram
+        if: github.event_name != 'push' || inputs.force_notify
+        continue-on-error: true
+        run: node scripts/notify.mjs ${{ inputs.force_notify && '--force' || '' }}
+        env:
+          FEISHU_WEBHOOK: ${{ secrets.FEISHU_WEBHOOK }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+
+      - name: Commit data changes
+        if: github.event_name != 'push'
+        run: |
+          git config user.name "agent-memory-push[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/data
+          if git diff --cached --quiet; then
+            echo "No data changes."
+          else
+            git commit -m "chore(data): daily snapshot $(date -u +%F)"
+            git push
+          fi
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+      - name: Deploy Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

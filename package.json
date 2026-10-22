@@ -1,0 +1,18 @@
+{
+  "name": "agent-memory-push",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Agent Memory 推送：每日论文、项目、评测与记忆安全的静态推送站",
+  "scripts": {
+    "collect": "node scripts/collect.mjs",
+    "probe": "node scripts/collect.mjs --probe",
+    "build": "node scripts/build.mjs",
+    "notify": "node scripts/notify.mjs",
+    "test": "node scripts/test-notify.mjs",
+    "serve": "node scripts/serve.mjs"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}

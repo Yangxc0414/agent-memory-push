@@ -1,0 +1,12 @@
+node_modules/
+dist/
+.state/
+.seed-capture/
+.shots/
+.edge-profile/
+.env
+.env.*
+!.env.example
+*.log
+*.bak
+.DS_Store

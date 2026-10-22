@@ -1,0 +1,101 @@
+{
+  "version": "1.0",
+  "note": "规则分类：标题与摘要命中关键词后归入一个主主题，可保留多个标签。分类用于阅读导航，不是论文质量评分。",
+  "topics": [
+    {
+      "id": "mechanism",
+      "label": "记忆机制与系统",
+      "short": "机制",
+      "desc": "记忆如何表示、写入、检索、压缩与控制。",
+      "keywords": ["memory", "memories", "retrieval", "retrieve", "context", "experience", "state", "cache"]
+    },
+    {
+      "id": "security",
+      "label": "安全与治理",
+      "short": "安全",
+      "desc": "投毒、持久注入、隐私、授权、溯源与遗忘。",
+      "keywords": ["poison", "injection", "privacy", "attack", "defense", "defence", "security", "governance", "unlearning", "provenance", "leak"]
+    },
+    {
+      "id": "evaluation",
+      "label": "评测与基准",
+      "short": "评测",
+      "desc": "评测集、评估方法、诊断与失败分析。",
+      "keywords": ["benchmark", "evaluat", "diagnos", "metric", "testbed"]
+    },
+    {
+      "id": "embodied",
+      "label": "具身与空间记忆",
+      "short": "具身",
+      "desc": "机器人、VLA、导航与空间任务中的长期记忆。",
+      "keywords": ["robot", "robotic", "embodied", "navigation", "spatial", "manipulation", "vla"]
+    },
+    {
+      "id": "multimodal",
+      "label": "多模态与感知记忆",
+      "short": "多模态",
+      "desc": "视觉、视频、音频以及跨模态信息的记忆。",
+      "keywords": ["multimodal", "multi-modal", "visual", "video", "audio", "image", "vision-language"]
+    },
+    {
+      "id": "personal",
+      "label": "对话与个性化记忆",
+      "short": "个性化",
+      "desc": "长期对话、用户偏好、用户画像与个性化。",
+      "keywords": ["personal", "personali", "conversation", "dialogue", "user profile", "user preference", "assistant"]
+    },
+    {
+      "id": "tools",
+      "label": "工具与项目发布",
+      "short": "工具",
+      "desc": "官方版本发布、SDK、MCP 与框架更新。",
+      "keywords": ["release", "sdk", "mcp", "plugin", "framework"]
+    },
+    {
+      "id": "survey",
+      "label": "综述与研究全景",
+      "short": "综述",
+      "desc": "综述、分类体系、研究议程与展望。",
+      "keywords": ["survey", "systematic review", "taxonomy", "overview"]
+    },
+    {
+      "id": "adjacent",
+      "label": "相关智能体研究",
+      "short": "相关",
+      "desc": "与记忆相关，但证据不足以归入具体主题。",
+      "keywords": []
+    }
+  ],
+  "dimensions": [
+    {
+      "id": "form",
+      "label": "记忆载体",
+      "question": "记忆以什么形式存在？",
+      "terms": ["显式符号 / Token", "参数化", "潜在状态", "混合", "未知"]
+    },
+    {
+      "id": "function",
+      "label": "记忆功能",
+      "question": "记忆为智能体提供什么？",
+      "terms": ["事实记忆", "经验记忆", "工作记忆", "未知"]
+    },
+    {
+      "id": "lifecycle",
+      "label": "生命周期",
+      "question": "这条工作关注哪一段？",
+      "terms": ["写入", "保持", "检索", "更新", "遗忘", "回滚"]
+    },
+    {
+      "id": "setting",
+      "label": "使用场景",
+      "question": "在哪里使用？",
+      "terms": ["数字任务", "具身", "多智能体", "个人助理", "企业"]
+    },
+    {
+      "id": "trust",
+      "label": "信任属性",
+      "question": "最关心哪种风险？",
+      "terms": ["完整性", "隐私", "溯源", "可用性", "合规"]
+    }
+  ]
+}
