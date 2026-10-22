@@ -931,7 +931,6 @@ function renderPipeline() {
           ${flowRow("RSS", "构建后", "items + digest", "feed.xml", "lastBuildDate / pubDate", "订阅器继续读旧缓存")}
           ${flowRow("JSON", "构建后", "items + digest", "api/v1/*.json", "generatedAt", "静态 404，不影响页面")}
           ${flowRow("飞书 / Telegram", "成刊后", "notify.mjs", "卡片 / 消息", "按日期去重", "3 次重试；失败只记日志")}
-          ${flowRow("IndexNow", "部署后（可选）", "sitemap URL", "提交请求", "提交记录", "失败不影响站点")}
           ${flowRow("Web Push", "不支持", "无服务端订阅存储", "—", "—", "不提供假开关")}
         </tbody>
       </table>
@@ -1001,7 +1000,7 @@ function renderPipeline() {
           ["08:15", "构建", "生成 JSON、RSS、llms.txt、sitemap；校验 ID 与日期。"],
           ["08:16", "部署", "上传 Pages artifact 并发布；失败时保留上一版。"],
           ["08:17", "通知", "可选：飞书卡片 / Telegram；按日期去重。"],
-          ["08:20", "索引", "可选：IndexNow 提交 URL；失败只记日志。"]
+          ["08:20", "收尾", "检查部署与通知日志；搜索引擎索引交给 sitemap 与外部爬虫。"]
         ]
           .map(([time, title, note]) => `<div class="timeline-step"><time>${time}</time><h4>${title}</h4><p>${note}</p></div>`)
           .join("")}
@@ -1088,7 +1087,7 @@ function renderMethod() {
         <li><strong>JSON API</strong>：AIHOT 的 <code>apps/api/src/routes/v1.ts</code> 有 <code>/api/v1/items</code>、<code>/hot-topics</code>、<code>/stories/:id</code>、<code>/dailies</code> 等接口，带 ETag 和 60–300 秒缓存。本站把它降级成静态 <code>api/v1/*.json</code>，用构建时间做版本。</li>
         <li><strong>飞书推送</strong>：AIHOT 的 <code>packages/backend/src/notify/selected-content.ts</code> 只推新入选、非补录、12 小时内、未被静音的条目，卡片包含标题、来源、摘要、推荐理由和两个按钮。本站的 <code>scripts/notify.mjs</code> 保留“只推一次、按日期去重、失败重试”的骨架，但把触发放在 Actions。</li>
         <li><strong>外部内容推入</strong>：AIHOT 的 <code>apps/api/src/routes/ingest.ts</code> 提供 <code>POST /api/ingest/items</code>，Bearer Token，单次最多 50 条。本站没有服务端，改用“提交 JSON / PR”而不是在线 ingest；这是能力上的明确降级。</li>
-        <li><strong>给 Agent 的出口</strong>：AIHOT 有 MCP、Agent Markdown、<code>llms.txt</code>、sitemap、IndexNow。本站保留 <code>llms.txt</code>、sitemap 和静态 JSON，没有 MCP 服务端；MCP 需要运行时，Pages 不提供。</li>
+        <li><strong>给 Agent 的出口</strong>：AIHOT 有 MCP、Agent Markdown、<code>llms.txt</code>、sitemap、IndexNow。本站保留 <code>llms.txt</code>、sitemap 和静态 JSON；MCP 服务端和 IndexNow 提交未实现，因为前者需要运行时、后者需要额外的 key 与部署后回调。</li>
       </ul>
 
       <h2 id="method-pages">四、搬到 GitHub Pages 后，什么变了</h2>

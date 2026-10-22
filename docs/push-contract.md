@@ -87,7 +87,6 @@
 | RSS | 构建后 | items + digest | `dist/feed.xml` | `lastBuildDate` / `pubDate` | 订阅器继续读旧缓存 |
 | JSON | 构建后 | items + digest | `dist/api/v1/*.json` | `generatedAt` | 静态 404，不影响页面 |
 | 飞书 / Telegram | 成刊后 | `dist/api/v1/digest.json` | webhook 请求 | 按日期去重 | 3 次重试；失败只记日志 |
-| IndexNow | 部署后（可选） | sitemap URL | 提交请求 | 提交记录 | 失败不影响站点 |
 | Web Push | 不支持 | 无服务端订阅存储 | — | — | 不提供假开关 |
 
 ### 1. 今日推送
@@ -180,6 +179,8 @@
 - 重试：3 次，指数退避；失败只记日志，不阻塞部署。
 - 测试：`npm test` 启动本地 mock webhook，验证 payload 结构和去重，不访问外部服务。
 
+IndexNow 未实现：它需要 key 文件、部署后回调与提交记录，当前不提供假开关。
+
 ### 10. Web Push
 
 不做。原因：
@@ -208,7 +209,7 @@ AIHOT 是服务端框架，本站是静态站；下面这些机制被保留或�
 | 飞书卡片 + 去重 + 重试 | `packages/backend/src/notify/selected-content.ts` | `scripts/notify.mjs` |
 | 外部内容推入 | `apps/api/src/routes/ingest.ts` | 无在线 ingest；用 JSON / PR 提交 |
 | MCP | `apps/api/src/routes/mcp.ts` | 无；需要运行时，Pages 不提供 |
-| llms.txt / sitemap / IndexNow | `publication/llms.ts`、`operations/indexnow.ts` | `llms.txt` / `sitemap.xml` 保留；IndexNow 可选 |
+| llms.txt / sitemap / IndexNow | `publication/llms.ts`、`operations/indexnow.ts` | `llms.txt` / `sitemap.xml` 保留；IndexNow 未实现 |
 | 热点、聚簇、故事页 | `events/hot.ts`、`jobs/events.ts` | 未实现；静态站不做实时热度 |
 
 原则：**能在构建时算的，不在浏览器算；需要服务端的，明确降级，不做假开关。**

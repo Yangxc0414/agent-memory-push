@@ -2,7 +2,7 @@
 
 > 每天把智能体记忆领域值得看的新论文、新项目与新动态，推到你的眼前。不是信息流，是一份有取舍的每日记忆。
 
-- 线上站：<https://yangxc0414.github.io/agent-memory-push/>
+- 发布后地址：<https://yangxc0414.github.io/agent-memory-push/>（本地仓库尚未推送）
 - 数据快照：见页面右下角或 `dist/data/meta.json`
 - 订阅：`/feed.xml`（RSS）、`/api/v1/items.json`（JSON）、`/llms.txt`（Agent 入口）
 - 更新：GitHub Actions，每天北京时间 **08:10**（`10 0 * * *`）
