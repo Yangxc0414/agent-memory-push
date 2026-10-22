@@ -192,7 +192,7 @@ function generateDigest() {
       label
     },
     lead,
-    editorNote: `本期按相关性、时效、来源与证据等级排序，并按主题分散重点；中文摘要${llmNote}。厂商自测与媒体报道单独标注，不进入结论区。`,
+    editorNote: `本期覆盖过去 ${hours || "最近"} 小时；论文多为预印本，观点与数据请回到原文核对。厂商自测与媒体报道单独标注。`,
     picks: picks.map((item) => ({ id: item.id, note: item.why || "与记忆的写入、读取或治理直接相关。" })),
     sections
   };
@@ -468,7 +468,7 @@ function main() {
   writeText(path.join(DIST, ".nojekyll"), "");
   writeText(
     path.join(DIST, "404.html"),
-    `<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>404 · ${site.name}</title><style>body{background:#f7f4ec;color:#161b17;font:16px/1.7 system-ui;display:grid;place-items:center;min-height:100vh;margin:0}a{color:#0f6b4f}</style><main><p>这一页没有被记住。</p><p><a href="./">回到 ${site.name}</a></p></main></html>`
+    `<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>404 · ${site.name}</title><style>body{background:#f8fbff;color:#0f172a;font:16px/1.7 system-ui;display:grid;place-items:center;min-height:100vh;margin:0}a{color:#2563eb}</style><main><p>这一页没有被记住。</p><p><a href="./">回到 ${site.name}</a></p></main></html>`
   );
 
   console.log(`Built ${publicItems.length} items, ${digest.picks.length} picks, ${sources.sources.length} sources -> ${DIST}`);

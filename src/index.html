@@ -7,7 +7,7 @@
     <meta name="description" content="{{SITE_DESCRIPTION}}" />
     <meta name="keywords" content="Agent Memory,智能体记忆,长期记忆,LLM Agent,记忆安全,每日推送" />
     <meta name="author" content="YXC" />
-    <meta name="theme-color" content="#f7f4ec" />
+    <meta name="theme-color" content="#f8fbff" />
     <link rel="canonical" href="{{SITE_URL}}" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="{{SITE_NAME}}" />
@@ -24,9 +24,11 @@
     <link rel="manifest" href="manifest.webmanifest" />
     <link rel="alternate" type="application/rss+xml" title="{{SITE_NAME}} RSS" href="feed.xml" />
     <link rel="stylesheet" href="assets/style.css" />
+    <link rel="stylesheet" href="assets/theme-blue.css" />
     <script type="module" src="assets/app.js"></script>
   </head>
   <body>
+    <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
     <a class="skip-link" href="#view">跳到内容</a>
     <div class="grain" aria-hidden="true"></div>
 
@@ -50,14 +52,13 @@
         <a href="#/topics" data-nav="topics">主题地图</a>
         <a href="#/projects" data-nav="projects">项目</a>
         <a href="#/benchmarks" data-nav="benchmarks">Benchmark</a>
-        <a href="#/pipeline" data-nav="pipeline">信源与推送</a>
-        <a href="#/method" data-nav="method">方法</a>
+        <a href="#/subscribe" data-nav="subscribe">订阅</a>
       </nav>
 
       <div class="top-actions">
         <a class="ghost-link" href="feed.xml" title="RSS 订阅">RSS <span aria-hidden="true">↗</span></a>
-        <button class="icon-button" id="refresh-button" type="button" title="重新读取快照">
-          <span aria-hidden="true">↻</span><span class="sr-only">刷新快照</span>
+        <button class="icon-button" id="refresh-button" type="button" title="刷新今日推送">
+          <span aria-hidden="true">↻</span><span class="sr-only">刷新今日推送</span>
         </button>
         <button class="menu-button" id="menu-button" type="button" aria-expanded="false" aria-controls="nav">
           <span aria-hidden="true">☰</span><span class="sr-only">打开导航</span>
@@ -69,7 +70,7 @@
       <section class="loading-shell" aria-live="polite">
         <p class="kicker">AGENT MEMORY / DAILY PUSH</p>
         <h1>记忆不该被遗忘。</h1>
-        <p class="lead">正在读取每日快照。若长时间没有内容，请直接打开 <a href="feed.xml">RSS</a> 或 <a href="api/v1/items.json">JSON</a>。</p>
+        <p class="lead">正在读取今日推送。若长时间没有内容，请直接打开 <a href="feed.xml">RSS</a>。</p>
       </section>
     </main>
 
@@ -78,27 +79,26 @@
         <div>
           <p class="footer-mark">AGENT MEMORY <em>推送</em></p>
           <p class="muted">
-            每天一次快照，按证据分级。不是信息流，是一份有取舍的每日记忆。
+            每天 08:10，把智能体记忆领域值得看的新论文、新项目与新动态，推到你的眼前。
           </p>
         </div>
         <div>
-          <p class="footer-label">订阅与数据</p>
-          <a href="feed.xml">RSS</a>
-          <a href="api/v1/items.json">JSON API</a>
-          <a href="llms.txt">llms.txt</a>
-          <a href="#/pipeline">推送机制</a>
+          <p class="footer-label">浏览</p>
+          <a href="#/today">今日推送</a>
+          <a href="#/feed">全部动态</a>
+          <a href="#/security">记忆安全</a>
+          <a href="#/topics">主题地图</a>
         </div>
         <div>
-          <p class="footer-label">关于</p>
-          <a href="#/method">方法与反思</a>
-          <a href="https://yangxc0414.github.io/" rel="me">YXC 主页</a>
-          <a href="https://github.com/KKKKhazix/AIHOT" rel="noopener">框架参考 AIHOT</a>
-          <a href="https://agent-memory-hot.pale-rook-5118.chatgpt.site/" rel="noopener">参考站 Agent Memory Hot</a>
+          <p class="footer-label">订阅</p>
+          <a href="#/subscribe">每日推送</a>
+          <a href="feed.xml">RSS</a>
+          <a href="#/subscribe">手机通知</a>
         </div>
       </div>
       <div class="footer-bottom">
-        <p>本站是公开信息的聚合与阅读索引，不是同行评审、投资建议或安全认证。论文多为预印本；厂商自测与媒体报道单独标注证据等级。</p>
-        <p>Built by YXC · <span id="build-stamp">{{BUILD_TIME}}</span> · 快照 {{CHECKED_AT}}</p>
+        <p>本站是公开信息的聚合与阅读索引，不是同行评审、投资建议或安全认证。论文多为预印本；原文版权归各来源所有。</p>
+        <p>Built by YXC · 每天 08:10 更新</p>
       </div>
     </footer>
 
@@ -110,8 +110,8 @@
 
     <noscript>
       <div class="noscript">
-        <h2>需要 JavaScript 读取每日快照</h2>
-        <p>你仍然可以直接订阅 <a href="feed.xml">RSS</a>，或用 <a href="api/v1/items.json">JSON</a> 读取全部条目。</p>
+        <h2>需要 JavaScript 读取今日推送</h2>
+        <p>你仍然可以直接订阅 <a href="feed.xml">RSS</a> 获取每日更新。</p>
       </div>
     </noscript>
   </body>

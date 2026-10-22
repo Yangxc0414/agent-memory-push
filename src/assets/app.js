@@ -1,5 +1,5 @@
 const DATA_BASE = new URL("./", document.baseURI);
-const VIEWS = new Set(["today", "feed", "security", "topics", "projects", "benchmarks", "pipeline", "method"]);
+const VIEWS = new Set(["today", "feed", "security", "topics", "projects", "benchmarks", "subscribe"]);
 const KIND_LABELS = { paper: "论文", news: "新闻", release: "发布" };
 const ANGLE_LABELS = {
   attack: "攻击面",
@@ -13,7 +13,6 @@ const RANGE_LABELS = { all: "全部时间", "7": "近 7 天", "30": "近 30 天"
 let site;
 let meta;
 let items = [];
-let sources;
 let projects;
 let benchmarks;
 let surveys;
@@ -111,14 +110,6 @@ function evidenceBadge(item) {
   return `<span class="evidence">${esc(item.evidence || "证据未标注")}</span>`;
 }
 
-function scoreBar(item) {
-  const score = Number(item.score || 0);
-  return `<span class="score" title="推送分：按相关性、时效、来源、证据和主题加权，仅作编辑排序">
-    <span class="mono">PUSH ${score}</span>
-    <span class="score-track"><i style="width:${Math.max(0, Math.min(100, score))}%"></i></span>
-  </span>`;
-}
-
 function starFmt(value) {
   const number = Number(value || 0);
   if (number >= 1000) return `${(number / 1000).toFixed(1)}k`;
@@ -171,15 +162,14 @@ async function getJson(path, bust = false) {
 
 async function loadData({ bust = false } = {}) {
   const loading = $("#view .loading-shell");
-  if (loading) loading.querySelector(".lead").textContent = "正在读取每日快照…";
+  if (loading) loading.querySelector(".lead").textContent = "正在读取今日推送…";
   const freshMeta = await getJson("data/meta.json", true);
   const version = encodeURIComponent(freshMeta.checkedAt || freshMeta.builtAt || "1");
   const suffix = bust ? `?t=${Date.now()}` : `?v=${version}`;
-  const [nextSite, nextItems, nextSources, nextProjects, nextBenchmarks, nextSurveys, nextTaxonomy, nextDigest, nextMeta] =
+  const [nextSite, nextItems, nextProjects, nextBenchmarks, nextSurveys, nextTaxonomy, nextDigest, nextMeta] =
     await Promise.all([
       getJson(`data/site.json${suffix}`),
       getJson(`data/items.json${suffix}`),
-      getJson(`data/sources.json${suffix}`),
       getJson(`data/projects.json${suffix}`),
       getJson(`data/benchmarks.json${suffix}`),
       getJson(`data/surveys.json${suffix}`),
@@ -189,7 +179,6 @@ async function loadData({ bust = false } = {}) {
     ]);
   site = nextSite;
   items = Array.isArray(nextItems) ? nextItems : nextItems.items || [];
-  sources = nextSources;
   projects = nextProjects;
   benchmarks = nextBenchmarks;
   surveys = nextSurveys;
@@ -202,10 +191,10 @@ async function loadData({ bust = false } = {}) {
     digest = {
       date: meta.date,
       lead: site.description,
-      editorNote: "快照已生成，但这一期还没有 digest。",
+      editorNote: "今天的内容正在整理。",
       picks: [],
       sections: [],
-      window: { label: "最近快照" }
+      window: { label: "最近更新" }
     };
   }
   lastMetaCheck = meta.checkedAt;
@@ -275,6 +264,13 @@ function updateNav(view) {
   });
 }
 
+function updateScrollProgress() {
+  const bar = $("#scroll-progress");
+  if (!bar) return;
+  const max = document.documentElement.scrollHeight - window.innerHeight;
+  bar.style.transform = `scaleX(${max > 0 ? Math.min(1, window.scrollY / max) : 0})`;
+}
+
 function render(view = currentView, { scroll = true } = {}) {
   if (!site) return;
   currentView = VIEWS.has(view) ? view : "today";
@@ -285,14 +281,14 @@ function render(view = currentView, { scroll = true } = {}) {
     topics: "主题地图",
     projects: "项目与发布",
     benchmarks: "Benchmark",
-    pipeline: "信源与推送",
-    method: "方法与反思"
+    subscribe: "订阅"
   };
   document.title = `${titles[currentView]} · ${site.name}`;
   updateNav(currentView);
   const viewEl = $("#view");
   viewEl.innerHTML = renderView(currentView);
   if (currentView === "feed") renderFeedResults();
+  updateScrollProgress();
   bindViewEvents();
   observeReveal();
   if (scroll) window.scrollTo({ top: 0, behavior: "auto" });
@@ -304,45 +300,59 @@ function renderView(view) {
   if (view === "topics") return renderTopics();
   if (view === "projects") return renderProjects();
   if (view === "benchmarks") return renderBenchmarks();
-  if (view === "pipeline") return renderPipeline();
-  if (view === "method") return renderMethod();
+  if (view === "subscribe") return renderSubscribe();
   return renderToday();
 }
 
 function loadingMarkup() {
-  return `<section class="loading-shell"><p class="kicker">AGENT MEMORY / DAILY PUSH</p><h1>记忆不该被遗忘。</h1><p class="lead">正在读取每日快照…</p></section>`;
+  return `<section class="loading-shell"><p class="kicker">AGENT MEMORY / DAILY PUSH</p><h1>记忆不该被遗忘。</h1><p class="lead">正在读取今日推送…</p></section>`;
 }
 
 /* ---------- components ---------- */
 
+function todayDigestItems() {
+  const ids = new Set([
+    ...(digest.picks || []).map((pick) => pick.id),
+    ...(digest.sections || []).flatMap((section) => section.itemIds || [])
+  ]);
+  return [...ids].map((id) => byId.get(id)).filter(Boolean);
+}
+
+function todayDigestStats() {
+  const list = todayDigestItems();
+  return {
+    items: list.length,
+    papers: list.filter((item) => item.kind === "paper").length,
+    news: list.filter((item) => item.kind === "news").length,
+    releases: list.filter((item) => item.kind === "release").length,
+    security: list.filter((item) => item.security).length
+  };
+}
+
 function statusPanel() {
   const stats = meta.stats || {};
-  const sourcesOk = meta.sourcesOk ?? sources.sources.filter((source) => source.status === "ok").length;
-  const sourcesTotal = meta.sourcesTotal ?? sources.sources.length;
+  const today = todayDigestStats();
   const checked = meta.checkedAt || site.snapshot.checkedAt;
   const next = nextRun();
   const stale = isStale();
-  const statusLabel = meta.seed ? "SEED SNAPSHOT" : stale ? "STALE" : "DAILY SNAPSHOT";
-  return `<aside class="status-panel reveal" aria-label="推送状态">
+  return `<aside class="status-panel reveal" aria-label="今日更新状态">
     <div class="status-head">
-      <span class="mono">PUSH STATUS / ${esc(meta.date || digest.date)}</span>
-      <span class="live ${stale ? "stale" : ""}">${statusLabel}</span>
+      <span class="mono">TODAY / ${esc(meta.date || digest.date)}</span>
+      <span class="live ${stale ? "stale" : ""}">${stale ? "待更新" : "已更新"}</span>
     </div>
     <div class="status-main">
-      <span class="status-number">${String(stats.items ?? items.length).padStart(2, "0")}</span>
-      <span class="status-unit">条快照条目<br />本期 ${esc(digest.window?.label || "快照")}新增 ${(digest.sections || []).reduce((sum, section) => sum + (section.itemIds?.length || 0), 0)} 条</span>
+      <span class="status-number" data-count="${today.items}" data-pad="2">${String(today.items).padStart(2, "0")}</span>
+      <span class="status-unit">条今日更新<br />${esc(digest.window?.label || "最近更新")}</span>
     </div>
     <div class="status-grid">
-      <div class="status-cell"><b>${stats.papers ?? "—"}</b><span>论文</span></div>
-      <div class="status-cell"><b>${stats.security ?? "—"}</b><span>安全相关</span></div>
-      <div class="status-cell"><b>${sourcesOk}/${sourcesTotal}</b><span>信源正常</span></div>
-    </div>
-    <div class="status-track" aria-label="推送流程">
-      <span>01 采集</span><span>02 去重</span><span>03 分级</span><span>04 成刊</span><span>05 部署</span><span>06 分发</span>
+      <div class="status-cell"><b>${today.papers}</b><span>论文</span></div>
+      <div class="status-cell"><b>${today.news}</b><span>新闻</span></div>
+      <div class="status-cell"><b>${today.security}</b><span>安全</span></div>
     </div>
     <div class="status-foot">
-      <span>上次快照<br /><b>${esc(formatDate(checked, true))}</b></span>
-      <span>下次推送<br /><b>${esc(formatDate(next.toISOString(), true))}</b></span>
+      <span>更新于<br /><b>${esc(formatDate(checked, true))}</b></span>
+      <span>下次更新<br /><b>${esc(formatDate(next.toISOString(), true))}</b></span>
+      <span>已收录<br /><b>${stats.items ?? items.length} 条</b></span>
     </div>
   </aside>`;
 }
@@ -350,8 +360,9 @@ function statusPanel() {
 function pickCard(pick, index) {
   const item = byId.get(pick.id);
   if (!item) return "";
-  return `<article class="pick-card reveal">
-    <div class="pick-index">${String(index + 1).padStart(2, "0")} / PICK</div>
+  const featured = index === 0;
+  return `<article class="pick-card ${featured ? "featured" : ""} reveal" style="--i:${index}">
+    <div class="pick-index">${featured ? "01 / TODAY'S LEAD" : `${String(index + 1).padStart(2, "0")} / PICK`}</div>
     <div class="pick-kind">${kindBadge(item, true)} ${securityBadge(item, true)}</div>
     <h3><a href="${itemHref(item.id)}">${esc(itemTitle(item))}</a></h3>
     <p>${esc(truncate(itemSummary(item), 220))}</p>
@@ -390,6 +401,12 @@ function digestSection(section, sectionIndex) {
 
 function renderToday() {
   const stats = meta.stats || {};
+  const today = todayDigestStats();
+  const leadPick = digest.picks?.[0] ? byId.get(digest.picks[0].id) : null;
+  const topTopics = Object.entries(meta.stats?.byTopic || {})
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, 6)
+    .map(([id, count]) => ({ id, count, label: topicById.get(id)?.label || id }));
   const picks = (digest.picks || []).map((pick, index) => pickCard(pick, index)).join("");
   const sections = (digest.sections || []).map(digestSection).join("");
   const sectionsToc = (digest.sections || [])
@@ -405,19 +422,23 @@ function renderToday() {
       <p class="lead">${esc(site.intro)}</p>
       <div class="hero-actions">
         <a class="button" href="#/feed">看全部动态 <span aria-hidden="true">→</span></a>
-        <a class="button secondary" href="feed.xml">订阅 RSS <span aria-hidden="true">↗</span></a>
-        ${meta.ntfy ? `<a class="button secondary" href="${safeUrl(`${meta.ntfy.server}/${meta.ntfy.topic}`)}" target="_blank" rel="noopener">ntfy 推送 <span aria-hidden="true">↗</span></a>` : ""}
-        <a class="button secondary" href="#/pipeline">推送怎么做</a>
+        <a class="button secondary" href="#/subscribe">订阅每日推送 <span aria-hidden="true">↗</span></a>
+        <a class="button secondary" href="feed.xml">RSS</a>
       </div>
       <div class="hero-meta">
-        <span><strong>${stats.items ?? items.length}</strong> 条快照</span>
-        <span><strong>${stats.papers ?? "—"}</strong> 篇论文</span>
-        <span><strong>${stats.security ?? "—"}</strong> 条安全</span>
-        <span><strong>${esc(site.schedule.label)}</strong></span>
+        <span><strong>${today.items}</strong> 条今日更新</span>
+        <span><strong>${stats.items ?? items.length}</strong> 条已收录</span>
+        <span><strong>${today.papers}</strong> 篇论文</span>
+        <span><strong>${today.security}</strong> 条安全</span>
       </div>
     </div>
-    ${statusPanel()}
+    <div class="hero-visual">
+      ${statusPanel()}
+      ${leadPick ? `<a class="latest-float" href="${itemHref(leadPick.id)}"><span class="latest-kicker">TODAY'S LEAD</span><span class="latest-arrow" aria-hidden="true">↗</span><strong>${esc(itemTitle(leadPick))}</strong><em>${esc(leadPick.source)} · ${esc(formatDate(leadPick.published))}</em></a>` : ""}
+    </div>
   </section>
+
+  ${topicStrip(topTopics)}
 
   <section class="section">
     <div class="section-head">
@@ -434,11 +455,10 @@ function renderToday() {
       <aside class="digest-aside reveal">
         <h3>本期目录</h3>
         <ol>${sectionsToc || "<li>暂无分栏</li>"}</ol>
-        <div class="aside-stat"><span>本期新增 / 快照</span><b>${(digest.sections || []).reduce((sum, section) => sum + (section.itemIds?.length || 0), 0)} / ${stats.items ?? items.length}</b></div>
-        <div class="aside-stat"><span>论文 / 新闻 / 发布</span><b>${stats.papers ?? "—"} / ${stats.news ?? "—"} / ${stats.releases ?? "—"}</b></div>
-        <div class="aside-stat"><span>安全相关</span><b>${stats.security ?? "—"}</b></div>
-        <div class="aside-stat"><span>信源正常</span><b>${meta.sourcesOk ?? "—"} / ${meta.sourcesTotal ?? "—"}</b></div>
-        <div class="aside-stat"><span>页面模型调用</span><b>0 次</b></div>
+        <div class="aside-stat"><span>今日更新 / 已收录</span><b>${today.items} / ${stats.items ?? items.length}</b></div>
+        <div class="aside-stat"><span>论文 / 新闻 / 发布</span><b>${today.papers} / ${today.news} / ${today.releases}</b></div>
+        <div class="aside-stat"><span>安全相关</span><b>${today.security}</b></div>
+        <a class="button secondary" href="#/subscribe" style="margin-top:16px;width:100%">订阅每日推送</a>
       </aside>
     </div>
   </section>
@@ -446,19 +466,29 @@ function renderToday() {
   <section class="section">
     <div class="section-head">
       <div><p class="index">02 / ENTER THE INDEX</p><h2>按你关心的问题进入</h2></div>
-      <p class="section-note">每个栏目都是同一份快照的不同切片；数据源、刷新节奏和失败方式写在“信源与推送”里。</p>
+      <p class="section-note">每一栏都是今天内容的不同切面。先看你在意的方向，再回到完整列表。</p>
     </div>
     <div class="quick-grid">
-      ${quickCard("记忆安全", `${stats.security ?? 0} 条`, "攻击、隐私、来源与治理", "#/security", "coral")}
-      ${quickCard("主题地图", `${taxonomy.topics.length} 个主题`, "从机制到具身、多模态", "#/topics", "accent")}
-      ${quickCard("项目与发布", `${projects.projects.length} 个项目`, "GitHub 星标快照与官方 release", "#/projects", "teal")}
-      ${quickCard("Benchmark", `${benchmarks.benchmarks.length} 个基准`, "只做索引，不复刻分数", "#/benchmarks", "blue")}
+      ${quickCard("记忆安全", `${stats.security ?? 0} 条`, "攻击、隐私、来源与治理", "#/security", "coral", 0)}
+      ${quickCard("主题地图", `${taxonomy.topics.length} 个主题`, "从机制到具身、多模态", "#/topics", "accent", 1)}
+      ${quickCard("项目与发布", `${projects.projects.length} 个项目`, "值得跟踪的项目与官方发布", "#/projects", "teal", 2)}
+      ${quickCard("Benchmark", `${benchmarks.benchmarks.length} 个基准`, "只做索引，不复刻分数", "#/benchmarks", "blue", 3)}
     </div>
   </section>`;
 }
 
-function quickCard(title, value, note, href, tone) {
-  return `<a class="quick-card ${tone} reveal" href="${href}">
+function topicStrip(topics) {
+  if (!topics.length) return "";
+  return `<div class="topic-strip reveal" aria-label="今日关键词">
+    <span class="topic-strip-label">今日关键词</span>
+    <div class="topic-strip-scroll">
+      ${topics.map((topic) => `<button class="topic-pill" type="button" data-action="set-topic" data-topic="${esc(topic.id)}">${esc(topic.label)}<span>${topic.count}</span></button>`).join("")}
+    </div>
+  </div>`;
+}
+
+function quickCard(title, value, note, href, tone, index = 0) {
+  return `<a class="quick-card ${tone} reveal" style="--i:${index}" href="${href}">
     <span class="quick-value">${esc(value)}</span>
     <h3>${esc(title)}</h3>
     <p>${esc(note)}</p>
@@ -481,7 +511,7 @@ function itemCard(item, index, query = "") {
     .slice(0, 3)
     .map((tagName) => `<span class="tag">${esc(tagName)}</span>`)
     .join("");
-  return `<article class="item-card reveal" data-id="${esc(item.id)}">
+  return `<article class="item-card reveal" data-id="${esc(item.id)}" style="--i:${index}">
     <div class="item-index">${String(index + 1).padStart(2, "0")}</div>
     <div class="item-main">
       <div class="item-top">
@@ -495,9 +525,8 @@ function itemCard(item, index, query = "") {
       ${item.titleZh ? `<p class="item-subtitle">${esc(item.title)}</p>` : ""}
       <p class="item-summary">${highlight(truncate(itemSummary(item), 240), searchQuery)}</p>
       <div class="item-tags">${tags}${extraTags}</div>
-      <div class="item-why"><b>WHY PUSH</b>${esc(item.why || "等待编辑补全推送理由。")}</div>
+      <div class="item-why"><b>推荐理由</b>${esc(item.why || "编辑正在整理推荐理由。")}</div>
       <div class="item-foot">
-        ${scoreBar(item)}
         ${evidenceBadge(item)}
         <a class="text-link" href="${safeUrl(item.url)}" target="_blank" rel="noopener">原文 ↗</a>
         <a class="text-link" href="${itemHref(item.id)}">详情 / 证据 →</a>
@@ -510,7 +539,6 @@ function itemCard(item, index, query = "") {
             <dt>原文摘要</dt><dd>${esc(item.summary || "未提供原文摘要。")}</dd>
             <dt>证据等级</dt><dd>${esc(item.evidence || "未标注")}</dd>
             <dt>发表时间</dt><dd>${esc(formatDate(item.published, true))} · ${esc(item.source)}</dd>
-            <dt>推送分</dt><dd>${esc(String(item.score ?? "—"))} / 100（编辑排序，不是质量评分）</dd>
             ${item.security ? `<dt>安全备注</dt><dd>${esc(item.security.note || "")}</dd>` : ""}
           </dl>
         </div>
@@ -583,7 +611,7 @@ function renderFeed() {
   return `<section class="section" style="border-bottom:0;padding-top:44px">
     <div class="section-head">
       <div><p class="index">THE INDEX / ${count} ITEMS</p><h2>全部动态</h2></div>
-      <p class="section-note">同一份每日快照，按类型、主题、时间和关键词切片。所有排序都在浏览器里完成，不触发模型调用。</p>
+      <p class="section-note">按类型、主题、时间和关键词筛选，找到你关心的记忆研究。每一条都保留原文链接与证据说明。</p>
     </div>
     <div class="filterbar">
       <div class="chips" role="group" aria-label="类型筛选">
@@ -596,10 +624,10 @@ function renderFeed() {
       </div>
       <div class="select-wrap"><label for="feed-topic">主题</label><select id="feed-topic"><option value="all">全部主题</option>${topicOptions}</select></div>
       <div class="select-wrap"><label for="feed-range">时间</label><select id="feed-range">${Object.entries(RANGE_LABELS).map(([value, label]) => `<option value="${value}"${state.feed.range === value ? " selected" : ""}>${label}</option>`).join("")}</select></div>
-      <div class="select-wrap"><label for="feed-sort">排序</label><select id="feed-sort"><option value="newest"${state.feed.sort === "newest" ? " selected" : ""}>最新在前</option><option value="score"${state.feed.sort === "score" ? " selected" : ""}>推送分</option></select></div>
+      <div class="select-wrap"><label for="feed-sort">排序</label><select id="feed-sort"><option value="newest"${state.feed.sort === "newest" ? " selected" : ""}>最新在前</option><option value="score"${state.feed.sort === "score" ? " selected" : ""}>推荐排序</option></select></div>
       <button class="chip" type="button" data-action="clear-filters">清空</button>
     </div>
-    <div class="results-meta"><span id="feed-count"></span><span>快照 ${esc(formatDate(meta.checkedAt, true))} · 不调用模型</span></div>
+    <div class="results-meta"><span id="feed-count"></span><span>更新于 ${esc(formatDate(meta.checkedAt, true))}</span></div>
     <div id="feed-results" class="item-list"></div>
     <div style="text-align:center;margin-top:24px"><button class="button secondary" id="feed-more" type="button" data-action="load-more" hidden>加载更多</button></div>
   </section>`;
@@ -629,7 +657,7 @@ function renderSecurity() {
       </div>
       <div class="security-quote reveal">
         <p style="font-size:20px">${securityItems.length} 条安全相关</p>
-        <span>${Object.entries(angleCounts).map(([angle, value]) => `${ANGLE_LABELS[angle]} ${value}`).join(" · ")}<br />按规则命中与编辑复核标注，不等同于安全认证。</span>
+        <span>${Object.entries(angleCounts).map(([angle, value]) => `${ANGLE_LABELS[angle]} ${value}`).join(" · ")}<br />按攻击、防御、隐私、溯源、评测标注；不等同于安全认证。</span>
       </div>
     </div>
     <div class="lifecycle">
@@ -671,16 +699,16 @@ function renderOrbit() {
       const labelX = center + Math.cos(angle) * (radius + 28);
       const labelY = center + Math.sin(angle) * (radius + 28);
       const anchor = Math.cos(angle) > 0.2 ? "start" : Math.cos(angle) < -0.2 ? "end" : "middle";
-      return `<line x1="${center}" y1="${center}" x2="${x}" y2="${y}" stroke="#0f6b4f" stroke-opacity="${count ? 0.22 : 0.08}" />
-        <circle cx="${x}" cy="${y}" r="${size}" fill="${count ? "#0f6b4f" : "#8a938b"}" fill-opacity="${count ? 0.82 : 0.35}" />
+      return `<line x1="${center}" y1="${center}" x2="${x}" y2="${y}" stroke="#2563eb" stroke-opacity="${count ? 0.22 : 0.08}" />
+        <circle class="orbit-node" cx="${x}" cy="${y}" r="${size}" fill="${count ? "#2563eb" : "#8b9bb0"}" fill-opacity="${count ? 0.82 : 0.35}" />
         <text x="${labelX}" y="${labelY}" text-anchor="${anchor}">${esc(topic.short)}</text>
         <text class="orbit-count" x="${labelX}" y="${labelY + 12}" text-anchor="${anchor}">${count}</text>`;
     })
     .join("");
   return `<svg viewBox="0 0 400 400" role="img" aria-label="主题关系轨道图">
-    <circle cx="200" cy="200" r="138" fill="none" stroke="#161b17" stroke-opacity=".14" />
-    <circle cx="200" cy="200" r="86" fill="none" stroke="#161b17" stroke-opacity=".08" />
-    <circle cx="200" cy="200" r="44" fill="none" stroke="#161b17" stroke-opacity=".08" />
+    <circle cx="200" cy="200" r="138" fill="none" stroke="#0f172a" stroke-opacity=".14" />
+    <circle cx="200" cy="200" r="86" fill="none" stroke="#0f172a" stroke-opacity=".08" />
+    <circle cx="200" cy="200" r="44" fill="none" stroke="#0f172a" stroke-opacity=".08" />
     ${nodes}
     <text class="orbit-center" x="200" y="196" text-anchor="middle">AGENT</text>
     <text class="orbit-center" x="200" y="214" text-anchor="middle">MEMORY</text>
@@ -726,9 +754,9 @@ function renderTopics() {
       </div>
       <aside>
         <div class="orbit-panel reveal">
-          <h3>Topic orbit / 当前快照条目数</h3>
+          <h3>Topic orbit / 当前收录条目数</h3>
           <div class="orbit">${renderOrbit()}</div>
-          <p class="mono faint" style="margin-top:8px;line-height:1.7">圆点大小 = 当前快照条目数。轨道图只表示分布，不表示主题之间的因果或层级关系。</p>
+          <p class="mono faint" style="margin-top:8px;line-height:1.7">圆点大小 = 当前收录条目数。轨道图只表示分布，不表示主题之间的因果或层级关系。</p>
         </div>
         <div class="orbit-panel reveal" style="position:static;margin-top:16px">
           <h3>五个辅助维度</h3>
@@ -760,8 +788,8 @@ function renderProjects() {
   const releases = items.filter((item) => item.kind === "release").sort((a, b) => String(b.published).localeCompare(String(a.published)));
   return `<section class="section" style="border-bottom:0;padding-top:44px">
     <div class="section-head">
-      <div><p class="index">PROJECTS / GITHUB SNAPSHOT</p><h2>项目与发布</h2></div>
-      <p class="section-note">Stars 是 GitHub 快照，不是热度结论。基础设施项目会被标注，避免把“向量库”误当成完整的记忆系统。</p>
+      <div><p class="index">PROJECTS / INDEX</p><h2>项目与发布</h2></div>
+      <p class="section-note">星标仅作参考，不是热度结论。基础设施项目会被标注，避免把“向量库”误当成完整的记忆系统。</p>
     </div>
     <div class="filterbar" style="position:static;margin-bottom:18px">
       <div class="chips" role="group" aria-label="项目分类">
@@ -789,7 +817,7 @@ function renderProjects() {
               <span>${esc(project.language || "语言未标注")}</span>
               <span>${esc(project.license || "许可未标注")}</span>
               <span>更新 ${esc(formatDate(project.updatedAt))}</span>
-              <span>★ 快照 ${esc(formatDate(project.starsCheckedAt))}</span>
+              <span>★ 更新于 ${esc(formatDate(project.starsCheckedAt))}</span>
             </div>
           </a>`
         )
@@ -871,278 +899,42 @@ function renderBenchmarks() {
   </section>`;
 }
 
-function flowRow(column, trigger, source, artifact, freshness, failure) {
-  return `<tr><td>${esc(column)}</td><td>${esc(trigger)}</td><td>${esc(source)}</td><td>${esc(artifact)}</td><td>${esc(freshness)}</td><td>${esc(failure)}</td></tr>`;
-}
-
-function renderPipeline() {
-  const sourceList = sources.sources || [];
-  const okCount = sourceList.filter((source) => source.status === "ok").length;
-  const stats = meta.stats || {};
+function renderSubscribe() {
   const ntfy = meta.ntfy;
-  const ntfyBlock = ntfy
-    ? `<div class="callout reveal" style="border-color:rgba(15,107,79,.35)">
-        <h4>真实推送：ntfy</h4>
-        <p>每天成刊后，Actions 会把日报发到 ntfy topic。手机安装 ntfy app，或直接打开订阅页；不需要账号，也不需要保持网页打开。</p>
-        <p class="mono" style="margin-top:8px;color:var(--muted)">${esc(ntfy.server)} / ${esc(ntfy.topic)}</p>
-        <div class="detail-actions" style="margin-top:14px">
-          <a class="button" href="${safeUrl(`${ntfy.server}/${ntfy.topic}`)}" target="_blank" rel="noopener">订阅 ntfy ↗</a>
-          <button class="button secondary" type="button" data-action="copy-ntfy">复制订阅地址</button>
-        </div>
-      </div>`
-    : `<div class="callout reveal">
-        <h4>真实推送：ntfy（待配置）</h4>
-        <p>在仓库 Secrets 里设置 <code>NTFY_TOPIC</code>（一个随机字符串），Actions 就会每天把日报推送到该 topic；页面这里会出现订阅链接。无需账号，也不需要 Web Push 服务端。</p>
-      </div>`;
-  return `<section class="section" style="border-bottom:0;padding-top:44px">
-    <div class="pipeline-hero">
-      <div class="pipeline-copy reveal">
-        <p class="kicker">PIPELINE / HOW THE PUSH WORKS</p>
-        <h2>推送不是一个按钮，<br />是一条有状态的流水线。</h2>
-        <p>GitHub Pages 只负责托管静态文件。真正的“推送”发生在 Actions：定时采集、去重、分类、成刊、构建，再把 JSON、RSS 和页面一起部署。读者打开页面时不会触发模型调用，也不会访问外部 API。</p>
-      </div>
-      <div class="pipeline-stats reveal">
-        <div class="pipeline-stat"><b>${okCount}/${sourceList.length}</b><span>信源正常</span></div>
-        <div class="pipeline-stat"><b>${stats.items ?? items.length}</b><span>快照条目</span></div>
-        <div class="pipeline-stat"><b>08:10</b><span>北京时间 / 每日</span></div>
-        <div class="pipeline-stat"><b>0</b><span>页面模型调用</span></div>
-      </div>
-    </div>
-
-    <div class="pipeline-track reveal" aria-label="推送流水线">
-      ${[
-        ["01", "采集", "daily 08:10", "arXiv / HF / Releases / RSS", "按源设置超时、重试与分页上限；失败写入状态。"],
-        ["02", "归一化", "同一运行", "标题、摘要、日期、arXiv ID", "合并 arXiv 与 HF 的同一篇论文；保留原始链接。"],
-        ["03", "筛选", "规则 + 可选模型", "相关性、主题、证据等级", "缺少 Agent/记忆交集的条目丢弃；厂商自测降级。"],
-        ["04", "成刊", "同一运行", "digest + picks", "今日重点按主题分散；不把同一主题塞满。"],
-        ["05", "构建", "同一运行", "JSON / RSS / llms.txt", "校验 ID、日期和栏目引用；构建失败不覆盖旧站。"],
-        ["06", "分发", "部署后", "RSS / ntfy / 飞书 / Telegram", "按日期去重；通知失败不影响站点发布。"]
-      ]
-        .map(
-          ([number, title, cadence, artifact, note]) => `<div class="station">
-            <span class="station-no">${number}</span>
-            <h4>${title}</h4>
-            <div class="station-cadence">${esc(cadence)}</div>
-            <p><strong style="color:var(--muted)">${esc(artifact)}</strong><br />${esc(note)}</p>
-          </div>`
-        )
-        .join("")}
-    </div>
-
+  return `<section class="section subscribe-page" style="border-bottom:0;padding-top:44px">
     <div class="section-head">
-      <div><p class="index">CONTRACT / PER COLUMN</p><h2>每个栏目怎么推送</h2></div>
-      <p class="section-note">每个栏目都写清触发、来源、产物、新鲜度字段和失败方式。没有产物的栏目，不做假开关。</p>
+      <div><p class="index">SUBSCRIBE / DAILY</p><h2>每天 08:10，<br />收到今天的记忆动态。</h2></div>
+      <p class="section-note">一次推送 8 条重点，按机制、安全、评测、具身与多模态分栏。不是信息流，是一份有取舍的每日记忆。</p>
     </div>
-    <div class="flow-table-wrap reveal">
-      <table class="flow-table">
-        <thead><tr><th>栏目</th><th>触发</th><th>来源</th><th>产物</th><th>新鲜度</th><th>失败时</th></tr></thead>
-        <tbody>
-          ${flowRow("今日推送", "每天 08:10（cron）", "同一份 items 快照", "data/digests/YYYY-MM-DD.json", "generatedAt / checkedAt", "保留上一期，页面显示 stale")}
-          ${flowRow("全部动态", "随快照", "data/items.json", "data/items.json + api/v1/items.json", "checkedAt", "旧快照继续可读")}
-          ${flowRow("记忆安全", "规则 + 编辑复核", "items 的 security 字段", "security.angles + note", "随条目", "没有命中就不显示，不硬凑")}
-          ${flowRow("主题地图", "构建时汇总", "taxonomy + items", "counts / topic orbit", "taxonomyVersion", "分类失败则不发布该构建")}
-          ${flowRow("项目", "每日 / 每周一", "GitHub Releases + Search API", "data/projects.json", "starsCheckedAt", "保留上次星数并标时间")}
-          ${flowRow("Benchmark", "人工核对", "官方仓库 / 论文", "data/benchmarks.json", "checkedAt", "不自动改分；保留上一定义")}
-          ${flowRow("信源状态", "每次采集", "每个源的请求结果", "data/sources.json", "lastCheckedAt / lastSuccessAt", "错误直接展示，不隐藏")}
-          ${flowRow("RSS", "构建后", "items + digest", "feed.xml", "lastBuildDate / pubDate", "订阅器继续读旧缓存")}
-          ${flowRow("JSON", "构建后", "items + digest", "api/v1/*.json", "generatedAt", "静态 404，不影响页面")}
-          ${flowRow("飞书 / Telegram", "成刊后", "notify.mjs", "卡片 / 消息", "按日期去重", "3 次重试；失败只记日志")}
-          ${flowRow("ntfy", "成刊后", "notify.mjs → NTFY_SERVER", "JSON 消息", "按日期去重", "3 次重试；失败只记日志")}
-          ${flowRow("Web Push", "不支持", "无服务端订阅存储", "—", "—", "不提供假开关")}
-        </tbody>
-      </table>
-    </div>
-
-    <div class="section" style="padding-bottom:0">
-      <div class="section-head">
-        <div><p class="index">SOURCE HEALTH</p><h2>信源状态</h2></div>
-        <p class="section-note">${esc(sources.note || "失败可见，是推送系统的一部分。时间均为本次构建读取到的状态。")}</p>
+    <div class="subscribe-grid">
+      <div class="subscribe-card">
+        <span class="subscribe-label">RSS</span>
+        <h3>用你常用的阅读器订阅</h3>
+        <p>条目随每日更新，保留原文链接和证据说明；不需要账号。</p>
+        <div class="subscribe-actions">
+          <a class="button" href="feed.xml">打开 RSS</a>
+          <button class="button secondary" type="button" data-action="copy-feed">复制地址</button>
+        </div>
       </div>
-      <div class="source-table-wrap">
-        <table class="source-table">
-          <thead><tr><th>信源</th><th>类型</th><th>本次候选</th><th>检查时间</th><th>上次成功</th><th>状态</th></tr></thead>
-          <tbody>
-            ${sourceList
-              .map((source) => {
-                const statusLabel = source.status === "ok" ? "正常" : source.status === "error" ? "失败" : "等待运行";
-                return `<tr>
-                  <td><div class="source-name"><span class="status-dot ${esc(source.status)}"></span><span>${esc(source.name)}<small>${esc(source.note || "")}</small></span></div></td>
-                  <td>${esc(source.kind || "")}</td>
-                  <td>${source.returned ?? "—"}${source.scanned ? `<br /><span class="mono faint">扫描 ${source.scanned}</span>` : ""}</td>
-                  <td>${esc(source.lastCheckedAt ? formatDate(source.lastCheckedAt, true) : "—")}</td>
-                  <td>${esc(source.lastSuccessAt ? formatDate(source.lastSuccessAt, true) : "—")}</td>
-                  <td><span class="source-${source.status === "ok" ? "ok" : "error"}">${statusLabel}${source.error ? `<br />${esc(source.error)}` : ""}</span></td>
-                </tr>`;
-              })
-              .join("")}
-          </tbody>
-        </table>
+      <div class="subscribe-card">
+        <span class="subscribe-label">ntfy</span>
+        <h3>手机 / 浏览器通知</h3>
+        <p>每天更新后收到一条通知，包含今天的重点标题和原文链接。</p>
+        ${ntfy
+          ? `<div class="subscribe-actions"><a class="button" href="${safeUrl(`${ntfy.server}/${ntfy.topic}`)}" target="_blank" rel="noopener">订阅 ntfy</a><button class="button secondary" type="button" data-action="copy-ntfy">复制订阅地址</button></div><p class="mono subscribe-topic"><span>${esc(ntfy.server)}</span><span>${esc(ntfy.topic)}</span></p>`
+          : `<p class="subscribe-pending">ntfy 即将开放；先用 RSS 订阅。</p>`}
       </div>
     </div>
-
-    <div class="section" style="padding-bottom:0">
-      <div class="section-head">
-        <div><p class="index">CHANNELS</p><h2>读者侧的推送通道</h2></div>
-        <p class="section-note">能做的做，不能做的不装。RSS 和 JSON 是承诺；飞书 / Telegram / ntfy 需要配置；Web Push 在纯静态站上不成立。</p>
+    <div class="subscribe-note">
+      <h3>推送什么</h3>
+      <div class="subscribe-list">
+        <span>今日重点</span><span>研究论文</span><span>项目发布</span><span>记忆安全</span><span>评测与基准</span>
       </div>
-      <div class="channel-grid">
-        ${site.channels
-          .map(
-            (channel) => `<div class="channel-card reveal">
-              <div class="channel-top"><h4>${esc(channel.name)}</h4><span class="channel-state ${esc(channel.state)}">${channel.state === "on" ? "ON" : channel.state === "optional" ? "OPTIONAL" : "OFF"}</span></div>
-              <p>${esc(channel.detail)}</p>
-              <span class="channel-cadence">${esc(channel.cadence)}</span>
-            </div>`
-          )
-          .join("")}
-      </div>
-      ${ntfyBlock}
-      <div class="callout reveal">
-        <h4>为什么没有 Web Push</h4>
-        <p>Web Push 需要一个服务端保存订阅、持有 VAPID 私钥并发送通知。GitHub Pages 只托管静态文件，没有这个服务端。用 Service Worker 在本地“模拟”通知，用户关掉页面就失效，那是假 Push。这里的替代方案是 ntfy、RSS、飞书 / Telegram（Actions 发出）和页面打开时的快照巡检。</p>
-      </div>
+      <p>每天北京时间 08:10 更新一次。不追实时，不重复推同一件事；没有新内容时，推送会保持安静。</p>
     </div>
-
-    <div class="section" style="padding-bottom:0">
-      <div class="section-head">
-        <div><p class="index">ONE RUN</p><h2>一次推送的时序</h2></div>
-        <p class="section-note">时间以北京时间为准。GitHub Actions 的 cron 可能延迟几分钟，页面不承诺秒级。</p>
-      </div>
-      <div class="timeline">
-        ${[
-          ["08:10", "触发", "Actions 按 cron 启动；也可以手动 workflow_dispatch。"],
-          ["08:10–08:12", "采集", "并发请求 arXiv、HF、GitHub Releases 与 RSS；每个源独立超时。"],
-          ["08:12", "归一化", "合并 arXiv / HF 的同一篇论文，清理追踪参数，保留原始链接。"],
-          ["08:13", "筛选与分级", "相关性规则；厂商自测、评论文章、媒体报道分别标注证据等级。"],
-          ["08:14", "成刊", "选 picks，按主题分散；写入 digest 与栏目引用。"],
-          ["08:15", "构建", "生成 JSON、RSS、llms.txt、sitemap；校验 ID 与日期。"],
-          ["08:16", "部署", "上传 Pages artifact 并发布；失败时保留上一版。"],
-          ["08:17", "通知", "可选：飞书卡片 / Telegram；按日期去重。"],
-          ["08:20", "收尾", "检查部署与通知日志；搜索引擎索引交给 sitemap 与外部爬虫。"]
-        ]
-          .map(([time, title, note]) => `<div class="timeline-step"><time>${time}</time><h4>${title}</h4><p>${note}</p></div>`)
-          .join("")}
-      </div>
-    </div>
-
-    <div class="section" style="padding-bottom:0">
-      <div class="section-head">
-        <div><p class="index">REPRODUCE</p><h2>本地复现</h2></div>
-        <p class="section-note">不需要数据库，不需要框架。Node 24 直接跑。</p>
-      </div>
-      <div class="prose" style="margin:0;max-width:none">
-        <pre style="overflow:auto;border:1px solid var(--line);background:var(--code-bg);padding:18px;font-family:var(--mono);font-size:12px;line-height:1.8;color:var(--code-text)">node scripts/collect.mjs          # 采集真实信源，写 src/data
-node scripts/build.mjs            # 生成 dist、RSS、JSON、llms.txt
-node scripts/notify.mjs --dry-run # 打印飞书卡片，不发送
-node scripts/serve.mjs            # http://127.0.0.1:4173/agent-memory-push/</pre>
-        <p><a href="https://github.com/yangxc0414/agent-memory-push" rel="noopener">仓库与 Actions 配置 ↗</a></p>
-      </div>
-    </div>
+    <p class="subscribe-disclaimer">本站是公开信息的聚合与阅读索引，不是同行评审、投资建议或安全认证。论文多为预印本；原文版权归各来源所有。</p>
   </section>`;
 }
-
-function renderMethod() {
-  return `<section class="method-hero">
-    <p class="kicker">METHOD / A REFLECTION ON PUSH</p>
-    <h1>把“推送”拆开看，<br />它其实是一份契约。</h1>
-    <p class="lead">参考站看起来像在“每天推送”，但浏览器里没有 Push API，也没有 WebSocket。它做的是一件事：在服务端定时生成一份快照，然后把快照以页面、RSS 和 JSON 三种形式摆出来。读者是否回来，是读者的动作；站点能做的是把“新鲜”和“失败”说清楚。</p>
-    <div class="method-meta"><span>READING TIME ≈ 12 MIN</span><span>SNAPSHOT ${esc(formatDate(meta.checkedAt, true))}</span><span>NO MODEL CALLS IN BROWSER</span></div>
-    <div class="method-toc">
-      <a href="#/method" data-scroll="method-reference">参考站怎么做的</a>
-      <a href="#/method" data-scroll="method-columns">每个栏目的契约</a>
-      <a href="#/method" data-scroll="method-aihot">AIHOT 里借了什么</a>
-      <a href="#/method" data-scroll="method-pages">搬到 Pages 变了什么</a>
-      <a href="#/method" data-scroll="method-limits">局限</a>
-    </div>
-  </section>
-  <section class="section">
-    <article class="prose">
-      <p class="prose-hero-quote">“推送”不是把内容塞给读者，而是让读者在回来的时候，能一眼判断：这是什么时候的、从哪里来的、值不值得信。</p>
-
-      <h2 id="method-reference">一、参考站是怎么“推送”的</h2>
-      <p>我检查了 <a href="https://agent-memory-hot.pale-rook-5118.chatgpt.site/" target="_blank" rel="noopener">Agent Memory Hot</a> 的前端：没有 Service Worker，没有 <code>pushManager</code>，没有 <code>Notification</code>，也没有轮询定时器。页面脚本只做四类请求：<code>/api/items</code>、<code>/api/projects</code>、<code>/api/benchmarks</code>、<code>/api/surveys</code>，外加一个手动“刷新列表”按钮。RSS 是 <code>/feed.xml</code>，全量数据在 <code>/api/export</code>。</p>
-      <p>所以它的“推送”发生在服务端，而不是浏览器：按日采集一批公开源，去重、审核、写中文摘要、分类，生成一个带 <code>checkedAt</code> 的快照；页面和 RSS 只是读取这个快照。每日速览、历史归档、记忆安全、主题地图这些栏目，本质上都是同一份 items 的不同切片；项目、Benchmark、综述则各有自己的接口和时间戳。</p>
-      <div class="table-wrap"><table>
-        <thead><tr><th>参考站栏目</th><th>数据从哪来</th><th>实际更新方式</th><th>读者感知</th></tr></thead>
-        <tbody>
-          <tr><td>最新动态</td><td><code>/api/items</code> 全量快照</td><td>服务端每日采集；页面手动刷新</td><td>刷新按钮 + 条目时间</td></tr>
-          <tr><td>每日速览</td><td>同一份 items，按日期切片</td><td>浏览器端计算，没有单独日报文件</td><td>当天条目聚合</td></tr>
-          <tr><td>历史归档</td><td>同一份 items，按天分组</td><td>浏览器端计算</td><td>日期目录</td></tr>
-          <tr><td>记忆安全</td><td><code>securityReview</code> 字段</td><td>采集时审核写入</td><td>安全角度筛选</td></tr>
-          <tr><td>主题地图</td><td>taxonomy + 硬编码 roadmap + <code>/api/surveys</code></td><td>部分静态，部分接口</td><td>主题节点与综述引用</td></tr>
-          <tr><td>Benchmark</td><td><code>/api/benchmarks</code></td><td>人工核对，<code>verifiedAt</code></td><td>榜单表格与协议切换</td></tr>
-          <tr><td>GitHub 项目</td><td><code>/api/projects</code></td><td>GitHub API 快照，<code>starsCheckedAt</code></td><td>星数与更新时间</td></tr>
-          <tr><td>信源管理</td><td><code>sources</code> 数组</td><td>每次采集写状态</td><td>正常 / 失败 / 截断</td></tr>
-          <tr><td>RSS</td><td><code>/feed.xml</code></td><td>服务端生成</td><td>订阅器轮询</td></tr>
-        </tbody>
-      </table></div>
-      <p>这个设计有几个值得学的地方：<strong>失败是可见的</strong>。源状态会显示“读取失败”“分页截断，需补查”，候选数和扫描数分开写；<strong>时间口径是明确的</strong>。论文首次提交、正式公告、修订、新闻发布、项目星标各有各的时间；<strong>栏目不是越多越好</strong>。它把“每天有什么”与“长期坐标”分开，避免所有内容都挤进一个时间流。</p>
-      <p>它也有明显的边界：每次取全量快照（<code>no-store</code>），没有增量接口；没有 ETag / 条件请求；Web Push 不存在；Benchmark 分数是人工维护的；页面刷新是手动的。它是一份<em>每日编辑产品</em>，不是实时系统。</p>
-
-      <h2 id="method-columns">二、每个栏目应该有一份推送契约</h2>
-      <p>“这个栏目怎么更新”不能只写一句“每天更新”。至少要说清五件事：触发是什么、数据从哪来、产物是什么、新鲜度看哪个字段、失败时读者看到什么。本站把这份契约直接放在“信源与推送”页里，下面是摘要：</p>
-      <div class="table-wrap"><table>
-        <thead><tr><th>栏目</th><th>触发</th><th>产物</th><th>新鲜度</th><th>失败时</th></tr></thead>
-        <tbody>
-          <tr><td>今日推送</td><td>每天 08:10</td><td><code>data/digests/YYYY-MM-DD.json</code></td><td><code>generatedAt</code></td><td>保留上一期，标 stale</td></tr>
-          <tr><td>全部动态</td><td>随快照</td><td><code>data/items.json</code></td><td><code>checkedAt</code></td><td>旧快照继续可读</td></tr>
-          <tr><td>记忆安全</td><td>规则 + 复核</td><td><code>security.angles</code></td><td>随条目</td><td>不硬凑条目</td></tr>
-          <tr><td>主题地图</td><td>构建时</td><td>counts + orbit</td><td><code>taxonomyVersion</code></td><td>构建失败不发布</td></tr>
-          <tr><td>项目</td><td>每日 / 每周</td><td><code>projects.json</code></td><td><code>starsCheckedAt</code></td><td>保留上次星数</td></tr>
-          <tr><td>Benchmark</td><td>人工</td><td><code>benchmarks.json</code></td><td><code>checkedAt</code></td><td>不自动改分</td></tr>
-          <tr><td>信源</td><td>每次采集</td><td><code>sources.json</code></td><td><code>lastCheckedAt</code></td><td>错误直接展示</td></tr>
-          <tr><td>RSS</td><td>构建后</td><td><code>feed.xml</code></td><td><code>lastBuildDate</code></td><td>旧缓存继续用</td></tr>
-        </tbody>
-      </table></div>
-      <p>这份表也解释了为什么有些“推送”不该做：如果一个栏目没有独立的数据源和产物，就不要给它单独做一个推送开关。那只是把同一个快照切了两次，增加了维护面，没有增加信息。</p>
-
-      <h2 id="method-aihot">三、AIHOT 仓库里，哪些机制值得借</h2>
-      <p>这个站点的结构参考了 <a href="https://github.com/KKKKhazix/AIHOT" target="_blank" rel="noopener">AIHOT</a> 的公开引擎。它把“采集 → 筛选 → 写作 → 聚簇 → 成刊 → 分发”拆成了独立步骤，下面这些机制在本次静态化里被保留或改写：</p>
-      <ul>
-        <li><strong>排程</strong>：AIHOT 用 <code>apps/worker/src/schedules.ts</code> 的 pg-boss cron，日报默认 08:00、周报周一 10:00、月报 1 日 10:30（<code>Asia/Shanghai</code>）。本站把它换成 GitHub Actions 的 <code>10 0 * * *</code>，即北京时间 08:10；没有数据库，也没有 missed-run 补跑。</li>
-        <li><strong>成刊</strong>：AIHOT 的 <code>packages/backend/src/reports/compose.ts</code> 里，日报是规则成刊，不调用模型；周报月报从日报汇编，只让模型写总述。本站的 digest 也是规则选 picks，模型只在可选的摘要步骤出现。</li>
-        <li><strong>RSS</strong>：AIHOT 在 <code>packages/backend/src/publication/feeds.ts</code> 提供精选、全部、全文、日报、周报、月报和分类 RSS，并按请求生成。本站只保留一个 <code>feed.xml</code>，在构建时生成，避免 Pages 没有运行时的问题。</li>
-        <li><strong>JSON API</strong>：AIHOT 的 <code>apps/api/src/routes/v1.ts</code> 有 <code>/api/v1/items</code>、<code>/hot-topics</code>、<code>/stories/:id</code>、<code>/dailies</code> 等接口，带 ETag 和 60–300 秒缓存。本站把它降级成静态 <code>api/v1/*.json</code>，用构建时间做版本。</li>
-        <li><strong>飞书推送</strong>：AIHOT 的 <code>packages/backend/src/notify/selected-content.ts</code> 只推新入选、非补录、12 小时内、未被静音的条目，卡片包含标题、来源、摘要、推荐理由和两个按钮。本站的 <code>scripts/notify.mjs</code> 保留“只推一次、按日期去重、失败重试”的骨架，但把触发放在 Actions。</li>
-        <li><strong>外部内容推入</strong>：AIHOT 的 <code>apps/api/src/routes/ingest.ts</code> 提供 <code>POST /api/ingest/items</code>，Bearer Token，单次最多 50 条。本站没有服务端，改用“提交 JSON / PR”而不是在线 ingest；这是能力上的明确降级。</li>
-        <li><strong>给 Agent 的出口</strong>：AIHOT 有 MCP、Agent Markdown、<code>llms.txt</code>、sitemap、IndexNow。本站保留 <code>llms.txt</code>、sitemap 和静态 JSON；MCP 服务端和 IndexNow 提交未实现，因为前者需要运行时、后者需要额外的 key 与部署后回调。</li>
-      </ul>
-
-      <h2 id="method-pages">四、搬到 GitHub Pages 后，什么变了</h2>
-      <div class="table-wrap"><table>
-        <thead><tr><th>能力</th><th>参考站 / AIHOT</th><th>本站</th><th>结论</th></tr></thead>
-        <tbody>
-          <tr><td>运行时</td><td>Node / Fastify / Postgres / worker</td><td>纯静态 + Actions</td><td>没有数据库和按需 API</td></tr>
-          <tr><td>采集</td><td>每分钟检查到期源</td><td>每天一次批量</td><td>延迟更高，成本更低</td></tr>
-          <tr><td>模型调用</td><td>worker 内按任务调用</td><td>仅在可选摘要步骤</td><td>读者打开页面 0 调用</td></tr>
-          <tr><td>日报</td><td>数据库存 revisions</td><td>按日期静态 JSON</td><td>不可在线改稿，改稿靠提交</td></tr>
-          <tr><td>RSS</td><td>按请求生成，ETag</td><td>构建时生成</td><td>订阅可用，粒度更粗</td></tr>
-          <tr><td>MCP</td><td>匿名 Streamable HTTP</td><td>无</td><td>不假装支持</td></tr>
-          <tr><td>Web Push</td><td>没有</td><td>没有</td><td>用 ntfy + RSS + 飞书 / Telegram 替代</td></tr>
-          <tr><td>失败恢复</td><td>重试、告警、补跑</td><td>保留上次构建 + 状态页</td><td>没有自动补跑</td></tr>
-        </tbody>
-      </table></div>
-      <p>核心变化不是“功能变少”，而是<strong>把在线服务换成了构建产物</strong>。一旦接受这个约束，很多设计反而更清楚：每个栏目都必须有一个可以提交、可以 diff、可以回滚的文件；每个时间戳都必须写进文件，而不是只存在于内存；每次失败都必须留下状态，而不是静默重试。</p>
-
-      <h2 id="method-limits">五、局限与下一步</h2>
-      <p>这份站点的数据来自公开论文、官方发布与报道；当前快照 ${items.length} 条，2026-10-22 这一期由真实采集自动成刊。它不是全量索引，也不代表同行评审结论。Actions 每天用 <code>scripts/collect.mjs</code> 抓取 arXiv、HF、GitHub Releases 与 RSS，并用 Agnes 辅助写中文标题和摘要；但仍有几个限制：</p>
-      <ul>
-        <li><strong>没有实时性</strong>：每天一次快照，arXiv 公告和 GitHub release 可能延迟一天。</li>
-        <li><strong>没有全文</strong>：只展示摘要和链接，不做全文转载；这是版权和成本的双重选择。</li>
-        <li><strong>没有个性化</strong>：没有用户系统，也没有“只推我关心的主题”。</li>
-        <li><strong>没有浏览器 Web Push</strong>：纯静态 Pages 没有服务端保存订阅和签名 VAPID；真正的推送用 ntfy（Actions 发出），RSS / 飞书 / Telegram 作为补充，不提供 Web Push 假开关。</li>
-        <li><strong>模型摘要需要密钥</strong>：不配置 <code>LLM_API_KEY</code> 时，新条目保留英文摘要；配置后才生成中文概括。</li>
-        <li><strong>GitHub Actions 可能延迟</strong>：cron 不是精确时钟；页面上的“下次推送”是计划时间，不是承诺。</li>
-      </ul>
-      <p>下一步最值得做的，不是加更多栏目，而是把“证据等级”做得更硬：给每条论文补上是否同行评审、是否有公开代码、是否在官方榜提交；给每条新闻补上原始来源和二次转载链；给每个 Benchmark 补上协议版本。推送的价值不在于更快，而在于<strong>让读者少花时间判断这条消息该不该信</strong>。</p>
-
-      <h2 id="method-about">关于本站</h2>
-      <p>本站由 <a href="https://yangxc0414.github.io/" rel="me">YXC</a> 维护，使用纯静态 HTML/CSS/JS 与 Node 脚本，部署在 GitHub Pages。结构参考 <a href="https://github.com/KKKKhazix/AIHOT" target="_blank" rel="noopener">AIHOT</a>（MIT），版式和栏目设置参考 <a href="https://agent-memory-hot.pale-rook-5118.chatgpt.site/" target="_blank" rel="noopener">Agent Memory Hot</a>，但不使用它们的名字和 Logo。数据来自公开论文、官方博客与 GitHub；原文版权归各来源所有。若你是来源方，希望更正或下架，请通过 GitHub 仓库联系。</p>
-    </article>
-  </section>`;
-}
-
-/* ---------- detail dialog ---------- */
 
 function openDetail(id) {
   const item = byId.get(id);
@@ -1160,12 +952,12 @@ function openDetail(id) {
     <h2>${esc(itemTitle(item))}</h2>
     <p class="detail-sub">${esc(item.title)}<br />${esc(item.source)} · ${esc(formatDate(item.published, true))} · ${esc(item.evidence || "")}</p>
     <p class="detail-summary">${esc(itemSummary(item))}</p>
-    <div class="detail-why"><b class="mono" style="color:var(--accent);font-size:9px;letter-spacing:.08em">WHY PUSH / </b>${esc(item.why || "等待编辑补全。")}</div>
-    <div class="chips">${[...new Set([...(item.topicLabels || []), ...(item.tags || [])])].map((tagName) => `<span class="tag">${esc(tagName)}</span>`).join("")}</div>    <dl class="detail-facts">
+    <div class="detail-why"><b class="mono" style="color:var(--accent);font-size:9px;letter-spacing:.08em">推荐理由 / </b>${esc(item.why || "编辑正在整理推荐理由。")}</div>
+    <div class="chips">${[...new Set([...(item.topicLabels || []), ...(item.tags || [])])].map((tagName) => `<span class="tag">${esc(tagName)}</span>`).join("")}</div>
+    <dl class="detail-facts">
       <dt>证据等级</dt><dd>${esc(item.evidence || "未标注")}</dd>
       <dt>发表时间</dt><dd>${esc(formatDate(item.published, true))}</dd>
       <dt>来源</dt><dd>${esc(item.source)}</dd>
-      <dt>推送分</dt><dd>${esc(String(item.score ?? "—"))} / 100（编辑排序，不是质量评分）</dd>
       <dt>原文摘要</dt><dd>${esc(item.summary || "未提供。")}</dd>
       ${item.security ? `<dt>安全角度</dt><dd>${esc(item.security.angles.map((angle) => ANGLE_LABELS[angle] || angle).join(" / "))}<br />${esc(item.security.note || "")}</dd>` : ""}
     </dl>
@@ -1315,12 +1107,12 @@ function setupEvents() {
       const previous = meta?.checkedAt;
       await loadData({ bust: true });
       render(currentView, { scroll: false });
-      showToast(meta.checkedAt !== previous ? "已刷新到新快照。" : "已刷新；快照没有变化。");
+      showToast(meta.checkedAt !== previous ? "已刷新到最新内容。" : "已刷新；内容没有变化。");
     } catch (error) {
       showToast(`刷新失败：${error.message}`);
     } finally {
       button.disabled = false;
-      button.innerHTML = `<span aria-hidden="true">↻</span><span class="sr-only">刷新快照</span>`;
+      button.innerHTML = `<span aria-hidden="true">↻</span><span class="sr-only">刷新今日推送</span>`;
     }
   });
 
@@ -1346,6 +1138,23 @@ function setupEvents() {
   });
 
   window.addEventListener("hashchange", handleRoute);
+  window.addEventListener("scroll", updateScrollProgress, { passive: true });
+  window.addEventListener("resize", updateScrollProgress);
+  document.addEventListener("pointermove", (event) => {
+    const hero = event.target.closest?.(".hero");
+    if (hero) {
+      const rect = hero.getBoundingClientRect();
+      hero.style.setProperty("--mx", `${event.clientX - rect.left}px`);
+      hero.style.setProperty("--my", `${event.clientY - rect.top}px`);
+    }
+    const card = event.target.closest?.(".pick-card");
+    if (card) {
+      const rect = card.getBoundingClientRect();
+      card.style.setProperty("--mx", `${event.clientX - rect.left}px`);
+      card.style.setProperty("--my", `${event.clientY - rect.top}px`);
+    }
+  }, { passive: true });
+  updateScrollProgress();
   document.addEventListener("visibilitychange", () => {
     if (!document.hidden) checkForFreshSnapshot();
   });
@@ -1363,7 +1172,7 @@ async function checkForFreshSnapshot() {
     const fresh = await getJson("data/meta.json", true);
     if (!fresh.checkedAt || fresh.checkedAt === lastMetaCheck) return;
     lastMetaCheck = fresh.checkedAt;
-    showToast("巡检发现新快照，点右上角 ↻ 刷新。");
+    showToast("发现新内容，点右上角 ↻ 刷新。");
   } catch {
     // The page stays on the last good snapshot.
   }
@@ -1405,7 +1214,7 @@ function handleRoute() {
   if (itemId) {
     if (document.readyState === "loading" || !site) return;
     if (!byId.has(itemId)) {
-      showToast("这条内容不在当前快照里。");
+      showToast("这条内容不在今天的推送里。");
       return;
     }
     if (!document.querySelector("#view .hero")) render(currentView, { scroll: false });
@@ -1430,7 +1239,7 @@ async function init() {
     observeReveal();
   } catch (error) {
     console.error(error);
-    $("#view").innerHTML = `<section class="section" style="padding-top:80px"><div class="empty"><strong>快照读取失败</strong><p>${esc(error.message)}</p><p>你仍然可以直接打开 <a href="feed.xml">RSS</a> 或 <a href="api/v1/items.json">JSON</a>。</p><button class="button" type="button" onclick="location.reload()">重试</button></div></section>`;
+    $("#view").innerHTML = `<section class="section" style="padding-top:80px"><div class="empty"><strong>内容读取失败</strong><p>${esc(error.message)}</p><p>你仍然可以直接打开 <a href="feed.xml">RSS</a> 获取每日更新。</p><button class="button" type="button" onclick="location.reload()">重试</button></div></section>`;
   }
 }
 

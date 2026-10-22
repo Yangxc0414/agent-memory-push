@@ -11,7 +11,7 @@
 
 一个纯静态的“每日推送”站：
 
-- **页面**：今日推送、全部动态、记忆安全、主题地图、项目与发布、Benchmark、信源与推送、方法与反思。
+- **页面**：今日推送、全部动态、记忆安全、主题地图、项目与发布、Benchmark、订阅。前端只展示内容与订阅方式，不展示建站/流水线细节。
 - **数据**：论文 / 新闻 / 官方发布三类条目，带中文摘要、推送理由、证据等级、主题标签和安全角度。
 - **推送**：RSS、JSON、ntfy（真实手机/浏览器推送）、飞书 / Telegram（可选）、GitHub Watch；没有 Web Push，也不假装有。
 - **编辑**：所有内容先落成可以 diff、可以回滚的文件，再由 GitHub Pages 发布；读者打开页面不触发任何模型调用。
@@ -38,7 +38,7 @@ arXiv API / HF Daily Papers / GitHub Releases / RSS
                     └── scripts/notify.mjs → ntfy / 飞书 / Telegram（可选）
 ```
 
-每个栏目都有一份“推送契约”：触发、来源、产物、新鲜度字段、失败方式。完整表格在页面 `#/pipeline`，这里给摘要：
+每个栏目都有一份“推送契约”：触发、来源、产物、新鲜度字段、失败方式。完整表格在 [docs/push-contract.md](docs/push-contract.md)，不在前端展示；这里给摘要：
 
 | 栏目 | 触发 | 产物 | 新鲜度 | 失败时 |
 | --- | --- | --- | --- | --- |
@@ -73,7 +73,7 @@ arXiv API / HF Daily Papers / GitHub Releases / RSS
 | MCP | 匿名 Streamable HTTP | 无，不假装支持 |
 | Web Push | 没有 | 没有；用 ntfy + RSS + 飞书 / Telegram 替代 |
 
-更完整的分析写在站点的 `#/method` 页面，以及 [docs/push-contract.md](docs/push-contract.md)。
+更完整的分析写在 [docs/push-contract.md](docs/push-contract.md)，前端只保留内容与订阅入口。
 
 ### 每天会更新吗？
 
@@ -162,7 +162,7 @@ npm test                 # 本地 mock webhook，验证飞书卡片结构与按�
 
 1. 在仓库 Secrets 设置 `NTFY_TOPIC`，例如一个随机字符串。
 2. 手机安装 [ntfy](https://ntfy.sh/) app，或在浏览器打开 `https://ntfy.sh/<NTFY_TOPIC>`。
-3. 每天 Actions 成刊后会发布一条消息；站点 `#/pipeline` 会出现“订阅 ntfy”链接。
+3. 每天 Actions 成刊后会发布一条消息；站点 `#/subscribe` 会出现“订阅 ntfy”入口。
 
 ntfy 是公开 topic：知道地址的人都能订阅，所以用长随机串，不要把 topic 当成密码。飞书 / Telegram 的卡片结构和 ntfy 的去重逻辑可以用 `npm test` 验证；测试只连本地 mock，不访问外部服务。
 
