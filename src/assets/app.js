@@ -425,7 +425,7 @@ function renderToday() {
     .join("");
   return `<section class="hero">
     <div class="hero-copy reveal">
-      <p class="kicker">AGENT MEMORY / DAILY PUSH · ${esc(digest.date || meta.date)}</p>
+      <p class="kicker">智能体记忆推送 · ${esc(digest.date || meta.date)}</p>
       <h1 class="daily-title">${esc(digest.title || "今天的记忆推送")}</h1>
       <p class="hero-tagline">记忆不该被遗忘。</p>
       <p class="lead">${esc(site.intro)}</p>
@@ -645,7 +645,7 @@ function renderArchiveDigest(data) {
   const picks = (data.picks || []).map((pick, index) => pickCard(pick, index)).join("");
   const sections = (data.sections || []).map(digestSection).join("");
   return `<div class="archive-head">
-    <p class="kicker">ARCHIVE / ${esc(data.date || archiveDate)}</p>
+    <p class="kicker">往日推送 · ${esc(data.date || archiveDate)}</p>
     <h3>${esc(data.title || "记忆日报")}</h3>
     <p class="lead">${esc(data.lead || "")}</p>
     <span class="mono">${esc(data.window?.label || "")}</span>
