@@ -1,5 +1,5 @@
 const DATA_BASE = new URL("./", document.baseURI);
-const VIEWS = new Set(["today", "feed", "catalog", "calendar", "security", "topics", "projects", "benchmarks"]);
+const VIEWS = new Set(["today", "feed", "catalog", "calendar", "topics", "projects", "benchmarks"]);
 const KIND_LABELS = { paper: "论文", news: "新闻", release: "发布" };
 const ANGLE_LABELS = {
   attack: "攻击面",
@@ -30,7 +30,6 @@ let lastMetaCheck = null;
 
 const state = {
   feed: { kind: "all", topic: "all", q: "", range: "all", sort: "newest", security: false, limit: 18 },
-  securityAngle: "all",
   projectCategory: "all",
   projectSort: "stars",
   calendarMonth: null
@@ -285,7 +284,6 @@ function render(view = currentView, { scroll = true } = {}) {
     feed: "全部动态",
     catalog: "研究目录",
     calendar: "日历",
-    security: "记忆安全",
     topics: "主题地图",
     projects: "项目与发布",
     benchmarks: "Benchmark"
@@ -306,7 +304,6 @@ function renderView(view) {
   if (view === "feed") return renderFeed();
   if (view === "catalog") return renderCatalog();
   if (view === "calendar") return renderCalendar();
-  if (view === "security") return renderSecurity();
   if (view === "topics") return renderTopics();
   if (view === "projects") return renderProjects();
   if (view === "benchmarks") return renderBenchmarks();
@@ -478,10 +475,9 @@ function renderToday() {
       <p class="section-note">每一栏都是今天内容的不同切面。先看你在意的方向，再回到完整列表。</p>
     </div>
     <div class="quick-grid">
-      ${quickCard("记忆安全", `${stats.security ?? 0} 条`, "攻击、隐私、来源与治理", "#/security", "coral", 0)}
-      ${quickCard("主题地图", `${taxonomy.topics.length} 个主题`, "从机制到具身、多模态", "#/topics", "accent", 1)}
-      ${quickCard("项目与发布", `${projects.projects.length} 个项目`, "值得跟踪的项目与官方发布", "#/projects", "teal", 2)}
-      ${quickCard("Benchmark", `${benchmarks.benchmarks.length} 个基准`, "评测基准与官方入口", "#/benchmarks", "blue", 3)}
+      ${quickCard("主题地图", `${taxonomy.topics.length} 个主题`, "从机制到具身、多模态", "#/topics", "accent", 0)}
+      ${quickCard("项目与发布", `${projects.projects.length} 个项目`, "值得跟踪的项目与官方发布", "#/projects", "teal", 1)}
+      ${quickCard("Benchmark", `${benchmarks.benchmarks.length} 个基准`, "评测基准与官方入口", "#/benchmarks", "blue", 2)}
     </div>
   </section>`;
 }
@@ -804,54 +800,6 @@ function renderCatalog() {
         .join("")}
     </div>
     <p class="catalog-foot">目录随每日采集更新；想按时间浏览，去 <a href="#/feed">全部动态</a>。</p>
-  </section>`;
-}
-
-function renderSecurity() {
-  const securityItems = items.filter((item) => item.security);
-  const angleCounts = Object.fromEntries(
-    Object.keys(ANGLE_LABELS).map((angle) => [
-      angle,
-      securityItems.filter((item) => item.security.angles.includes(angle)).length
-    ])
-  );
-  const list =
-    state.securityAngle === "all"
-      ? securityItems
-      : securityItems.filter((item) => item.security.angles.includes(state.securityAngle));
-  return `<section class="section" style="border-bottom:0;padding-top:44px">
-    <div class="section-head">
-      <div><p class="index">SECURITY / ${securityItems.length} ITEMS</p><h2>记忆安全</h2></div>
-      <p class="section-note">记忆一旦写入，就会在会话结束后继续存在。安全不是一个过滤器，而是写入、存储、检索、执行与遗忘的整条生命周期。</p>
-    </div>
-    <div class="security-banner">
-      <div class="security-quote reveal">
-        <p>“攻击者不需要一直在线。一次成功的写入，<em>可以在很多轮对话之后</em>才被触发。”</p>
-        <span>这也是为什么单轮提示注入防御不够：评测要看载荷在会话结束后的存活。</span>
-      </div>
-      <div class="security-quote reveal">
-        <p style="font-size:20px">${securityItems.length} 条安全相关</p>
-        <span>${Object.entries(angleCounts).map(([angle, value]) => `${ANGLE_LABELS[angle]} ${value}`).join(" · ")}<br />按攻击、防御、隐私、溯源、评测标注；不等同于安全认证。</span>
-      </div>
-    </div>
-    <div class="lifecycle">
-      ${[
-        ["01", "写入", "哪些内容有资格进入记忆？谁授权？"],
-        ["02", "存储", "来源、版本、权限与加密是否随内容保存？"],
-        ["03", "检索", "低信任内容会不会被当成用户指令？"],
-        ["04", "执行", "动作提交前是否比较来源与替代方案？"],
-        ["05", "遗忘", "删除、回滚与审计是否真的可验证？"]
-      ]
-        .map(([number, title, note]) => `<div class="lifecycle-stage reveal"><b>${number} / LIFECYCLE</b><h4>${title}</h4><p>${note}</p></div>`)
-        .join("")}
-    </div>
-    <div class="filterbar" style="position:static;margin-bottom:18px">
-      <div class="chips" role="group" aria-label="安全角度筛选">
-        <button class="chip ${state.securityAngle === "all" ? "active" : ""}" type="button" data-action="set-angle" data-angle="all">全部角度 <span class="count">${securityItems.length}</span></button>
-        ${Object.entries(ANGLE_LABELS).map(([angle, label]) => `<button class="chip ${state.securityAngle === angle ? "active" : ""}" type="button" data-action="set-angle" data-angle="${angle}">${label} <span class="count">${angleCounts[angle]}</span></button>`).join("")}
-      </div>
-    </div>
-    <div class="item-list">${list.map((item, index) => itemCard(item, index)).join("") || `<div class="empty"><strong>这个角度暂无条目</strong><p>换一个角度，或者回到全部动态。</p></div>`}</div>
   </section>`;
 }
 
@@ -1236,9 +1184,6 @@ function setupEvents() {
       render("calendar", { scroll: false });
     } else if (action === "open-archive") {
       openArchiveDay(actionEl.dataset.date);
-    } else if (action === "set-angle") {
-      state.securityAngle = actionEl.dataset.angle || "all";
-      render("security", { scroll: false });
     } else if (action === "clear-filters") {
       state.feed = { kind: "all", topic: "all", q: "", range: "all", sort: "newest", security: false, limit: 18 };
       updateFeedHash();
