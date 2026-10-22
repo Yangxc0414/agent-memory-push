@@ -1,5 +1,5 @@
 const DATA_BASE = new URL("./", document.baseURI);
-const VIEWS = new Set(["today", "feed", "security", "topics", "projects", "benchmarks", "subscribe"]);
+const VIEWS = new Set(["today", "feed", "security", "topics", "projects", "benchmarks"]);
 const KIND_LABELS = { paper: "论文", news: "新闻", release: "发布" };
 const ANGLE_LABELS = {
   attack: "攻击面",
@@ -280,8 +280,7 @@ function render(view = currentView, { scroll = true } = {}) {
     security: "记忆安全",
     topics: "主题地图",
     projects: "项目与发布",
-    benchmarks: "Benchmark",
-    subscribe: "订阅"
+    benchmarks: "Benchmark"
   };
   document.title = `${titles[currentView]} · ${site.name}`;
   updateNav(currentView);
@@ -300,7 +299,6 @@ function renderView(view) {
   if (view === "topics") return renderTopics();
   if (view === "projects") return renderProjects();
   if (view === "benchmarks") return renderBenchmarks();
-  if (view === "subscribe") return renderSubscribe();
   return renderToday();
 }
 
@@ -422,8 +420,7 @@ function renderToday() {
       <p class="lead">${esc(site.intro)}</p>
       <div class="hero-actions">
         <a class="button" href="#/feed">看全部动态 <span aria-hidden="true">→</span></a>
-        <a class="button secondary" href="#/subscribe">订阅每日推送 <span aria-hidden="true">↗</span></a>
-        <a class="button secondary" href="feed.xml">RSS</a>
+        <a class="button secondary" href="#/topics">看主题地图 <span aria-hidden="true">↗</span></a>
       </div>
       <div class="hero-meta">
         <span><strong>${today.items}</strong> 条今日更新</span>
@@ -458,7 +455,7 @@ function renderToday() {
         <div class="aside-stat"><span>今日更新 / 已收录</span><b>${today.items} / ${stats.items ?? items.length}</b></div>
         <div class="aside-stat"><span>论文 / 新闻 / 发布</span><b>${today.papers} / ${today.news} / ${today.releases}</b></div>
         <div class="aside-stat"><span>安全相关</span><b>${today.security}</b></div>
-        <a class="button secondary" href="#/subscribe" style="margin-top:16px;width:100%">订阅每日推送</a>
+        <div class="aside-stat"><span>更新节奏</span><b>每天 08:10</b></div>
       </aside>
     </div>
   </section>
@@ -590,7 +587,7 @@ function renderFeedResults() {
   if (count) count.textContent = `${list.length} 条 · 显示 ${visible.length} 条`;
   container.innerHTML = visible.length
     ? visible.map((item, index) => itemCard(item, index, state.feed.q)).join("")
-    : `<div class="empty"><strong>没有命中</strong><p>换一个关键词，或清空筛选。也可以直接看 <a href="feed.xml">RSS</a>。</p><button class="button secondary" type="button" data-action="clear-filters">清空筛选</button></div>`;
+    : `<div class="empty"><strong>没有命中</strong><p>换一个关键词，或清空筛选。</p><button class="button secondary" type="button" data-action="clear-filters">清空筛选</button></div>`;
   const more = $("#feed-more");
   if (more) {
     more.hidden = visible.length >= list.length;
@@ -899,43 +896,6 @@ function renderBenchmarks() {
   </section>`;
 }
 
-function renderSubscribe() {
-  const ntfy = meta.ntfy;
-  return `<section class="section subscribe-page" style="border-bottom:0;padding-top:44px">
-    <div class="section-head">
-      <div><p class="index">SUBSCRIBE / DAILY</p><h2>每天 08:10，<br />收到今天的记忆动态。</h2></div>
-      <p class="section-note">一次推送 8 条重点，按机制、安全、评测、具身与多模态分栏。不是信息流，是一份有取舍的每日记忆。</p>
-    </div>
-    <div class="subscribe-grid">
-      <div class="subscribe-card">
-        <span class="subscribe-label">RSS</span>
-        <h3>用你常用的阅读器订阅</h3>
-        <p>条目随每日更新，保留原文链接和证据说明；不需要账号。</p>
-        <div class="subscribe-actions">
-          <a class="button" href="feed.xml">打开 RSS</a>
-          <button class="button secondary" type="button" data-action="copy-feed">复制地址</button>
-        </div>
-      </div>
-      <div class="subscribe-card">
-        <span class="subscribe-label">ntfy</span>
-        <h3>手机 / 浏览器通知</h3>
-        <p>每天更新后收到一条通知，包含今天的重点标题和原文链接。</p>
-        ${ntfy
-          ? `<div class="subscribe-actions"><a class="button" href="${safeUrl(`${ntfy.server}/${ntfy.topic}`)}" target="_blank" rel="noopener">订阅 ntfy</a><button class="button secondary" type="button" data-action="copy-ntfy">复制订阅地址</button></div><p class="mono subscribe-topic"><span>${esc(ntfy.server)}</span><span>${esc(ntfy.topic)}</span></p>`
-          : `<p class="subscribe-pending">ntfy 即将开放；先用 RSS 订阅。</p>`}
-      </div>
-    </div>
-    <div class="subscribe-note">
-      <h3>推送什么</h3>
-      <div class="subscribe-list">
-        <span>今日重点</span><span>研究论文</span><span>项目发布</span><span>记忆安全</span><span>评测与基准</span>
-      </div>
-      <p>每天北京时间 08:10 更新一次。不追实时，不重复推同一件事；没有新内容时，推送会保持安静。</p>
-    </div>
-    <p class="subscribe-disclaimer">本站是公开信息的聚合与阅读索引，不是同行评审、投资建议或安全认证。论文多为预印本；原文版权归各来源所有。</p>
-  </section>`;
-}
-
 function openDetail(id) {
   const item = byId.get(id);
   if (!item) {
@@ -986,6 +946,51 @@ async function copyItemLink(id) {
   } catch {
     showToast("复制失败，请手动复制地址栏。");
   }
+}
+
+function closeBookmark() {
+  const pop = $("#bookmark-pop");
+  if (!pop) return;
+  pop.hidden = true;
+  $("#bookmark-button")?.setAttribute("aria-expanded", "false");
+}
+
+async function handleBookmark() {
+  const url = `${location.origin}${location.pathname}`;
+  const title = document.title;
+  try {
+    if (window.external?.AddFavorite) {
+      window.external.AddFavorite(url, title);
+      return;
+    }
+    if (window.sidebar?.addPanel) {
+      window.sidebar.addPanel(title, url, "");
+      return;
+    }
+  } catch {
+    // Fall through to the browser shortcut hint.
+  }
+  let copied = false;
+  try {
+    await navigator.clipboard.writeText(url);
+    copied = true;
+  } catch {
+    copied = false;
+  }
+  const status = $("#bookmark-status");
+  if (status) {
+    status.textContent = copied
+      ? "网址已复制。按快捷键加入收藏夹。"
+      : "请复制地址栏网址，再按快捷键加入收藏夹。";
+  }
+  const pop = $("#bookmark-pop");
+  if (pop) {
+    pop.hidden = false;
+    $("#bookmark-button")?.setAttribute("aria-expanded", "true");
+  }
+  const button = $("#bookmark-button");
+  button?.classList.add("is-pulsing");
+  setTimeout(() => button?.classList.remove("is-pulsing"), 450);
 }
 
 function showToast(message) {
@@ -1058,17 +1063,6 @@ function setupEvents() {
       if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
     } else if (action === "copy-link") {
       copyItemLink(actionEl.dataset.id);
-    } else if (action === "copy-feed") {
-      navigator.clipboard
-        ?.writeText(new URL("feed.xml", DATA_BASE).toString())
-        .then(() => showToast("RSS 地址已复制。"))
-        .catch(() => showToast("复制失败，请手动复制。"));
-    } else if (action === "copy-ntfy" && meta.ntfy) {
-      const address = `${meta.ntfy.server}/${meta.ntfy.topic}`;
-      navigator.clipboard
-        ?.writeText(address)
-        .then(() => showToast("ntfy 订阅地址已复制。"))
-        .catch(() => showToast("复制失败，请手动复制。"));
     }
   });
 
@@ -1097,6 +1091,19 @@ function setupEvents() {
       updateFeedHash();
       render("feed", { scroll: false });
     }
+  });
+
+  $("#bookmark-button")?.addEventListener("click", async (event) => {
+    event.stopPropagation();
+    await handleBookmark();
+  });
+
+  document.addEventListener("click", (event) => {
+    if (!event.target.closest("#bookmark-pop") && !event.target.closest("#bookmark-button")) closeBookmark();
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") closeBookmark();
   });
 
   $("#refresh-button")?.addEventListener("click", async () => {
@@ -1239,7 +1246,7 @@ async function init() {
     observeReveal();
   } catch (error) {
     console.error(error);
-    $("#view").innerHTML = `<section class="section" style="padding-top:80px"><div class="empty"><strong>内容读取失败</strong><p>${esc(error.message)}</p><p>你仍然可以直接打开 <a href="feed.xml">RSS</a> 获取每日更新。</p><button class="button" type="button" onclick="location.reload()">重试</button></div></section>`;
+    $("#view").innerHTML = `<section class="section" style="padding-top:80px"><div class="empty"><strong>内容读取失败</strong><p>${esc(error.message)}</p><p>请刷新页面重试。</p><button class="button" type="button" onclick="location.reload()">重试</button></div></section>`;
   }
 }
 
