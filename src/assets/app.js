@@ -469,7 +469,7 @@ function renderToday() {
       ${quickCard("记忆安全", `${stats.security ?? 0} 条`, "攻击、隐私、来源与治理", "#/security", "coral", 0)}
       ${quickCard("主题地图", `${taxonomy.topics.length} 个主题`, "从机制到具身、多模态", "#/topics", "accent", 1)}
       ${quickCard("项目与发布", `${projects.projects.length} 个项目`, "值得跟踪的项目与官方发布", "#/projects", "teal", 2)}
-      ${quickCard("Benchmark", `${benchmarks.benchmarks.length} 个基准`, "只做索引，不复刻分数", "#/benchmarks", "blue", 3)}
+      ${quickCard("Benchmark", `${benchmarks.benchmarks.length} 个基准`, "评测基准与官方入口", "#/benchmarks", "blue", 3)}
     </div>
   </section>`;
 }
@@ -522,7 +522,7 @@ function itemCard(item, index, query = "") {
       ${item.titleZh ? `<p class="item-subtitle">${esc(item.title)}</p>` : ""}
       <p class="item-summary">${highlight(truncate(itemSummary(item), 240), searchQuery)}</p>
       <div class="item-tags">${tags}${extraTags}</div>
-      <div class="item-why"><b>推荐理由</b>${esc(item.why || "编辑正在整理推荐理由。")}</div>
+      <div class="item-why"><b>推荐理由</b>${esc(item.why || "推荐理由整理中。")}</div>
       <div class="item-foot">
         ${evidenceBadge(item)}
         <a class="text-link" href="${safeUrl(item.url)}" target="_blank" rel="noopener">原文 ↗</a>
@@ -608,7 +608,7 @@ function renderFeed() {
   return `<section class="section" style="border-bottom:0;padding-top:44px">
     <div class="section-head">
       <div><p class="index">THE INDEX / ${count} ITEMS</p><h2>全部动态</h2></div>
-      <p class="section-note">按类型、主题、时间和关键词筛选，找到你关心的记忆研究。每一条都保留原文链接与证据说明。</p>
+      <p class="section-note">按类型、主题、时间和关键词筛选，找到你关心的记忆研究。每条都附原文链接和来源说明。</p>
     </div>
     <div class="filterbar">
       <div class="chips" role="group" aria-label="类型筛选">
@@ -720,7 +720,7 @@ function renderTopics() {
   return `<section class="section" style="border-bottom:0;padding-top:44px">
     <div class="section-head">
       <div><p class="index">TOPIC MAP / ${taxonomy.topics.length} TOPICS</p><h2>主题地图</h2></div>
-      <p class="section-note">分类是阅读导航，不是论文质量评分。一个条目可以保留多个标签；跨领域内容不会被强行塞进单一主题。</p>
+      <p class="section-note">按研究主题浏览；同一条内容可能出现在多个主题里。</p>
     </div>
     <div class="topic-layout">
       <div>
@@ -786,7 +786,7 @@ function renderProjects() {
   return `<section class="section" style="border-bottom:0;padding-top:44px">
     <div class="section-head">
       <div><p class="index">PROJECTS / INDEX</p><h2>项目与发布</h2></div>
-      <p class="section-note">星标仅作参考，不是热度结论。基础设施项目会被标注，避免把“向量库”误当成完整的记忆系统。</p>
+      <p class="section-note">按方向和类别浏览项目；星标仅作参考。</p>
     </div>
     <div class="filterbar" style="position:static;margin-bottom:18px">
       <div class="chips" role="group" aria-label="项目分类">
@@ -823,7 +823,7 @@ function renderProjects() {
     <div class="section" style="padding-bottom:0">
       <div class="section-head">
         <div><p class="index">RELEASES / ${releases.length} ITEMS</p><h2>官方发布</h2></div>
-        <p class="section-note">只收官方 release；版本变更以 release note 为准，本站不推断兼容性。</p>
+        <p class="section-note">官方版本发布；具体变更以 release note 为准。</p>
       </div>
       <div class="release-list">
         ${releases
@@ -846,7 +846,7 @@ function renderBenchmarks() {
   return `<section class="section" style="border-bottom:0;padding-top:44px">
     <div class="section-head">
       <div><p class="index">BENCHMARKS / INDEX ONLY</p><h2>Benchmark</h2></div>
-      <p class="section-note">本站只做评测索引：链接到官方仓库或论文，不复刻榜单分数。覆盖维度是编辑整理，不是官方评分。</p>
+      <p class="section-note">评测基准与官方入口；分数与协议以官方页面为准。</p>
     </div>
     <div class="bench-layout">
       <div>
@@ -885,7 +885,7 @@ function renderBenchmarks() {
           <li>先看基座模型。同一个记忆系统换模型，分数会变；跨表比较往往没有意义。</li>
           <li>再看协议。长期对话、任务闭环、多模态和安全评测不是同一个东西。</li>
           <li>再看提交方式。官方提交、作者自测、厂商新闻稿要分开看。</li>
-          <li>最后看时间。榜单会更新，本站不复制分数，避免把旧数字当结论。</li>
+          <li>最后看时间。榜单会更新，分数以官方页面为准。</li>
         </ol>
         <div style="margin-top:18px;padding-top:14px;border-top:1px solid var(--line)">
           <p class="mono faint" style="font-size:10px;line-height:1.8">相关条目：</p>
@@ -902,6 +902,20 @@ function openDetail(id) {
     showToast("没有找到这条内容。");
     return;
   }
+  const related = items
+    .filter((other) => other.id !== item.id)
+    .map((other) => ({
+      item: other,
+      shared: (other.topics || []).filter((topic) => (item.topics || []).includes(topic)).length
+    }))
+    .filter((entry) => entry.shared > 0)
+    .sort(
+      (a, b) =>
+        b.shared - a.shared ||
+        String(b.item.published).localeCompare(String(a.item.published))
+    )
+    .slice(0, 3)
+    .map((entry) => entry.item);
   const dialog = $("#detail-dialog");
   const content = $("#detail-content");
   content.innerHTML = `<div class="detail-inner">
@@ -912,7 +926,7 @@ function openDetail(id) {
     <h2>${esc(itemTitle(item))}</h2>
     <p class="detail-sub">${esc(item.title)}<br />${esc(item.source)} · ${esc(formatDate(item.published, true))} · ${esc(item.evidence || "")}</p>
     <p class="detail-summary">${esc(itemSummary(item))}</p>
-    <div class="detail-why"><b class="mono" style="color:var(--accent);font-size:9px;letter-spacing:.08em">推荐理由 / </b>${esc(item.why || "编辑正在整理推荐理由。")}</div>
+    <div class="detail-why"><b class="mono" style="color:var(--accent);font-size:9px;letter-spacing:.08em">推荐理由 / </b>${esc(item.why || "推荐理由整理中。")}</div>
     <div class="chips">${[...new Set([...(item.topicLabels || []), ...(item.tags || [])])].map((tagName) => `<span class="tag">${esc(tagName)}</span>`).join("")}</div>
     <dl class="detail-facts">
       <dt>证据等级</dt><dd>${esc(item.evidence || "未标注")}</dd>
@@ -921,9 +935,10 @@ function openDetail(id) {
       <dt>原文摘要</dt><dd>${esc(item.summary || "未提供。")}</dd>
       ${item.security ? `<dt>安全角度</dt><dd>${esc(item.security.angles.map((angle) => ANGLE_LABELS[angle] || angle).join(" / "))}<br />${esc(item.security.note || "")}</dd>` : ""}
     </dl>
+    ${related.length ? `<div class="detail-related"><h4>相关阅读</h4><div class="detail-related-list">${related.map((entry) => `<a href="${itemHref(entry.id)}"><span>${esc(itemTitle(entry))}</span><em>${esc(entry.source)} · ${esc(formatDate(entry.published))}</em></a>`).join("")}</div></div>` : ""}
     <div class="detail-actions">
       <a class="button" href="${safeUrl(item.url)}" target="_blank" rel="noopener">打开原文 ↗</a>
-      <button class="button secondary" type="button" data-action="copy-link" data-id="${esc(item.id)}">复制本站链接</button>
+      <button class="button secondary" type="button" data-action="copy-link" data-id="${esc(item.id)}">复制条目链接</button>
       <button class="button secondary" type="button" data-action="close-detail">关闭</button>
     </div>
   </div>`;
