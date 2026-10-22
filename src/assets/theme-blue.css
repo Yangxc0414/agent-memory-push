@@ -1268,8 +1268,8 @@ main {
 
 
 .hero h1.daily-title {
-  max-width: 13ch;
-  font-size: clamp(42px, 6.2vw, 84px);
+  max-width: 14ch;
+  font-size: clamp(38px, 5.2vw, 64px);
   line-height: 1.12;
   letter-spacing: -0.035em;
 }
