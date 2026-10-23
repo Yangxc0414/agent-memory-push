@@ -1,18 +1,49 @@
 {
   "version": 1,
-  "checkedAt": "2026-10-22T11:23:37.997Z",
-  "lastSuccessAt": "2026-10-22T11:23:37.997Z",
-  "generatedAt": "2026-10-22T11:23:37.997Z",
+  "checkedAt": "2026-10-23T03:45:04.176Z",
+  "lastSuccessAt": "2026-10-23T03:45:04.176Z",
+  "generatedAt": "2026-10-23T03:45:04.176Z",
   "timezone": "Asia/Shanghai",
-  "date": "2026-10-22",
+  "date": "2026-10-23",
   "seed": false,
-  "added": 402,
-  "updated": 0,
-  "items": 402,
-  "sourcesOk": 19,
-  "sourcesTotal": 20,
+  "added": 11,
+  "updated": 91,
+  "items": 413,
+  "sourcesOk": 14,
+  "sourcesTotal": 21,
   "llm": {
     "used": true,
-    "error": "The operation was aborted due to timeout"
+    "error": null
+  },
+  "addedIds": [
+    "web:https://www.ithome.com/1/016/873.htm",
+    "arxiv:2610.31284",
+    "arxiv:2610.31272",
+    "arxiv:2610.31166",
+    "arxiv:2610.30989",
+    "arxiv:2610.30895",
+    "arxiv:2610.30755",
+    "arxiv:2610.30485",
+    "arxiv:2610.30478",
+    "arxiv:2610.29560",
+    "arxiv:2610.25100"
+  ],
+  "coverage": {
+    "coreComplete": false,
+    "recallOk": false,
+    "degraded": true,
+    "criticalFailed": [
+      "arxiv-memory",
+      "arxiv-security",
+      "arxiv-broad",
+      "arxiv-eval",
+      "arxiv-survey"
+    ],
+    "supplementalFailed": [
+      "arxiv-recall"
+    ],
+    "optionalFailed": [
+      "blog-msr"
+    ]
   }
 }
