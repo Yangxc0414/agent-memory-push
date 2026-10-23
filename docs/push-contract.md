@@ -77,7 +77,7 @@
 
 | 栏目 | 触发 | 来源 | 产物 | 新鲜度 | 失败时 |
 | --- | --- | --- | --- | --- | --- |
-| 今日推送 | Actions cron `0 0 * * *`，北京时间 08:00；`0 4 * * *` 仅在核心采集不完整时补采 | `src/data/items.json` | `src/data/digests/YYYY-MM-DD.json` | `generatedAt` / `checkedAt` | 保留上一期；核心源不完整时生成临时版并跳过通知，页面按 36 小时判断 stale |
+| 今日推送 | Actions cron `0 0 * * *` 主任务（北京时间 08:00），`17 0 * * *` 兜底（08:17），`17 4 * * *` 补采（12:17）；后两者仅在核心/召回不完整时实际采集 | `src/data/items.json` | `src/data/digests/YYYY-MM-DD.json` | `generatedAt` / `checkedAt` | 保留上一期；核心源不完整时生成临时版并跳过通知，页面按 36 小时判断 stale |
 | 全部动态 | 随构建 | `src/data/items.json` | `dist/data/items.json` + `dist/api/v1/items.json` | `checkedAt` | 旧快照继续可读 |
 | 主题地图 | 构建时汇总 | `taxonomy.json` + items | 计数、轨道图、维度说明 | `taxonomyVersion` | 分类非法则构建失败，不发布 |
 | 项目 | 每日 / 每周一 | GitHub Releases Atom + GitHub Search API | `src/data/projects.json` | `starsCheckedAt` | 保留上次星数并标时间 |
@@ -95,9 +95,11 @@
 
 触发：
 
-- GitHub Actions `schedule`（`0 0 * * *`，北京时间 08:00）。
-- GitHub Actions `schedule`（`0 4 * * *`，北京时间 12:00）只做补采：如果今天核心 arXiv 查询和召回查询都已成功，`COLLECT_IF_INCOMPLETE=1` 会让采集直接跳过。
+- GitHub Actions `schedule`（`0 0 * * *`，北京时间 08:00）主任务。
+- GitHub Actions `schedule`（`17 0 * * *`，北京时间 08:17）兜底：避开整点高负载，主任务被 GitHub 丢弃时补上。
+- GitHub Actions `schedule`（`17 4 * * *`，北京时间 12:17）再补一次：如果今天核心 arXiv 查询和召回查询都已成功，`COLLECT_IF_INCOMPLETE=1` 会让采集直接跳过。
 - 手动 `workflow_dispatch`，可选择强制重新通知。
+- 紧急更新：提交信息包含 `[refresh]` 的 push 会临时执行采集并提交数据；普通 push 仍然只构建部署，避免每次改样式都采集。
 
 流程：
 

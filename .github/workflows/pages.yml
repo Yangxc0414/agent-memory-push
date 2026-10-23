@@ -4,8 +4,9 @@ on:
   push:
     branches: [main]
   schedule:
-    - cron: "0 0 * * *" # 08:00 北京时间
-    - cron: "0 4 * * *" # 12:00 北京时间；仅在上一次核心采集不完整时补采
+    - cron: "0 0 * * *" # 08:00 北京时间主任务
+    - cron: "17 0 * * *" # 08:17 北京时间兜底；避开整点高负载
+    - cron: "17 4 * * *" # 12:17 北京时间补采；仍有缺口时再试一次
   workflow_dispatch:
     inputs:
       force_notify:
@@ -38,7 +39,7 @@ jobs:
           node-version: 24
 
       - name: Collect sources
-        if: github.event_name != 'push'
+        if: github.event_name != 'push' || contains(github.event.head_commit.message, '[refresh]')
         continue-on-error: true
         run: node scripts/collect.mjs
         env:
@@ -49,7 +50,7 @@ jobs:
           ARXIV_LOOKBACK_DAYS: 14
           ARXIV_MAX_PAGES: 12
           LLM_ENRICH_LIMIT: 60
-          COLLECT_IF_INCOMPLETE: ${{ github.event.schedule == '0 4 * * *' && '1' || '0' }}
+          COLLECT_IF_INCOMPLETE: ${{ (github.event.schedule == '17 0 * * *' || github.event.schedule == '17 4 * * *') && '1' || '0' }}
 
       - name: Build static site
         run: node scripts/build.mjs
@@ -70,7 +71,7 @@ jobs:
           NTFY_SERVER: ${{ secrets.NTFY_SERVER }}
 
       - name: Commit data changes
-        if: github.event_name != 'push'
+        if: github.event_name != 'push' || contains(github.event.head_commit.message, '[refresh]')
         run: |
           git config user.name "agent-memory-push[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
