@@ -366,7 +366,7 @@ function statusPanel() {
       <span>下次更新<br /><b>${esc(formatDate(next.toISOString(), true))}</b></span>
       <span>已收录<br /><b>${stats.items ?? items.length} 条</b></span>
     </div>
-    ${coreIncomplete || recallIncomplete || provisional ? `<p class="status-warning">${coreIncomplete ? "核心信源未全部成功，本期为临时版；12:00 会自动重试。" : "补漏查询未完成，本期可能少收少量论文；12:00 会自动重试。"}</p>` : ""}
+    ${coreIncomplete || recallIncomplete || provisional ? `<p class="status-warning">${coreIncomplete ? "核心信源未全部成功，本期为临时版；后续定时任务会自动重试。" : "补漏查询未完成，本期可能少收少量论文；后续定时任务会自动重试。"}</p>` : ""}
   </aside>`;
 }
 
