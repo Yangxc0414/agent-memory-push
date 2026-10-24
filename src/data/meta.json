@@ -1,61 +1,41 @@
 {
   "version": 1,
-  "checkedAt": "2026-10-23T04:20:17.002Z",
-  "lastSuccessAt": "2026-10-23T04:20:17.002Z",
-  "generatedAt": "2026-10-23T04:20:17.002Z",
+  "checkedAt": "2026-10-24T03:40:57.384Z",
+  "lastSuccessAt": "2026-10-24T03:40:57.384Z",
+  "generatedAt": "2026-10-24T03:40:57.384Z",
   "timezone": "Asia/Shanghai",
-  "date": "2026-10-23",
+  "date": "2026-10-24",
   "seed": false,
-  "added": 31,
-  "updated": 167,
-  "items": 444,
-  "sourcesOk": 20,
+  "added": 1,
+  "updated": 3,
+  "items": 445,
+  "sourcesOk": 11,
   "sourcesTotal": 21,
   "llm": {
     "used": true,
     "error": null
   },
   "addedIds": [
-    "arxiv:2610.31656",
-    "arxiv:2610.31446",
-    "arxiv:2610.31366",
-    "arxiv:2610.31314",
-    "arxiv:2610.31307",
-    "arxiv:2610.31303",
-    "arxiv:2610.31293",
-    "arxiv:2610.30698",
-    "arxiv:2610.30688",
-    "arxiv:2610.30379",
-    "arxiv:2610.28892",
-    "arxiv:2610.28882",
-    "arxiv:2610.28407",
-    "arxiv:2610.25790",
-    "arxiv:2610.25751",
-    "arxiv:2610.25651",
-    "arxiv:2610.25098",
-    "arxiv:2610.24453",
-    "arxiv:2610.23622",
-    "arxiv:2610.23400",
-    "arxiv:2610.22293",
-    "arxiv:2610.21810",
-    "arxiv:2610.21799",
-    "arxiv:2610.21283",
-    "arxiv:2610.21176",
-    "arxiv:2610.19613",
-    "arxiv:2610.19385",
-    "arxiv:2610.17654",
-    "arxiv:2610.15244",
-    "arxiv:2610.15185",
-    "arxiv:2610.14921"
+    "web:https://www.langchain.com/blog/context-engineering-starts-with-retrieval"
   ],
   "coverage": {
-    "coreComplete": true,
-    "recallOk": true,
+    "coreComplete": false,
+    "recallOk": false,
     "degraded": true,
-    "criticalFailed": [],
-    "supplementalFailed": [],
-    "optionalFailed": [
-      "blog-msr"
-    ]
+    "criticalFailed": [
+      "arxiv-memory",
+      "arxiv-embodied",
+      "arxiv-security",
+      "arxiv-models",
+      "arxiv-broad",
+      "arxiv-multimodal",
+      "arxiv-eval",
+      "arxiv-personal",
+      "arxiv-survey"
+    ],
+    "supplementalFailed": [
+      "arxiv-recall"
+    ],
+    "optionalFailed": []
   }
 }
