@@ -1,41 +1,32 @@
 {
   "version": 1,
-  "checkedAt": "2026-10-24T03:40:57.384Z",
-  "lastSuccessAt": "2026-10-24T03:40:57.384Z",
-  "generatedAt": "2026-10-24T03:40:57.384Z",
+  "checkedAt": "2026-10-24T04:17:48.947Z",
+  "lastSuccessAt": "2026-10-24T04:17:48.947Z",
+  "generatedAt": "2026-10-24T04:17:48.947Z",
   "timezone": "Asia/Shanghai",
   "date": "2026-10-24",
   "seed": false,
   "added": 1,
-  "updated": 3,
-  "items": 445,
-  "sourcesOk": 11,
-  "sourcesTotal": 21,
+  "updated": 188,
+  "items": 446,
+  "sourcesOk": 22,
+  "sourcesTotal": 22,
   "llm": {
     "used": true,
-    "error": null
+    "error": "Expected ',' or '}' after property value in JSON at position 448 (line 1 column 449)"
   },
   "addedIds": [
-    "web:https://www.langchain.com/blog/context-engineering-starts-with-retrieval"
+    "arxiv:2610.31125"
   ],
   "coverage": {
-    "coreComplete": false,
-    "recallOk": false,
-    "degraded": true,
-    "criticalFailed": [
-      "arxiv-memory",
-      "arxiv-embodied",
-      "arxiv-security",
-      "arxiv-models",
-      "arxiv-broad",
-      "arxiv-multimodal",
-      "arxiv-eval",
-      "arxiv-personal",
-      "arxiv-survey"
-    ],
-    "supplementalFailed": [
-      "arxiv-recall"
-    ],
+    "coreComplete": true,
+    "recallOk": true,
+    "fallbackOk": true,
+    "usable": true,
+    "degraded": false,
+    "criticalFailed": [],
+    "supplementalFailed": [],
+    "fallbackFailed": [],
     "optionalFailed": []
   }
 }

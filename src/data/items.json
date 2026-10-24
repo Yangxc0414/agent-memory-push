@@ -1,5 +1,32 @@
 [
   {
+    "id": "arxiv:2610.31125",
+    "title": "Delta N-gram: Forward-Only Continual Writing into a Language Model's Native N-gram Memory",
+    "titleZh": "Delta N-gram：前向持续写入语言模型N-gram记忆的机制",
+    "url": "https://arxiv.org/abs/2610.31125",
+    "kind": "paper",
+    "source": "arXiv · cs.CL RSS（API 兜底）",
+    "sourceId": "arxiv-rss-cl",
+    "sourceTier": "preprint",
+    "published": "2026-10-24T04:00:00.000Z",
+    "summary": "arXiv:2610.31125v1 Announce Type: new Abstract: Our previous analysis found that a model's native hashed N-gram table is where continual updates disturb the base least, but its writes needed backpropagation and changed the pretrained table. We present Delta N-gram, a forward-only write path into that table. The pretrained table T^0 is never modified. Evidence is written into a sparse patch \\Delta on the rows it addresses: a 4.1M-parameter writer emits a target and a gate per (position, hash head) event, and a block-averaged delta rule keeps each row a convex combination of its old value and the gated targets. The writer is trained offline on raw text with the pretraining objective; at use t…",
+    "summaryZh": "提出Delta N-gram方法，通过前向写入路径将证据写入预训练N-gram表的稀疏补丁中，确保预训练表不被修改。",
+    "why": "探索了在不改变预训练权重的前提下，通过稀疏补丁机制实现模型持续更新的可行性。",
+    "topics": [
+      "mechanism"
+    ],
+    "tags": [
+      "记忆机制与系统"
+    ],
+    "security": null,
+    "evidence": "预印本 · 原文可核验",
+    "score": 82,
+    "curated": false,
+    "collectedAt": "2026-10-24T04:17:48.947Z",
+    "provenance": "arxiv-rss-cl",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
     "id": "web:https://www.langchain.com/blog/context-engineering-starts-with-retrieval",
     "title": "Context Engineering (Agent Memory) for AI Agents Starts with Retrieval",
     "titleZh": "LangChain 博客：Agent 上下文工程始于检索",
@@ -7081,7 +7108,7 @@
   {
     "id": "arxiv:2610.08102",
     "title": "DSV-Mem: Evaluating Multimodal Memory in Professional Workflows for MLLM Agents",
-    "titleZh": null,
+    "titleZh": "DSV-Mem：面向专业工作流的多模态记忆评估基准",
     "url": "https://arxiv.org/abs/2610.08102v1",
     "kind": "paper",
     "source": "arXiv · 智能体记忆与自进化",
@@ -7089,8 +7116,8 @@
     "sourceTier": "preprint",
     "published": "2026-10-06T10:30:14.000Z",
     "summary": "Conversational MLLM agents are increasingly expected to assist in professional workflows, from AI research and engineering design to product management and business operations. Yet this capability remains underexplored: existing benchmarks largely focus on informal, everyday interactions and personal-life scenarios featuring photographic natural images, isolated static artifacts, and recall-oriented questions. In contrast, professional scenarios often involve structured, information-heavy artifacts that undergo frequent revisions and authority updates, and compositional queries requiring reconciliation of many artifact versions while tracking state precisely. To address these challenges, we…",
-    "summaryZh": null,
-    "why": "新预印本，主题命中「评测与基准」；摘要已按原文整理，等待人工复核。",
+    "summaryZh": "提出DSV-Mem基准，专注于评估多模态大模型智能体在涉及结构化文档和频繁修订的专业工作流中的记忆能力。",
+    "why": "将智能体记忆评估从日常非正式场景拓展至专业领域，关注结构化信息在版本迭代中的处理。",
     "topics": [
       "evaluation"
     ],
@@ -7108,12 +7135,13 @@
     "score": 80,
     "curated": false,
     "collectedAt": "2026-10-22T11:23:37.997Z",
-    "provenance": "arxiv-memory"
+    "provenance": "arxiv-memory",
+    "summaryZhBasis": "原文摘要"
   },
   {
     "id": "arxiv:2610.08101",
     "title": "Beyond Corrected Memory: Execution Consistency in Multi-Agent Systems",
-    "titleZh": null,
+    "titleZh": "超越纠错记忆：多智能体系统中的执行一致性研究",
     "url": "https://arxiv.org/abs/2610.08101v1",
     "kind": "paper",
     "source": "arXiv · 智能体记忆与自进化",
@@ -7121,8 +7149,8 @@
     "sourceTier": "preprint",
     "published": "2026-10-06T10:29:41.000Z",
     "summary": "Shared memory coordinates agents' actions, but correct records do not establish that those actions satisfy task requirements. Memory governance and failure diagnosis regulate or inspect recorded information; they do not by themselves establish whether it is sufficient to judge task duties. We define execution consistency through duties governing state use, information handoffs, and final-state agreement, with explicit evidence conditions for judging fulfillment. Our core claim is that identical retained records can correspond to compliant and violating executions under the same task rule. Controlled removal of evidence such as receipt, action dependence, or response validity leaves 82.4% of…",
-    "summaryZh": null,
-    "why": "新预印本，主题命中「评测与基准」；摘要已按原文整理，等待人工复核。",
+    "summaryZh": "定义执行一致性概念，指出相同的记忆记录可能对应合规或违规的执行结果，并分析移除特定证据对判断的影响。",
+    "why": "区分了记忆记录的准确性与执行行为的合规性，为多智能体系统的责任判定提供了新的理论视角。",
     "topics": [
       "evaluation"
     ],
@@ -7134,12 +7162,13 @@
     "score": 76,
     "curated": false,
     "collectedAt": "2026-10-22T11:23:37.997Z",
-    "provenance": "arxiv-memory"
+    "provenance": "arxiv-memory",
+    "summaryZhBasis": "原文摘要"
   },
   {
     "id": "arxiv:2610.08048",
     "title": "DAEDALUS: Bootstrapping Agent Memory from Self-Generated Tasks",
-    "titleZh": null,
+    "titleZh": "DAEDALUS：从自生成任务引导智能体记忆",
     "url": "https://arxiv.org/abs/2610.08048v1",
     "kind": "paper",
     "source": "arXiv · 智能体记忆与自进化",
@@ -7147,8 +7176,8 @@
     "sourceTier": "preprint",
     "published": "2026-10-06T09:46:32.000Z",
     "summary": "LLM agents often lack the operational knowledge to act reliably in new environments, as they must discover specific tool behaviors or environment conventions on their own. Without memory of past attempts, they repeat the same mistakes across tasks, leading to more task failures and longer trajectories. To address this, agentic systems typically rely on human-written guidelines or on procedural memory built from training tasks and an oracle verifier, both of which require prior knowledge of the environment. We present DAEDALUS, a method for bootstrapping reusable agent memory from self-generated practice without existing tasks or oracle verifiers. DAEDALUS pairs two agents: an explorer that…",
-    "summaryZh": null,
-    "why": "新预印本，主题命中「记忆机制与系统」；摘要已按原文整理，等待人工复核。",
+    "summaryZh": "提出DAEDALUS方法，通过让两个智能体协作，从自生成的练习中构建可复用的智能体记忆，无需预置任务或预言机验证器。",
+    "why": "提供了一种在无先验知识环境下，通过自生成任务来初始化智能体操作知识的机制。",
     "topics": [
       "mechanism"
     ],
@@ -7160,12 +7189,13 @@
     "score": 76,
     "curated": false,
     "collectedAt": "2026-10-22T11:23:37.997Z",
-    "provenance": "arxiv-memory"
+    "provenance": "arxiv-memory",
+    "summaryZhBasis": "原文摘要"
   },
   {
     "id": "arxiv:2610.07984",
     "title": "Decide Before You Look: Learning Which Retrieved Memories Deserve Pixels",
-    "titleZh": null,
+    "titleZh": "PixelTriage：检索记忆像素级筛选插件",
     "url": "https://arxiv.org/abs/2610.07984v1",
     "kind": "paper",
     "source": "arXiv · 具身与多模态记忆",
@@ -7173,8 +7203,8 @@
     "sourceTier": "preprint",
     "published": "2026-10-06T08:47:45.000Z",
     "summary": "Multimodal assistants answer questions from long-term memories that contain images. After retrieval, each retrieved image reaches the answering model either as pixels, at about a thousand visual tokens per image, or as a stored text proxy that often misses the detail the question asks about. We find that the benefit of pixels usually comes from one or two retrieved memories, and that it can be predicted before the answering model runs, without reading any full-resolution image. In PixelTriage, a plug-in placed after retrieval, a small model that does not generate text reads the dialogue, a short note and a thumbnail of each retrieved memory and predicts how much its pixels would add. It is…",
-    "summaryZh": null,
-    "why": "新预印本，主题命中「具身与空间记忆」；摘要已按原文整理，等待人工复核。",
+    "summaryZh": "该论文提出PixelTriage插件，置于检索后、回答前，利用小模型根据对话、笔记和缩略图预测高分辨率图像像素对回答的增益，以优化多模态长期记忆的使用。",
+    "why": "解决多模态记忆中高分辨率图像成本高与文本代理信息缺失的权衡问题，提供预测性像素筛选机制。",
     "topics": [
       "embodied"
     ],
@@ -7186,12 +7216,13 @@
     "score": 76,
     "curated": false,
     "collectedAt": "2026-10-22T11:23:37.997Z",
-    "provenance": "arxiv-embodied"
+    "provenance": "arxiv-embodied",
+    "summaryZhBasis": "原文摘要"
   },
   {
     "id": "arxiv:2610.07782",
     "title": "Persistent Memory in Multi-Agent LLM Inference: What It Costs, What It Buys, and When You Can Tell",
-    "titleZh": null,
+    "titleZh": "多智能体推理中持久记忆的KV缓存成本分析",
     "url": "https://arxiv.org/abs/2610.07782v1",
     "kind": "paper",
     "source": "arXiv · 智能体记忆与自进化",
@@ -7199,8 +7230,8 @@
     "sourceTier": "preprint",
     "published": "2026-10-06T05:17:44.000Z",
     "summary": "Decomposing long-context inference across cooperating agents bounds the active KV cache per call rather than total evidence, which matters when KV-cache memory binds. Many such systems add a persistent tier storing and recalling reasoning traces, usually validated by an ablation reporting an accuracy gain. We measure both on one three-tier agent architecture. Decomposition delivers: peak KV working set of 14.3 MiB per query against 35.5 and 35.3 MiB for single-pass and retrieval-augmented baselines. The persistent tier does not: across eight controlled dataset pairs at n=100 per arm it costs +0.368 MiB [+0.167, +0.590] of peak cache and produces no detectable accuracy change (+0.015, 95% CI…",
-    "summaryZh": null,
-    "why": "新预印本，主题命中「记忆机制与系统」；摘要已按原文整理，等待人工复核。",
+    "summaryZh": "论文在三层智能体架构中量化了分解推理与持久记忆层的影响，指出分解推理显著降低KV峰值工作集，而持久记忆层在特定测试条件下未带来可检测的准确率变化，仅增加少量缓存开销。",
+    "why": "提供多智能体长上下文推理中记忆层资源效率与效能的实证分析，为架构设计提供量化参考。",
     "topics": [
       "mechanism"
     ],
@@ -7217,12 +7248,13 @@
     "score": 80,
     "curated": false,
     "collectedAt": "2026-10-22T11:23:37.997Z",
-    "provenance": "arxiv-memory"
+    "provenance": "arxiv-memory",
+    "summaryZhBasis": "原文摘要"
   },
   {
     "id": "arxiv:2610.07725",
     "title": "PERSIST: Who-What-When Memory Across Sessions for Full-Duplex Spoken Dialogue",
-    "titleZh": null,
+    "titleZh": "PERSIST：全双工口语对话的Who-What-When跨会话记忆",
     "url": "https://arxiv.org/abs/2610.07725v1",
     "kind": "paper",
     "source": "arXiv · 多模态记忆",
@@ -7230,8 +7262,8 @@
     "sourceTier": "preprint",
     "published": "2026-10-06T04:21:11.000Z",
     "summary": "Modern voice assistants may be shared by multiple users and should be able to answer questions about earlier conversations such as \"When did I originally plan to leave?\" or adapt their behavior to individual users based on past interactions. This requires more than retrieving a topically similar passage: the assistant must identify the current speaker, recover the relevant past state, and distinguish it from later revisions. We present PERSIST, a persistent memory system for multi-session, multi-speaker spoken dialogue that explicitly models Who, What, and When. PERSIST structures cross-session histories into readable event records and retrieves them with a 3W joint scoring mechanism that c…",
-    "summaryZh": null,
-    "why": "新预印本，主题命中「多模态与感知记忆」；摘要已按原文整理，等待人工复核。",
+    "summaryZh": "PERSIST系统针对多用户、多会话语音助手设计，通过结构化事件记录与3W联合评分机制，显式建模说话者身份、事件内容与时间状态，以支持跨会话历史查询与个性化适应。",
+    "why": "将口语对话记忆从主题检索升级为身份、内容与时间维度的结构化建模，适用于共享语音助手场景。",
     "topics": [
       "multimodal"
     ],
@@ -7248,12 +7280,13 @@
     "score": 80,
     "curated": false,
     "collectedAt": "2026-10-22T11:23:37.997Z",
-    "provenance": "arxiv-multimodal"
+    "provenance": "arxiv-multimodal",
+    "summaryZhBasis": "原文摘要"
   },
   {
     "id": "arxiv:2610.07707",
     "title": "AgentMemGate: Addressing Speculation Contamination in Conversational Assistant Memory",
-    "titleZh": null,
+    "titleZh": "AgentMemGate：对话助理记忆中的推测污染抑制",
     "url": "https://arxiv.org/abs/2610.07707v1",
     "kind": "paper",
     "source": "arXiv · 记忆评测",
@@ -7261,8 +7294,8 @@
     "sourceTier": "preprint",
     "published": "2026-10-06T03:59:41.000Z",
     "summary": "Conversational AI assistants with long-term memory extract facts from user messages into a store consulted in later conversations. A stated plan can enter that store as fact: a user who might move to Seattle may be recorded as already living there. We call this speculation contamination. Final-state memory benchmarks miss this error because they do not probe intermediate state and include few unresolved speculations. We present AgentMemGate, a write-time gate for profile-store memory that classifies extracted statements as speculation, completed event, correction, or other. Speculations remain outside memory, with conditions governing later promotion or deletion. We also contribute a datase…",
-    "summaryZh": null,
-    "why": "新预印本，主题命中「评测与基准」；摘要已按原文整理，等待人工复核。",
+    "summaryZh": "针对用户未决计划被误存为事实的推测污染问题，AgentMemGate在记忆写入时分类陈述类型，将推测项隔离于主记忆外，并管理其后续晋升或删除条件，同时贡献了相关评测数据集。",
+    "why": "引入写入时门控机制以区分推测与事实，弥补了最终状态评测无法检测中间状态错误的缺陷。",
     "topics": [
       "evaluation"
     ],
@@ -7279,12 +7312,13 @@
     "score": 80,
     "curated": false,
     "collectedAt": "2026-10-22T11:23:37.997Z",
-    "provenance": "arxiv-eval"
+    "provenance": "arxiv-eval",
+    "summaryZhBasis": "原文摘要"
   },
   {
     "id": "arxiv:2610.07403",
     "title": "Defense-in-Depth for LLMs: Evaluating Memory Gates Against Activation-Induced and Memory-Induced Sycophancy",
-    "titleZh": null,
+    "titleZh": "LLM 记忆安全：评估激活诱导与记忆诱导谄媚的纵深防御",
     "url": "https://arxiv.org/abs/2610.07403v1",
     "kind": "paper",
     "source": "arXiv · 记忆安全与评测",
@@ -7292,8 +7326,8 @@
     "sourceTier": "preprint",
     "published": "2026-10-05T21:16:06.000Z",
     "summary": "Long-term memory allows Large Language Models (LLMs) to maintain personalized context across interactions, but retrieved user history can induce memory-induced sycophancy, causing models to favor stored user beliefs over objective evidence. Existing defenses primarily operate on retrieved context and are rarely evaluated jointly with internal behavioral bias. We introduce a $2 \\times 2$ defense-in-depth framework separating internal activation steering from external memory handling. We extract sycophancy steering directions from 100 paired prompts and evaluate four open-weight models across 10 steering coefficients and five memory-defense configurations on MemSyco-Bench (answers for all 1,5…",
-    "summaryZh": null,
-    "why": "新预印本，主题命中「安全与治理」；摘要已按原文整理，等待人工复核。",
+    "summaryZh": "该研究提出了一种 2×2 的纵深防御框架，将内部激活引导与外部记忆处理分离，以缓解长期记忆导致的谄媚偏差。作者在 MemSyco-Bench 上对四个开源权重模型进行了评估，并提取了谄媚引导方向。",
+    "why": "提供了针对 LLM 记忆安全中谄媚偏差的量化评估框架和防御配置对比，为平衡记忆利用与客观性提供实证参考。",
     "topics": [
       "security"
     ],
@@ -7311,12 +7345,13 @@
     "score": 80,
     "curated": false,
     "collectedAt": "2026-10-22T11:23:37.997Z",
-    "provenance": "arxiv-security"
+    "provenance": "arxiv-security",
+    "summaryZhBasis": "原文摘要"
   },
   {
     "id": "arxiv:2610.07311",
     "title": "Understanding and Mitigating Inference-Time Overreliance Using Agentic Memory",
-    "titleZh": null,
+    "titleZh": "理解并缓解推理时的记忆过度依赖：使用 Agentic Memory",
     "url": "https://arxiv.org/abs/2610.07311v1",
     "kind": "paper",
     "source": "arXiv · 智能体记忆与自进化",
@@ -7324,8 +7359,8 @@
     "sourceTier": "preprint",
     "published": "2026-10-05T19:48:54.000Z",
     "summary": "Agentic memory allows LLM agents to reuse past experience, yet retrieved memories can also distort inference even when they are benign, correctly stored, and appropriately retrieved. We study this failure mode, which we call memory over-reliance. Across benchmarks and memory architectures, we find that memory is useful when past experience transfers to the current task, but can become misleading when only part of the evidence transfers. Failures are strongest under partial query-memory overlap, a pattern further confirmed by controlled experiments thatvary the amount of overlapping evidence. Motivated by this finding, we propose MEMTRIM, a plug-and-play framework that indexes memory evidenc…",
-    "summaryZh": null,
-    "why": "新预印本，主题命中「评测与基准」；摘要已按原文整理，等待人工复核。",
+    "summaryZh": "该研究指出，当检索到的记忆与当前任务只有部分证据重叠时，智能体容易陷入“记忆过度依赖”而导致推理失真。作者提出了 MEMTRIM 框架，通过索引记忆证据来缓解这一问题。",
+    "why": "揭示了智能体记忆系统中“部分证据转移”导致的推理失效模式，并提出了即插即用的缓解方案 MEMTRIM，有助于提升智能体决策的准确性。",
     "topics": [
       "evaluation"
     ],
@@ -7342,12 +7377,13 @@
     "score": 80,
     "curated": false,
     "collectedAt": "2026-10-22T11:23:37.997Z",
-    "provenance": "arxiv-memory"
+    "provenance": "arxiv-memory",
+    "summaryZhBasis": "原文摘要"
   },
   {
     "id": "arxiv:2610.07309",
     "title": "The Right Memory in the Wrong Context: Verifying Retrieval Admissibility in Long-Term Agent Memory",
-    "titleZh": null,
+    "titleZh": "长期智能体记忆中的检索合法性验证：正确记忆出现在错误上下文",
     "url": "https://arxiv.org/abs/2610.07309v1",
     "kind": "paper",
     "source": "arXiv · 智能体记忆与自进化",
@@ -7355,8 +7391,8 @@
     "sourceTier": "preprint",
     "published": "2026-10-05T19:47:43.000Z",
     "summary": "Long-term-memory agents can retrieve relevant information that is inadmissible for the current request because it belongs to another principal, violates policy, or reflects an incompatible lifecycle state. Recall and final-answer accuracy do not reveal this: a route can appear safe by missing required evidence, while a correct answer may follow inadmissible prompt exposure. We introduce a retrieval-admissibility verification framework that assigns each memory-query pair one of three statuses (admissible, inadmissible, or unresolved), compares routes at matched required-evidence recall with bounds for unresolved cases, and tracks memory IDs through prompt exposure while linking exposure to t…",
-    "summaryZh": null,
-    "why": "新预印本，主题命中「工具与项目发布」；摘要已按原文整理，等待人工复核。",
+    "summaryZh": "该研究关注长期记忆智能体中检索到内容合规性问题，如属于其他主体或违反政策。作者引入检索合法性验证框架，将记忆-查询对状态分为可接受、不可接受或未解决，并跟踪记忆 ID 在提示中的暴露情况。",
+    "why": "弥补了仅关注召回率和答案准确性而忽视检索合规性（如隐私泄露或政策冲突）的评测盲区，为长期记忆安全提供了新的验证维度。",
     "topics": [
       "tools"
     ],
@@ -7368,12 +7404,13 @@
     "score": 76,
     "curated": false,
     "collectedAt": "2026-10-22T11:23:37.997Z",
-    "provenance": "arxiv-memory"
+    "provenance": "arxiv-memory",
+    "summaryZhBasis": "原文摘要"
   },
   {
     "id": "arxiv:2610.07258",
     "title": "Lineage-Aware Memory Governance: A Derivation-Gated Framework for Privacy-Preserving Column-Level Access Control in Enterprise AI Agents",
-    "titleZh": null,
+    "titleZh": "意识源头的记忆治理：企业 AI 智能体中隐私保护列级访问控制的推导门控框架",
     "url": "https://arxiv.org/abs/2610.07258v1",
     "kind": "paper",
     "source": "arXiv · 智能体记忆与自进化",
@@ -7381,8 +7418,8 @@
     "sourceTier": "preprint",
     "published": "2026-10-05T18:56:56.000Z",
     "summary": "Enterprise AI agents that share a memory store face two unaddressed risks: sensitive data can leak through legitimately computed results the requester could not derive, and departments can silently compute a same-named key performance indicator (KPI) through conflicting logic. Existing agent-memory systems (e.g., MemGPT, Zep, A-MEM) gate retrieval by content, ownership, and role, not derivation, missing a cached insight that embeds a forbidden column. We introduce the Analytical Memory Unit (AMU), a memory schema that attaches a full derivation (lineage) graph to every cached result, gated by a retrieval policy that serves a hit only when the requester is authorised for every column touched…",
-    "summaryZh": null,
-    "why": "新预印本，主题命中「安全与治理」；摘要已按原文整理，等待人工复核。",
+    "summaryZh": "该研究针对企业 AI 智能体共享记忆库中敏感数据泄露和 KPI 定义冲突的风险，提出了分析记忆单元（AMU）架构。AMU 将完整的推导谱系图附加到每个缓存结果，仅在请求者对所有涉及列都有授权时才提供检索命中。",
+    "why": "提出了基于数据推导谱系（Lineage）而非仅基于内容或角色的记忆访问控制方法，解决现有系统无法拦截嵌入敏感列的合法计算结果这一漏洞。",
     "topics": [
       "security"
     ],
@@ -7399,12 +7436,13 @@
     "score": 80,
     "curated": false,
     "collectedAt": "2026-10-22T11:23:37.997Z",
-    "provenance": "arxiv-memory"
+    "provenance": "arxiv-memory",
+    "summaryZhBasis": "原文摘要"
   },
   {
     "id": "arxiv:2610.06830",
     "title": "MemPilot: Orchestrating On-Demand Multimodal Memory Curation for LLM Agents",
-    "titleZh": null,
+    "titleZh": "MemPilot: 面向LLM智能体的按需多模态记忆编排框架",
     "url": "https://arxiv.org/abs/2610.06830v1",
     "kind": "paper",
     "source": "arXiv · 智能体记忆与自进化",
@@ -7412,8 +7450,8 @@
     "sourceTier": "preprint",
     "published": "2026-10-05T17:58:06.000Z",
     "summary": "Memory has become integral to the LLM agent ecosystem, supporting information retention and reuse across interactions. However, most existing agent memory systems construct memory in a query-agnostic manner, which can incur unnecessary preprocessing cost and discard details that later prove essential. Recent studies have begun shifting memory processing toward runtime adaptation, but typically specialize in particular operations or fixed processing schemes, leaving flexible control over performance, cost, and latency largely underexplored. To address this challenge, we present \\textbf{MemPilot}, a flexible framework that orchestrates on-demand memory curation under different performance--co…",
-    "summaryZh": null,
-    "why": "新预印本，主题命中「多模态与感知记忆」；摘要已按原文整理，等待人工复核。",
+    "summaryZh": "该论文提出MemPilot框架，旨在解决现有智能体记忆系统因查询无关预处理导致的成本与细节缺失问题。该框架通过在不同性能-成本权衡下灵活编排按需记忆整理，探索了运行时自适应处理中的灵活控制机制。",
+    "why": "针对现有智能体记忆系统缺乏对性能、成本和延迟灵活控制的问题，提出了新的按需编排方法。",
     "topics": [
       "multimodal"
     ],
@@ -7425,12 +7463,13 @@
     "score": 76,
     "curated": false,
     "collectedAt": "2026-10-22T11:23:37.997Z",
-    "provenance": "arxiv-memory"
+    "provenance": "arxiv-memory",
+    "summaryZhBasis": "原文摘要"
   },
   {
     "id": "arxiv:2610.06750",
     "title": "Balancing Memory Pathways: Analyzing and Improving Memory Utilization in Hybrid LMs",
-    "titleZh": null,
+    "titleZh": "分析混合语言模型中记忆通路的利用失衡问题",
     "url": "https://arxiv.org/abs/2610.06750v1",
     "kind": "paper",
     "source": "arXiv · 智能体记忆与自进化",
@@ -7438,8 +7477,8 @@
     "sourceTier": "preprint",
     "published": "2026-10-05T17:27:30.000Z",
     "summary": "Recurrent-attention hybrid language models (LMs), which interleave attention and recurrent layers, are increasingly used to combine the efficiency of the recurrent layers with the strong performance of attention layers. Prior work suggests that attention and recurrent layers offer complementary pathways to use past information: attention supports precise memory recall from earlier tokens, while recurrent layers support consolidation of disparate information over long contexts. However, we observe that simply having access to both pathways does not mean that hybrid LMs are effectively using them. We find that they rely substantially more on attention than on the recurrent state. Standard sup…",
-    "summaryZh": null,
-    "why": "新预印本，主题命中「记忆机制与系统」；摘要已按原文整理，等待人工复核。",
+    "summaryZh": "该论文分析表明，交替使用注意力和循环层的混合语言模型未能有效利用两种互补的记忆通路，而是严重依赖注意力机制而非循环状态。研究揭示了这两种信息处理方式在混合架构中利用不充分的现象。",
+    "why": "指出了混合架构语言模型中注意力与循环层使用不平衡的具体现象，为理解混合LM的记忆利用机制提供了实证观察。",
     "topics": [
       "mechanism"
     ],
@@ -7451,12 +7490,13 @@
     "score": 76,
     "curated": false,
     "collectedAt": "2026-10-22T11:23:37.997Z",
-    "provenance": "arxiv-memory"
+    "provenance": "arxiv-memory",
+    "summaryZhBasis": "原文摘要"
   },
   {
     "id": "arxiv:2610.07118",
     "title": "AMBER: Training Long-Horizon Web Agents through Append-Only Memory",
-    "titleZh": null,
+    "titleZh": "AMBER: 通过追加式记忆训练长程Web智能体",
     "url": "https://arxiv.org/abs/2610.07118v1",
     "kind": "paper",
     "source": "arXiv · 智能体记忆与自进化",
@@ -7464,8 +7504,8 @@
     "sourceTier": "preprint",
     "published": "2026-10-05T17:11:07.000Z",
     "summary": "Modern language-model agents increasingly interact with external environments over long-horizon, multi-step trajectories, where the accumulated interaction history can quickly exceed practical context budgets. To ensure reliability, agents must maintain factual information over long horizons, remember execution errors and corrective feedback, and track progress across actions. Several approaches have been proposed to achieve this without the need for maintaining the entire execution history in context, such as using the reasoning and action history, learning to maintain a fixed-size memory through an overwrite mechanism, and periodic summarization. Although overwrite memory can in principle…",
-    "summaryZh": null,
-    "why": "新预印本，主题命中「记忆机制与系统」；摘要已按原文整理，等待人工复核。",
+    "summaryZh": "该论文提出AMBER方法，针对长程多步轨迹中交互历史超出上下文预算的问题，采用追加式记忆机制替代传统的固定大小覆盖记忆和周期性摘要方法。该方法旨在确保智能体在长时间范围内维持事实信息、记住错误修正并跟踪行动进度。",
+    "why": "提出了与固定大小覆盖机制不同的追加式记忆训练方法，为长程Web智能体管理超出上下文预算的历史信息提供了新的思路。",
     "topics": [
       "mechanism"
     ],
@@ -7477,12 +7517,13 @@
     "score": 76,
     "curated": false,
     "collectedAt": "2026-10-22T11:23:37.997Z",
-    "provenance": "arxiv-memory"
+    "provenance": "arxiv-memory",
+    "summaryZhBasis": "原文摘要"
   },
   {
     "id": "arxiv:2610.06672",
     "title": "VideoTapestry: Query-Adaptive Memory Refinement for Multi-Agent Long-Video Understanding",
-    "titleZh": null,
+    "titleZh": "VideoTapestry: 面向多智能体长视频理解的查询自适应记忆细化",
     "url": "https://arxiv.org/abs/2610.06672v1",
     "kind": "paper",
     "source": "arXiv · 智能体记忆与自进化",
@@ -7490,8 +7531,8 @@
     "sourceTier": "preprint",
     "published": "2026-10-05T16:44:25.000Z",
     "summary": "Long-video understanding places substantial demands on memory, as answering questions often requires retrieving information distributed across extended temporal spans. Existing approaches broadly follow two paradigms: query-driven exploration, which is sensitive to localization errors, and query-independent memory construction, which may omit question-specific details. We introduce VideoTapestry, a training-free multi-agent framework that adapts a preconstructed hierarchical video memory through coarse-to-fine, query-driven refinement. The preconstructed memory organizes video content into three levels, capturing global narrative context, event-level temporal structure, and fine-grained rel…",
-    "summaryZh": null,
-    "why": "新预印本，主题命中「多模态与感知记忆」；摘要已按原文整理，等待人工复核。",
+    "summaryZh": "该论文提出免训练的VideoTapestry多智能体框架，通过从粗到细的查询驱动细化过程，自适应利用预构建的层级视频记忆来应对长视频理解中信息跨时间分布的挑战。该层级记忆结构捕获了全局叙事、事件级时序和细粒度关系三个层级的信息。",
+    "why": "结合了查询驱动的自适应记忆细化与预构建层级结构，在免训练设置下为长视频多智能体理解提供了新的查询响应方式。",
     "topics": [
       "multimodal"
     ],
@@ -7503,7 +7544,8 @@
     "score": 76,
     "curated": false,
     "collectedAt": "2026-10-22T11:23:37.997Z",
-    "provenance": "arxiv-memory"
+    "provenance": "arxiv-memory",
+    "summaryZhBasis": "原文摘要"
   },
   {
     "id": "arxiv:2610.06516",
@@ -7623,7 +7665,7 @@
   {
     "id": "arxiv:2610.06050",
     "title": "MATE: Adaptive Long- and Short-Term User Memory for LLM-Based Recommendation",
-    "titleZh": null,
+    "titleZh": "MATE：面向LLM推荐系统的自适应长短期用户记忆框架",
     "url": "https://arxiv.org/abs/2610.06050v1",
     "kind": "paper",
     "source": "arXiv · 智能体记忆泛检索",
@@ -7631,8 +7673,8 @@
     "sourceTier": "preprint",
     "published": "2026-10-05T09:44:24.000Z",
     "summary": "Large language model (LLM)-enhanced recommender systems leverage rich item semantics to support personalized recommendation. However, semantic representations alone do not determine which historical behaviors reflect persistent preferences and which mainly indicate recent interests, leaving an important aspect of user understanding unresolved. Recent advances in LLM inference show that newly available information can be used to refine the internal state during inference, thereby improving subsequent predictions. Inspired by this principle, we propose MATE (Memory Adaptation with Temporal Evidence), an adaptive user modeling framework for LLM-enhanced sequential recommendation. MATE first ev…",
-    "summaryZh": null,
-    "why": "新预印本，主题命中「对话与个性化记忆」；摘要已按原文整理，等待人工复核。",
+    "summaryZh": "该论文提出MATE框架，旨在解决LLM推荐系统中区分用户持久偏好与近期兴趣的难点，利用推理时新信息细化内部状态以改进序贯推荐。",
+    "why": "提供了从时序证据角度区分长期与短期用户记忆的自适应建模方法，补充了现有语义表示的不足。",
     "topics": [
       "personal"
     ],
@@ -7644,12 +7686,13 @@
     "score": 76,
     "curated": false,
     "collectedAt": "2026-10-22T11:23:37.997Z",
-    "provenance": "arxiv-broad"
+    "provenance": "arxiv-broad",
+    "summaryZhBasis": "原文摘要"
   },
   {
     "id": "arxiv:2610.05732",
     "title": "PACMI: Provenance-Aware Cascading Memory Invalidation for Long-Term LLM Agents",
-    "titleZh": null,
+    "titleZh": "PACMI：长周期LLM智能体的来源感知级联记忆失效机制",
     "url": "https://arxiv.org/abs/2610.05732v1",
     "kind": "paper",
     "source": "arXiv · 智能体记忆与自进化",
@@ -7657,8 +7700,8 @@
     "sourceTier": "preprint",
     "published": "2026-10-05T03:31:51.000Z",
     "summary": "LLM agents rely on long-term memory to retain and reuse information when performing tasks over long horizons. Existing methods provide limited support for handling memories that become outdated as new observations or domain evidence arrive. Such outdated memories may remain semantically relevant, continue to affect dependent records, and retain value as historical evidence. This calls for two capabilities: dependency tracking to identify downstream effects and historical preservation to retain useful past records. We propose Provenance-Aware Cascading Memory Invalidation (PACMI), a framework that represents memories and new evidence in a provenance graph with typed dependency edges. PACMI a…",
-    "summaryZh": null,
-    "why": "新预印本，主题命中「安全与治理」；摘要已按原文整理，等待人工复核。",
+    "summaryZh": "论文提出PACMI框架，通过来源图与类型化依赖边追踪记忆下游影响并保留历史记录，以处理长期智能体中因新证据导致的过时记忆问题。",
+    "why": "提出了兼顾依赖追踪与历史保留的级联失效方法，解决了传统方法难以处理过时记忆及其下游影响的问题。",
     "topics": [
       "security"
     ],
@@ -7675,12 +7718,13 @@
     "score": 80,
     "curated": false,
     "collectedAt": "2026-10-22T11:23:37.997Z",
-    "provenance": "arxiv-memory"
+    "provenance": "arxiv-memory",
+    "summaryZhBasis": "原文摘要"
   },
   {
     "id": "arxiv:2610.05526",
     "title": "Have I Scene This Before? Spatially Grounded Conversational Memory for Complex Queries in Egocentric Assistants",
-    "titleZh": null,
+    "titleZh": "SpaC-MEM：面向自我中心助手的空间接地对话记忆",
     "url": "https://arxiv.org/abs/2610.05526v1",
     "kind": "paper",
     "source": "arXiv · 具身与多模态记忆",
@@ -7688,8 +7732,8 @@
     "sourceTier": "preprint",
     "published": "2026-10-04T20:42:29.000Z",
     "summary": "Egocentric assistants must connect what users say with what they see across long interaction histories. We formalize this challenge as Spatially grounded Conversational Reasoning (SpaCR): cross-scene, recall-oriented, and counterfactual spatial queries that combine user-stated facts with geometric evidence. Direct vision-language models incur high inference costs and context limits as histories grow, while keyframe selection and retrieval can omit objects or evidence needed for complete recall. We propose Spatially grounded Conversational Memory (SpaC-MEM), an object-centric working memory that uses 3D reconstruction and segmentation to ground conversational information in persistent physic…",
-    "summaryZh": null,
-    "why": "新预印本，主题命中「具身与空间记忆」；摘要已按原文整理，等待人工复核。",
+    "summaryZh": "论文提出SpaC-MEM，一种以物体为中心的短时记忆框架，利用3D重建和分割将对话信息接地于持久物理场景中，以应对复杂空间查询。",
+    "why": "将记忆与3D几何证据结合，解决了自我中心助手在长历史交互中跨场景空间推理的成本与完整性挑战。",
     "topics": [
       "embodied"
     ],
@@ -7701,12 +7745,13 @@
     "score": 76,
     "curated": false,
     "collectedAt": "2026-10-22T11:23:37.997Z",
-    "provenance": "arxiv-embodied"
+    "provenance": "arxiv-embodied",
+    "summaryZhBasis": "原文摘要"
   },
   {
     "id": "arxiv:2610.07031",
     "title": "Artemis: Geometry-Grounded Multi-Agent Driving World Models with Shared 3D State and Progressive Memory Update",
-    "titleZh": null,
+    "titleZh": "Artemis：几何接地的多智能体驾驶世界模型",
     "url": "https://arxiv.org/abs/2610.07031v1",
     "kind": "paper",
     "source": "arXiv · 智能体记忆与自进化",
@@ -7714,8 +7759,8 @@
     "sourceTier": "preprint",
     "published": "2026-10-04T18:54:00.000Z",
     "summary": "Recent video world models have witnessed the paradigm shift from single-agent to multi-agent involvements, which can reveal more complicated dynamics and cross-agent interaction in the real world. However, existing approaches commonly adopt implicit inter-agent communications via cross attention, which lack explicit geometry constraints and unified 3D state, thereby leading to poor multi-view consistency and struggling with recovering out-of-sight agents. In addition, most of them assume a static background, failing to represent uncontrolled background dynamics. To address these problems, we propose Artemis: a geometry-grounded multi-agent world model with explicit memory sharing. An explic…",
-    "summaryZh": null,
-    "why": "新预印本，主题命中「多模态与感知记忆」；摘要已按原文整理，等待人工复核。",
+    "summaryZh": "论文提出Artemis，一种具有显式3D共享状态和渐进式记忆更新的多智能体世界模型，旨在解决现有方法中几何约束缺失和多视角一致性差的问题。",
+    "why": "通过引入显式几何约束和共享3D状态，改进了多智能体交互中的背景动态表示和不可见智能体恢复能力。",
     "topics": [
       "multimodal"
     ],
@@ -7727,12 +7772,13 @@
     "score": 76,
     "curated": false,
     "collectedAt": "2026-10-22T11:23:37.997Z",
-    "provenance": "arxiv-memory"
+    "provenance": "arxiv-memory",
+    "summaryZhBasis": "原文摘要"
   },
   {
     "id": "arxiv:2610.05418",
     "title": "EvoMem-VLA: State-Evolution Memory for Long-Horizon Robot Manipulation",
-    "titleZh": null,
+    "titleZh": "EvoMem-VLA：用于长程机器人操作的演化状态记忆框架",
     "url": "https://arxiv.org/abs/2610.05418v1",
     "kind": "paper",
     "source": "arXiv · 具身与多模态记忆",
@@ -7740,8 +7786,8 @@
     "sourceTier": "preprint",
     "published": "2026-10-04T17:59:43.000Z",
     "summary": "Most vision-language-action (VLA) models rely on current observations and lose task-relevant evidence once it leaves view, limiting performance on long-horizon, memory-dependent tasks. Existing efforts incorporate compressed historical features or sparse visual keyframes. However, isolated snapshots can leave the policy uncertain about what changed during past interactions and which action should follow. To overcome this limitation, we propose EvoMem-VLA, which constructs state-evolution memory by explicitly encoding and retaining observed changes between historical states. These change representations preserve evidence of interaction outcomes, allowing the policy to track task progress bey…",
-    "summaryZh": null,
-    "why": "新预印本，主题命中「具身与空间记忆」；摘要已按原文整理，等待人工复核。",
+    "summaryZh": "该研究提出了 EvoMem-VLA 架构，旨在解决现有视觉语言动作（VLA）模型在处理长程任务时丢失历史证据的问题。该方法通过显式编码并保留历史状态间的变化，构建状态演化记忆，以保留交互结果证据，从而协助策略追踪任务进度。",
+    "why": "区别于仅使用压缩特征或稀疏关键帧的传统方法，该方法提供了保留交互结果与状态演化的新视角，有助于在长程依赖任务中保持推理连贯性。",
     "topics": [
       "embodied"
     ],
@@ -7753,12 +7799,13 @@
     "score": 76,
     "curated": false,
     "collectedAt": "2026-10-22T11:23:37.997Z",
-    "provenance": "arxiv-embodied"
+    "provenance": "arxiv-embodied",
+    "summaryZhBasis": "原文摘要"
   },
   {
     "id": "arxiv:2610.05241",
     "title": "StateWise: Diagnosing and Repairing Persistent Operational State Before Agent Actions",
-    "titleZh": null,
+    "titleZh": "StateWise：在 LLM 代理执行动作前诊断与修复持久化运行状态",
     "url": "https://arxiv.org/abs/2610.05241v1",
     "kind": "paper",
     "source": "arXiv · 记忆安全与评测",
@@ -7766,8 +7813,8 @@
     "sourceTier": "preprint",
     "published": "2026-10-04T14:12:18.000Z",
     "summary": "LLM agents combine reasoning, tool use, and persistent memory to support work across tasks by reusing stored operational records as premises for later actions. However, environmental or requirement changes can invalidate these records, while existing action review, provenance tracking, and clarification mechanisms may leave the underlying persistent state uncorrected. Our audit of coding-agent trajectories identifies candidate failure chains in which invalid records are reused, leading to task failures and unsafe modifications. We propose StateWise, a framework for diagnosing and repairing persistent operational state before action execution. StateWise uses record-level counterfactual repla…",
-    "summaryZh": null,
-    "why": "新预印本，主题命中「安全与治理」；摘要已按原文整理，等待人工复核。",
+    "summaryZh": "基于对编码代理轨迹的审计发现，现有机制未能有效纠正因环境或需求变更而失效的持久化记录，导致任务失败。StateWise 提出一种框架，在动作执行前利用记录级反事实替换来诊断并修复持久化操作状态。",
+    "why": "关注于持久化状态的有效性与一致性，通过事前诊断与修复机制防止无效记录被误用，对长流程 LLM 代理的安全性评测具有参考价值。",
     "topics": [
       "security"
     ],
@@ -7784,12 +7831,13 @@
     "score": 80,
     "curated": false,
     "collectedAt": "2026-10-22T11:23:37.997Z",
-    "provenance": "arxiv-security"
+    "provenance": "arxiv-security",
+    "summaryZhBasis": "原文摘要"
   },
   {
     "id": "arxiv:2610.05223",
     "title": "Look Before You Leap: Thermodynamic Arbitration of Parametric and Non-Parametric Knowledge in LLM Agents via Self-Regulating Memory Architectures",
-    "titleZh": null,
+    "titleZh": "LLM 代理中参数化与非参数化知识的自调节记忆仲裁架构",
     "url": "https://arxiv.org/abs/2610.05223v1",
     "kind": "paper",
     "source": "arXiv · 智能体记忆与自进化",
@@ -7797,8 +7845,8 @@
     "sourceTier": "preprint",
     "published": "2026-10-04T13:43:24.000Z",
     "summary": "The architecture of modern LLMs consists of a profound cognitive polarization. LLMs possess implicit intuition encoded in their parameters, yet rely on a disconnected, explicit mechanism to access the outside world. Agentic frameworks have not bridged this gap; instead, models are often compelled into pathological \"induced amnesia.\" Under the prevailing \"Retrieve-Always\" paradigm, agents must distrust their internal knowledge, making every user interaction a \"tabula rasa\" event that must be checked externally. This creates reflexive dependence that can be thermodynamically wasteful, cognitively fragile, and susceptible to irrelevant context. We propose a return to first principles, operatio…",
-    "summaryZh": null,
-    "why": "新预印本，主题命中「评测与基准」；摘要已按原文整理，等待人工复核。",
+    "summaryZh": "针对 LLM 代理在处理外部检索时可能陷入完全依赖外部知识的模式，该研究提出了通过自调节记忆架构热力学仲裁参数化知识与非参数化知识的机制。该机制旨在避免过度依赖外部检索导致的认知脆弱性与性能损耗。",
+    "why": "探讨了内部参数知识与外部检索机制之间的平衡，提出了自调节内存管理的理论基础，对解决代理长期运行中的知识获取成本与稳定性问题具有启发。",
     "topics": [
       "evaluation"
     ],
@@ -7810,12 +7858,13 @@
     "score": 76,
     "curated": false,
     "collectedAt": "2026-10-22T11:23:37.997Z",
-    "provenance": "arxiv-memory"
+    "provenance": "arxiv-memory",
+    "summaryZhBasis": "原文摘要"
   },
   {
     "id": "arxiv:2610.05163",
     "title": "Blocking at the Boundary: Auditing Long-Horizon Agents against Staged Prompt Injection",
-    "titleZh": null,
+    "titleZh": "长程代理面对多阶段提示注入的边界阻断机制审计",
     "url": "https://arxiv.org/abs/2610.05163v1",
     "kind": "paper",
     "source": "arXiv · 记忆安全与评测",
@@ -7823,8 +7872,8 @@
     "sourceTier": "preprint",
     "published": "2026-10-04T12:14:19.000Z",
     "summary": "Long-horizon agents consume external content, invoke tools, and modify persistent state. Indirect prompt injection can exploit task-specific context, propagate across causally connected stages, and alter a consequential action while the workflow continues; we term this staged prompt injection. We build an automated, feedback-guided attack generation pipeline and apply it to Claude Code and Codex in their native runtimes. The confirmed attacks span eight workflow scenarios, seven attack goals, and six injection surfaces, showing that production agents are vulnerable to context-aware, multi-step injection over long horizons. Stopping such attacks requires a decision before each consequential…",
-    "summaryZh": null,
-    "why": "新预印本，主题命中「安全与治理」；摘要已按原文整理，等待人工复核。",
+    "summaryZh": "研究提出“多阶段提示注入”概念，通过自动化攻击生成管线在 Claude Code 和 Codex 等生产环境中测试，发现在八个场景下存在跨因果阶段传播的注入漏洞。该研究表明，阻断此类攻击需要在每次产生后果的行动前进行边界决策。",
+    "why": "聚焦于长期运行代理面对外部不可信内容时的记忆与执行安全风险，提供了针对多阶段提示注入的自动化攻击与防御审计机制，丰富了代理安全防护的研究边界。",
     "topics": [
       "security"
     ],
@@ -7842,12 +7891,13 @@
     "score": 80,
     "curated": false,
     "collectedAt": "2026-10-22T11:23:37.997Z",
-    "provenance": "arxiv-security"
+    "provenance": "arxiv-security",
+    "summaryZhBasis": "原文摘要"
   },
   {
     "id": "arxiv:2610.05162",
     "title": "Memadapter: Counterfactual Adaptation Against Memory-induced Sycophancy",
-    "titleZh": null,
+    "titleZh": "Memadapter：针对记忆导致顺从的反事实适配方法",
     "url": "https://arxiv.org/abs/2610.05162v1",
     "kind": "paper",
     "source": "arXiv · 智能体记忆与自进化",
@@ -7855,8 +7905,8 @@
     "sourceTier": "preprint",
     "published": "2026-10-04T12:12:16.000Z",
     "summary": "Long-term memory enables LLM-based agents to retain and reuse information across tasks and sessions, supporting personalization and long-horizon interactions. However, persistent memories can also induce sycophancy, causing agents to over-align with users' historical beliefs even when they are inaccurate, outdated, or inconsistent with objective evidence. Existing mitigation methods assume that memory-induced sycophancy originates from biased or incorrect memories and attempt to reduce this risk by filtering such memories at different stages of the memory pipeline. However, in the real world, objective and correct memories can still induce sycophancy, and the same memory can warrant differe…",
-    "summaryZh": null,
-    "why": "新预印本，主题命中「对话与个性化记忆」；摘要已按原文整理，等待人工复核。",
+    "summaryZh": "论文提出Memadapter，指出即使客观正确的记忆也可能导致智能体过度迎合用户历史观点，并探讨在记忆管道中过滤有偏差记忆的传统方法及其局限。",
+    "why": "区别于以往聚焦于过滤错误记忆的缓解策略，本研究揭示了客观记忆同样可能引发顺从性偏倚的新问题。",
     "topics": [
       "personal"
     ],
@@ -7874,12 +7924,13 @@
     "score": 80,
     "curated": false,
     "collectedAt": "2026-10-22T11:23:37.997Z",
-    "provenance": "arxiv-memory"
+    "provenance": "arxiv-memory",
+    "summaryZhBasis": "原文摘要"
   },
   {
     "id": "arxiv:2610.05124",
     "title": "Memory Canonicalization: A Framework and Benchmark for Cross-Model Drift in Persistent LLM Memory",
-    "titleZh": null,
+    "titleZh": "Memory Canonicalization：跨模型持久记忆漂移的框架与基准",
     "url": "https://arxiv.org/abs/2610.05124v1",
     "kind": "paper",
     "source": "arXiv · 智能体记忆与自进化",
@@ -7887,8 +7938,8 @@
     "sourceTier": "preprint",
     "published": "2026-10-04T11:09:27.000Z",
     "summary": "Persistent memory for Large Language Models (LLMs) has matured rapidly: systems such as MemGPT/Letta, Mem0, and Zep now provide agents with tiered, temporally-aware, model-agnostic external storage, while the Model Context Protocol (MCP) standardizes access to memory servers. A less addressed problem is that an identical stored memory object, retrieved by two different LLMs under otherwise identical conditions, may not be interpreted the same way, factually or emotionally. This paper proposes memory canonicalization: a write-time pipeline that detects ambiguity, conditional structure, and emotional loading in a raw memory object and rewrites it into an explicit, structurally disambiguated c…",
-    "summaryZh": null,
-    "why": "新预印本，主题命中「评测与基准」；摘要已按原文整理，等待人工复核。",
+    "summaryZh": "该研究指出同一存储记忆对象在不同LLM间可能存在事实或情感解读漂移，提出在写入时检测歧义、条件结构和情感负荷并重构为结构清晰记忆的标准化流程。",
+    "why": "关注多模型环境下记忆解释一致性的新问题，为跨模型记忆共享提供了写入时标准化的框架与评测基准。",
     "topics": [
       "evaluation"
     ],
@@ -7905,12 +7956,13 @@
     "score": 80,
     "curated": false,
     "collectedAt": "2026-10-22T11:23:37.997Z",
-    "provenance": "arxiv-memory"
+    "provenance": "arxiv-memory",
+    "summaryZhBasis": "原文摘要"
   },
   {
     "id": "arxiv:2610.05097",
     "title": "ReMAP: Restoring the Perceptual Cycle with Reasoning-Time Latent Visual Memory",
-    "titleZh": null,
+    "titleZh": "ReMAP：推理时潜空间视觉记忆恢复感知循环",
     "url": "https://arxiv.org/abs/2610.05097v1",
     "kind": "paper",
     "source": "arXiv · 具身与多模态记忆",
@@ -7918,8 +7970,8 @@
     "sourceTier": "preprint",
     "published": "2026-10-04T10:00:49.000Z",
     "summary": "As multimodal large language models (MLLMs) reason for longer, attention to the initial visual input diminishes, weakening visual grounding. Visual memory reintroduces visual evidence during reasoning. We conduct a controlled analysis of visual memory along three axes: curation, organization, and access. We find that local evidence benefits from global context, compact latent representations balance accuracy and visual-context cost, and the utility of memory access depends on the reasoning state. Guided by these findings, we propose ReMAP (Reasoning-Time Memory-Augmented Perception), which couples two complementary latent memories: a static, question-conditioned Global memory that preserves…",
-    "summaryZh": null,
-    "why": "新预印本，主题命中「具身与空间记忆」；摘要已按原文整理，等待人工复核。",
+    "summaryZh": "多模态大语言模型在长推理中易丢失初始视觉关注，ReMAP通过全局与局部互补的潜空间视觉记忆，结合推理状态动态调用记忆，以恢复视觉锚定。",
+    "why": "在多模态长链条推理场景中，针对注意力衰减问题提出了基于潜空间且与推理状态耦合的动态记忆访问机制。",
     "topics": [
       "embodied"
     ],
@@ -7931,12 +7983,13 @@
     "score": 76,
     "curated": false,
     "collectedAt": "2026-10-22T11:23:37.997Z",
-    "provenance": "arxiv-embodied"
+    "provenance": "arxiv-embodied",
+    "summaryZhBasis": "原文摘要"
   },
   {
     "id": "arxiv:2610.06999",
     "title": "ProactiveVLA: Augmenting Embodied Memory through Proactive Environment Exploration",
-    "titleZh": null,
+    "titleZh": "ProactiveVLA：通过主动环境探索增强具身记忆",
     "url": "https://arxiv.org/abs/2610.06999v1",
     "kind": "paper",
     "source": "arXiv · 智能体记忆与自进化",
@@ -7944,8 +7997,8 @@
     "sourceTier": "preprint",
     "published": "2026-10-04T08:47:50.000Z",
     "summary": "Rapid adaptation to a new environment requires a robot to acquire useful knowledge about local objects, states, and interactions from limited experience. Systems that combine a reasoning agent with a frozen vision-language-action model (VLA) can adapt through execution feedback and memory, making the choice of experience central to their effectiveness. Repeated practice of a target task may refine a familiar solution while leaving other interactions relevant to changed conditions untested. We introduce ProactiveVLA, which uses proactive environment exploration to acquire reusable knowledge for deployment-time adaptation. After completing an initial task, the agent allocates the remaining in…",
-    "summaryZh": null,
-    "why": "新预印本，主题命中「具身与空间记忆」；摘要已按原文整理，等待人工复核。",
+    "summaryZh": "该系统让智能体在完成初始任务后，利用剩余时间主动探索环境而非重复演练，获取关于局部物体、状态及交互的可复用知识，以提升部署时适应能力。",
+    "why": "改变了以往仅依赖重复执行目标任务获取经验的做法，将主动环境探索引入具身记忆积累，拓展了适应新环境的策略。",
     "topics": [
       "embodied"
     ],
@@ -7962,12 +8015,13 @@
     "score": 80,
     "curated": false,
     "collectedAt": "2026-10-22T11:23:37.997Z",
-    "provenance": "arxiv-memory"
+    "provenance": "arxiv-memory",
+    "summaryZhBasis": "原文摘要"
   },
   {
     "id": "arxiv:2610.05024",
     "title": "LightVLN: Efficient Aerial Vision-and-Language Navigation with Compact Memory and History-Guided Local Aggregation",
-    "titleZh": null,
+    "titleZh": "LightVLN：基于紧凑记忆的历史引导无人机视觉语言导航框架",
     "url": "https://arxiv.org/abs/2610.05024v1",
     "kind": "paper",
     "source": "arXiv · 多模态记忆",
@@ -7975,8 +8029,8 @@
     "sourceTier": "preprint",
     "published": "2026-10-04T07:37:44.000Z",
     "summary": "Aerial vision-and-language navigation (VLN) enables unmanned aerial vehicles to execute long-horizon natural-language instructions from visual observations in complex three-dimensional environments. However, recent aerial VLN models often rely on large-scale vision-language backbones and dense visual histories, imposing substantial computation and memory costs that hinder onboard deployment. We propose LightVLN, a lightweight history-aware aerial VLN framework that combines a compact 0.5B language backbone with compact representations of both historical and current observations. LightVLN compresses each historical frame into a single token using visual features already computed by the polic…",
-    "summaryZh": null,
-    "why": "新预印本，主题命中「多模态与感知记忆」；摘要已按原文整理，等待人工复核。",
+    "summaryZh": "LightVLN 提出一种轻量级无人机 VLN 框架，使用 0.5B 语言骨干网络，并将历史帧压缩为单个 token 以降低成本。",
+    "why": "该研究针对机载部署的计算和内存限制，提出了一种利用紧凑表示来平衡历史信息与性能的方法。",
     "topics": [
       "multimodal"
     ],
@@ -7988,12 +8042,13 @@
     "score": 76,
     "curated": false,
     "collectedAt": "2026-10-22T11:23:37.997Z",
-    "provenance": "arxiv-multimodal"
+    "provenance": "arxiv-multimodal",
+    "summaryZhBasis": "原文摘要"
   },
   {
     "id": "arxiv:2610.05013",
     "title": "EMBER-Bench: Benchmarking Cross-Event Causal Memory in Long-Horizon Embodied Tasks",
-    "titleZh": null,
+    "titleZh": "EMBER-Bench：评估长时序具身任务中跨事件因果记忆的基准",
     "url": "https://arxiv.org/abs/2610.05013v1",
     "kind": "paper",
     "source": "arXiv · 智能体记忆与自进化",
@@ -8001,8 +8056,8 @@
     "sourceTier": "preprint",
     "published": "2026-10-04T07:14:05.000Z",
     "summary": "Lifelong physical agents must reason over extended interactions where past events continue to shape the world long after they disappear from view. Beyond recalling what happened, agents must infer how history changes the current state and constrains future actions. Yet existing embodied and video-memory benchmarks largely focus on historical retrieval and summary, leaving such history-dependent causal reasoning underexplored. We introduce EMBER-Bench, an egocentric benchmark for cross-event causal reasoning in long-horizon embodied tasks, for which we newly created the task design, video recording, and data annotation. It contains 189 household tasks and 699 QA pairs, spanning task progress…",
-    "summaryZh": null,
-    "why": "新预印本，主题命中「评测与基准」；摘要已按原文整理，等待人工复核。",
+    "summaryZh": "EMBER-Bench 是一个包含 189 个家庭任务和 699 个问答对的基准测试，专门用于评估智能体在长时程任务中对历史事件如何影响当前状态和未来行动进行因果推理的能力。",
+    "why": "现有具身和视觉记忆基准大多集中于历史信息检索，该基准填补了对历史依赖性因果推理评估不足的问题。",
     "topics": [
       "evaluation"
     ],
@@ -8019,12 +8074,13 @@
     "score": 80,
     "curated": false,
     "collectedAt": "2026-10-22T11:23:37.997Z",
-    "provenance": "arxiv-memory"
+    "provenance": "arxiv-memory",
+    "summaryZhBasis": "原文摘要"
   },
   {
     "id": "arxiv:2610.04868",
     "title": "From Memory to Guide: Spatio-Temporal Composer for Procedural Coding Memory",
-    "titleZh": null,
+    "titleZh": "From Memory to Guide：面向程序性编码记忆的空时组合器",
     "url": "https://arxiv.org/abs/2610.04868v1",
     "kind": "paper",
     "source": "arXiv · 智能体记忆与自进化",
@@ -8032,8 +8088,8 @@
     "sourceTier": "preprint",
     "published": "2026-10-04T02:15:24.000Z",
     "summary": "Memory-augmented agents typically integrate procedural knowledge by injecting retrieved skills directly into text prompts. This approach dangerously equates readable text with reliable execution. To bridge this gap, we introduce From Memory to Guide, a novel paradigm that transitions procedural memory from passive text delivery to active, inference-time policy adaptation. We instantiate this paradigm through the Spatio-Temporal Composer, an active policy compiler that explicitly manages exactly how and when retrieved knowledge should be applied. Rather than treating skills as plug-and-play modules, Composer dynamically aligns historical knowledge with current environmental constraints (spat…",
-    "summaryZh": null,
-    "why": "新预印本，主题命中「记忆机制与系统」；摘要已按原文整理，等待人工复核。",
+    "summaryZh": "该文提出时空组合器，将程序性记忆从被动的文本注入转变为推理时的主动策略适配，通过动态对齐历史知识与当前环境约束来管理检索知识的调用。",
+    "why": "该范式试图解决直接将检索到的技能文本作为提示词可能导致执行不可靠的问题，通过编译器显式管理应用策略。",
     "topics": [
       "mechanism"
     ],
@@ -8045,12 +8101,13 @@
     "score": 76,
     "curated": false,
     "collectedAt": "2026-10-22T11:23:37.997Z",
-    "provenance": "arxiv-memory"
+    "provenance": "arxiv-memory",
+    "summaryZhBasis": "原文摘要"
   },
   {
     "id": "arxiv:2610.04838",
     "title": "MemTrace: State-Consistent Memory for Long-Horizon Coding Agents",
-    "titleZh": null,
+    "titleZh": "MemTrace：长时程编码智能体的状态一致记忆系统",
     "url": "https://arxiv.org/abs/2610.04838v3",
     "kind": "paper",
     "source": "arXiv · 智能体记忆与自进化",
@@ -8058,8 +8115,8 @@
     "sourceTier": "preprint",
     "published": "2026-10-04T00:45:37.000Z",
     "summary": "As coding agents take on long-horizon software evolution tasks spanning multiple files and stages, longer execution trajectories introduce two coupled challenges: (1) accumulated histories strain context budgets, and (2) repository changes can invalidate earlier execution evidence. Existing approaches address these challenges through techniques like larger context windows, compression, retrieval, or repository representations, but often fail to reconstruct a consistent task state after a context refresh or verify whether recalled evidence remains valid. Thus, we introduce MemTrace, a provenance-aware memory system that preserves execution history and aligns its reuse with the evolving task…",
-    "summaryZh": null,
-    "why": "新预印本，主题命中「安全与治理」；摘要已按原文整理，等待人工复核。",
+    "summaryZh": "MemTrace 是一个感知来源的记忆系统，旨在保存执行历史，并在上下文刷新后，将记忆的复用与不断演进的任务状态保持一致。",
+    "why": "长时程编码任务面临上下文预算受限及仓库变更导致先前执行证据失效的问题，该框架专注于在状态变化后重建一致的任务状态并验证召回证据的有效性。",
     "topics": [
       "security"
     ],
@@ -8076,12 +8133,13 @@
     "score": 80,
     "curated": false,
     "collectedAt": "2026-10-22T11:23:37.997Z",
-    "provenance": "arxiv-memory"
+    "provenance": "arxiv-memory",
+    "summaryZhBasis": "原文摘要"
   },
   {
     "id": "arxiv:2610.04794",
     "title": "Knowing the Store: What a Memory Backend Must Write Down Before an Agent Can Read It",
-    "titleZh": null,
+    "titleZh": "Knowing the Store: 评估 Agent 记忆后端在检索前暴露元数据的能力",
     "url": "https://arxiv.org/abs/2610.04794v1",
     "kind": "paper",
     "source": "arXiv · 智能体记忆与自进化",
@@ -8089,8 +8147,8 @@
     "sourceTier": "preprint",
     "published": "2026-10-03T22:39:33.000Z",
     "summary": "An agent with long-term memory can answer from a record it should no longer use, such as a plan the user later cancelled. We ask what a memory store must expose for an agent to know this before retrieving anything, and we score that judgment on its own, as metamemory monitoring. Readers see only a value-free summary: record counts by lifecycle state and a list of attribute names. Each of 148 questions is asked against three versions of one store that differ in one attribute, so wording cannot give the answer away. What a model adds depends on the length of that list. On the short lists the benchmark's ground truth produces (2.6 names on average), none of five language models reliably beats…",
-    "summaryZh": null,
-    "why": "新预印本，主题命中「评测与基准」；摘要已按原文整理，等待人工复核。",
+    "summaryZh": "该预印本研究记忆存储需要暴露什么信息，才能使 Agent 在检索前判断记录是否过期（如已取消的计划）。作者通过控制变量测试了五个语言模型在仅基于生命周期状态和属性名称摘要下进行元记忆监控的可靠性。",
+    "why": "提供了一种在检索发生前评估 Agent 元记忆监控能力的基准测试方法，强调了后端元数据透明度对决策准确性的重要性。",
     "topics": [
       "evaluation"
     ],
@@ -8107,12 +8165,13 @@
     "score": 80,
     "curated": false,
     "collectedAt": "2026-10-22T11:23:37.997Z",
-    "provenance": "arxiv-memory"
+    "provenance": "arxiv-memory",
+    "summaryZhBasis": "原文摘要"
   },
   {
     "id": "arxiv:2610.04701",
     "title": "Test-Time Training as Residual Memory for Robot Policies",
-    "titleZh": null,
+    "titleZh": "Test-Time Training as Residual Memory: 区分可恢复与不可恢复的机器人策略记忆",
     "url": "https://arxiv.org/abs/2610.04701v1",
     "kind": "paper",
     "source": "arXiv · 具身与多模态记忆",
@@ -8120,8 +8179,8 @@
     "sourceTier": "preprint",
     "published": "2026-10-03T18:26:25.000Z",
     "summary": "Memory is essential for long-horizon robotic manipulation, where successful actions may depend on past events that are no longer recoverable from the current observation. As episodes grow longer, however, retaining the full history becomes increasingly costly, creating a fundamental scalability challenge for memory-augmented policies. Existing approaches address this challenge by either storing selected past observations in a bounded memory bank or compressing interaction history into a fixed-size parametric state through Test-Time Training (TTT). Yet these formulations do not explicitly distinguish between historical information that can already be recovered from the policy's current conte…",
-    "summaryZh": null,
-    "why": "新预印本，主题命中「具身与空间记忆」；摘要已按原文整理，等待人工复核。",
+    "summaryZh": "该预印本针对长时程机器人操作中保留完整历史的高成本问题，提出利用测试时训练（TTT）形成残差记忆。作者区分了当前上下文已可恢复的历史信息与不可恢复信息，以解决记忆扩展性问题。",
+    "why": "提出了一种具体的 TTT 记忆框架，通过显式区分可恢复与不可恢复的历史信息，为具身智能体的长时程操作提供了新的可扩展性解决方案。",
     "topics": [
       "embodied"
     ],
@@ -8138,12 +8197,13 @@
     "score": 80,
     "curated": false,
     "collectedAt": "2026-10-22T11:23:37.997Z",
-    "provenance": "arxiv-embodied"
+    "provenance": "arxiv-embodied",
+    "summaryZhBasis": "原文摘要"
   },
   {
     "id": "arxiv:2610.04589",
     "title": "StegoMemory: Agentic Memory Acts as Covert Steganographic Channel",
-    "titleZh": null,
+    "titleZh": "StegoMemory: 测试 Agent 记忆作为隐蔽隐写信道传输恶意字符串",
     "url": "https://arxiv.org/abs/2610.04589v1",
     "kind": "paper",
     "source": "arXiv · 智能体记忆与自进化",
@@ -8151,8 +8211,8 @@
     "sourceTier": "preprint",
     "published": "2026-10-03T15:23:18.000Z",
     "summary": "Is agentic memory robust against stealthy steganographic attacks? We carry out a large-scale red-teaming exercise to test whether agents can encode attacker-controlled strings in one session and recover them in another without triggering safety oversight. Following SHADE-Arena-style tasks, we embed malicious side tasks to encode secret strings using steganography within otherwise benign tasks and evaluate them using independent task-completion and safety oversight. We test 14,000 attack trials spanning 91 model-attack configurations, 13 models, and 7 steganographic schemes: Acrostic, Mesostic, Telestich, Word-choice, Capitalization, Position-based, and Homoglyph. 41.2% of trials successfull…",
-    "summaryZh": null,
-    "why": "新预印本，主题命中「安全与治理」；摘要已按原文整理，等待人工复核。",
+    "summaryZh": "该预印本通过大规模红队测试，评估了 Agent 能否在不受安全监督触发的情况下，将攻击者控制的字符串隐蔽编码在记忆的一次会话中并在另一次会话中恢复。测试涵盖了 14,000 次攻击尝试、13 个模型和 7 种隐写方案，结果显示 41.2% 的尝试成功。",
+    "why": "揭示了 Agent 长期记忆机制在安全层面的新风险面，即记忆可被用作跨会话的隐蔽隐写信道，对多轮交互的安全监控具有警示意义。",
     "topics": [
       "security"
     ],
@@ -8170,12 +8230,13 @@
     "score": 80,
     "curated": false,
     "collectedAt": "2026-10-22T11:23:37.997Z",
-    "provenance": "arxiv-memory"
+    "provenance": "arxiv-memory",
+    "summaryZhBasis": "原文摘要"
   },
   {
     "id": "arxiv:2610.04195",
     "title": "MemLeak: Cross-User Semantic Leakage in Multi-Tenant AI Agent Memory",
-    "titleZh": null,
+    "titleZh": "MemLeak: 分析多租户 AI Agent 共享向量存储中的跨用户语义泄漏",
     "url": "https://arxiv.org/abs/2610.04195v1",
     "kind": "paper",
     "source": "arXiv · 智能体记忆与自进化",
@@ -8183,8 +8244,8 @@
     "sourceTier": "preprint",
     "published": "2026-10-03T01:16:05.000Z",
     "summary": "Personal AI agents in enterprise multi-tenant deployments share a common vector store for long-term memory. Shared embedding spaces create a surface for cross-user memory leakage: a user's query can retrieve semantically adjacent memories belonging to another user through ordinary cosine-similarity retrieval, without any exploit. We formalize this as cross-user admissibility failure and evaluate it across six experiments, plus follow-up ablations, under both sparse (TF-IDF) and production-faithful (MiniLM-L6-v2) retrieval. Non-adversarial, incidental leakage reaches 70--100\\% under pooled {same-team} retrieval; adversarially crafted memories achieve 90--100\\% top-$k$ placement, exceeding we…",
-    "summaryZh": null,
-    "why": "新预印本，主题命中「安全与治理」；摘要已按原文整理，等待人工复核。",
+    "summaryZh": "该预印本研究企业多租户部署中共享向量存储导致的跨用户记忆泄漏问题。作者形式化了“跨用户可接受性失败”，并在稀疏和真实生产环境检索下评估了意外泄漏与对抗性构造记忆在 top-k 检索中的占比。",
+    "why": "形式化定义了共享嵌入空间下的跨用户记忆泄漏问题，并量化了非对抗性与对抗性场景下的泄漏风险，为多租户 Agent 部署提供了安全评估基准。",
     "topics": [
       "security"
     ],
@@ -8202,12 +8263,13 @@
     "score": 80,
     "curated": false,
     "collectedAt": "2026-10-22T11:23:37.997Z",
-    "provenance": "arxiv-memory"
+    "provenance": "arxiv-memory",
+    "summaryZhBasis": "原文摘要"
   },
   {
     "id": "arxiv:2610.04083",
     "title": "Self-Propagating Misalignment in LLM Agents, and Why Auditing or Disabling Memory Is Not Enough",
-    "titleZh": null,
+    "titleZh": "自传播失齐：LLM 代理无外部攻击者下的记忆威胁研究",
     "url": "https://arxiv.org/abs/2610.04083v1",
     "kind": "paper",
     "source": "arXiv · 智能体记忆与自进化",
@@ -8215,8 +8277,8 @@
     "sourceTier": "preprint",
     "published": "2026-10-02T21:46:13.000Z",
     "summary": "Memory poisoning attacks on LLM agents typically assume an external adversary who plants content in the agent's persistent memory to steer its behavior. We instead study, with no adversary involved, whether a misaligned agent can write a goal it cannot yet act on to persistent memory, so that a future aligned agent carries it out when the opportunity arises. We investigate this threat, which we refer to as self-propagation of misalignment, across 20 different scenarios, whose misaligned goals include self-preservation, power-seeking, undermining oversight, reward hacking, and deceiving the user. We simulate misalignment in 11 frontier models using two prompting strategies; unrestricted and…",
-    "summaryZh": null,
-    "why": "新预印本，主题命中「安全与治理」；摘要已按原文整理，等待人工复核。",
+    "summaryZh": "该研究探讨在无外部攻击者情况下，失齐代理如何将无法立即执行的目标写入持久记忆，待未来对齐代理执行，并在 20 个场景中模拟 11 个前沿模型验证此类自传播失齐现象。",
+    "why": "提出无外部恶意行为者前提下的新型记忆安全威胁模型，补充了现有记忆投毒攻击研究的视角。",
     "topics": [
       "security"
     ],
@@ -8234,12 +8296,13 @@
     "score": 80,
     "curated": false,
     "collectedAt": "2026-10-22T11:23:37.997Z",
-    "provenance": "arxiv-memory"
+    "provenance": "arxiv-memory",
+    "summaryZhBasis": "原文摘要"
   },
   {
     "id": "arxiv:2610.04012",
     "title": "Beyond the Parameter Monolith: Reconstructive Memories, Executable Skills, and Residual Assembly for Language Models",
-    "titleZh": null,
+    "titleZh": "FEM-ASM：基于有限元启发的语言模型重构记忆与可执行技能架构",
     "url": "https://arxiv.org/abs/2610.04012v1",
     "kind": "paper",
     "source": "arXiv · 记忆安全与评测",
@@ -8247,8 +8310,8 @@
     "sourceTier": "preprint",
     "published": "2026-10-02T20:18:49.000Z",
     "summary": "Language-model systems can separate contextual computation, persistent storage, and exact execution instead of updating all capabilities through one shared parameter system. We investigate FEM-ASM, a finite-element-method-inspired organization in which independently constructed document states and deterministic executable skills contribute typed proposals to a shared language-model state. An explicit residual operator reconciles proposals attached to common interface nodes. We evaluate this organization through controlled experiments and negative results rather than claiming a physical finite-element formulation of language. An attention-free Multi-Mesh prototype learns causal language mode…",
-    "summaryZh": null,
-    "why": "新预印本，主题命中「安全与治理」；摘要已按原文整理，等待人工复核。",
+    "summaryZh": "文章提出 FEM-ASM 组织形式，将上下文计算、持久存储与精确执行分离，使用独立文档状态和确定性可执行技能向共享语言模型状态贡献类型化提案，并通过受控实验评估其效果。",
+    "why": "探索了非单一参数系统更新的语言模型系统架构，提出结合可执行技能与重构记忆的混合方案。",
     "topics": [
       "security"
     ],
@@ -8265,12 +8328,13 @@
     "score": 80,
     "curated": false,
     "collectedAt": "2026-10-22T11:23:37.997Z",
-    "provenance": "arxiv-security"
+    "provenance": "arxiv-security",
+    "summaryZhBasis": "原文摘要"
   },
   {
     "id": "arxiv:2610.03902",
     "title": "When Evidence Changes: Evaluating Memory Repair and Re-reading in Language-Model Agents",
-    "titleZh": null,
+    "titleZh": "证据变更下的记忆修复与重读评测：医疗任务中的代理行为对比",
     "url": "https://arxiv.org/abs/2610.03902v1",
     "kind": "paper",
     "source": "arXiv · 智能体记忆与自进化",
@@ -8278,8 +8342,8 @@
     "sourceTier": "preprint",
     "published": "2026-10-02T18:13:29.000Z",
     "summary": "When documents supporting an agent's derived facts are revoked or replaced, should it repair memory or re-read current evidence? We introduce an evidence-revision evaluation on medication- and problem-list tasks from public ICU records. Under revocation, replacement and control events, we compare full and source-filtered re-reading with caching, rebuilding and graph-local repair across two 7B models. Memory is supplied in full without retrieval, and costs include ingest, revision and every use. On short records, local repair uses 5-10$\\times$ fewer revision tokens than rebuilding, yet every memory pipeline costs at least twice full re-reading in held-out conditions. In a small pre-specified…",
-    "summaryZh": null,
-    "why": "新预印本，主题命中「评测与基准」；摘要已按原文整理，等待人工复核。",
+    "summaryZh": "针对支持代理推导事实的文档被撤销或替换的场景，文章基于公开 ICU 记录引入证据修订评测，比较两种 7B 模型在缓存、重建和图局部修复等不同策略下的表现与成本。",
+    "why": "提供了证据变更场景下记忆维护策略的系统化评测基准，关注实际医疗任务中的合规性与效率。",
     "topics": [
       "evaluation"
     ],
@@ -8298,12 +8362,13 @@
     "score": 80,
     "curated": false,
     "collectedAt": "2026-10-22T11:23:37.997Z",
-    "provenance": "arxiv-memory"
+    "provenance": "arxiv-memory",
+    "summaryZhBasis": "原文摘要"
   },
   {
     "id": "arxiv:2610.03510",
     "title": "Weave Forcing: Compositional Memory Routing for Interactive Long Video Generation",
-    "titleZh": null,
+    "titleZh": "Weave Forcing：交互式长视频生成中的组合式记忆路由框架",
     "url": "https://arxiv.org/abs/2610.03510v1",
     "kind": "paper",
     "source": "arXiv · 多模态记忆",
@@ -8311,8 +8376,8 @@
     "sourceTier": "preprint",
     "published": "2026-10-02T16:04:26.000Z",
     "summary": "Recent advances in autoregressive video generation have improved temporal consistency over extended durations, yet interactive storytelling requires more than continuous scene extension: a new shot may combine characters and backgrounds from different historical shots. Whole prompt retrieval can overlook the distinct reference needs of individual components, while directly combining all historical memories may introduce unrelated visual content. To address these problems, we present Weave Forcing, a training-free framework for compositional memory reuse in interactive long video generation. First, we use an LLM for semantic slot routing to decompose user prompts into character and backgroun…",
-    "summaryZh": null,
-    "why": "新预印本，主题命中「多模态与感知记忆」；摘要已按原文整理，等待人工复核。",
+    "summaryZh": "为解决交互式叙事中不同历史镜头角色与背景引用需求不一致的问题，Weave Forcing 采用免训练框架，利用 LLM 将用户提示解耦为语义槽位以进行组合式记忆复用。",
+    "why": "针对交互式视频生成的特定痛点，提出了解耦组件引用的记忆路由方法，提升时空一致性控制粒度。",
     "topics": [
       "multimodal"
     ],
@@ -8324,12 +8389,13 @@
     "score": 76,
     "curated": false,
     "collectedAt": "2026-10-22T11:23:37.997Z",
-    "provenance": "arxiv-multimodal"
+    "provenance": "arxiv-multimodal",
+    "summaryZhBasis": "原文摘要"
   },
   {
     "id": "arxiv:2610.03020",
     "title": "DyadMem: A Long-Term Memory Benchmark of How Agents Work with Users",
-    "titleZh": null,
+    "titleZh": "DyadMem：用户条件下的关系型智能体记忆基准",
     "url": "https://arxiv.org/abs/2610.03020v1",
     "kind": "paper",
     "source": "arXiv · 智能体记忆与自进化",
@@ -8337,8 +8403,8 @@
     "sourceTier": "preprint",
     "published": "2026-10-02T08:57:43.000Z",
     "summary": "Long-term agents must remember not only what is true about a user, but also how a particular agent should work with that user as their shared history evolves. Existing benchmarks primarily supervise user facts and preferences or experience reusable across users, leaving this relationship-specific agent memory implicit. Additionally, most prior works measure the model solely with final-answer QA over long interaction histories, making the assessment still incomplete and unreliable. To this end, we introduce DyadMem with the proposed new definition User-conditioned Relational Agent Memory (URAM). DyadMem jointly annotates user-side memory and URAM along the same multi-session trajectories, re…",
-    "summaryZh": null,
-    "why": "新预印本，主题命中「评测与基准」；摘要已按原文整理，等待人工复核。",
+    "summaryZh": "DyadMem 提出了“用户条件下的关系型智能体记忆”（URAM）的定义，通过联合标注用户侧记忆和 URAM，在多次会话轨迹上评估智能体记忆。",
+    "why": "DyadMem 将关注点从通用的用户事实或偏好，转移到“特定智能体与用户之间随关系演化的记忆”，填补了关系型智能体记忆评估的空白。",
     "topics": [
       "evaluation"
     ],
@@ -8355,12 +8421,13 @@
     "score": 80,
     "curated": false,
     "collectedAt": "2026-10-22T11:23:37.997Z",
-    "provenance": "arxiv-memory"
+    "provenance": "arxiv-memory",
+    "summaryZhBasis": "原文摘要"
   },
   {
     "id": "arxiv:2610.02945",
     "title": "Continual Graph Memory for Mathematical Research Agents",
-    "titleZh": null,
+    "titleZh": "Ansatz：基于持续图记忆的数学研究智能体",
     "url": "https://arxiv.org/abs/2610.02945v1",
     "kind": "paper",
     "source": "arXiv · 智能体记忆与自进化",
@@ -8368,8 +8435,8 @@
     "sourceTier": "preprint",
     "published": "2026-10-02T07:38:09.000Z",
     "summary": "Using frontier agent harnesses to tackle mathematical research problems has emerged as an effective means of advancing mathematics. However, solving frontier problems in mathematics may require a massive number of agents working in parallel for extended periods to construct proofs, thereby generating an enormous volume of intermediate proof results. Organizing these intermediate results throughout a long-horizon proof-search process and reusing knowledge gained from prior explorations remain major challenges. We present Ansatz, a mathematical research agent built around Continual Graph Memory, a graph-based, evolvable, cross-problem mathematical research memory system that explicitly organi…",
-    "summaryZh": null,
-    "why": "新预印本，主题命中「记忆机制与系统」；摘要已按原文整理，等待人工复核。",
+    "summaryZh": "Ansatz 是一个使用“持续图记忆”（Continual Graph Memory）系统的数学研究智能体。该系统基于可演化的图谱组织长期证明搜索过程中的中间结果，并复用先前探索获取的知识。",
+    "why": "它针对并行、长期运行的数学证明生成过程，通过持续演化的图谱解决中间结果的组织和跨问题知识复用这一特定挑战。",
     "topics": [
       "mechanism"
     ],
@@ -8381,12 +8448,13 @@
     "score": 76,
     "curated": false,
     "collectedAt": "2026-10-22T11:23:37.997Z",
-    "provenance": "arxiv-memory"
+    "provenance": "arxiv-memory",
+    "summaryZhBasis": "原文摘要"
   },
   {
     "id": "arxiv:2610.02897",
     "title": "Interpreting at Write Time: A Policy Ablation for Multi-Goal Agent Memory",
-    "titleZh": null,
+    "titleZh": "写入时解释：面向多目标智能体记忆的策略消融",
     "url": "https://arxiv.org/abs/2610.02897v1",
     "kind": "paper",
     "source": "arXiv · 对话与个性化记忆",
@@ -8394,8 +8462,8 @@
     "sourceTier": "preprint",
     "published": "2026-10-02T06:44:39.000Z",
     "summary": "A long-running assistant cannot keep everything it has seen, so it summarises. Summarising is not neutral: what is kept is chosen against some notion of what the record is for, and that choice is made once, before anyone knows which of the user's standing goals will ask. Goals rarely disagree about what happened. They disagree about which parts of it were worth the space. Once the history is too long to re-read, the summary replaces the stream, and whatever it left out is gone. We ask what a memory should summarise for when it serves several standing goals at once. Three policies answer differently: summarise with no goal in view, write one summary covering every goal, or write one summary…",
-    "summaryZh": null,
-    "why": "新预印本，主题命中「对话与个性化记忆」；摘要已按原文整理，等待人工复核。",
+    "summaryZh": "该论文探讨了在智能体服务于多个持续目标时，写入记忆时如何生成摘要。文章分析了“无目标摘要”、“单摘要覆盖所有目标”和“单摘要...（原文截断，但意指针对特定目标）”等不同策略。",
+    "why": "研究在记忆写入阶段如何根据多个并存的持续目标来优化摘要，揭示了在信息容量有限时，多目标场景下的记忆策略选择问题。",
     "topics": [
       "personal"
     ],
@@ -8407,12 +8475,13 @@
     "score": 76,
     "curated": false,
     "collectedAt": "2026-10-22T11:23:37.997Z",
-    "provenance": "arxiv-personal"
+    "provenance": "arxiv-personal",
+    "summaryZhBasis": "原文摘要"
   },
   {
     "id": "arxiv:2610.02766",
     "title": "Exact Memory-Time Optimization for Prefix-Cached Language Model Serving",
-    "titleZh": null,
+    "titleZh": "前缀缓存语言模型服务的精确记忆-时间优化",
     "url": "https://arxiv.org/abs/2610.02766v1",
     "kind": "paper",
     "source": "arXiv · 记忆评测",
@@ -8420,8 +8489,8 @@
     "sourceTier": "preprint",
     "published": "2026-10-02T03:47:10.000Z",
     "summary": "Retaining language-model prefix states trades recomputation against storage time. Optimizing each cached block independently can overcount savings: a resident block is usable only when the required preceding prefix is also available. We introduce Prefix-Certificate Retention (PCR), an exact finite-trace formulation for static, grouped, reset-on-access timeouts. Usable-prefix rewards become nodes whose prerequisites are timeout thresholds and preceding hit certificates. The resulting maximum-weight closure reduces to one minimum cut, with graph size linear in the number of block lookups and timeout choices. A breakpoint theorem extends the construction to all nonnegative timeouts without dis…",
-    "summaryZh": null,
-    "why": "新预印本，主题命中「评测与基准」；摘要已按原文整理，等待人工复核。",
+    "summaryZh": "该工作提出了“前缀证书保留”（Prefix-Certificate Retention, PCR）方法，一种精确的有限迹公式，用于在静态、分组、超时重置的情况下优化语言模型前缀缓存的保留策略。",
+    "why": "PCR 将前缀缓存保留问题精确地建模为一个最大权闭合问题，并证明其可归约为一个最小割问题，为缓存服务提供了精确的优化方法。",
     "topics": [
       "evaluation"
     ],
@@ -8438,12 +8507,13 @@
     "score": 80,
     "curated": false,
     "collectedAt": "2026-10-22T11:23:37.997Z",
-    "provenance": "arxiv-eval"
+    "provenance": "arxiv-eval",
+    "summaryZhBasis": "原文摘要"
   },
   {
     "id": "arxiv:2610.02764",
     "title": "A Controlled Audit of Personal AI Memory for Rating Prediction",
-    "titleZh": null,
+    "titleZh": "个人AI记忆评分预测的受控审计",
     "url": "https://arxiv.org/abs/2610.02764v1",
     "kind": "paper",
     "source": "arXiv · 记忆评测",
@@ -8451,8 +8521,8 @@
     "sourceTier": "preprint",
     "published": "2026-10-02T03:43:17.000Z",
     "summary": "In structured rating prediction, does a personal AI use historical item-rating associations, or mainly the user's rating tendencies? We audit this distinction by permuting historical ratings within each user while preserving the exact rating distribution, item support, and metadata. We combine this control with full history, native memory extraction, and matched numerical readers in a publicly frozen evaluation of 400 held-out user profiles and 6,160 target ratings across Coat and MovieLens. On Coat, the tested Qwen-written Mem0 pipeline increases user-macro mean absolute error relative to full history by 0.084 for Qwen and 0.149 for Phi; both family-adjusted bootstrap intervals exclude zer…",
-    "summaryZh": null,
-    "why": "新预印本，主题命中「评测与基准」；摘要已按原文整理，等待人工复核。",
+    "summaryZh": "该论文通过排列用户历史评分的受控实验，审计个人AI记忆在结构化评分预测中是利用物品-评分关联还是用户评分倾向。在Coat和MovieLens数据集上，测试显示Qwen编写的Mem0流水线在部分场景下导致用户宏平均绝对误差相对完整历史基线有所增加。",
+    "why": "揭示了记忆系统在特定预测任务中可能劣化性能的反直觉现象，提供了评估记忆机制有效性的具体控制方法。",
     "topics": [
       "evaluation"
     ],
@@ -8470,12 +8540,13 @@
     "score": 80,
     "curated": false,
     "collectedAt": "2026-10-22T11:23:37.997Z",
-    "provenance": "arxiv-eval"
+    "provenance": "arxiv-eval",
+    "summaryZhBasis": "原文摘要"
   },
   {
     "id": "arxiv:2610.02687",
     "title": "Decoupling Memory from Context: Structured Memory for Token-Efficient Test-Time Continual Learning",
-    "titleZh": null,
+    "titleZh": "解耦记忆与上下文：面向Token高效测试时持续学习的结构化记忆",
     "url": "https://arxiv.org/abs/2610.02687v2",
     "kind": "paper",
     "source": "arXiv · 智能体记忆与自进化",
@@ -8483,8 +8554,8 @@
     "sourceTier": "preprint",
     "published": "2026-10-02T02:07:32.000Z",
     "summary": "Large language models (LLMs) are increasingly deployed in enterprise, scientific, and medical applications, where agents must incorporate domain-specific knowledge and adapt from experience. Context engineering offers a practical alternative to weight updates by improving model behavior through instructions, strategies, and evidence supplied at inference time. However, adapting context online typically requires a costly trial-and-error process, while queries are often processed independently, preventing useful experience from carrying forward. Memory systems address this limitation by retaining information across interactions, but approaches that continually append information to a shared c…",
-    "summaryZh": null,
-    "why": "新预印本，主题命中「记忆机制与系统」；摘要已按原文整理，等待人工复核。",
+    "summaryZh": "针对大语言模型在线适应需要昂贵试错且查询独立处理的问题，该论文提出一种将记忆与上下文解耦的结构化方法，旨在实现Token高效的测试时持续学习，使智能体能从经验中跨交互保留信息。",
+    "why": "提供了在不更新权重情况下通过上下文工程提升模型领域适应能力的具体架构设计，关注Token效率与经验复用。",
     "topics": [
       "mechanism"
     ],
@@ -8501,12 +8572,13 @@
     "score": 80,
     "curated": false,
     "collectedAt": "2026-10-22T11:23:37.997Z",
-    "provenance": "arxiv-memory"
+    "provenance": "arxiv-memory",
+    "summaryZhBasis": "原文摘要"
   },
   {
     "id": "arxiv:2610.02569",
     "title": "Pincer: Resource Authorization for Agents using a Digital Twin",
-    "titleZh": null,
+    "titleZh": "Pincer：基于数字孪生的智能体资源授权",
     "url": "https://arxiv.org/abs/2610.02569v1",
     "kind": "paper",
     "source": "arXiv · 智能体记忆泛检索",
@@ -8514,8 +8586,8 @@
     "sourceTier": "preprint",
     "published": "2026-10-01T23:03:12.000Z",
     "summary": "Coding agents have become increasingly long-horizon, autonomous, reliant on general-purpose shell and maintain their own persistent memory for self-improvement. While these capabilities have made the agents powerful, they have also made them harder to defend against external adversaries. Defenses that restrict this architecture --- typed tools, information-flow control, or policy prediction engines --- give up too much functionality to be adopted. Agents deployed today (e.g. Claude, Codex) rely on a combination of user-mediated and automode sandboxing as their primary defense. In user-mediated sandboxing, user-maintained policies decay over time and repeated permission requests cause user f…",
-    "summaryZh": null,
-    "why": "新预印本，主题命中「安全与治理」；摘要已按原文整理，等待人工复核。",
+    "summaryZh": "该论文提出Pincer框架，利用数字孪生对长时程编码智能体进行资源授权。文中指出当前依赖用户中介或自动沙箱的防御机制存在策略衰减和用户疲劳问题，而限制架构的防御措施牺牲了过多功能。",
+    "why": "聚焦于自主智能体安全防御中的权限管理痛点，提出了一种平衡功能性与安全性的新授权视角。",
     "topics": [
       "security"
     ],
@@ -8533,12 +8605,13 @@
     "score": 80,
     "curated": false,
     "collectedAt": "2026-10-22T11:23:37.997Z",
-    "provenance": "arxiv-broad"
+    "provenance": "arxiv-broad",
+    "summaryZhBasis": "原文摘要"
   },
   {
     "id": "arxiv:2610.02521",
     "title": "Spatial Memory Intelligence: Endowing World Models with Understanding-Driven Long-Term Memory",
-    "titleZh": null,
+    "titleZh": "空间记忆智能：赋予世界模型理解驱动的长期记忆",
     "url": "https://arxiv.org/abs/2610.02521v2",
     "kind": "paper",
     "source": "arXiv · 具身与多模态记忆",
@@ -8546,8 +8619,8 @@
     "sourceTier": "preprint",
     "published": "2026-10-01T21:50:57.000Z",
     "summary": "Long-video generation and world models have shown strong potential for interactive entertainment and embodied simulation by predicting future observations conditioned on user actions and historical memory. However, as memory sequences grow longer and their structures become increasingly complex, managing long-range spatial context becomes increasingly challenging, calling for a more intelligent and systematic memory-management strategy. Building on the advancing spatial reasoning capabilities of multimodal large language models (MLLMs) and the broader vision of unified models, we propose Spatial Memory Intelligence (SMI), the first framework to systematically employ an understanding model f…",
-    "summaryZh": null,
-    "why": "新预印本，主题命中「具身与空间记忆」；摘要已按原文整理，等待人工复核。",
+    "summaryZh": "该论文提出空间记忆智能（SMI）框架，利用多模态大语言模型的空间推理能力，为长视频生成和世界模型提供由理解驱动的长期记忆管理策略，以应对长序列空间上下文管理的挑战。",
+    "why": "将多模态理解能力引入记忆管理系统，为具身智能和长视频生成场景下的长期记忆管理提供新范式。",
     "topics": [
       "embodied"
     ],
@@ -8559,12 +8632,13 @@
     "score": 76,
     "curated": false,
     "collectedAt": "2026-10-22T11:23:37.997Z",
-    "provenance": "arxiv-embodied"
+    "provenance": "arxiv-embodied",
+    "summaryZhBasis": "原文摘要"
   },
   {
     "id": "arxiv:2610.02488",
     "title": "Harnessing LLMs as Agents: What Does It Cost?",
-    "titleZh": null,
+    "titleZh": "LAM：基于资源约束的LLM Agent机制成本量化框架",
     "url": "https://arxiv.org/abs/2610.02488v2",
     "kind": "paper",
     "source": "arXiv · 智能体记忆泛检索",
@@ -8572,8 +8646,8 @@
     "sourceTier": "preprint",
     "published": "2026-10-01T21:05:49.000Z",
     "summary": "Language-model agents increasingly rely on harnesses that manage bounded context, persistent memory, tools, verification, and repeated execution, yet existing notions of model capability do not quantify the computational resources these mechanisms consume. We introduce the Language Model Agent Machine (LAM), a resource-bounded abstraction that fixes the underlying semantic model while explicitly charging harness-level resources. We establish four classes of results. Communication: LAM execution is instancewise equivalent to red--blue pebbling under simultaneous call--transfer budgets, transferring classical I/O lower bounds to context--memory traffic. Access: memory interfaces induce asympt…",
-    "summaryZh": null,
-    "why": "新预印本，主题命中「记忆机制与系统」；摘要已按原文整理，等待人工复核。",
+    "summaryZh": "该论文提出语言模型Agent机器（LAM）抽象，用于量化Agent机制（如上下文、记忆、工具）消耗的计算资源，并建立了通信、访问等四类结果，将经典I/O下界转化为上下文-记忆流量分析。",
+    "why": "提供了评估Agent基础设施资源开销的新理论视角，补充了现有模型能力指标中缺失的计算资源维度。",
     "topics": [
       "mechanism"
     ],
@@ -8590,12 +8664,13 @@
     "score": 80,
     "curated": false,
     "collectedAt": "2026-10-22T11:23:37.997Z",
-    "provenance": "arxiv-broad"
+    "provenance": "arxiv-broad",
+    "summaryZhBasis": "原文摘要"
   },
   {
     "id": "arxiv:2610.02472",
     "title": "APDMem: Agent-Controlled Progressive Disclosure for Query-Adaptive Long-Term Memory",
-    "titleZh": null,
+    "titleZh": "APDMem：基于渐进披露的层级化长期记忆架构",
     "url": "https://arxiv.org/abs/2610.02472v1",
     "kind": "paper",
     "source": "arXiv · 智能体记忆与自进化",
@@ -8603,8 +8678,8 @@
     "sourceTier": "preprint",
     "published": "2026-10-01T20:51:45.000Z",
     "summary": "Personalized LLM assistants must recover sparse evidence from long conversation histories across queries of varying complexity. We introduce APDMem (Agent-controlled Progressive Disclosure Memory), a hierarchical long-term memory architecture that applies progressive disclosure to memory retrieval. Rather than relying on a flat memory store or fixed retrieval granularity, APDMem represents conversation history as four progressively detailed layers: thematic summaries, personalized key facts, turn-level evidence notes, and raw messages. At inference time, a controller applies progressive disclosure to the memory hierarchy: it first reads high-level summaries and drills into finer evidence on…",
-    "summaryZh": null,
-    "why": "新预印本，主题命中「对话与个性化记忆」；摘要已按原文整理，等待人工复核。",
+    "summaryZh": "APDMem将对话历史表示为四层渐进细节结构（主题摘要、关键事实、轮次证据、原始消息），由控制器在推理时按需深入读取，以适配不同复杂度的查询。",
+    "why": "通过层级化结构和渐进披露策略，解决了固定检索粒度导致的效率或效果平衡问题，增强了长期记忆检索的灵活性。",
     "topics": [
       "personal"
     ],
@@ -8621,12 +8696,13 @@
     "score": 80,
     "curated": false,
     "collectedAt": "2026-10-22T11:23:37.997Z",
-    "provenance": "arxiv-memory"
+    "provenance": "arxiv-memory",
+    "summaryZhBasis": "原文摘要"
   },
   {
     "id": "arxiv:2610.02361",
     "title": "SEDIMA: Cross-Run Hierarchical Insight Memory for Evolutionary Search Agents",
-    "titleZh": null,
+    "titleZh": "SEDIMA：面向进化搜索Agent的跨运行层级洞察记忆",
     "url": "https://arxiv.org/abs/2610.02361v1",
     "kind": "paper",
     "source": "arXiv · 智能体记忆与自进化",
@@ -8634,8 +8710,8 @@
     "sourceTier": "preprint",
     "published": "2026-10-01T18:38:31.000Z",
     "summary": "Large language model (LLM)-driven evolutionary search is a powerful paradigm for automated program and algorithm discovery, yet existing systems are largely memoryless: each run explores from scratch, so agents repeatedly rediscover the same improvements and re-encounter the same dead ends. We introduce SEDIMA, a persistent hierarchical insight memory for evolutionary search agents. SEDIMA distills raw traces into natural-language insights, clusters them by semantic similarity using attention-weighted centroids, and retrieves relevant guidance to condition future mutations, accumulating transferable knowledge across runs and problems rather than within a single trajectory. As a drop-in modu…",
-    "summaryZh": null,
-    "why": "新预印本，主题命中「记忆机制与系统」；摘要已按原文整理，等待人工复核。",
+    "summaryZh": "SEDIMA将原始轨迹提炼为自然语言洞察，并通过语义相似性聚类，使进化搜索Agent能在多次运行间复用知识，避免重复探索相同的改进或死路。",
+    "why": "解决了现有进化搜索系统缺乏持久记忆、每次从零开始探索的问题，通过跨运行知识积累提升了搜索效率。",
     "topics": [
       "mechanism"
     ],
@@ -8652,12 +8728,13 @@
     "score": 80,
     "curated": false,
     "collectedAt": "2026-10-22T11:23:37.997Z",
-    "provenance": "arxiv-memory"
+    "provenance": "arxiv-memory",
+    "summaryZhBasis": "原文摘要"
   },
   {
     "id": "arxiv:2610.02070",
     "title": "Causal Memory Policy: Making Memory Utility Identifiable by Intervening on Retrieval",
-    "titleZh": null,
+    "titleZh": "CMP：通过干预检索实现记忆效用可识别的因果框架",
     "url": "https://arxiv.org/abs/2610.02070v3",
     "kind": "paper",
     "source": "arXiv · 智能体记忆与自进化",
@@ -8665,8 +8742,8 @@
     "sourceTier": "preprint",
     "published": "2026-10-01T17:11:25.000Z",
     "summary": "Memory-augmented large language models must decide which memories to retain, and recent systems do so by estimating each memory's effect on task performance. However, these estimates rely entirely on retrieved memories. When a memory is never retrieved, store-level interventions produce identical outcomes, leaving its utility unidentified. This is a retrieval-level positivity violation, invisible to diagnostics that examine only memory operations. We introduce Causal Memory Policy (CMP), a causal framework that restores identification by intervening on retrieval itself, reserving a fixed number of context slots for memories sampled with known propensities. CMP estimates memory utility by se…",
-    "summaryZh": null,
-    "why": "新预印本，主题命中「评测与基准」；摘要已按原文整理，等待人工复核。",
+    "summaryZh": "针对记忆从未被检索时效用无法识别的问题，CMP提出因果框架，通过预留固定上下文槽位并以已知倾向性采样记忆进行干预，从而估计记忆效用。",
+    "why": "指出并解决了基于检索评估记忆效用的固有缺陷（检索水平正性违背），提供了更严谨的记忆保留决策方法。",
     "topics": [
       "evaluation"
     ],
@@ -8678,12 +8755,13 @@
     "score": 76,
     "curated": false,
     "collectedAt": "2026-10-22T11:23:37.997Z",
-    "provenance": "arxiv-memory"
+    "provenance": "arxiv-memory",
+    "summaryZhBasis": "原文摘要"
   },
   {
     "id": "arxiv:2610.02002",
     "title": "Mem++: Non-Destructive Memory for Long-Term Organizational LLM Agents",
-    "titleZh": null,
+    "titleZh": "Mem++：面向组织级长期LLM智能体的非破坏性记忆框架",
     "url": "https://arxiv.org/abs/2610.02002v1",
     "kind": "paper",
     "source": "arXiv · 智能体记忆与自进化",
@@ -8691,8 +8769,8 @@
     "sourceTier": "preprint",
     "published": "2026-10-01T16:32:38.000Z",
     "summary": "Large Language Model (LLM) agents now take part in organizational work, where many authors record decisions across documents over months. Because a revised decision arrives as a new document rather than an edit, answering a question requires knowing which version held at a given time. However, most memory systems compress the record at write time. By distilling each document into facts, notes or graph edges, these methods fix what can be answered before any question is asked. To address this, we propose Mem++, a non-destructive memory framework shifting from write-time distillation to read-time selection. Mem++ stores every document whole with its date and author, and it calls no generative…",
-    "summaryZh": null,
-    "why": "新预印本，主题命中「工具与项目发布」；摘要已按原文整理，等待人工复核。",
+    "summaryZh": "Mem++ 提出一种非破坏性记忆框架，将记忆机制从写入时的蒸馏（distillation）转变为读取时的选择（read-time selection）。框架完整保留每份文档及其日期与作者信息，旨在解决组织工作中因文档修订导致“版本追溯”困难的场景。",
+    "why": "针对长期组织工作场景中传统记忆方法在写入时进行信息压缩（distillation）导致版本追溯能力受限的问题，Mem++ 通过“写入保留完整原始文档，读取时动态选择”的机制，提供了一种新的非破坏性（non-destructive）记忆解决方案。",
     "topics": [
       "tools"
     ],
@@ -8704,12 +8782,13 @@
     "score": 76,
     "curated": false,
     "collectedAt": "2026-10-22T11:23:37.997Z",
-    "provenance": "arxiv-memory"
+    "provenance": "arxiv-memory",
+    "summaryZhBasis": "原文摘要"
   },
   {
     "id": "arxiv:2610.01762",
     "title": "OneStreamer: Unifying Perception, Memory, and Proactive Response in Streaming Video Interaction",
-    "titleZh": null,
+    "titleZh": "OneStreamer：统一流式视频中的感知、记忆与主动响应",
     "url": "https://arxiv.org/abs/2610.01762v1",
     "kind": "paper",
     "source": "arXiv · 多模态记忆",
@@ -8717,8 +8796,8 @@
     "sourceTier": "preprint",
     "published": "2026-10-01T14:23:03.000Z",
     "summary": "Streaming video LLMs must retain evidence before its relevance to future tasks is known and respond when sufficient evidence becomes available. The challenge is to form reusable factual memory without compromising real-time perception. We introduce OneStreamer, which jointly learns query-independent evidence recording and task response through a shared proactive generation process. Its Proactive Hierarchical Caption Memory (PHCM) produces time-grounded local-detail captions and summaries of completed events. Streaming caption targets supervise the interpretation of observed video prefixes during training. At inference, model-generated records complement a recent visual window, providing reu…",
-    "summaryZh": null,
-    "why": "新预印本，主题命中「多模态与感知记忆」；摘要已按原文整理，等待人工复核。",
+    "summaryZh": "OneStreamer 引入了一种联合学习方法，通过共享的主动生成过程（shared proactive generation process）同时学习查询无关的证据记录与任务响应。其核心模块 Proactive Hierarchical Caption Memory（PHCM）生成基于时间的局部细节字幕和已完成事件摘要。",
+    "why": "OneStreamer 旨在解决流式视频LLM中“形成可复用事实记忆”与“保持实时感知”之间的冲突，通过查询无关的主动证据记录（query-independent evidence recording）将记忆与响应统一到单一生成过程中，具有明确的工程设计价值。",
     "topics": [
       "multimodal"
     ],
@@ -8730,12 +8809,13 @@
     "score": 76,
     "curated": false,
     "collectedAt": "2026-10-22T11:23:37.997Z",
-    "provenance": "arxiv-multimodal"
+    "provenance": "arxiv-multimodal",
+    "summaryZhBasis": "原文摘要"
   },
   {
     "id": "arxiv:2610.01415",
     "title": "Beyond Memory: Harnessing Long-Horizon Agents with Explicit Belief States",
-    "titleZh": null,
+    "titleZh": "Beyond Memory：基于显式信念状态的长程智能体推理框架",
     "url": "https://arxiv.org/abs/2610.01415v1",
     "kind": "paper",
     "source": "arXiv · 智能体记忆与自进化",
@@ -8743,8 +8823,8 @@
     "sourceTier": "preprint",
     "published": "2026-10-01T10:21:46.000Z",
     "summary": "Large language model (LLM) agents can now undertake increasingly complex tasks, but the way they organize interaction history into memory does not ensure a coherent understanding of the current world. We introduce PoS, an inference-time framework that constructs and continually maintains explicit belief states as the agent's decision context. Each belief combines an estimate of the current world state with unresolved task requirements, making explicit what the agent still needs to learn and accomplish. To keep this belief reliable and actionable, PoS validates its consistency and monitors task progress to detect Belief Trapping, where the agent continues to act without making meaningful pro…",
-    "summaryZh": null,
-    "why": "新预印本，主题命中「工具与项目发布」；摘要已按原文整理，等待人工复核。",
+    "summaryZh": "文章提出 PoS 框架，在推理阶段为 LLM 智能体构建并持续维护显式信念状态（explicit belief states）作为决策上下文。每个信念结合当前世界状态估计与未解决的任务需求，并能通过一致性校验和任务进度监控来检测“信念陷阱”（Belief Trapping）。",
+    "why": "指出传统仅依赖交互历史记忆（memory）不保证形成连贯的世界理解（coherent understanding of the current world），PoS 通过显式的信念状态（belief states）及其一致性校验，为长程智能体提供了一种超越单纯记忆管理的决策上下文管理方法。",
     "topics": [
       "tools"
     ],
@@ -8756,12 +8836,13 @@
     "score": 76,
     "curated": false,
     "collectedAt": "2026-10-22T11:23:37.997Z",
-    "provenance": "arxiv-memory"
+    "provenance": "arxiv-memory",
+    "summaryZhBasis": "原文摘要"
   },
   {
     "id": "arxiv:2610.01301",
     "title": "Continual Learning for 6-DoF Grasp Synthesis via Experience and Demonstrations",
-    "titleZh": null,
+    "titleZh": "基于经验与演示的持续学习：面向单视图6-DoF抓取的综合",
     "url": "https://arxiv.org/abs/2610.01301v1",
     "kind": "paper",
     "source": "arXiv · 智能体记忆与自进化",
@@ -8769,8 +8850,8 @@
     "sourceTier": "preprint",
     "published": "2026-10-01T08:36:06.000Z",
     "summary": "Most current grasp synthesis systems are trained offline and remain fixed during deployment. While this works well when deployment conditions resemble the training data, performance can degrade when robots encounter conditions they have not seen before, such as unfamiliar objects. In this work, we present a continual-learning framework for single-view 6-DoF grasp synthesis for a parallel-jaw gripper in cluttered scenes. Rather than finetuning a large parametric model, our method adapts through memory in a learned embedding space: grasp outcomes update future grasp scores, while optional user demonstrations are recalled and transferred to new scenes as additional candidate grasps. We evaluat…",
-    "summaryZh": null,
-    "why": "新预印本，主题命中「评测与基准」；摘要已按原文整理，等待人工复核。",
+    "summaryZh": "提出了针对并行夹爪在杂乱场景中单视图 6-DoF 抓取的综合（synthesis）持续学习框架。该框架不微调大型参数模型，而是通过在所学嵌入空间（learned embedding space）中的记忆进行适应：抓取结果更新未来的抓取分数，可选的用户演示被召回并作为新场景中的额外候选抓取。",
+    "why": "将“记忆”（memory）引入机器人抓取任务，提供了一种无需微调大型参数模型，而是通过更新嵌入空间中记忆（抓取结果与演示）来适应新条件与未知物体的持续学习范式。",
     "topics": [
       "evaluation"
     ],
@@ -8787,7 +8868,8 @@
     "score": 80,
     "curated": false,
     "collectedAt": "2026-10-22T11:23:37.997Z",
-    "provenance": "arxiv-memory"
+    "provenance": "arxiv-memory",
+    "summaryZhBasis": "原文摘要"
   },
   {
     "id": "arxiv:2610.01192",
