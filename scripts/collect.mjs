@@ -73,6 +73,7 @@ function normalizeDate(value) {
 }
 
 function sourceTierFor(source, kind) {
+  if (source.paper) return "preprint";
   if (kind === "release" || source.type === "github-search") return "official";
   if (source.type === "arxiv" || source.type === "hf" || source.type === "rss" && source.id === "arxiv-announce")
     return "preprint";
@@ -84,6 +85,12 @@ function evidenceFor(source, kind) {
   if (kind === "paper") return "预印本 · 原文可核验";
   if (source.type === "rss") return "媒体报道";
   return "公开来源";
+}
+
+function sourcePriority(source) {
+  if (source.priority) return source.priority;
+  if (source.type === "arxiv") return "critical";
+  return "optional";
 }
 
 function autoWhy(item) {
@@ -184,15 +191,21 @@ async function collectArxiv(source) {
 
 async function collectRss(source, xml) {
   const entries = parseFeed(xml);
-  return entries.map((entry) => ({
-    id: `web:${normalizeUrl(entry.url || entry.guid)}`,
-    title: entry.title,
-    url: entry.url || entry.guid,
-    published: normalizeDate(entry.published),
-    summary: truncate(entry.summary, 700),
-    sourceId: source.id,
-    kind: source.kind.includes("项目") ? "release" : "news"
-  }));
+  return entries.map((entry) => {
+    const url = entry.url || entry.guid;
+    const arxivId = source.paper
+      ? url?.match(/arxiv\.org\/abs\/([^v?#]+)/)?.[1]
+      : null;
+    return {
+      id: arxivId ? `arxiv:${arxivId}` : `web:${normalizeUrl(url)}`,
+      title: entry.title,
+      url,
+      published: normalizeDate(entry.published),
+      summary: truncate(entry.summary, 700),
+      sourceId: source.id,
+      kind: source.paper ? "paper" : source.kind.includes("项目") ? "release" : "news"
+    };
+  });
 }
 
 async function collectHf(source) {
@@ -420,8 +433,7 @@ function sourceRecord(result, previous) {
   const { source } = result;
   const failed = result.status !== "ok";
   const failCount = failed ? Number(previous?.failCount || 0) + 1 : 0;
-  const priority =
-    source.priority || (source.type === "arxiv" ? "critical" : "optional");
+  const priority = sourcePriority(source);
   return {
     id: source.id,
     name: source.name,
@@ -457,8 +469,17 @@ async function main() {
   }
   const previousSources = readJson(path.join(DATA, "sources.json")).sources || [];
   const previousById = new Map(previousSources.map((source) => [source.id, source]));
+  const requested = process.env.ONLY_SOURCES
+    ? new Set(process.env.ONLY_SOURCES.split(",").map((id) => id.trim()).filter(Boolean))
+    : null;
+  const sourcesToRun = requested
+    ? SOURCES.filter((source) => requested.has(source.id))
+    : SOURCES;
+  if (!sourcesToRun.length) {
+    throw new Error("ONLY_SOURCES matched no configured sources");
+  }
   const results = [];
-  const collected = await mapLimit(SOURCES, PROBE ? 4 : 3, async (source) => {
+  const collected = await mapLimit(sourcesToRun, PROBE ? 4 : 3, async (source) => {
     const result = await runSource(source);
     const label = result.status === "ok" ? `${result.entries.length} 条` : result.error;
     console.log(`${result.status === "ok" ? "OK " : "ERR"} ${source.name} — ${label}`);
@@ -469,22 +490,36 @@ async function main() {
   const records = results.map((result) =>
     sourceRecord(result, previousById.get(result.source.id))
   );
-  const criticalFailed = records
-    .filter((record) => record.priority === "critical" && record.status !== "ok")
-    .map((record) => record.id);
-  const supplementalFailed = records
-    .filter((record) => record.priority === "supplemental" && record.status !== "ok")
-    .map((record) => record.id);
-  const optionalFailed = records
-    .filter((record) => record.priority === "optional" && record.status !== "ok")
-    .map((record) => record.id);
-  const recallRecord = records.find((record) => record.id === "arxiv-recall");
+  const recordById = new Map(records.map((record) => [record.id, record]));
+  const sourcesWithPriority = (priority) =>
+    SOURCES.filter((source) => sourcePriority(source) === priority);
+  const failedSince = (priority) =>
+    sourcesWithPriority(priority)
+      .filter((source) => recordById.get(source.id)?.status !== "ok")
+      .map((source) => source.id);
+  const criticalFailed = failedSince("critical");
+  const supplementalFailed = failedSince("supplemental");
+  const fallbackFailed = failedSince("fallback");
+  const optionalFailed = failedSince("optional");
+  const recallRecord = recordById.get("arxiv-recall");
+  const fallbackOk = sourcesWithPriority("fallback").some((source) => {
+    const record = recordById.get(source.id);
+    return record?.status === "ok" && record.returned > 0;
+  });
+  const coreComplete = criticalFailed.length === 0;
   const coverage = {
-    coreComplete: criticalFailed.length === 0,
+    coreComplete,
     recallOk: recallRecord ? recallRecord.status === "ok" : null,
-    degraded: criticalFailed.length > 0 || supplementalFailed.length > 0 || optionalFailed.length > 0,
+    fallbackOk,
+    usable: coreComplete || fallbackOk,
+    degraded:
+      !coreComplete ||
+      supplementalFailed.length > 0 ||
+      fallbackFailed.length > 0 ||
+      optionalFailed.length > 0,
     criticalFailed,
     supplementalFailed,
+    fallbackFailed,
     optionalFailed
   };
   writeJson(path.join(DATA, "sources.json"), {

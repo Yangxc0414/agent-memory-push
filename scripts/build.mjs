@@ -271,8 +271,13 @@ async function makeDigestTitle(data) {
 
 async function resolveDigest() {
   const file = path.join(DATA, "digests", `${meta.date}.json`);
+  const coreComplete = meta.coverage ? meta.coverage.coreComplete !== false : true;
+  const fallbackReady =
+    meta.coverage?.coreComplete === false && meta.coverage?.fallbackOk === true;
   const coverageReady = meta.coverage
-    ? meta.coverage.coreComplete !== false && meta.coverage.recallOk !== false
+    ? coreComplete
+      ? meta.coverage.recallOk !== false
+      : fallbackReady
     : true;
   const existing = fs.existsSync(file) ? readJson(file) : null;
   let data;

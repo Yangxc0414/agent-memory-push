@@ -343,10 +343,17 @@ function statusPanel() {
   const stale = isStale();
   const coverage = meta.coverage;
   const coreIncomplete = coverage ? coverage.coreComplete === false : false;
+  const fallbackMode = coverage ? coreIncomplete && coverage.fallbackOk === true : false;
   const recallIncomplete = coverage ? coverage.recallOk === false : false;
   const provisional = Boolean(digest.provisional);
-  const liveLabel = stale ? "待更新" : coreIncomplete || provisional ? "临时版" : "已更新";
-  const liveClass = stale || coreIncomplete || provisional ? "stale" : "";
+  const liveLabel = stale
+    ? "待更新"
+    : fallbackMode
+      ? "兜底版"
+      : coreIncomplete || provisional
+        ? "临时版"
+        : "已更新";
+  const liveClass = stale || (coreIncomplete && !fallbackMode) || provisional ? "stale" : "";
   return `<aside class="status-panel reveal" aria-label="今日更新状态">
     <div class="status-head">
       <span class="mono">TODAY / ${esc(meta.date || digest.date)}</span>
@@ -366,7 +373,7 @@ function statusPanel() {
       <span>下次更新<br /><b>${esc(formatDate(next.toISOString(), true))}</b></span>
       <span>已收录<br /><b>${stats.items ?? items.length} 条</b></span>
     </div>
-    ${coreIncomplete || recallIncomplete || provisional ? `<p class="status-warning">${coreIncomplete ? "核心信源未全部成功，本期为临时版；后续定时任务会自动重试。" : "补漏查询未完成，本期可能少收少量论文；后续定时任务会自动重试。"}</p>` : ""}
+    ${coreIncomplete || recallIncomplete || provisional ? `<p class="status-warning">${fallbackMode ? "arXiv API 暂不可用，本期使用 cs.CL RSS 兜底，覆盖可能不完整；后续任务会继续重试。" : coreIncomplete || provisional ? "核心信源未全部成功，本期为临时版；后续定时任务会自动重试。" : "补漏查询未完成，本期可能少收少量论文；后续定时任务会自动重试。"}</p>` : ""}
   </aside>`;
 }
 

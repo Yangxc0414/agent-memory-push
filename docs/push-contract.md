@@ -91,7 +91,7 @@
 
 ### 1. 今日推送与真实采集
 
-每次 `collect.mjs` 会拉取 10 个 arXiv 查询（泛检索、记忆召回补漏、智能体记忆与自进化、具身、多模态、安全、记忆专用模型、评测、对话与个性化、综述）、HF Daily Papers、GitHub Releases 和 RSS；“记忆召回补漏”用更宽的摘要表述补足标题检索漏项，再按更严格的相关性过滤。arXiv 查询限定在摘要字段和 AI 相关分类内，按 `submittedDate` 翻页，直到检索窗口（默认 14 天）结束、返回不足一页或达到 `ARXIV_MAX_PAGES` 安全上限；窗口内所有相关结果都会合并，不再按条数或主题配额截断。首次重建可用 `ARXIV_LOOKBACK_DAYS=30` 回填更长的历史。条目先经过相关性判断：标题或摘要要有记忆机制/系统表述，并处于智能体、LLM、机器人或多模态语境；显存、内存硬件、车载记忆等误命中会被过滤，已知记忆项目的 release 单独放行。配置 `LLM_API_KEY` 时，Agnes 给最新 `LLM_ENRICH_LIMIT` 条写 `titleZh` / `summaryZh` / `why`。`build.mjs` 再从当前 items 自动成刊，不存在“前端预写死条目”。
+每次 `collect.mjs` 会拉取 10 个 arXiv API 查询（泛检索、记忆召回补漏、智能体记忆与自进化、具身、多模态、安全、记忆专用模型、评测、对话与个性化、综述）、arXiv cs.CL RSS 兜底、HF Daily Papers、GitHub Releases 和 RSS；“记忆召回补漏”用更宽的摘要表述补足标题检索漏项，再按更严格的相关性过滤。arXiv API 全部失败时，cs.CL RSS 仍可提供当天新论文，日报标记为兜底版并继续发布，通知文案会注明覆盖可能不完整。arXiv 查询限定在摘要字段和 AI 相关分类内，按 `submittedDate` 翻页，直到检索窗口（默认 14 天）结束、返回不足一页或达到 `ARXIV_MAX_PAGES` 安全上限；窗口内所有相关结果都会合并，不再按条数或主题配额截断。首次重建可用 `ARXIV_LOOKBACK_DAYS=30` 回填更长的历史。条目先经过相关性判断：标题或摘要要有记忆机制/系统表述，并处于智能体、LLM、机器人或多模态语境；显存、内存硬件、车载记忆等误命中会被过滤，已知记忆项目的 release 单独放行。配置 `LLM_API_KEY` 时，Agnes 给最新 `LLM_ENRICH_LIMIT` 条写 `titleZh` / `summaryZh` / `why`。`build.mjs` 再从当前 items 自动成刊，不存在“前端预写死条目”。
 
 触发：
 
@@ -99,20 +99,21 @@
 - GitHub Actions `schedule`（`17 0 * * *`，北京时间 08:17）兜底：避开整点高负载，主任务被 GitHub 丢弃时补上。
 - GitHub Actions `schedule`（`17 4 * * *`，北京时间 12:17）再补一次：如果今天核心 arXiv 查询和召回查询都已成功，`COLLECT_IF_INCOMPLETE=1` 会让采集直接跳过。
 - 手动 `workflow_dispatch`，可选择强制重新通知。
-- 紧急更新：提交信息包含 `[refresh]` 的 push 会临时执行采集并提交数据；普通 push 仍然只构建部署，避免每次改样式都采集。
+- 紧急更新：提交信息包含 `[refresh]` 的 push 会临时执行采集、提交数据并发送通知；普通 push 仍然只构建部署，避免每次改样式都采集。
+- 通知状态在通知成功后再提交一次（`src/data/notify-state.json`），避免失败任务已发通知但状态未落库导致重复发送。
 
 流程：
 
-1. `collect.mjs` 拉取信源，写 `items.json` / `sources.json` / `meta.json`。每个信源记录 `priority`（critical / supplemental / optional）、`failCount`、`health`（ok / degraded / failing）、`lastSuccessAt` 和 `lastErrorAt`；`meta.coverage` 汇总核心源、召回源和可选源的失败列表。
+1. `collect.mjs` 拉取信源，写 `items.json` / `sources.json` / `meta.json`。每个信源记录 `priority`（critical / supplemental / fallback / optional）、`failCount`、`health`（ok / degraded / failing）、`lastSuccessAt` 和 `lastErrorAt`；`meta.coverage` 汇总核心源、召回源、RSS 兜底源和可选源的失败列表，并给出 `usable`（核心成功或 RSS 兜底有内容）。
 2. `build.mjs` 先找 `src/data/digests/<meta.date>.json`。
 3. 找不到时，如果 `meta.seed` 为 true 且 `digest.json` 的日期匹配，就用种子期手工日报。
 4. 否则自动成刊：优先取 24 小时窗口；不足 30 条时依次扩到 48 小时、72 小时和 7 天。按分数排序，每个主题最多 2 条选 8 条重点；分栏再纳入窗口内全部相关条目，以及 `meta.addedIds` 标记的本次新发现条目，不再按条数截断。其余历史条目仍在“全部动态”中。
-5. 生成 `dist/data/digests/<date>.json` 和 `dist/api/v1/digest.json`。核心 arXiv 查询未全部成功，或召回查询失败时，日报标记 `provisional`，页面显示临时版；核心失败时通知跳过，召回失败时仍通知但注明补漏未完成。12:00 重试成功后重新生成并转为正式版。
+5. 生成 `dist/data/digests/<date>.json` 和 `dist/api/v1/digest.json`。核心 arXiv 查询未全部成功且 RSS 兜底也没有内容时，日报标记 `provisional`，通知跳过；只有召回失败时仍通知但注明补漏未完成；核心 API 失败但 RSS 兜底有内容时发布“兜底版”，通知会注明覆盖不完整。12:17 重试成功后重新生成并转为正式版。
 
 失败：
 
 - 采集全部失败时，`meta.checkedAt` 不更新，`meta.date` 不前进；构建继续使用上一份快照。
-- 核心 arXiv 查询失败、召回查询失败或可选源失败不会隐藏：`sources.json` 记录连续失败次数和 health，`meta.coverage` 列出失败源；核心或召回失败时日报为临时版，12:00 自动补采。核心失败期间不发通知；召回失败期间通知会带补漏说明。
+- 核心 arXiv 查询失败、召回查询失败或可选源失败不会隐藏：`sources.json` 记录连续失败次数和 health，`meta.coverage` 列出失败源；核心或召回失败时日报为临时版，12:17 自动补采。核心 API 失败时优先用 cs.CL RSS 兜底发布（标记兜底版并注明覆盖不完整）；连兜底也没有内容时不发通知。召回失败期间通知会带补漏说明。
 - 页面在 `checkedAt` 超过 36 小时时显示 `STALE`。
 - 正式日报文件一旦写下，同一天重复构建不会覆盖；临时版可以在同日重试时重新生成。需要重做正式版时手动删除该日文件。
 - arXiv 某页失败时保留前面已取到的页；第一页失败才把该信源标为失败。翻页请求之间默认间隔 3 秒，并对 429/503/timeout 做退避重试。
@@ -183,7 +184,7 @@
 - 飞书：自定义机器人 webhook，交互卡片 1.0，包含标题、日期、统计、6 条重点和“打开今日推送”按钮。
 - Telegram：`sendMessage` HTML，5 条重点。
 - 去重：`src/data/notify-state.json` 按频道 + 日期记录；工作流在通知后提交它，跨天仍能去重；`--force` 可重发。
-- 覆盖率闸门：核心采集不完整时，非 `--force` 通知直接跳过，等 12:00 重试；召回失败但核心成功时仍会发送，并在文案里注明“补漏查询未完成”。
+- 覆盖率闸门：没有可发布的完整版或 RSS 兜底版时，非 `--force` 通知直接跳过，等下一次补采；召回失败但核心成功时仍会发送，并在文案里注明“补漏查询未完成”；RSS 兜底版会注明覆盖不完整。
 - 重试：3 次，指数退避；失败只记日志，不阻塞部署。
 - 测试：`npm test` 启动本地 mock webhook，验证 payload 结构和去重，不访问外部服务。
 
@@ -193,7 +194,7 @@
 - 字段：`topic`、`title`、`message`（日报摘要 + 6 条重点 + 站点链接）、`priority`、`tags`、`click`。
 - 订阅：手机安装 ntfy app，或打开 `https://ntfy.sh/<topic>`；topic 只通过 Secrets / 本地 `.env` 配置，不写入公开页面或 JSON。
 - 去重：`src/data/notify-state.json` 按频道 + 日期记录；工作流在通知后提交它，跨天仍能去重；`--force` 可重发。
-- 覆盖率闸门与飞书 / Telegram 相同：核心采集不完整时不发；召回失败仍发，并在消息里注明。
+- 覆盖率闸门与飞书 / Telegram 相同：没有正式版/兜底版时不发；召回失败仍发，RSS 兜底版会注明覆盖不完整。
 - 测试：`npm test` 同时验证飞书和 ntfy 的 payload 与去重，只连本地 mock，不向公网发送。
 - topic 是公开地址，不是密码；用长随机串，避免被猜到。需要鉴权时换自建 ntfy 或改用飞书 / Telegram。
 

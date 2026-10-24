@@ -118,6 +118,17 @@ export const SOURCES = [
     query: '(abs:survey OR abs:"systematic review") AND ti:memory AND (abs:agent OR abs:LLM)'
   },
   {
+    id: "arxiv-rss-cl",
+    name: "arXiv · cs.CL RSS（API 兜底）",
+    kind: "论文索引",
+    type: "rss",
+    paper: true,
+    priority: "fallback",
+    cadence: "每日 08:00",
+    note: "arXiv API 不可用时，从 cs.CL 官方 RSS 补采当天的记忆论文；仍按相关性过滤。",
+    url: "https://rss.arxiv.org/rss/cs.CL"
+  },
+  {
     id: "hf-daily",
     name: "Hugging Face · Daily Papers",
     kind: "论文索引",

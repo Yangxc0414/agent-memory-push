@@ -10,8 +10,11 @@ const FORCE = args.has("--force");
 const site = readJson(path.join(ROOT, "src", "data", "site.json"));
 const meta = readJson(path.join(ROOT, "src", "data", "meta.json"));
 const digest = readJson(path.join(DIST, "api", "v1", "digest.json"));
-const coverageNote =
-  meta.coverage?.recallOk === false
+const fallbackMode =
+  meta.coverage?.coreComplete === false && meta.coverage?.fallbackOk === true;
+const coverageNote = fallbackMode
+  ? "（arXiv API 暂不可用，本期使用 cs.CL RSS 兜底，覆盖可能不完整。）"
+  : meta.coverage?.recallOk === false
     ? "（补漏查询未完成，本期可能少收部分论文。）"
     : "";
 const stateFile = process.env.NOTIFY_STATE || path.join(ROOT, "src", "data", "notify-state.json");
@@ -167,8 +170,12 @@ function ntfyPayload() {
 }
 
 async function main() {
-  if (!FORCE && meta.coverage && meta.coverage.coreComplete === false) {
-    log("core coverage incomplete; skip notification until the retry run");
+  const usable = meta.coverage
+    ? meta.coverage.usable !== false &&
+      (meta.coverage.coreComplete !== false || meta.coverage.fallbackOk === true)
+    : true;
+  if (!FORCE && !usable) {
+    log("coverage is not publishable; skip notification until the retry run");
     return;
   }
   let sent = 0;
