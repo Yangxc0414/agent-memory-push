@@ -1,31 +1,40 @@
 {
   "version": 1,
-  "checkedAt": "2026-10-24T04:17:48.947Z",
-  "lastSuccessAt": "2026-10-24T04:17:48.947Z",
-  "generatedAt": "2026-10-24T04:17:48.947Z",
+  "checkedAt": "2026-10-25T03:38:49.676Z",
+  "lastSuccessAt": "2026-10-25T03:38:49.676Z",
+  "generatedAt": "2026-10-25T03:38:49.676Z",
   "timezone": "Asia/Shanghai",
-  "date": "2026-10-24",
+  "date": "2026-10-25",
   "seed": false,
-  "added": 1,
-  "updated": 188,
+  "added": 0,
+  "updated": 66,
   "items": 446,
-  "sourcesOk": 22,
+  "sourcesOk": 13,
   "sourcesTotal": 22,
   "llm": {
     "used": true,
-    "error": "Expected ',' or '}' after property value in JSON at position 448 (line 1 column 449)"
+    "error": null
   },
-  "addedIds": [
-    "arxiv:2610.31125"
-  ],
+  "addedIds": [],
   "coverage": {
-    "coreComplete": true,
-    "recallOk": true,
+    "coreComplete": false,
+    "recallOk": false,
     "fallbackOk": true,
     "usable": true,
-    "degraded": false,
-    "criticalFailed": [],
-    "supplementalFailed": [],
+    "degraded": true,
+    "criticalFailed": [
+      "arxiv-embodied",
+      "arxiv-security",
+      "arxiv-models",
+      "arxiv-broad",
+      "arxiv-multimodal",
+      "arxiv-eval",
+      "arxiv-personal",
+      "arxiv-survey"
+    ],
+    "supplementalFailed": [
+      "arxiv-recall"
+    ],
     "fallbackFailed": [],
     "optionalFailed": []
   }
