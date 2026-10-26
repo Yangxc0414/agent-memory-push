@@ -1,5 +1,64 @@
 [
   {
+    "id": "arxiv:2605.24842",
+    "title": "Translators as Invisible Teachers of AI: Copyright, Translation Memory, and the Political Economy of Linguistic Data",
+    "titleZh": "翻译者作为AI的隐形教师：版权、翻译记忆与语言数据的政治经济",
+    "url": "https://arxiv.org/abs/2605.24842",
+    "kind": "paper",
+    "source": "arXiv · cs.CL RSS（API 兜底）",
+    "sourceId": "arxiv-rss-cl",
+    "sourceTier": "preprint",
+    "published": "2026-10-26T04:00:00.000Z",
+    "summary": "arXiv:2605.24842v2 Announce Type: replace Abstract: This paper examines how the labour of translators has been transformed into foundational data capital for the age of artificial intelligence (AI). Translation memories (TM) and parallel corpora preserve a one-to-one correspondence between source and target text and therefore constitute extraordinarily valuable supervised training data for machine translation. The development of statistical machine translation (SMT), neural machine translation (NMT), the Transformer architecture, and multilingual large language models (LLMs) cannot be disentangled from the accumulation of such translation data. And yet, translators' renditions have been bou…",
+    "summaryZh": "这篇论文探讨了翻译工作者劳动如何转化为AI时代的基础数据资本。研究指出，翻译记忆（TM）和语料库因保留了源目标文本的一一对应关系，构成了极具价值的有监督训练数据，统计机器翻译（SMT）、神经机器翻译（NMT）及多语言大模型的发展与此类翻译数据的积累密不可分。",
+    "why": "提供了关于AI训练数据来源及其背后劳动经济学的批判性视角，补充了技术架构之外的社会伦理与版权维度。",
+    "topics": [
+      "mechanism"
+    ],
+    "tags": [
+      "记忆机制与系统"
+    ],
+    "security": {
+      "angles": [
+        "provenance"
+      ],
+      "note": "规则命中关键词，等待人工复核。"
+    },
+    "evidence": "预印本 · 原文可核验",
+    "score": 86,
+    "curated": false,
+    "collectedAt": "2026-10-26T04:44:43.550Z",
+    "provenance": "arxiv-rss-cl",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2606.20625",
+    "title": "AlphaMemo: Structured Search-Process Memory for Self-Evolving Alpha Mining Agents",
+    "titleZh": "AlphaMemo：用于自进化Alpha挖掘智能体的结构化搜索过程记忆",
+    "url": "https://arxiv.org/abs/2606.20625",
+    "kind": "paper",
+    "source": "arXiv · cs.CL RSS（API 兜底）",
+    "sourceId": "arxiv-rss-cl",
+    "sourceTier": "preprint",
+    "published": "2026-10-26T04:00:00.000Z",
+    "summary": "arXiv:2606.20625v2 Announce Type: replace-cross Abstract: LLM agents are promising for alpha mining via combining financial priors, symbolic reasoning, executable factor generation, and feedback-driven refinement. Yet, they face a combinatorial search space, noisy non-stationary feedback, redundant discoveries, and overfitting risks from naively reusing past successes. To address these challenges, we propose AlphaMemo, a self-evolving alpha mining agent with Structured Search-Process Memory. Rather than memorizing only final factors or full trajectories, AlphaMemo records reusable evidence about which edit motifs work or fail under specific parent-factor contexts. It extracts motifs from Ab…",
+    "summaryZh": "针对LLM智能体在Alpha挖掘中面临的组合搜索空间大、反馈噪声多及重复发现等问题，该论文提出了具有结构化搜索过程记忆的自进化Alpha挖掘智能体AlphaMemo。它不只记录最终因子或完整轨迹，而是记录在特定父因子背景下哪些编辑模态（motifs）有效或失败的证据。",
+    "why": "展示了记忆机制在金融量化领域的具体应用，通过记录过程而非结果来优化智能体的自我进化能力，区别于通用的长期记忆方案。",
+    "topics": [
+      "mechanism"
+    ],
+    "tags": [
+      "记忆机制与系统"
+    ],
+    "security": null,
+    "evidence": "预印本 · 原文可核验",
+    "score": 82,
+    "curated": false,
+    "collectedAt": "2026-10-26T04:44:43.550Z",
+    "provenance": "arxiv-rss-cl",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
     "id": "arxiv:2610.31125",
     "title": "Delta N-gram: Forward-Only Continual Writing into a Language Model's Native N-gram Memory",
     "titleZh": "Delta N-gram：前向持续写入语言模型N-gram记忆的机制",

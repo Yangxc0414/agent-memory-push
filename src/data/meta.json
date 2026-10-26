@@ -1,40 +1,31 @@
 {
   "version": 1,
-  "checkedAt": "2026-10-26T03:41:54.151Z",
-  "lastSuccessAt": "2026-10-26T03:41:54.151Z",
-  "generatedAt": "2026-10-26T03:41:54.151Z",
+  "checkedAt": "2026-10-26T04:44:43.550Z",
+  "lastSuccessAt": "2026-10-26T04:44:43.550Z",
+  "generatedAt": "2026-10-26T04:44:43.550Z",
   "timezone": "Asia/Shanghai",
   "date": "2026-10-26",
   "seed": false,
-  "added": 8,
-  "updated": 164,
-  "items": 454,
-  "sourcesOk": 20,
+  "added": 2,
+  "updated": 179,
+  "items": 456,
+  "sourcesOk": 22,
   "sourcesTotal": 22,
   "llm": {
     "used": true,
     "error": null
   },
   "addedIds": [
-    "arxiv:2610.32752",
-    "arxiv:2610.32464",
-    "arxiv:2610.32348",
-    "arxiv:2610.32332",
-    "arxiv:2610.32295",
-    "arxiv:2610.32046",
-    "arxiv:2610.31840",
-    "arxiv:2610.20959"
+    "arxiv:2605.24842",
+    "arxiv:2606.20625"
   ],
   "coverage": {
-    "coreComplete": false,
+    "coreComplete": true,
     "recallOk": true,
-    "fallbackOk": false,
-    "usable": false,
-    "degraded": true,
-    "criticalFailed": [
-      "arxiv-memory",
-      "arxiv-embodied"
-    ],
+    "fallbackOk": true,
+    "usable": true,
+    "degraded": false,
+    "criticalFailed": [],
     "supplementalFailed": [],
     "fallbackFailed": [],
     "optionalFailed": []
