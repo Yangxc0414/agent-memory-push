@@ -1,5 +1,37 @@
 [
   {
+    "id": "web:https://www.langchain.com/blog/building-agent-memory-openwiki-graphs",
+    "title": "How to build evidence-grounded agent memory with OpenWiki and Graphs",
+    "titleZh": "LangChain 博客：利用 OpenWiki 与图谱构建基于证据的 Agent 记忆",
+    "url": "https://www.langchain.com/blog/building-agent-memory-openwiki-graphs",
+    "kind": "news",
+    "source": "LangChain Blog",
+    "sourceId": "blog-langchain",
+    "sourceTier": "media",
+    "published": "2026-10-28T17:28:42.000Z",
+    "summary": "LangChain used OpenWiki, its open-source wiki compiler, and an evidence graph to build a persistent memory layer that preserves knowledge for agents to reuse across tasks. Learn how.",
+    "summaryZh": "LangChain 在其官方博客中介绍了一种利用其开源工具 OpenWiki 和证据图谱来构建持久化记忆层的方法，旨在让 Agent 在不同任务间复用知识。",
+    "why": "展示了 LangChain 生态中结合具体开源工具（OpenWiki）实现 Agent 长期记忆的技术路径，对关注记忆架构实现的开发者有参考价值。",
+    "topics": [
+      "mechanism"
+    ],
+    "tags": [
+      "记忆机制与系统"
+    ],
+    "security": {
+      "angles": [
+        "provenance"
+      ],
+      "note": "规则命中关键词，等待人工复核。"
+    },
+    "evidence": "媒体报道",
+    "score": 71,
+    "curated": false,
+    "collectedAt": "2026-10-29T04:48:10.998Z",
+    "provenance": "blog-langchain",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
     "id": "arxiv:2610.36109",
     "title": "Beyond Update Counts: A Control Map for Evaluating Test-Time Model Updates",
     "titleZh": "Control Map：测试时模型更新评估框架",
