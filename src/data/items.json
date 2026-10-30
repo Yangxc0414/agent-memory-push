@@ -1,5 +1,186 @@
 [
   {
+    "id": "arxiv:2610.39790",
+    "title": "Long-Term Agent Memory through Complementary Curation and Consolidation",
+    "titleZh": "Long-Term Agent Memory：混合记忆架构与整合机制",
+    "url": "https://arxiv.org/abs/2610.39790v1",
+    "kind": "paper",
+    "source": "arXiv · 记忆召回补漏",
+    "sourceId": "arxiv-recall",
+    "sourceTier": "preprint",
+    "published": "2026-10-29T10:40:18.000Z",
+    "summary": "Long-horizon dialogue agents require effective memory systems to recall facts, events, and relationships from interaction histories. In this work, we propose a hybrid-memory architecture comprising episodic memories and structured relational memories and a consolidation mechanism which preserves efficiency. We conduct an empirical study across two benchmarks: LoCoMo and LongMemEval-S. Our experiments demonstrate that the two memory types are consistently complementary, combining both outperform state-of-the-art memory frameworks and achieves 90.2% accuracy on LoCoMo and 85.5% on LongMemEval-S.",
+    "summaryZh": "预印本提出包含情景记忆与结构化关系记忆的混合架构及整合机制，旨在提升长期对话代理的记忆召回效率。实验显示在 LoCoMo 和 LongMemEval-S 基准上，组合两种记忆类型优于最先进框架，准确率分别为 90.2% 和 85.5%。",
+    "why": "探索了结合情景与结构化关系记忆的具体架构及整合机制，并提供了在主流基准上的量化对比结果。",
+    "topics": [
+      "evaluation"
+    ],
+    "tags": [
+      "评测与基准"
+    ],
+    "security": {
+      "angles": [
+        "evaluation"
+      ],
+      "note": "规则命中关键词，等待人工复核。"
+    },
+    "evidence": "预印本 · 原文可核验",
+    "score": 86,
+    "curated": false,
+    "collectedAt": "2026-10-30T04:47:11.002Z",
+    "provenance": "arxiv-recall",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2610.39781",
+    "title": "Finding Is Not Returning, Returning Is Not Reconstructing: A Multi-Dimensional Evaluation of Agent Social Re-entry",
+    "titleZh": "Agent Social Re-entry：多維度評估框架",
+    "url": "https://arxiv.org/abs/2610.39781v1",
+    "kind": "paper",
+    "source": "arXiv · 记忆召回补漏",
+    "sourceId": "arxiv-recall",
+    "sourceTier": "preprint",
+    "published": "2026-10-29T10:31:18.000Z",
+    "summary": "As Large Language Model (LLM) agents increasingly participate in persistent social environments, understanding their long-term social interaction capabilities becomes increasingly important. While existing research has advanced long-term memory and conversational context retrieval, less attention has been paid to whether agents can autonomously re-engage with previously inactive conversations. In particular, remembering a past interaction does not necessarily mean that an agent can identify when to revisit it, decide to return, or reconstruct the context needed for a coherent continuation. To investigate this gap, we introduce agent social re-entry as a multi- dimensional evaluation problem…",
+    "summaryZh": "预印本引入“智能体社会再入场”概念，指出记忆过往交互不等于能自主决定何时回访及重建上下文，从而建立了一种多维度评估问题框架。",
+    "why": "指出了长期记忆研究中容易被忽视的“自主重新参与不活跃对话”能力缺口，将评估维度从单纯召回扩展至交互决策。",
+    "topics": [
+      "evaluation"
+    ],
+    "tags": [
+      "评测与基准"
+    ],
+    "security": {
+      "angles": [
+        "evaluation"
+      ],
+      "note": "规则命中关键词，等待人工复核。"
+    },
+    "evidence": "预印本 · 原文可核验",
+    "score": 86,
+    "curated": false,
+    "collectedAt": "2026-10-30T04:47:11.002Z",
+    "provenance": "arxiv-recall",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2610.39446",
+    "title": "Ask to Evolve: A Unified Harness for Lifelong Embodied Navigation with Hybrid Action Space and Persistent Memory",
+    "titleZh": "EvoLife：具備持久記憶的終身具身導航框架",
+    "url": "https://arxiv.org/abs/2610.39446v1",
+    "kind": "paper",
+    "source": "arXiv · 记忆召回补漏",
+    "sourceId": "arxiv-recall",
+    "sourceTier": "preprint",
+    "published": "2026-10-29T06:19:44.000Z",
+    "summary": "Giving embodied agents the freedom to act autonomously, initiate interactions, and understand their surroundings through experience is a step toward bringing them to life in the physical world. Realizing this vision requires action, interaction, and memory to work together, so that each encounter can inform current decisions and contribute experience for future tasks. We present EvoLife, a unified navigation harness that enables a multimodal embodied agent to choose how to move, when to ask, and what experience to carry forward. Its hybrid action space supports waypoint navigation, local discrete adjustments, pixel-based navigation, and object-directed navigation. Active interaction allows…",
+    "summaryZh": "预印本提出 EvoLife 统一导航框架，使多模态具身代理能自主选择移动方式、交互时机及携带的经验。其混合动作空间支持航点导航、局部调整、像素级导航及对象导向导航。",
+    "why": "将持久记忆与具身代理的终身导航及主动交互结合，提出了支持多种导航模式的混合动作空间。",
+    "topics": [
+      "embodied"
+    ],
+    "tags": [
+      "具身与空间记忆"
+    ],
+    "security": null,
+    "evidence": "预印本 · 原文可核验",
+    "score": 82,
+    "curated": false,
+    "collectedAt": "2026-10-30T04:47:11.002Z",
+    "provenance": "arxiv-recall",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2610.39276",
+    "title": "MemSteer: Turning User Histories into Supervision for Agent Memory Optimization",
+    "titleZh": "MemSteer：利用用戶歷史優化 Agent 記憶",
+    "url": "https://arxiv.org/abs/2610.39276v1",
+    "kind": "paper",
+    "source": "arXiv · 记忆召回补漏",
+    "sourceId": "arxiv-recall",
+    "sourceTier": "preprint",
+    "published": "2026-10-29T03:28:49.000Z",
+    "summary": "An effective agent memory system should adapt to a user's history and task requirements. Human-annotated supervision can guide this adaptation by providing feedback for evaluating and improving memory designs. Yet suitable labels are rarely available for new user histories, and manually constructing QA pairs and supporting evidence is costly. We introduce MemSteer, which turns unlabeled user histories into question-answer (QA) supervision with supporting evidence for memory-design optimization. MemSteer constructs an evidence-grounded answer plan that specifies how facts across related records jointly support a reference answer. The plan guides question generation, while source-grounded aud…",
+    "summaryZh": "预印本介绍 MemSteer 方法，将无标注的用户历史转化为带有支持证据的问题-答案监督信号，以指导记忆设计的优化。",
+    "why": "提供了从非标注数据自动生成记忆优化监督信号的途径，降低了依赖昂贵人工标注的门槛。",
+    "topics": [
+      "evaluation"
+    ],
+    "tags": [
+      "评测与基准"
+    ],
+    "security": {
+      "angles": [
+        "provenance",
+        "evaluation"
+      ],
+      "note": "规则命中关键词，等待人工复核。"
+    },
+    "evidence": "预印本 · 原文可核验",
+    "score": 86,
+    "curated": false,
+    "collectedAt": "2026-10-30T04:47:11.002Z",
+    "provenance": "arxiv-recall",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2610.39073",
+    "title": "Certified Access: Test-Time Compute on Conservative Physics-Structured AI Memory",
+    "titleZh": null,
+    "url": "https://arxiv.org/abs/2610.39073v1",
+    "kind": "paper",
+    "source": "arXiv · 记忆评测",
+    "sourceId": "arxiv-eval",
+    "sourceTier": "preprint",
+    "published": "2026-10-29T00:05:45.000Z",
+    "summary": "Test-time compute mechanisms, such as retries, confidence-based escalation and non-local routing, are conventionally deployed as black-box additions to trained models. They typically add forward passes or halting heads, but give no structural account of what the extra compute buys or what it costs against the model's stability guarantees. We therefore propose a theoretical and empirical framework for test-time compute on a Latent Dynamics Model used as the memory. When an encoder's latent state $(q,p)$ is advanced by a damped symplectic (velocity-Verlet) step of a learned Hamiltonian, every mechanism that expands access has an exact phase-volume Jacobian, a bounded energy change and an exac…",
+    "summaryZh": null,
+    "why": "新预印本，主题命中「评测与基准」；摘要已按原文整理，等待人工复核。",
+    "topics": [
+      "evaluation"
+    ],
+    "tags": [
+      "评测与基准"
+    ],
+    "security": {
+      "angles": [
+        "evaluation"
+      ],
+      "note": "规则命中关键词，等待人工复核。"
+    },
+    "evidence": "预印本 · 原文可核验",
+    "score": 86,
+    "curated": false,
+    "collectedAt": "2026-10-30T04:47:11.002Z",
+    "provenance": "arxiv-eval"
+  },
+  {
+    "id": "arxiv:2610.38902",
+    "title": "HEDGE: Gated Hypergraph Memory for Scalable Multi-Agent Debate",
+    "titleZh": null,
+    "url": "https://arxiv.org/abs/2610.38902v1",
+    "kind": "paper",
+    "source": "arXiv · 记忆召回补漏",
+    "sourceId": "arxiv-recall",
+    "sourceTier": "preprint",
+    "published": "2026-10-28T20:57:59.000Z",
+    "summary": "Multi-agent debate systems require agents to retain and revisit arguments across multiple rounds, yet limited context windows and unstructured memories make relevant information increasingly difficult to recover. Existing flat and pairwise-graph memories also struggle to capture higher-order relations, including multi-agent agreement, conflicting evidence, and evolving consensus. We introduce HEDGE, a selective memory framework that represents debate trajectories as semantic hypergraphs. Hyperedges connect related claims across agents, while intra-hyperedge relational graphs preserve fine-grained argumentative structure. A learned memory selection module (MSM), trained through supervised le…",
+    "summaryZh": null,
+    "why": "新预印本，主题命中「工具与项目发布」；摘要已按原文整理，等待人工复核。",
+    "topics": [
+      "tools"
+    ],
+    "tags": [
+      "工具与项目发布"
+    ],
+    "security": null,
+    "evidence": "预印本 · 原文可核验",
+    "score": 82,
+    "curated": false,
+    "collectedAt": "2026-10-30T04:47:11.002Z",
+    "provenance": "arxiv-recall"
+  },
+  {
     "id": "web:https://www.langchain.com/blog/building-agent-memory-openwiki-graphs",
     "title": "How to build evidence-grounded agent memory with OpenWiki and Graphs",
     "titleZh": "LangChain 博客：利用 OpenWiki 与图谱构建基于证据的 Agent 记忆",
@@ -30,6 +211,95 @@
     "collectedAt": "2026-10-29T04:48:10.998Z",
     "provenance": "blog-langchain",
     "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2610.38521",
+    "title": "Security Impact of Coding Agent's Memory Files",
+    "titleZh": null,
+    "url": "https://arxiv.org/abs/2610.38521v1",
+    "kind": "paper",
+    "source": "arXiv · 记忆召回补漏",
+    "sourceId": "arxiv-recall",
+    "sourceTier": "preprint",
+    "published": "2026-10-28T09:33:08.000Z",
+    "summary": "Coding agents automatically load project memory files such as CLAUDE.md at the start of every session and treat them as trusted project guidance. Anyone who can change such a file, for example through a pull request, can therefore steer the agent without ever touching the developer's prompt. We study memory files as an attack surface for insecure code generation and ask (1) whether a malicious memory file makes agents produce code that passes its tests but is vulnerable, and (2) whether agents disclose to the developer that the file shaped their code. For each of 12 CWE classes, we crafted two malicious memory files, a qualified variant that presents removing defensive checks as engineering…",
+    "summaryZh": null,
+    "why": "新预印本，主题命中「安全与治理」；摘要已按原文整理，等待人工复核。",
+    "topics": [
+      "security"
+    ],
+    "tags": [
+      "安全与治理"
+    ],
+    "security": {
+      "angles": [
+        "attack",
+        "evaluation"
+      ],
+      "note": "规则命中关键词，等待人工复核。"
+    },
+    "evidence": "预印本 · 原文可核验",
+    "score": 86,
+    "curated": false,
+    "collectedAt": "2026-10-30T04:47:11.002Z",
+    "provenance": "arxiv-recall"
+  },
+  {
+    "id": "arxiv:2610.38332",
+    "title": "MUSE: Multi-Level Memory with Selective Runtime Injection for Scientific Coding Agents",
+    "titleZh": null,
+    "url": "https://arxiv.org/abs/2610.38332v1",
+    "kind": "paper",
+    "source": "arXiv · 记忆召回补漏",
+    "sourceId": "arxiv-recall",
+    "sourceTier": "preprint",
+    "published": "2026-10-28T06:32:51.000Z",
+    "summary": "Historical experience can guide scientific coding at multiple levels, but task-level retrieval may miss implementation lessons that become relevant during execution. We introduce MUSE, a memory management framework combining multi-level memory with selective runtime injection for scientific coding agents. MUSE builds global, approach-level, and implementation-level memory from historical trajectories. At initialization, the agent receives global memory and problem-matched approach-level memory. During execution, current interactions are used to retrieve implementation-level memory. An LLM gate selects relevant experience and generates specific review advice, or skips injection. Across four…",
+    "summaryZh": null,
+    "why": "新预印本，主题命中「安全与治理」；摘要已按原文整理，等待人工复核。",
+    "topics": [
+      "security"
+    ],
+    "tags": [
+      "安全与治理"
+    ],
+    "security": {
+      "angles": [
+        "attack"
+      ],
+      "note": "规则命中关键词，等待人工复核。"
+    },
+    "evidence": "预印本 · 原文可核验",
+    "score": 86,
+    "curated": false,
+    "collectedAt": "2026-10-30T04:47:11.002Z",
+    "provenance": "arxiv-recall"
+  },
+  {
+    "id": "arxiv:2610.38318",
+    "title": "What Should a Navigator Remember? Spatiotemporal Memory for Zero-Shot Vision-Language Navigation",
+    "titleZh": null,
+    "url": "https://arxiv.org/abs/2610.38318v1",
+    "kind": "paper",
+    "source": "arXiv · 记忆召回补漏",
+    "sourceId": "arxiv-recall",
+    "sourceTier": "preprint",
+    "published": "2026-10-28T06:08:29.000Z",
+    "summary": "Zero-shot vision-and-language navigation (VLN) requires an agent to use past observations without navigation-specific training. We study what information an 8B-scale navigation system should retain and how it should be organized for subsequent decisions. Our agent combines instruction progress, hierarchically compressed observation history anchored to poses, and accumulated geometry in complementary task, temporal, and spatial memories. An 8B observer summarizes observations, and an 8B reasoner uses the memories to select waypoint intents or request additional views, a geometric controller executes the selected targets. A semantic information perspective motivates the distinction between re…",
+    "summaryZh": null,
+    "why": "新预印本，主题命中「评测与基准」；摘要已按原文整理，等待人工复核。",
+    "topics": [
+      "evaluation"
+    ],
+    "tags": [
+      "评测与基准"
+    ],
+    "security": null,
+    "evidence": "预印本 · 原文可核验",
+    "score": 82,
+    "curated": false,
+    "collectedAt": "2026-10-30T04:47:11.002Z",
+    "provenance": "arxiv-recall"
   },
   {
     "id": "arxiv:2610.36109",
@@ -129,6 +399,63 @@
     "collectedAt": "2026-10-28T04:32:34.939Z",
     "provenance": "arxiv-rss-cl",
     "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2610.38209",
+    "title": "Is it my preference? Role Grounding Attack against Agent's Memory via Social Interaction",
+    "titleZh": null,
+    "url": "https://arxiv.org/abs/2610.38209v1",
+    "kind": "paper",
+    "source": "arXiv · 记忆召回补漏",
+    "sourceId": "arxiv-recall",
+    "sourceTier": "preprint",
+    "published": "2026-10-28T03:03:29.000Z",
+    "summary": "LLM-based agents now share experiences on social platforms and remember new preferences to enhance their performance. However, existing memory systems contain a vulnerability in role-to-principal attribution that attackers can exploit. We identify Role Grounding Misattribution, in which an attacker-designed interaction causes the victim agent to incorrectly record a preference from the attacker as a preference of the victim's user. Specifically, we are the first to formalize Role Grounding Attack (RGA), an attack model that exploits this vulnerability through nested conversation structures. In the memory formation stage, an experience-sharing post quoting a conversation between the attacker…",
+    "summaryZh": null,
+    "why": "新预印本，主题命中「安全与治理」；摘要已按原文整理，等待人工复核。",
+    "topics": [
+      "security"
+    ],
+    "tags": [
+      "安全与治理"
+    ],
+    "security": {
+      "angles": [
+        "attack"
+      ],
+      "note": "规则命中关键词，等待人工复核。"
+    },
+    "evidence": "预印本 · 原文可核验",
+    "score": 86,
+    "curated": false,
+    "collectedAt": "2026-10-30T04:47:11.002Z",
+    "provenance": "arxiv-recall"
+  },
+  {
+    "id": "arxiv:2610.37935",
+    "title": "SkillMem: Compact External Skill Memory for Latent Multi-Agent Reasoning",
+    "titleZh": null,
+    "url": "https://arxiv.org/abs/2610.37935v1",
+    "kind": "paper",
+    "source": "arXiv · 记忆召回补漏",
+    "sourceId": "arxiv-recall",
+    "sourceTier": "preprint",
+    "published": "2026-10-27T20:25:47.000Z",
+    "summary": "Latent multi-agent systems reduce inference cost by keeping intermediate reasoning and inter-agent communication in continuous representations.\\ Reusable skills, however, are commonly supplied as text or stored as layer-wise Key-Value states or skill-specific model parameters, introducing repeated processing or substantial per-skill storage.\\ We introduce \\textbf{SkillMem}, which represents each reusable skill as a small external latent memory and makes it directly available during latent multi-agent reasoning.\\ A role-conditioned cross-attention reader allows the same memory to guide different agents according to their roles and current hidden states.\\ We train the skill memories and share…",
+    "summaryZh": null,
+    "why": "新预印本，主题命中「记忆机制与系统」；摘要已按原文整理，等待人工复核。",
+    "topics": [
+      "mechanism"
+    ],
+    "tags": [
+      "记忆机制与系统"
+    ],
+    "security": null,
+    "evidence": "预印本 · 原文可核验",
+    "score": 82,
+    "curated": false,
+    "collectedAt": "2026-10-30T04:47:11.002Z",
+    "provenance": "arxiv-recall"
   },
   {
     "id": "arxiv:2610.37645",
