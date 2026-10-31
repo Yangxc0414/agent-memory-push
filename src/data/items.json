@@ -412,7 +412,7 @@
   {
     "id": "arxiv:2610.38332",
     "title": "MUSE: Multi-Level Memory with Selective Runtime Injection for Scientific Coding Agents",
-    "titleZh": null,
+    "titleZh": "MUSE：用于科学编码智能体的多级记忆框架",
     "url": "https://arxiv.org/abs/2610.38332v1",
     "kind": "paper",
     "source": "arXiv · 记忆召回补漏",
@@ -420,8 +420,8 @@
     "sourceTier": "preprint",
     "published": "2026-10-28T06:32:51.000Z",
     "summary": "Historical experience can guide scientific coding at multiple levels, but task-level retrieval may miss implementation lessons that become relevant during execution. We introduce MUSE, a memory management framework combining multi-level memory with selective runtime injection for scientific coding agents. MUSE builds global, approach-level, and implementation-level memory from historical trajectories. At initialization, the agent receives global memory and problem-matched approach-level memory. During execution, current interactions are used to retrieve implementation-level memory. An LLM gate selects relevant experience and generates specific review advice, or skips injection. Across four…",
-    "summaryZh": null,
-    "why": "新预印本，主题命中「安全与治理」；摘要已按原文整理，等待人工复核。",
+    "summaryZh": "MUSE是一个结合了多级记忆与选择性运行时注入的科学编码智能体记忆管理框架，该预印本描述了其利用全局、方法级和实现级记忆以辅助历史经验引导的方法。",
+    "why": "介绍了通过区分不同粒度（全局/方法/实现）并在运行时动态选择性注入来增强科学编码智能体的记忆管理新思路。",
     "topics": [
       "security"
     ],
@@ -438,12 +438,13 @@
     "score": 86,
     "curated": false,
     "collectedAt": "2026-10-30T04:47:11.002Z",
-    "provenance": "arxiv-recall"
+    "provenance": "arxiv-recall",
+    "summaryZhBasis": "原文摘要"
   },
   {
     "id": "arxiv:2610.38318",
     "title": "What Should a Navigator Remember? Spatiotemporal Memory for Zero-Shot Vision-Language Navigation",
-    "titleZh": null,
+    "titleZh": "用于零样本视觉-语言导航的时空记忆组织研究",
     "url": "https://arxiv.org/abs/2610.38318v1",
     "kind": "paper",
     "source": "arXiv · 记忆召回补漏",
@@ -451,8 +452,8 @@
     "sourceTier": "preprint",
     "published": "2026-10-28T06:08:29.000Z",
     "summary": "Zero-shot vision-and-language navigation (VLN) requires an agent to use past observations without navigation-specific training. We study what information an 8B-scale navigation system should retain and how it should be organized for subsequent decisions. Our agent combines instruction progress, hierarchically compressed observation history anchored to poses, and accumulated geometry in complementary task, temporal, and spatial memories. An 8B observer summarizes observations, and an 8B reasoner uses the memories to select waypoint intents or request additional views, a geometric controller executes the selected targets. A semantic information perspective motivates the distinction between re…",
-    "summaryZh": null,
-    "why": "新预印本，主题命中「评测与基准」；摘要已按原文整理，等待人工复核。",
+    "summaryZh": "该预印本探讨了一个8B规模的导航系统应保留和组织的时空信息，通过结合指令进度、压缩观测历史和累积几何信息，辅助智能体在零样本视觉-语言导航中做出决策。",
+    "why": "分析了零样本视觉-语言导航中多模态信息的时空记忆组织方法及其对决策的支撑。",
     "topics": [
       "evaluation"
     ],
@@ -464,7 +465,8 @@
     "score": 82,
     "curated": false,
     "collectedAt": "2026-10-30T04:47:11.002Z",
-    "provenance": "arxiv-recall"
+    "provenance": "arxiv-recall",
+    "summaryZhBasis": "原文摘要"
   },
   {
     "id": "arxiv:2610.36109",
@@ -568,7 +570,7 @@
   {
     "id": "arxiv:2610.38209",
     "title": "Is it my preference? Role Grounding Attack against Agent's Memory via Social Interaction",
-    "titleZh": null,
+    "titleZh": "针对Agent记忆的角色定位攻击模型",
     "url": "https://arxiv.org/abs/2610.38209v1",
     "kind": "paper",
     "source": "arXiv · 记忆召回补漏",
@@ -576,8 +578,8 @@
     "sourceTier": "preprint",
     "published": "2026-10-28T03:03:29.000Z",
     "summary": "LLM-based agents now share experiences on social platforms and remember new preferences to enhance their performance. However, existing memory systems contain a vulnerability in role-to-principal attribution that attackers can exploit. We identify Role Grounding Misattribution, in which an attacker-designed interaction causes the victim agent to incorrectly record a preference from the attacker as a preference of the victim's user. Specifically, we are the first to formalize Role Grounding Attack (RGA), an attack model that exploits this vulnerability through nested conversation structures. In the memory formation stage, an experience-sharing post quoting a conversation between the attacker…",
-    "summaryZh": null,
-    "why": "新预印本，主题命中「安全与治理」；摘要已按原文整理，等待人工复核。",
+    "summaryZh": "该预印本正式提出了角色定位攻击（RGA）模型，揭示了大语言模型智能体在通过社交分享记忆新偏好时，存在将攻击者偏好误记为用户偏好的记忆系统漏洞。",
+    "why": "首次形式化了针对Agent社会交互记忆机制的安全攻击模型，强调了角色定位错误带来的潜在风险。",
     "topics": [
       "security"
     ],
@@ -594,12 +596,13 @@
     "score": 86,
     "curated": false,
     "collectedAt": "2026-10-30T04:47:11.002Z",
-    "provenance": "arxiv-recall"
+    "provenance": "arxiv-recall",
+    "summaryZhBasis": "原文摘要"
   },
   {
     "id": "arxiv:2610.37935",
     "title": "SkillMem: Compact External Skill Memory for Latent Multi-Agent Reasoning",
-    "titleZh": null,
+    "titleZh": "SkillMem：用于潜在多智能体推理的紧凑外部技能记忆",
     "url": "https://arxiv.org/abs/2610.37935v1",
     "kind": "paper",
     "source": "arXiv · 记忆召回补漏",
@@ -607,8 +610,8 @@
     "sourceTier": "preprint",
     "published": "2026-10-27T20:25:47.000Z",
     "summary": "Latent multi-agent systems reduce inference cost by keeping intermediate reasoning and inter-agent communication in continuous representations.\\ Reusable skills, however, are commonly supplied as text or stored as layer-wise Key-Value states or skill-specific model parameters, introducing repeated processing or substantial per-skill storage.\\ We introduce \\textbf{SkillMem}, which represents each reusable skill as a small external latent memory and makes it directly available during latent multi-agent reasoning.\\ A role-conditioned cross-attention reader allows the same memory to guide different agents according to their roles and current hidden states.\\ We train the skill memories and share…",
-    "summaryZh": null,
-    "why": "新预印本，主题命中「记忆机制与系统」；摘要已按原文整理，等待人工复核。",
+    "summaryZh": "该预印本提出了SkillMem框架，将可复用技能表示为紧凑的外部潜在记忆，并配合角色条件交叉注意力读取器，在潜在多智能体推理中直接调用该记忆以降低成本。",
+    "why": "提出了一种将可复用技能外置为紧凑潜在记忆的方法，优化了多智能体系统中技能共享与推理的存储成本。",
     "topics": [
       "mechanism"
     ],
@@ -620,7 +623,8 @@
     "score": 82,
     "curated": false,
     "collectedAt": "2026-10-30T04:47:11.002Z",
-    "provenance": "arxiv-recall"
+    "provenance": "arxiv-recall",
+    "summaryZhBasis": "原文摘要"
   },
   {
     "id": "arxiv:2610.37645",
