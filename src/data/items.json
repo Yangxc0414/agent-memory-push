@@ -2,7 +2,7 @@
   {
     "id": "arxiv:2610.40611",
     "title": "When to Assist and What to Suggest: Joint Gating and Memory-Grounded Hint Generation in One Compact Decoder",
-    "titleZh": null,
+    "titleZh": "紧凑解码器中的联合门控与记忆接地提示生成",
     "url": "https://arxiv.org/abs/2610.40611v1",
     "kind": "paper",
     "source": "arXiv · 记忆召回补漏",
@@ -10,8 +10,8 @@
     "sourceTier": "preprint",
     "published": "2026-10-29T17:54:07.000Z",
     "summary": "Proactive assistants offer short, memory-grounded hints during a conversation, deciding when to assist and what to suggest. Current systems split this between a gate and a larger generator; we evaluate both together on 28,058 decision points. Stage-wise generation scores are oracle-gate ceilings: behind a real gate, end-to-end exact match is 0.2619 against a ceiling of 0.2971, and end-to-end precision is 0.2387, leaving substantial headroom. A gate pays off through precision and compute, whose saving falls from 4.39x with an 8B generator to 1.38x with a 1B one. The memory profile drives hint quality: removing it costs 24.7 exact-match points (rescaled BERTScore 0.57 to 0.35), while retrieva…",
-    "summaryZh": null,
-    "why": "新预印本，主题命中「评测与基准」；摘要已按原文整理，等待人工复核。",
+    "summaryZh": "该论文评估了将“何时协助”的门控与“提示什么”的生成整合在单个紧凑解码器中的策略。作者指出移除记忆档案会导致精确匹配得分下降，而门控机制能带来精确率和计算开销的节省，但小模型下的节省幅度会降低。",
+    "why": "提供了关于统一门控与生成模块在端到端性能及计算效率上的具体量化对比数据。",
     "topics": [
       "evaluation"
     ],
@@ -28,12 +28,13 @@
     "score": 86,
     "curated": false,
     "collectedAt": "2026-10-30T05:45:34.069Z",
-    "provenance": "arxiv-recall"
+    "provenance": "arxiv-recall",
+    "summaryZhBasis": "原文摘要"
   },
   {
     "id": "arxiv:2610.40482",
     "title": "FIRME: Registry-Anchored Memory Graphs for Evolving, Heterogeneous Investor Knowledge",
-    "titleZh": null,
+    "titleZh": "FIRME：基于注册表的投资者知识记忆图",
     "url": "https://arxiv.org/abs/2610.40482v1",
     "kind": "paper",
     "source": "arXiv · 记忆评测",
@@ -41,8 +42,8 @@
     "sourceTier": "preprint",
     "published": "2026-10-29T17:13:45.000Z",
     "summary": "Financial AI workflows that reuse investor knowledge need persistent memory that integrates observations across sources and periods without losing identity or provenance. In a knowledge graph, recurring observations may use different surface forms, fragmenting relationship histories and preventing evidence from accumulating. We introduce Fusion and Identity Registry for Memory Evolution (FIRME), a registry-anchored memory graph that reconciles incoming observations to persistent canonical relationships and retains their source, time, and context. Within periods, rule-based fusion links investor-call discussions to portfolio cash-flow signals, directly or through a fixed product-topic ontolo…",
-    "summaryZh": null,
-    "why": "新预印本，主题命中「评测与基准」；摘要已按原文整理，等待人工复核。",
+    "summaryZh": "论文提出了FIRME，一种基于注册表的记忆图架构，用于处理金融AI工作流中的异构投资者知识。该方法通过对齐观测数据到持久规范关系，保留来源、时间和上下文信息，以解决知识碎片化问题。",
+    "why": "展示了如何在金融领域通过注册表锚定机制解决长期记忆中的身份一致性与溯源问题。",
     "topics": [
       "evaluation"
     ],
@@ -59,12 +60,13 @@
     "score": 86,
     "curated": false,
     "collectedAt": "2026-10-30T05:45:34.069Z",
-    "provenance": "arxiv-eval"
+    "provenance": "arxiv-eval",
+    "summaryZhBasis": "原文摘要"
   },
   {
     "id": "arxiv:2610.40350",
     "title": "Don't Lose the Thread: Empowering Long-Horizon LLM Agents with Cognitive Resource Self-Allocation",
-    "titleZh": null,
+    "titleZh": "CORAL：赋予长周期LLM代理认知资源自分配能力",
     "url": "https://arxiv.org/abs/2610.40350v1",
     "kind": "paper",
     "source": "arXiv · 记忆召回补漏",
@@ -72,8 +74,8 @@
     "sourceTier": "preprint",
     "published": "2026-10-29T16:07:10.000Z",
     "summary": "Agents powered by large language models (LLMs) have demonstrated remarkable progress in solving complex reasoning tasks. However, LLM agents often falter on long-horizon tasks due to cognitive overload, as their working memory becomes cluttered with expanding and irrelevant information, which dilutes their attention and hinders effective planning and reasoning. To mitigate this challenge, we introduce Cognitive Resource Self-Allocation (CORAL), a novel reasoning paradigm that empowers agents to proactively optimize their context. Implemented as an agent-callable working memory management toolset, CORAL allows an agent to checkpoint its task progress and verified facts, and adaptively initia…",
-    "summaryZh": null,
-    "why": "新预印本，主题命中「记忆机制与系统」；摘要已按原文整理，等待人工复核。",
+    "summaryZh": "针对长周期任务中代理因工作记忆过载导致的注意力稀释问题，论文提出了CORAL认知资源自分配范式。该范式作为代理可调用工具，允许代理主动检查点任务进度并适应性管理上下文。",
+    "why": "提供了一种让代理主动管理自身工作记忆以缓解长任务中认知过载的新范式。",
     "topics": [
       "mechanism"
     ],
@@ -90,12 +92,13 @@
     "score": 86,
     "curated": false,
     "collectedAt": "2026-10-30T05:45:34.069Z",
-    "provenance": "arxiv-recall"
+    "provenance": "arxiv-recall",
+    "summaryZhBasis": "原文摘要"
   },
   {
     "id": "arxiv:2610.40131",
     "title": "VideoMemBench: How Well Do MLLMs Remember in Video Conversations?",
-    "titleZh": null,
+    "titleZh": "VideoMemBench：多模态大模型在视频对话中的记忆评测",
     "url": "https://arxiv.org/abs/2610.40131v1",
     "kind": "paper",
     "source": "arXiv · 记忆召回补漏",
@@ -103,8 +106,8 @@
     "sourceTier": "preprint",
     "published": "2026-10-29T14:22:51.000Z",
     "summary": "Multimodal large language models (MLLMs) can now process hour-long videos, making extended multi-turn dialogue over a single video a natural mode of use. Sustaining such a dialogue requires more than answering each question in isolation: the model must retrieve and reuse information established earlier in the conversation, both what it has seen and what it has said, an ability we term in-context video memory. Existing video QA benchmarks leave this ability unmeasured: their questions are mutually independent, never reference one another, and each is answerable from the video alone, so nothing ever requires carrying information across turns. We introduce VideoMemBench, in which each sample p…",
-    "summaryZh": null,
-    "why": "新预印本，主题命中「评测与基准」；摘要已按原文整理，等待人工复核。",
+    "summaryZh": "该研究引入了VideoMemBench，旨在评测多模态大模型在长视频多轮对话中复用早期信息的能力（即in-context video memory）。现有基准因问题相互独立且未引用前文，无法测量这种跨轮次的信息携带能力。",
+    "why": "填补了现有视频问答基准在“跨轮次上下文记忆”这一维度上的评测空白。",
     "topics": [
       "evaluation"
     ],
@@ -122,7 +125,8 @@
     "score": 86,
     "curated": false,
     "collectedAt": "2026-10-30T05:45:34.069Z",
-    "provenance": "arxiv-recall"
+    "provenance": "arxiv-recall",
+    "summaryZhBasis": "原文摘要"
   },
   {
     "id": "arxiv:2610.39790",
@@ -191,7 +195,7 @@
   {
     "id": "arxiv:2610.39532",
     "title": "Judging Before Propagation: Task-Graph Contextual Integrity for Multi-Agent Privacy",
-    "titleZh": null,
+    "titleZh": "Task-Graph Contextual Integrity：多智能体隐私传播判断",
     "url": "https://arxiv.org/abs/2610.39532v1",
     "kind": "paper",
     "source": "arXiv · 智能体记忆泛检索",
@@ -199,8 +203,8 @@
     "sourceTier": "preprint",
     "published": "2026-10-29T07:31:50.000Z",
     "summary": "Multi-agent LLM systems increasingly rely on persistent memory and inter-agent communication. These capabilities create privacy risks that extend beyond individual interactions: a release appropriate in isolation may become inappropriate when combined with information previously disclosed to a recipient or propagated to downstream agents along the planned workflow. Existing Contextual Integrity (CI) mechanisms for agentic systems typically rely on local judgments that assess each disclosure in isolation, with or without regard to the recipient's history, but do not account for how information propagates downstream. However, compliance at the current boundary does not guarantee appropriatene…",
-    "summaryZh": null,
-    "why": "新预印本，主题命中「安全与治理」；摘要已按原文整理，等待人工复核。",
+    "summaryZh": "该预印本指出，现有多智能体系统的上下文完整性（CI）机制通常仅基于局部判断评估单次披露，未考虑信息沿工作流向下游传播后的累积隐私风险，并据此提出基于任务图的判断方法。",
+    "why": "针对多智能体系统中‘局部合规但全局泄露’的隐私盲区，提出结合下游传播路径的隐私评估框架，补充了静态CI机制在动态多跳场景下的不足。",
     "topics": [
       "security"
     ],
@@ -218,7 +222,8 @@
     "score": 86,
     "curated": false,
     "collectedAt": "2026-10-30T05:45:34.069Z",
-    "provenance": "arxiv-broad"
+    "provenance": "arxiv-broad",
+    "summaryZhBasis": "原文摘要"
   },
   {
     "id": "arxiv:2610.39446",
@@ -283,7 +288,7 @@
   {
     "id": "arxiv:2610.39073",
     "title": "Certified Access: Test-Time Compute on Conservative Physics-Structured AI Memory",
-    "titleZh": null,
+    "titleZh": "Certified Access：基于保守物理结构AI记忆的测试时计算",
     "url": "https://arxiv.org/abs/2610.39073v1",
     "kind": "paper",
     "source": "arXiv · 记忆评测",
@@ -291,8 +296,8 @@
     "sourceTier": "preprint",
     "published": "2026-10-29T00:05:45.000Z",
     "summary": "Test-time compute mechanisms, such as retries, confidence-based escalation and non-local routing, are conventionally deployed as black-box additions to trained models. They typically add forward passes or halting heads, but give no structural account of what the extra compute buys or what it costs against the model's stability guarantees. We therefore propose a theoretical and empirical framework for test-time compute on a Latent Dynamics Model used as the memory. When an encoder's latent state $(q,p)$ is advanced by a damped symplectic (velocity-Verlet) step of a learned Hamiltonian, every mechanism that expands access has an exact phase-volume Jacobian, a bounded energy change and an exac…",
-    "summaryZh": null,
-    "why": "新预印本，主题命中「评测与基准」；摘要已按原文整理，等待人工复核。",
+    "summaryZh": "该预印本提出一种将潜在动力学模型作为记忆结构的测试时计算框架，通过哈密顿系统的辛积分推导额外计算带来的相体积雅可比与能量变化界限，旨在为黑盒测试时机制提供稳定性保证。",
+    "why": "区别于将测试时计算视为黑盒附加模块的常规做法，该文从物理结构稳定性角度建立理论基础，量化额外计算对模型稳定性的影响。",
     "topics": [
       "evaluation"
     ],
@@ -309,12 +314,13 @@
     "score": 86,
     "curated": false,
     "collectedAt": "2026-10-30T04:47:11.002Z",
-    "provenance": "arxiv-eval"
+    "provenance": "arxiv-eval",
+    "summaryZhBasis": "原文摘要"
   },
   {
     "id": "arxiv:2610.38902",
     "title": "HEDGE: Gated Hypergraph Memory for Scalable Multi-Agent Debate",
-    "titleZh": null,
+    "titleZh": "HEDGE：用于可扩展多智能体辩论的门控超图记忆",
     "url": "https://arxiv.org/abs/2610.38902v1",
     "kind": "paper",
     "source": "arXiv · 记忆召回补漏",
@@ -322,8 +328,8 @@
     "sourceTier": "preprint",
     "published": "2026-10-28T20:57:59.000Z",
     "summary": "Multi-agent debate systems require agents to retain and revisit arguments across multiple rounds, yet limited context windows and unstructured memories make relevant information increasingly difficult to recover. Existing flat and pairwise-graph memories also struggle to capture higher-order relations, including multi-agent agreement, conflicting evidence, and evolving consensus. We introduce HEDGE, a selective memory framework that represents debate trajectories as semantic hypergraphs. Hyperedges connect related claims across agents, while intra-hyperedge relational graphs preserve fine-grained argumentative structure. A learned memory selection module (MSM), trained through supervised le…",
-    "summaryZh": null,
-    "why": "新预印本，主题命中「工具与项目发布」；摘要已按原文整理，等待人工复核。",
+    "summaryZh": "该预印本提出HEDGE框架，将多智能体辩论轨迹表示为语义超图，通过超边连接跨智能体主张并利用内部关系图保留论证结构，结合学习式记忆选择模块以解决上下文窗口限制下的信息召回难题。",
+    "why": "针对现有平铺或成对图记忆难以捕捉多智能体共识及冲突证据等高阶关系的问题，引入超图结构强化对复杂辩论历史的建模与召回能力。",
     "topics": [
       "tools"
     ],
@@ -335,7 +341,8 @@
     "score": 82,
     "curated": false,
     "collectedAt": "2026-10-30T04:47:11.002Z",
-    "provenance": "arxiv-recall"
+    "provenance": "arxiv-recall",
+    "summaryZhBasis": "原文摘要"
   },
   {
     "id": "web:https://www.langchain.com/blog/building-agent-memory-openwiki-graphs",
@@ -372,7 +379,7 @@
   {
     "id": "arxiv:2610.38521",
     "title": "Security Impact of Coding Agent's Memory Files",
-    "titleZh": null,
+    "titleZh": "编码智能体记忆文件的安全影响研究",
     "url": "https://arxiv.org/abs/2610.38521v1",
     "kind": "paper",
     "source": "arXiv · 记忆召回补漏",
@@ -380,8 +387,8 @@
     "sourceTier": "preprint",
     "published": "2026-10-28T09:33:08.000Z",
     "summary": "Coding agents automatically load project memory files such as CLAUDE.md at the start of every session and treat them as trusted project guidance. Anyone who can change such a file, for example through a pull request, can therefore steer the agent without ever touching the developer's prompt. We study memory files as an attack surface for insecure code generation and ask (1) whether a malicious memory file makes agents produce code that passes its tests but is vulnerable, and (2) whether agents disclose to the developer that the file shaped their code. For each of 12 CWE classes, we crafted two malicious memory files, a qualified variant that presents removing defensive checks as engineering…",
-    "summaryZh": null,
-    "why": "新预印本，主题命中「安全与治理」；摘要已按原文整理，等待人工复核。",
+    "summaryZh": "该预印本研究编码智能体自动加载项目记忆文件（如CLAUDE.md）作为攻击面的安全性，通过构造针对12类CWE的恶意记忆文件，验证了修改该文件可在不触碰用户提示词的情况下诱导智能体生成通过测试但存在漏洞的代码。",
+    "why": "揭示了智能体将项目记忆文件视为可信指令的潜在安全隐患，提供了针对‘隐形后门’攻击的具体实证数据，对智能体安全部署具有警示意义。",
     "topics": [
       "security"
     ],
@@ -399,7 +406,8 @@
     "score": 86,
     "curated": false,
     "collectedAt": "2026-10-30T04:47:11.002Z",
-    "provenance": "arxiv-recall"
+    "provenance": "arxiv-recall",
+    "summaryZhBasis": "原文摘要"
   },
   {
     "id": "arxiv:2610.38332",
