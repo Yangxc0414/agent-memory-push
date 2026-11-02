@@ -1,5 +1,543 @@
 [
   {
+    "id": "arxiv:2610.42141",
+    "title": "RoboArchitect: Automating the Design of Robotic Agents with Persistent Memory",
+    "titleZh": "RoboArchitect：基于持久记忆自动化机器人代理支架设计",
+    "url": "https://arxiv.org/abs/2610.42141v1",
+    "kind": "paper",
+    "source": "arXiv · 智能体记忆与自进化",
+    "sourceId": "arxiv-memory",
+    "sourceTier": "preprint",
+    "published": "2026-10-30T17:58:48.000Z",
+    "summary": "Recent work shows that a frozen robot policy performs far better inside an agent harness, where control code decides when to query the policy, consult vision tools, or command the arm directly. Yet today these harnesses are built by hand and redesigned for each new robot or benchmark. We show that harness design can be automated, offering a strong alternative to finetuning on a novel setup. In RoboArchitect, a coding model observes a robot's rollouts, diagnoses failures, and iteratively revises the harness around the frozen policy. The harness evolves on a set of episodes for its optimization and is evaluated on held-out scenes and tasks. Without updating any model weights, RoboArchitect ra…",
+    "summaryZh": "该论文提出RoboArch框架，利用代码模型观察机器人运行轨迹并诊断故障，迭代修改冻结策略的代理支架（harness），无需更新模型权重。",
+    "why": "展示了在冻结策略基础上自动化设计代理支架的方法，为机器人智能体提供了一种替代微调的架构优化路径。",
+    "topics": [
+      "evaluation"
+    ],
+    "tags": [
+      "评测与基准"
+    ],
+    "security": {
+      "angles": [
+        "evaluation"
+      ],
+      "note": "规则命中关键词，等待人工复核。"
+    },
+    "evidence": "预印本 · 原文可核验",
+    "score": 86,
+    "curated": false,
+    "collectedAt": "2026-11-02T04:53:47.317Z",
+    "provenance": "arxiv-memory",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2610.42068",
+    "title": "RAMA: Retrieval-Augmented Multi-Agent Routing with Episodic Memory for LEO Satellite Networks",
+    "titleZh": "RAMA：面向LEO卫星网络的检索增强多智能体路由与情景记忆",
+    "url": "https://arxiv.org/abs/2610.42068v1",
+    "kind": "paper",
+    "source": "arXiv · 智能体记忆与自进化",
+    "sourceId": "arxiv-memory",
+    "sourceTier": "preprint",
+    "published": "2026-10-30T17:26:50.000Z",
+    "summary": "Low-Earth orbit (LEO) satellite networks present a challenging routing environment due to rapidly changing topology, traffic, and link conditions. Existing deep reinforcement learning (DRL) routing methods typically rely on current observations and information encoded in network weights, limiting their ability to exploit successful past experiences. We propose RAMA, a retrieval-augmented multi-agent DRL framework with Approximate Information State (AIS), in which each satellite combines its local observation, recent routing history, neighboring state information, and retrieved entries from a per-satellite episodic memory. Retrieved experiences are integrated through a Transformer-based deci…",
+    "summaryZh": "针对LEO卫星网络拓扑快速变化的特点，提出RAMA框架，将卫星的本地观测、近期路由历史、邻域状态及从单星情景记忆中检索的条目结合，通过Transformer进行决策。",
+    "why": "将检索增强和情景记忆应用于动态卫星网络路由场景，探索了利用历史成功经验提升DRL路由性能的新思路。",
+    "topics": [
+      "tools"
+    ],
+    "tags": [
+      "工具与项目发布"
+    ],
+    "security": null,
+    "evidence": "预印本 · 原文可核验",
+    "score": 82,
+    "curated": false,
+    "collectedAt": "2026-11-02T04:53:47.317Z",
+    "provenance": "arxiv-memory",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2610.42000",
+    "title": "Less Loss, Fixed Weights: Logit Corrections for Forgetting",
+    "titleZh": "减少遗忘的固定权重对数修正方法",
+    "url": "https://arxiv.org/abs/2610.42000v1",
+    "kind": "paper",
+    "source": "arXiv · 记忆召回补漏",
+    "sourceId": "arxiv-recall",
+    "sourceTier": "preprint",
+    "published": "2026-10-30T16:44:30.000Z",
+    "summary": "When a language model is fine-tuned to follow instructions, or further pretrained on a new subject, it often gets worse at predicting standard web text. This is known as \"forgetting.\" We ask whether this loss can be undone by simple, fixed adjustments to the model's final token predictions. Across 14 pairs of base and derived models, from 1B to 7B parameters, we fitted a fixed bonus or penalty for each token (a vocabulary bias), alone or together with a temperature. On text held out from correction fitting, the largest top-4K bias recovery estimate is under 10%, with loss conditional on the retained vocabulary. Combining the bias with a temperature recovers up to 36%. Models further pretrai…",
+    "summaryZh": "研究通过为模型最终token预测添加固定的词表偏差和温度调整，来缓解微调导致的通用文本预测能力下降（遗忘）问题。",
+    "why": "提出了一种无需重新训练、仅通过固定参数调整来部分恢复模型通用能力的轻量化方法，对模型维护具有实用价值。",
+    "topics": [
+      "adjacent"
+    ],
+    "tags": [
+      "相关智能体研究"
+    ],
+    "security": null,
+    "evidence": "预印本 · 原文可核验",
+    "score": 82,
+    "curated": false,
+    "collectedAt": "2026-11-02T04:53:47.317Z",
+    "provenance": "arxiv-recall",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2610.41698",
+    "title": "Precision--Recall Trade-off on the Inference Level for LLMs in Grammatical Error Correction",
+    "titleZh": "LLM语法纠错中推理层面的精确率-召回率权衡",
+    "url": "https://arxiv.org/abs/2610.41698v1",
+    "kind": "paper",
+    "source": "arXiv · 记忆召回补漏",
+    "sourceId": "arxiv-recall",
+    "sourceTier": "preprint",
+    "published": "2026-10-30T13:04:17.000Z",
+    "summary": "Large language models (LLMs) have recently been adopted for Grammatical Error Correction (GEC), achieving strong performance via both full fine-tuning and prompt-based approaches. As probabilistic sequence models, LLMs expose inference-time parameters that directly modify token generation behavior; however, their potential for controlling GEC-specific trade-offs has not been systematically studied. In this work, we investigate decoding strategies for grammatical error correction. We show that the repetition penalty parameter enables controllable adjustment of the precision--recall trade-off at inference time, without modifying the model architecture, training procedure, or prompt. Through e…",
+    "summaryZh": "研究发现，在语法纠错任务中，通过调整重复惩罚参数，可以在推理阶段控制系统生成行为的精确率与召回率，而无需修改模型架构、训练过程或提示词。",
+    "why": "系统性地分析了LLM推理参数在特定任务（GEC）中调节性能权衡的作用，为无训练微调优化提供了操作依据。",
+    "topics": [
+      "adjacent"
+    ],
+    "tags": [
+      "相关智能体研究"
+    ],
+    "security": null,
+    "evidence": "预印本 · 原文可核验",
+    "score": 82,
+    "curated": false,
+    "collectedAt": "2026-11-02T04:53:47.317Z",
+    "provenance": "arxiv-recall",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2610.41688",
+    "title": "When the Past Shapes Action: Understanding Embodied Memory",
+    "titleZh": "当过去塑造行动：具身记忆综述",
+    "url": "https://arxiv.org/abs/2610.41688v1",
+    "kind": "paper",
+    "source": "arXiv · 智能体记忆与自进化",
+    "sourceId": "arxiv-memory",
+    "sourceTier": "preprint",
+    "published": "2026-10-30T12:52:37.000Z",
+    "summary": "Recent advances in generative foundation models have expanded the capabilities of embodied AI, enabling increasingly general navigation, manipulation, and long-horizon task execution. However, effective interaction with dynamic environments requires more than only strong perception and reasoning: agents must act with partial knowledge and retain, retrieve, and update information from past observations, actions, and experiences. This survey examines embodied memory as a mechanism for preserving decision-relevant information beyond the current observation. We organize existing approaches along two complementary dimensions: six fundamental memory requirements, spanning world-state persistence,…",
+    "summaryZh": "该文将“具身记忆”整理为一类超越当前观测保留决策相关信息的机制，并按“世界状态持久性”等六个基本记忆需求与另一互补维度组织现有方法。作者基于生成式基础模型在具身导航、操作、长程任务执行的能力扩展，强调智能体需在不完全知识下结合过去观测、行动与经验行动。",
+    "why": "相对单篇方法，该综述提供了面向具身记忆的通用需求与分类框架，便于在导航/操作/长程任务场景中建立记忆设计基线。",
+    "topics": [
+      "survey"
+    ],
+    "tags": [
+      "综述与研究全景"
+    ],
+    "security": null,
+    "evidence": "预印本 · 原文可核验",
+    "score": 82,
+    "curated": false,
+    "collectedAt": "2026-11-02T04:53:47.317Z",
+    "provenance": "arxiv-memory",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2610.41616",
+    "title": "What Should LLMs Forget: Reinforcement Unlearning of Knowledge Associations",
+    "titleZh": "LLM 该忘记什么：基于强化遗忘的知识关联方法",
+    "url": "https://arxiv.org/abs/2610.41616v1",
+    "kind": "paper",
+    "source": "arXiv · 记忆召回补漏",
+    "sourceId": "arxiv-recall",
+    "sourceTier": "preprint",
+    "published": "2026-10-30T11:55:35.000Z",
+    "summary": "Large language models (LLMs) acquire extensive factual knowledge during pre-training, which may include sensitive, private, or copyrighted information, motivating the development of unlearning methods that selectively remove specific knowledge while preserving general capabilities. However, existing approaches typically optimize entire responses without explicitly identifying the knowledge to be forgotten, resulting in coarse and uncontrolled forgetting. To address this, we revisit the forgetting target of LLM unlearning and introduce Knowledge Association (KA), which characterizes the association between a query context and its target knowledge and is instantiated by the corresponding cond…",
+    "summaryZh": "作者提出“知识关联（Knowledge Association, KA）”，把 LLM 遗忘的目标从整句响应优化转为显式刻画“查询上下文—目标知识”的关联，并以相应条件化形式进行强化遗忘。文中称现有方法因未显式识别要遗忘的知识，导致遗忘粗粒度且不可控。",
+    "why": "将“忘记什么”作为可被识别与监督的对象，提供与“按句子/段落遗忘”不同的控制点，对隐私与版权相关解耦/去版权化研究有参考价值。",
+    "topics": [
+      "security"
+    ],
+    "tags": [
+      "安全与治理"
+    ],
+    "security": null,
+    "evidence": "预印本 · 原文可核验",
+    "score": 82,
+    "curated": false,
+    "collectedAt": "2026-11-02T04:53:47.317Z",
+    "provenance": "arxiv-recall",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2610.41521",
+    "title": "KITE: Retrieval as a Decision Procedure for Long-Term Conversational Memory",
+    "titleZh": "KITE：将长期会话记忆检索视为决策过程",
+    "url": "https://arxiv.org/abs/2610.41521v1",
+    "kind": "paper",
+    "source": "arXiv · 智能体记忆与自进化",
+    "sourceId": "arxiv-memory",
+    "sourceTier": "preprint",
+    "published": "2026-10-30T10:11:07.000Z",
+    "summary": "Many long-term memory systems for LLM agents are built around embedding-based retrieval. Al- though effective for semantic matching, similarity ranking alone does not establish whether re- trieved memories satisfy the conditions implied by a question. In this paper, we introduce KITE (Knowledge-Indexed Temporal Evidence), a vector-free framework that formulates memory re- trieval as an explicit decision procedure. KITE organizes multi-session conversations as structured knowledge indexed by a governed topic vocabulary, which evolves through controlled expansion and consolidation. At query time, questions are compiled into inspectable retrieval plans over the same knowledge index that guides…",
+    "summaryZh": "KITE 是一个无向量嵌入的长期会话记忆框架，将检索建模为显式决策过程：把多轮会话组织为以受控主题词表索引的结构化知识，并在查询时将问题编译为可检查的检索计划，用以判断检索出的记忆是否满足问题隐含条件。作者指出仅靠相似度排序不足以证明检索记忆满足问题要求。",
+    "why": "相比 embedding 检索，该工作强调可检验性、结构化组织与主题词表的受控演化，为审计与可控记忆管理提供另一种路线。",
+    "topics": [
+      "personal"
+    ],
+    "tags": [
+      "对话与个性化记忆"
+    ],
+    "security": null,
+    "evidence": "预印本 · 原文可核验",
+    "score": 82,
+    "curated": false,
+    "collectedAt": "2026-11-02T04:53:47.317Z",
+    "provenance": "arxiv-memory",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2610.41482",
+    "title": "KEEPER: Learning Control-Sufficient Textual Memory for Long-Horizon LLM Agents",
+    "titleZh": "KEEPER：为长程 LLM 智能体学习控制充分的文本记忆",
+    "url": "https://arxiv.org/abs/2610.41482v1",
+    "kind": "paper",
+    "source": "arXiv · 智能体记忆与自进化",
+    "sourceId": "arxiv-memory",
+    "sourceTier": "preprint",
+    "published": "2026-10-30T09:36:06.000Z",
+    "summary": "Recursive textual memory can carry earlier errors into later updates, yet task performance alone does not establish memory reliability. We define self-consistency bias as the persistence of incorrect claims already present in the incoming memory. We present KEEPER, a comparative analysis of four auxiliary objectives along information-content and update-sensitivity axes within a shared recursive interface, examining how supervision targets relate to agent performance. Among evaluated conditions, reward-related prediction achieve the highest task performance before and after offline reinforcement learning, outperforming joint supervision. A claim-level analysis of one baseline trajectory docu…",
+    "summaryZh": "作者在共享递归文本记忆接口下比较四种辅助目标，沿“信息内容”与“更新敏感度”两个轴进行分析，并定义“自一致偏差”为已存在于传入记忆中的错误断言的持续。文中称在离线强化学习前后，奖励相关预测在任务性能上优于联合监督；并通过对一条基线轨迹的断言级分析记录该偏差。",
+    "why": "提供在递归记忆更新中区分“可靠性”与“任务性能”的分析视角，有助于定位长期智能体记忆的误差传播与自一致性问题。",
+    "topics": [
+      "evaluation"
+    ],
+    "tags": [
+      "评测与基准"
+    ],
+    "security": {
+      "angles": [
+        "evaluation"
+      ],
+      "note": "规则命中关键词，等待人工复核。"
+    },
+    "evidence": "预印本 · 原文可核验",
+    "score": 86,
+    "curated": false,
+    "collectedAt": "2026-11-02T04:53:47.317Z",
+    "provenance": "arxiv-memory",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2610.41433",
+    "title": "What Does a Repair Agent Gain from Remembering Its Failure? An Exploratory Study on Real Python Bugs",
+    "titleZh": "修复代理在重试中利用失败记忆的探索性研究",
+    "url": "https://arxiv.org/abs/2610.41433v1",
+    "kind": "paper",
+    "source": "arXiv · 记忆召回补漏",
+    "sourceId": "arxiv-recall",
+    "sourceTier": "preprint",
+    "published": "2026-10-30T08:38:54.000Z",
+    "summary": "When a coding agent fails a repair task, it is often retried with a record of the failure: the transcript, a self-written lesson, or extracted test signals. We ask what such failure memory changes in the retry. On 75 BugsInPy bugs, we retried each of 181 failed attempts of gpt-5.4-mini under five conditions, with a predeclared analysis whose deviations we report. Two predeclared follow-ups repeated the plain-retry, transcript and lesson conditions with the larger gpt-5.4 and added a notice-only control. On the bug-revealing tests, every memory condition gained over a plain retry in point estimate (+5.5 to +9.9 points over 29.8%), but none significantly. Five further findings stand out. Firs…",
+    "summaryZh": "该预印本在75个BugsInPy缺陷上测试了gpt-5.4-mini在修复失败后的重试表现，对比了包含转录、自写教训等五种记忆条件；结果显示所有记忆条件的点估计值高于普通重试，但差异未达显著水平。",
+    "why": "量化评估了“失败记忆”对编码代理重试任务的具体增益幅度及统计显著性，为记忆机制的有效性提供了实证数据。",
+    "topics": [
+      "mechanism"
+    ],
+    "tags": [
+      "记忆机制与系统"
+    ],
+    "security": {
+      "angles": [
+        "evaluation"
+      ],
+      "note": "规则命中关键词，等待人工复核。"
+    },
+    "evidence": "预印本 · 原文可核验",
+    "score": 86,
+    "curated": false,
+    "collectedAt": "2026-11-02T04:53:47.317Z",
+    "provenance": "arxiv-recall",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2610.41367",
+    "title": "When History Overrides Intent: Relational Schema Lock-In in Human-LLM Interaction",
+    "titleZh": "关系模式锁定：人类-LLM交互中历史覆盖意图的现象研究",
+    "url": "https://arxiv.org/abs/2610.41367v1",
+    "kind": "paper",
+    "source": "arXiv · 智能体记忆泛检索",
+    "sourceId": "arxiv-broad",
+    "sourceTier": "preprint",
+    "published": "2026-10-30T07:32:14.000Z",
+    "summary": "Long-context interaction and persistent memory allow LLM assistants to develop history-grounded understandings of users. When users change direction, however, an understanding built through earlier exchanges may conflict with their current instruction. We introduce relational schema lock-in to describe cases in which an assistant grants that accumulated understanding authority to override the current instruction without user authorization for the intervention. Study 1 documents reports of AI assistants using prior interactions to question or alter requested actions. Study 2 reproduces the pattern across controlled histories and six models: models retained history-grounded positions but diff…",
+    "summaryZh": "该预印本提出“关系模式锁定”概念，描述LLM助手利用过往交互历史理解力覆盖用户当前指令的现象；研究通过记录报告和控制实验，在六个模型上复现了该模式。",
+    "why": "揭示了长期记忆与用户即时指令冲突时的“锁定”失效模式，为理解人机交互中的意图对齐障碍提供了新视角。",
+    "topics": [
+      "personal"
+    ],
+    "tags": [
+      "对话与个性化记忆"
+    ],
+    "security": {
+      "angles": [
+        "defense"
+      ],
+      "note": "规则命中关键词，等待人工复核。"
+    },
+    "evidence": "预印本 · 原文可核验",
+    "score": 86,
+    "curated": false,
+    "collectedAt": "2026-11-02T04:53:47.317Z",
+    "provenance": "arxiv-broad",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2610.41245",
+    "title": "MEMIG: Self-evolving Memory Construction for Antibody Optimization",
+    "titleZh": "MEMIG：用于抗体优化的自进化记忆构建方法",
+    "url": "https://arxiv.org/abs/2610.41245v1",
+    "kind": "paper",
+    "source": "arXiv · 智能体记忆与自进化",
+    "sourceId": "arxiv-memory",
+    "sourceTier": "preprint",
+    "published": "2026-10-30T04:39:18.000Z",
+    "summary": "Memory has become central to self-evolving LLM agents, which store and retrieve experience from past rollouts to guide future decisions. Existing systems represent this experience as free-form natural language and maintain it by rewriting, which fits tasks whose experience is narratable. However, in scientific discovery and optimization, experience is often a quantity measured by an oracle under a specific context. Rewriting it as text leaves no index for where a record should be, replaces a measurement with a description, and cannot express how interventions interact. To address this, we argue that agent memory for biomolecule optimization should instead be indexable, quantitative, and str…",
+    "summaryZh": "该预印本提出MEMIG方法，主张在生物分子优化任务中，代理记忆应取代自由文本叙述，采用可索引、定量且结构化的形式，以解决传统文本记忆无法表达干预交互及缺乏索引的问题。",
+    "why": "针对科学优化场景提出了不同于常规自然语言记忆的记忆架构设计，强调了定量记忆索引在特定领域自进化代理中的必要性。",
+    "topics": [
+      "mechanism"
+    ],
+    "tags": [
+      "记忆机制与系统"
+    ],
+    "security": null,
+    "evidence": "预印本 · 原文可核验",
+    "score": 82,
+    "curated": false,
+    "collectedAt": "2026-11-02T04:53:47.317Z",
+    "provenance": "arxiv-memory",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2610.41169",
+    "title": "ImplicitHop: Evaluating knowledge integration across context and memory",
+    "titleZh": "ImplicitHop：评估LLM在上下文与记忆中知识整合能力的基准测试",
+    "url": "https://arxiv.org/abs/2610.41169v1",
+    "kind": "paper",
+    "source": "arXiv · 智能体记忆与自进化",
+    "sourceId": "arxiv-memory",
+    "sourceTier": "preprint",
+    "published": "2026-10-30T02:44:51.000Z",
+    "summary": "The ability to integrate new information and deduce its consequences is central to learning, understanding, and reasoning in large language models (LLMs). Whether information arrives during training or in-context, models must not only store local facts, but propagate their long-range implications globally. To explore information integration in LLMs, we introduce two complementary natural language benchmarks for large-scale evaluation of deductive reasoning as a function of inference depth. The first is a formal graph benchmark enabling controlled evaluation over a wide range of graph topologies and integration tasks; the second is a knowledge composition benchmark grounded in real-world kno…",
+    "summaryZh": "该预印本介绍了两个用于评估大语言模型在训练期或上下文中获取信息后，对其长期推论后果进行整合能力的基准测试；包括基于形式图的控制评估和基于现实知识的组合基准。",
+    "why": "提供了专门评估“信息传播与深度推论”而非单纯事实检索的评测集，有助于衡量模型处理跨上下文逻辑依赖的能力。",
+    "topics": [
+      "evaluation"
+    ],
+    "tags": [
+      "评测与基准"
+    ],
+    "security": {
+      "angles": [
+        "evaluation"
+      ],
+      "note": "规则命中关键词，等待人工复核。"
+    },
+    "evidence": "预印本 · 原文可核验",
+    "score": 86,
+    "curated": false,
+    "collectedAt": "2026-11-02T04:53:47.317Z",
+    "provenance": "arxiv-memory",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2610.41157",
+    "title": "Lineage Is Memory: Parent Inheritance and Feedback Disclosure in Short-Budget LLM-Guided Optimization",
+    "titleZh": "Lineage Is Memory：短预算LLM引导优化中的父代继承与反馈揭示",
+    "url": "https://arxiv.org/abs/2610.41157v1",
+    "kind": "paper",
+    "source": "arXiv · 记忆评测",
+    "sourceId": "arxiv-eval",
+    "sourceTier": "preprint",
+    "published": "2026-10-30T02:31:45.000Z",
+    "summary": "Iterative language-model optimizers refine prompts and programs by evaluating a candidate, showing a proposer model a sample of failing cases, and keeping revisions that improve performance. Recent work attributes the limits of this loop to narrow single-round reflection, introducing full-set error clustering, targeted minibatches, or larger proposer models so the optimizer sees more failure modes per step. Yet every existing evaluation tests these mechanisms exclusively inside lineage-preserving search, where each revision edits a surviving parent, leaving the contribution of parent inheritance confounded with the breadth of per-round feedback. Across 1,750 pre-registered runs spanning nin…",
+    "summaryZh": "该预印本指出，现有迭代优化器在保留祖先系谱（lineage-preserving）的搜索中评估，导致父代继承的贡献与单轮反馈广度混淆；作者通过1750次预注册运行探讨了在短预算下解决这一混淆的方法。",
+    "why": "揭示了现有LLM优化评估中“父代继承”与“反馈机制”相互混淆的方法论缺陷，提供了分离两者贡献的实证视角。",
+    "topics": [
+      "evaluation"
+    ],
+    "tags": [
+      "评测与基准"
+    ],
+    "security": {
+      "angles": [
+        "privacy",
+        "evaluation"
+      ],
+      "note": "规则命中关键词，等待人工复核。"
+    },
+    "evidence": "预印本 · 原文可核验",
+    "score": 86,
+    "curated": false,
+    "collectedAt": "2026-11-02T04:53:47.317Z",
+    "provenance": "arxiv-eval",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2610.41143",
+    "title": "TalentRL: Strategy-Guided Reinforcement Learning for Hierarchical Skill Routing",
+    "titleZh": "TalentRL：用于分层技能路由的策略引导强化学习",
+    "url": "https://arxiv.org/abs/2610.41143v1",
+    "kind": "paper",
+    "source": "arXiv · 智能体记忆与自进化",
+    "sourceId": "arxiv-memory",
+    "sourceTier": "preprint",
+    "published": "2026-10-30T02:03:55.000Z",
+    "summary": "Natural-language skills enable large language model (LLM) agents to reuse procedures across tasks, yet most systems retrieve individual skills from a flat SkillBank without explicitly modeling the high-level strategy that governs their selection and use. We introduce TalentRL, a strategy-guided reinforcement learning framework for hierarchical routing over procedural memory. Coarse-grained talents represent recurring strategies for skill use, while fine-grained skills provide executable procedures. For each task, the policy model selects a talent that guides execution and softly prioritizes its associated skills during similarity-based retrieval. However, since task outcomes depend jointly…",
+    "summaryZh": "该预印本提出TalentRL框架，通过在程序化记忆中引入粗粒度“天赋（talents）”策略层来指导细粒度技能检索与执行，旨在解决自然语言技能复用中缺乏高层策略建模的问题。",
+    "why": "提出了“策略层”与“技能层”分层的记忆路由机制，为LLM智能体在调用程序化记忆时增加策略引导提供了新的框架设计。",
+    "topics": [
+      "tools"
+    ],
+    "tags": [
+      "工具与项目发布"
+    ],
+    "security": null,
+    "evidence": "预印本 · 原文可核验",
+    "score": 82,
+    "curated": false,
+    "collectedAt": "2026-11-02T04:53:47.317Z",
+    "provenance": "arxiv-memory",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2610.41124",
+    "title": "Confident Fools or Careful Searchers? A Behavioural Study of When LLMs Search Beyond Their Static Internal Memory",
+    "titleZh": "自信傻瓜还是谨慎搜索者？LLM静态内部记忆与外部搜索决策的行为研究",
+    "url": "https://arxiv.org/abs/2610.41124v1",
+    "kind": "paper",
+    "source": "arXiv · 智能体记忆与自进化",
+    "sourceId": "arxiv-memory",
+    "sourceTier": "preprint",
+    "published": "2026-10-30T01:28:38.000Z",
+    "summary": "Agentic LLM assistants must repeatedly decide whether to answer from memory or to call a tool such as web search. Unnecessary searches cost latency and money; missing ones yield confident but unsupported answers. Prior work mostly measures verbalised confidence or trains new adaptive-retrieval methods, and rarely audits the search decisions that deployed products actually make. We introduce a benchmark of 400 multiple-choice questions that combines widely known inside-knowledge (IK) questions, which should be answered directly, with outside-knowledge (OK) questions about facts from news published after the models' training cut-offs (to our knowledge), which should trigger search or, without…",
+    "summaryZh": "该预印本构建了一个包含400道选择题的基准，旨在审计已部署的LLM产品在“内部知识（IK）”直接作答与“外部知识（OK）”触发搜索之间的决策行为，重点考察模型对搜索必要性的判断。",
+    "why": "侧重于审计现有产品中LLM搜索决策的实际行为，而非单纯衡量口头置信度，揭示了模型在何时应当搜索而非依赖静态记忆时的决策偏差。",
+    "topics": [
+      "evaluation"
+    ],
+    "tags": [
+      "评测与基准"
+    ],
+    "security": {
+      "angles": [
+        "provenance",
+        "evaluation"
+      ],
+      "note": "规则命中关键词，等待人工复核。"
+    },
+    "evidence": "预印本 · 原文可核验",
+    "score": 86,
+    "curated": false,
+    "collectedAt": "2026-11-02T04:53:47.317Z",
+    "provenance": "arxiv-memory",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2610.41056",
+    "title": "Accept Changes, Reject Attacks: Robust Memory Management for LLM Agents",
+    "titleZh": "接受变更，拒绝攻击：LLM智能体的鲁棒记忆管理",
+    "url": "https://arxiv.org/abs/2610.41056v1",
+    "kind": "paper",
+    "source": "arXiv · 智能体记忆与自进化",
+    "sourceId": "arxiv-memory",
+    "sourceTier": "preprint",
+    "published": "2026-10-29T22:54:17.000Z",
+    "summary": "Since large language model (LLM) agents rely on long-term memory, what they store now shapes what they do later. A memory manager decides how each input changes this memory and which records the agent acts on. It can fail in two ways: keeping a fact that has since changed (outdated memory), or storing a planted passage or injected instruction (memory poisoning). Most prior work studies them separately, yet they call for opposite write decisions, so no fixed write rule handles both. We therefore formalize memory robustness as handling both without doing worse on other inputs. Since accuracy checks only the answer, we measure robustness with evidence-conditioned accuracy (ECA), which also che…",
+    "summaryZh": "该预印本形式化了记忆鲁棒性，要求记忆管理器同时处理事实过时的“更新需求”和注入恶意的“污染防御”这两类相反的操作；作者提出使用证据条件化准确率（ECA）作为衡量指标，而非仅关注答案准确性。",
+    "why": "将记忆更新与记忆投毒防御统一在鲁棒性框架下，指出固定写入规则难以同时满足两者，并提出了兼顾证据条件的新评价指标。",
+    "topics": [
+      "security"
+    ],
+    "tags": [
+      "安全与治理"
+    ],
+    "security": {
+      "angles": [
+        "attack"
+      ],
+      "note": "规则命中关键词，等待人工复核。"
+    },
+    "evidence": "预印本 · 原文可核验",
+    "score": 86,
+    "curated": false,
+    "collectedAt": "2026-11-02T04:53:47.317Z",
+    "provenance": "arxiv-memory",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2610.40974",
+    "title": "Fewer Heads, Fewer Memories: Pruning Redundant Attention Heads Suppresses Verbatim Memorisation",
+    "titleZh": "冗余注意力头修剪抑制逐字记忆",
+    "url": "https://arxiv.org/abs/2610.40974v1",
+    "kind": "paper",
+    "source": "arXiv · 记忆安全与评测",
+    "sourceId": "arxiv-security",
+    "sourceTier": "preprint",
+    "published": "2026-10-29T20:59:31.000Z",
+    "summary": "Large language models have been shown to memorise and reproduce verbatim sequences from their training data, raising concerns about privacy leakage, intellectual property exposure, and the limits of generalisation. Recent theoretical work suggests that attention heads may contribute to this behaviour by functioning as associative memory mechanisms, with memorisation capacity scaling with the number of heads. At the same time, empirical work has shown that many attention heads are redundant and can be pruned with limited impact on downstream performance. Despite these parallel findings, the effect of pruning redundant heads on memorised-sequence reproduction remains unexplored. In this work,…",
+    "summaryZh": "该研究探讨了修剪冗余注意力头对模型复述训练数据中逐字序列的影响，指出此前理论认为注意力头作为联想记忆机制与其数量相关，而实证显示许多头可被修剪且对下游性能影响有限，但修剪对记忆序列复现的作用此前未被探索。",
+    "why": "将注意力头修剪这一常见压缩技术与模型记忆安全联系起来，提供了一种抑制逐字记忆的新视角，对于理解模型隐私泄露机制有参考价值。",
+    "topics": [
+      "security"
+    ],
+    "tags": [
+      "安全与治理"
+    ],
+    "security": {
+      "angles": [
+        "privacy"
+      ],
+      "note": "规则命中关键词，等待人工复核。"
+    },
+    "evidence": "预印本 · 原文可核验",
+    "score": 86,
+    "curated": false,
+    "collectedAt": "2026-11-02T04:53:47.317Z",
+    "provenance": "arxiv-security",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2610.40930",
+    "title": "Adaptive Personalization Under Preference Epistemic Uncertainty",
+    "titleZh": "偏好认知不确定性下的自适应个性化",
+    "url": "https://arxiv.org/abs/2610.40930v1",
+    "kind": "paper",
+    "source": "arXiv · 记忆专用模型",
+    "sourceId": "arxiv-models",
+    "sourceTier": "preprint",
+    "published": "2026-10-29T20:01:11.000Z",
+    "summary": "Human preferences change over time: an established preference may remain valid over time, become uncertain as context shifts, or be explicitly revised. Effective personalization requires conversational AI to adapt its response strategy to evolving preferences rather than relying on passive memory retrieval. We formalize this capability as adaptive personalization under epistemic uncertainty. A human preference study further confirms that people favor state-contingent response strategies as preference uncertainty changes. To evaluate whether language models mirror this adaptation, we create a multilingual benchmark spanning 250 personas, 5 languages, and 25K conversational turns that decoupl…",
+    "summaryZh": "研究提出在偏好存在认知不确定性时进行自适应个性化，并创建了一个包含 250 个人设、5 种语言及 25K 对话轮次的数据基准，用于评估语言模型是否镜像人类对状态依赖响应策略的偏好。",
+    "why": "从认知不确定性的角度重新定义个性化，并提供了多语言基准来测试模型对偏好变化的适应策略，扩展了记忆在个性化场景中的研究维度。",
+    "topics": [
+      "mechanism"
+    ],
+    "tags": [
+      "记忆机制与系统"
+    ],
+    "security": {
+      "angles": [
+        "evaluation"
+      ],
+      "note": "规则命中关键词，等待人工复核。"
+    },
+    "evidence": "预印本 · 原文可核验",
+    "score": 86,
+    "curated": false,
+    "collectedAt": "2026-11-02T04:53:47.317Z",
+    "provenance": "arxiv-models",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
     "id": "arxiv:2610.40611",
     "title": "When to Assist and What to Suggest: Joint Gating and Memory-Grounded Hint Generation in One Compact Decoder",
     "titleZh": "紧凑解码器中的联合门控与记忆接地提示生成",
@@ -2430,6 +2968,39 @@
     "score": 86,
     "curated": false,
     "collectedAt": "2026-10-26T03:41:54.151Z",
+    "provenance": "arxiv-recall",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2610.31937",
+    "title": "Reject, Remember, Retry: Why Multi-Turn Attackers Should Remember Their Mistakes",
+    "titleZh": "R3 多轮越狱攻击的不对称记忆框架",
+    "url": "https://arxiv.org/abs/2610.31937v2",
+    "kind": "paper",
+    "source": "arXiv · 记忆召回补漏",
+    "sourceId": "arxiv-recall",
+    "sourceTier": "preprint",
+    "published": "2026-10-22T21:35:21.000Z",
+    "summary": "Existing multi-turn jailbreak attackers condition on the same conversation history as the target. We introduce $R^3$ (Reject, Remember, Retry), a black-box multi-LLM framework in which the attacker conditions on a compact state rather than the raw transcript. Turns that fail to raise the attack risk score are removed from the target's context but remembered by the attacker, together with the reason for failure. We call this asymmetric memory. Across two benchmarks and six target LLMs, $R^3$ outperforms state-of-the-art baselines by up to 53% in ASR@5 under matched query budgets, and a low-capacity attacker with $R^3$'s state is able to outperform high-capacity attackers without it by up to…",
+    "summaryZh": "提出 R3（拒绝、记住、重试）多 LLM 框架，攻击者利用紧凑状态而非原始记录进行条件化，将失败回合从目标上下文中移除但由攻击者记住，并在两个基准和六个目标 LLM 上测试了该方法的攻击成功率。",
+    "why": "通过引入“不对称记忆”机制改进多轮越狱攻击，展示了即使低容量攻击者利用该记忆状态也能超越无记忆的高容量攻击者，为红队测试提供了新方法。",
+    "topics": [
+      "security"
+    ],
+    "tags": [
+      "安全与治理"
+    ],
+    "security": {
+      "angles": [
+        "attack",
+        "evaluation"
+      ],
+      "note": "规则命中关键词，等待人工复核。"
+    },
+    "evidence": "预印本 · 原文可核验",
+    "score": 80,
+    "curated": false,
+    "collectedAt": "2026-11-02T04:53:47.317Z",
     "provenance": "arxiv-recall",
     "summaryZhBasis": "原文摘要"
   },
