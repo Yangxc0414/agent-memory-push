@@ -1,5 +1,263 @@
 [
   {
+    "id": "arxiv:2603.27343",
+    "title": "WMIP: A Working-Memory-Inspired Programmable Probe of Cumulative State Tracking in Large Language Models",
+    "titleZh": "WMIP：基于工作记忆的LLM累积状态跟踪探针",
+    "url": "https://arxiv.org/abs/2603.27343",
+    "kind": "paper",
+    "source": "arXiv · cs.CL RSS（API 兜底）",
+    "sourceId": "arxiv-rss-cl",
+    "sourceTier": "preprint",
+    "published": "2026-11-04T05:00:00.000Z",
+    "summary": "arXiv:2603.27343v3 Announce Type: cross Abstract: Human working memory lets people maintain and update information. Large language models (LLMs) face a related demand when tracking updates within a single prompt without writing out intermediate states, yet existing tests differ in their constraints on written steps. We introduce a working-memory-inspired probe of cumulative state tracking with program-computed answers, 3 to 100 updates, and final-state, intermediate-state, or multi-target queries. It compares protocols on identical items. Across 18 LLMs, accuracy is 84.9% on single-step arithmetic but 31.7% on core items requiring one number after three to seven updates. From 50 updates on,…",
+    "summaryZh": "该研究提出WMIP探针，用于测试LLM在单个提示中跟踪累积状态的能力，涵盖3至100次更新及多种查询类型。在18个LLM的测试中，单步算术准确率为84.9%，但需多次更新的核心项目准确率仅为31.7%。",
+    "why": "提供了标准化的工作记忆灵感探针，量化了LLM在长序列状态跟踪中的性能衰减情况。",
+    "topics": [
+      "mechanism"
+    ],
+    "tags": [
+      "记忆机制与系统"
+    ],
+    "security": {
+      "angles": [
+        "evaluation"
+      ],
+      "note": "规则命中关键词，等待人工复核。"
+    },
+    "evidence": "预印本 · 原文可核验",
+    "score": 86,
+    "curated": false,
+    "collectedAt": "2026-11-04T05:14:42.324Z",
+    "provenance": "arxiv-rss-cl",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.04434",
+    "title": "Sketchpad: certified exact arithmetic with a small vision-language model",
+    "titleZh": "Sketchpad：结合小视觉语言模型的精确算术方法",
+    "url": "https://arxiv.org/abs/2611.04434",
+    "kind": "paper",
+    "source": "arXiv · cs.CL RSS（API 兜底）",
+    "sourceId": "arxiv-rss-cl",
+    "sourceTier": "preprint",
+    "published": "2026-11-04T05:00:00.000Z",
+    "summary": "arXiv:2611.04434v1 Announce Type: cross Abstract: Language models are accurate on most long-arithmetic problems, but their accuracy is estimated on samples and carries no guarantee for an unseen input; tool use is exact but moves the computation outside the network. We show that exactness at all input lengths becomes a finite, checkable property of a network when each of its steps reads only a bounded view of an external working memory. In Sketchpad, Qwen3.5-0.8B with a low-rank adapter executes arithmetic procedures on a rendered sheet. Each forward pass reads a three-cell view and emits one step: a digit, a carry or borrow, and the next operation. A fixed runtime moves the view and writes…",
+    "summaryZh": "Sketchpad通过低秩适配器将Qwen3.5-0.8B用于算术程序，每次前向传播仅读取外部工作记忆的三单元视图。该方法将精确性转化为可检查的有限属性，无需将计算完全移出网络。",
+    "why": "提出了一种通过受限外部记忆视图实现任意长度输入下精确算术推理的新机制。",
+    "topics": [
+      "multimodal"
+    ],
+    "tags": [
+      "多模态与感知记忆"
+    ],
+    "security": null,
+    "evidence": "预印本 · 原文可核验",
+    "score": 82,
+    "curated": false,
+    "collectedAt": "2026-11-04T05:14:42.324Z",
+    "provenance": "arxiv-rss-cl",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2605.29734",
+    "title": "HTAM: Hierarchical Transition-Attended Memory for Operator Optimization",
+    "titleZh": "HTAM：用于算子优化的分层转换注意力记忆",
+    "url": "https://arxiv.org/abs/2605.29734",
+    "kind": "paper",
+    "source": "arXiv · cs.CL RSS（API 兜底）",
+    "sourceId": "arxiv-rss-cl",
+    "sourceTier": "preprint",
+    "published": "2026-11-04T05:00:00.000Z",
+    "summary": "arXiv:2605.29734v2 Announce Type: replace Abstract: High-performance GPU kernels are essential for efficient LLM deployment, yet optimizing them remains expertise-intensive. Recent LLM-based code generation makes automatic GPU operator generation promising, but operator optimization remains a hardware-aware search problem. Existing LLM-based methods face a granularity mismatch: coarse hints are reusable but hard to execute, whereas detailed memories are actionable but enlarge the search space and obscure optimization bottlenecks. The key challenge is therefore to organize optimization experience at an appropriate granularity. To address this issue, this paper proposes HTAM (Hierarchical Tra…",
+    "summaryZh": "HTAM旨在解决LLM生成GPU算子时的粒度不匹配问题，通过分层组织优化经验来平衡可复用性与可执行性。该方法针对硬件感知的搜索问题，优化了从粗粒度提示到细粒度记忆的结构。",
+    "why": "解决了现有LLM方法在GPU算子自动优化中因记忆粒度不当导致的搜索空间膨胀或执行困难问题。",
+    "topics": [
+      "mechanism"
+    ],
+    "tags": [
+      "记忆机制与系统"
+    ],
+    "security": null,
+    "evidence": "预印本 · 原文可核验",
+    "score": 82,
+    "curated": false,
+    "collectedAt": "2026-11-04T05:14:42.324Z",
+    "provenance": "arxiv-rss-cl",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "web:https://www.qbitai.com/2026/11/507533.html",
+    "title": "让Agent首次拥有“视听双流记忆”：openJiuwen Agent-Memory看懂长视频，关键事件一个不落",
+    "titleZh": "openJiuwen Agent-Memory：支持长视频视听双流记忆",
+    "url": "https://www.qbitai.com/2026/11/507533.html",
+    "kind": "news",
+    "source": "量子位",
+    "sourceId": "news-qbit",
+    "sourceTier": "media",
+    "published": "2026-11-04T02:49:02.000Z",
+    "summary": "长视频记忆精度飙升，问答时延最高降97%",
+    "summaryZh": "媒体报道称，openJiuwen Agent-Memory赋予了Agent视听双流记忆能力，能够理解长视频且不遗漏关键事件。据报道，该方案在长视频记忆精度上有所提升，且问答时延最高降低97%。",
+    "why": "展示了Agent记忆系统在处理多模态长序列（如视频）时的最新应用进展及潜在性能收益。",
+    "topics": [
+      "multimodal"
+    ],
+    "tags": [
+      "多模态与感知记忆"
+    ],
+    "security": null,
+    "evidence": "媒体报道",
+    "score": 67,
+    "curated": false,
+    "collectedAt": "2026-11-04T05:14:42.324Z",
+    "provenance": "news-qbit",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.05319",
+    "title": "HARP: Training-Free Dual-Profile Agentic Communication for LLM-Based Recommendation",
+    "titleZh": "HARP：基于免训练双画像智能体通信的 LLM 推荐框架",
+    "url": "https://arxiv.org/abs/2611.05319v1",
+    "kind": "paper",
+    "source": "arXiv · 记忆召回补漏",
+    "sourceId": "arxiv-recall",
+    "sourceTier": "preprint",
+    "published": "2026-11-03T18:24:20.000Z",
+    "summary": "In LLM-based recommendation, memory acts as a user-level agent in a memory-augmented backbone. Yet users and items remain asymmetric: only the user is given a structured profile; it enters a bandwidth-limited reranker prompt; and it is frozen after warmup. We recast LLM-based recommendation as an agentic-communication process in four stages: BUILD a self-description, TRANSMIT it along the collaborative graph, UNDERSTAND the other side, and SYNC it from the next interaction. This formulation reveals three unresolved communication challenges: the item side never produces a comparable self-description (one-sided BUILD); profile-level signals enter only the bandwidth-limited reranker prompt rat…",
+    "summaryZh": "该论文提出 HARP，将基于 LLM 的推荐视为智能体通信过程，通过构建、传输、理解与同步四个阶段解决用户与物品画像不对称及信息传递受限的问题。这是一种无需训练的架构设计思路。",
+    "why": "针对现有推荐系统中用户画像主导而物品侧缺失的不对称性问题，提供了“双画像”通信的新范式，有助于解决重排器带宽限制下的信息缺失问题。",
+    "topics": [
+      "evaluation"
+    ],
+    "tags": [
+      "评测与基准"
+    ],
+    "security": null,
+    "evidence": "预印本 · 原文可核验",
+    "score": 82,
+    "curated": false,
+    "collectedAt": "2026-11-04T05:14:42.324Z",
+    "provenance": "arxiv-recall",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.05313",
+    "title": "MDSKILL: Learning to Internalize Skill Memory through Multi-View Distillation for Efficient Dynamic Agent Self-Evolution",
+    "titleZh": "MDSKILL：通过多视图蒸馏实现技能记忆内化以加速智能体自进化",
+    "url": "https://arxiv.org/abs/2611.05313v1",
+    "kind": "paper",
+    "source": "arXiv · 智能体记忆与自进化",
+    "sourceId": "arxiv-memory",
+    "sourceTier": "preprint",
+    "published": "2026-11-03T18:19:55.000Z",
+    "summary": "Skill memories encode past experiences as textual prompts to improve reinforcement learning (RL) for self-evolving agents. Complementing RL, On-Policy Self-Distillation (OPSD) provides dense, fine-grained supervision to internalize knowledge from skill-guided trajectories and accelerate policy learning. However, self-generated memories often contain noisy supervision and functionally entangled, redundant, or conflicting knowledge, making direct distillation difficult. Under limited training budgets, these issues can hinder knowledge internalization and even degrade performance. To address this problem, we propose MDSKILL, a multi-view distillation approach for skill memory internalization.…",
+    "summaryZh": "提出 MDSKILL 方法，利用在线策略自蒸馏解决自生成技能记忆中的噪声和冗余干扰，在有限训练预算下将过去经验内化为策略，以提升强化学习智能体的性能。",
+    "why": "解决了动态智能体自进化中，因技能记忆包含冲突或冗余知识而导致直接蒸馏效果不佳甚至退化的技术痛点，为低成本的知识内化提供了新路径。",
+    "topics": [
+      "mechanism"
+    ],
+    "tags": [
+      "记忆机制与系统"
+    ],
+    "security": null,
+    "evidence": "预印本 · 原文可核验",
+    "score": 82,
+    "curated": false,
+    "collectedAt": "2026-11-04T05:14:42.324Z",
+    "provenance": "arxiv-memory",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.05255",
+    "title": "Going Deeper With Memories",
+    "titleZh": "DeepMem：结合因果多尺度架构与快权重记忆的字节级语言模型",
+    "url": "https://arxiv.org/abs/2611.05255v1",
+    "kind": "paper",
+    "source": "arXiv · 记忆召回补漏",
+    "sourceId": "arxiv-recall",
+    "sourceTier": "preprint",
+    "published": "2026-11-03T17:44:07.000Z",
+    "summary": "Byte level language models avoid tokenizer dependence and provide universal coverage, but processing every byte at full resolution is expensive. We introduce DeepMem, a causal multiscale architecture that separates semantic compression from exact byte preservation. A learned invertible subband transform constructs a hierarchy of shorter sequences, while a lossless carrier and explicit detail sidebands preserve byte identity. Fast weight memory blocks operate along the encoder, with iterative shared state computation at the compressed bottleneck, while an attention based super resolution decoder restores byte resolution representations. DeepMem achieves stronger language modeling performance…",
+    "summaryZh": "介绍 DeepMem 架构，通过可逆子带变换分离语义压缩与字节保留，结合沿编码器的快权重记忆模块及基于注意力的超分辨率解码器，在字节级语言建模中平衡效率与精度。",
+    "why": "在字节级语言模型领域，针对全分辨率处理高昂的计算成本，提出了分离语义压缩与精确保留的多尺度方案，为兼顾模型性能与推理效率提供了新架构思路。",
+    "topics": [
+      "mechanism"
+    ],
+    "tags": [
+      "记忆机制与系统"
+    ],
+    "security": null,
+    "evidence": "预印本 · 原文可核验",
+    "score": 82,
+    "curated": false,
+    "collectedAt": "2026-11-04T05:14:42.324Z",
+    "provenance": "arxiv-recall",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.05124",
+    "title": "The Right Source Is Not Enough: Understanding History Interference in Speech-LLM Memory",
+    "titleZh": "探究语音 LLM 记忆中的历史干扰机制：正确源识别并非充分条件",
+    "url": "https://arxiv.org/abs/2611.05124v1",
+    "kind": "paper",
+    "source": "arXiv · 记忆召回补漏",
+    "sourceId": "arxiv-recall",
+    "sourceTier": "preprint",
+    "published": "2026-11-03T16:11:16.000Z",
+    "summary": "Speech large language models retain audio history to support multi-turn conversations. Yet remembering an event does not ensure that its information is used only when relevant. We investigate why irrelevant historical audio changes answers even when the queried event remains represented. Controlled experiments on MOSS-Audio and MiMo-Audio show that historical values direct errors toward specific competing answers, beyond a generic effect of context length. Causal interventions distinguish two paths. In open-ended question answering, most history-value errors disappear when subsequent computation cannot directly access the irrelevant source. In multiple-choice answering, many errors persist:…",
+    "summaryZh": "研究揭示语音大模型在多轮对话中，即使记住了相关事件，不相关的历史音频仍可能干扰答案。实验表明这种干扰不仅是上下文长度效应，而是由历史值引导的特定竞争错误路径。",
+    "why": "深入解析了语音多模态模型中“记忆检索”与“信息利用”脱节的机制，指出仅识别正确源不足以避免错误，为理解长程语音对话中的幻觉根源提供了因果分析视角。",
+    "topics": [
+      "multimodal"
+    ],
+    "tags": [
+      "多模态与感知记忆"
+    ],
+    "security": {
+      "angles": [
+        "provenance"
+      ],
+      "note": "规则命中关键词，等待人工复核。"
+    },
+    "evidence": "预印本 · 原文可核验",
+    "score": 86,
+    "curated": false,
+    "collectedAt": "2026-11-04T05:14:42.324Z",
+    "provenance": "arxiv-recall",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.04867",
+    "title": "One Assistant, Many Memories: Benchmarking Real-World Group Assistance When Recall Is Not Enough",
+    "titleZh": "GroupAssistBench：群聊场景下的Agent记忆基准",
+    "url": "https://arxiv.org/abs/2611.04867v1",
+    "kind": "paper",
+    "source": "arXiv · 智能体记忆与自进化",
+    "sourceId": "arxiv-memory",
+    "sourceTier": "preprint",
+    "published": "2026-11-03T13:23:37.000Z",
+    "summary": "The value of memory lies not only in recall but in using it to provide appropriate assistance. Recent benchmarks test memory use in personalisation and agentic tasks, but seldom evaluate assistance without fixed answers or integration across multiple participants. Group chats make both challenges more acute: an assistant must integrate information from multiple members, track revisions and conflicts over time, and produce one response for the group. Yet existing group memory benchmarks rely on synthetic conversations and inherit constrained evaluation from general memory benchmarks, focusing on recall against fixed answers or decisions over a closed set. We introduce GroupAssistBench, the f…",
+    "summaryZh": "论文提出 GroupAssistBench 基准，用于评估在群聊等群体协作中，智能体如何利用记忆从多位成员提供恰当的帮助，而非仅仅依赖固定答案的召回。",
+    "why": "将评估重点从“个人记忆召回”拓展到“群体协作中的帮助生成”，填补了针对无固定答案场景的记忆应用基准。",
+    "topics": [
+      "evaluation"
+    ],
+    "tags": [
+      "评测与基准"
+    ],
+    "security": {
+      "angles": [
+        "evaluation"
+      ],
+      "note": "规则命中关键词，等待人工复核。"
+    },
+    "evidence": "预印本 · 原文可核验",
+    "score": 86,
+    "curated": false,
+    "collectedAt": "2026-11-04T05:14:42.324Z",
+    "provenance": "arxiv-memory",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
     "id": "web:https://www.ithome.com/1/021/487.htm",
     "title": "商汤发布日日新 SenseNova6.8Flash 正式版模型，支持动态 PPT 及 3D 设计",
     "titleZh": "商汤发布日日新 SenseNova 6.8 Flash 正式版，支持动态 PPT 及 3D 设计",
@@ -32,6 +290,156 @@
     "summaryZhBasis": "原文摘要"
   },
   {
+    "id": "arxiv:2611.04003",
+    "title": "WASP-Mem: Let Agent Organize Procedural Memory. Human Spend Effort on Diagnosis",
+    "titleZh": "WASP-Mem：让智能体组织程序性记忆",
+    "url": "https://arxiv.org/abs/2611.04003v1",
+    "kind": "paper",
+    "source": "arXiv · 智能体记忆与自进化",
+    "sourceId": "arxiv-memory",
+    "sourceTier": "preprint",
+    "published": "2026-11-02T21:43:49.000Z",
+    "summary": "LLM agents struggle to automate complex enterprise procedures because static, pre-built harness cannot capture proprietary policies, undocumented behaviors, or state-dependent recovery paths that surface only during execution. Procedural memory accrued from agent experience offers a training-free path to closing this gap -- yet unlike episodic records or semantic facts, it must consolidate repeated successes and diagnosed failures into reusable actions and recovery strategies. We introduce WASP-Mem (Wiki-based Agent-Synthesized Procedural Memory), a nimble but effective method that distills execution traces and feedback into persistent, interlinked wiki pages, enabling continual agent learn…",
+    "summaryZh": "WASP-Mem 是一种方法，它将从执行痕迹中提取并诊断后的程序性记忆蒸馏为持久且相互链接的维基页面，使智能体无需重新训练即可积累并复用经验。",
+    "why": "提供了一种免训练的、将程序性经验结构化为可维护维基页面的新路径，解决企业复杂流程中因私有策略或状态依赖导致的自动化难题。",
+    "topics": [
+      "evaluation"
+    ],
+    "tags": [
+      "评测与基准"
+    ],
+    "security": {
+      "angles": [
+        "provenance"
+      ],
+      "note": "规则命中关键词，等待人工复核。"
+    },
+    "evidence": "预印本 · 原文可核验",
+    "score": 86,
+    "curated": false,
+    "collectedAt": "2026-11-04T05:14:42.324Z",
+    "provenance": "arxiv-memory",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.03930",
+    "title": "What Is This Memory Useful For? Measuring Task-Conditioned Utility in Long-Term Agent Memory",
+    "titleZh": "衡量Agent长期记忆的条件化任务效用",
+    "url": "https://arxiv.org/abs/2611.03930v1",
+    "kind": "paper",
+    "source": "arXiv · 智能体记忆与自进化",
+    "sourceId": "arxiv-memory",
+    "sourceTier": "preprint",
+    "published": "2026-11-02T20:32:20.000Z",
+    "summary": "A stored experience may answer one future question and offer little help with another. We measure this task-conditioned utility rather than assigning each memory a single importance score. A task-blind writer stores a memory without seeing the later task; a frozen reader then answers that task with and without the memory, using identical filler. A cost ledger records the resources used to form, store and expose the memory. On single-call factual-recall tasks built from LongMemEval-V2 web-agent memories, the same memory helps more when it contains information needed for the answer. Its mean paired reward gain on these answer-bearing task pairs exceeds that on matched-control pairs by $+0.33$…",
+    "summaryZh": "该方法提出基于“任务条件效用”的评估机制，通过任务盲写者（写入端）与冻结读端（查询端）配合，并记录计算成本来衡量记忆对后续特定任务的辅助价值。",
+    "why": "打破了记忆评估中“单一重要性评分”的局限，提供了考量同一记忆对不同任务差异化贡献的更细粒度衡量方式。",
+    "topics": [
+      "mechanism"
+    ],
+    "tags": [
+      "记忆机制与系统"
+    ],
+    "security": {
+      "angles": [
+        "provenance"
+      ],
+      "note": "规则命中关键词，等待人工复核。"
+    },
+    "evidence": "预印本 · 原文可核验",
+    "score": 86,
+    "curated": false,
+    "collectedAt": "2026-11-04T05:14:42.324Z",
+    "provenance": "arxiv-memory",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.03868",
+    "title": "EvoGroup: A Self-Evolving Harness for Group Agents in Shared Contexts",
+    "titleZh": "EvoGroup：面向共享上下文的自进化群组Agent框架",
+    "url": "https://arxiv.org/abs/2611.03868v1",
+    "kind": "paper",
+    "source": "arXiv · 智能体记忆泛检索",
+    "sourceId": "arxiv-broad",
+    "sourceTier": "preprint",
+    "published": "2026-11-02T19:39:06.000Z",
+    "summary": "With the rise of Group Agent such as Claude Tag, agents increasingly serve as digital workers for long-term team collaboration. These agents operate over shared contexts that continuously accumulate through multi-user interactions. However, existing agent memory systems are mainly designed for individual users and struggle to capture group-level knowledge in shared contexts, including group relationships and collaboratively formed knowledge. Manual memory strategies further limit adaptation to diverse and evolving shared contexts. To this end, we propose \\textbf{EvoGroup (EvoG)}, a self-evolving harness for group agents that starts from a minimal six-tool cold start and adapts through inter…",
+    "summaryZh": "EvoGroup 是一个自进化框架，旨在帮助服务于长期团队协作的智能体在共享上下文中捕捉群体关系与共同积累的知识。它从包含六个工具的最小冷启动配置开始，并根据交互进行自我适配。",
+    "why": "针对现有记忆系统主要面向单用户的问题，该框架提供了在共享上下文中捕捉并适应不断演进的群体级别知识的方法。",
+    "topics": [
+      "mechanism"
+    ],
+    "tags": [
+      "记忆机制与系统"
+    ],
+    "security": null,
+    "evidence": "预印本 · 原文可核验",
+    "score": 82,
+    "curated": false,
+    "collectedAt": "2026-11-04T05:14:42.324Z",
+    "provenance": "arxiv-broad",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.03826",
+    "title": "Rethinking Next-Visit Diagnosis Prediction Beyond Aggregate Metrics: Retrieval--Memory Multi-Agent Adjudication",
+    "titleZh": "Rethinking Next-Visit Diagnosis Prediction: 检索-记忆多智能体裁决框架",
+    "url": "https://arxiv.org/abs/2611.03826v1",
+    "kind": "paper",
+    "source": "arXiv · 智能体记忆与自进化",
+    "sourceId": "arxiv-memory",
+    "sourceTier": "preprint",
+    "published": "2026-11-02T19:03:08.000Z",
+    "summary": "Next-visit diagnosis prediction forecasts the diagnoses documented at a patient's next encounter, turning retrospective electronic health records into prospective clinical prediction. However, conventional aggregate evaluation obscures its multifaceted nature: distributionally, models must handle variable-size diagnosis sets and long-tailed labels; temporally, they must distinguish persistent, newly recorded, and recurrent diagnoses; and both vary with observed history depth. We introduce an evaluation framework along these dimensions and apply it to rule-based heuristics, LLM-based prompting, retrieval, memory, and multi-agent approaches. This reveals that repeating the last visit outperfo…",
+    "summaryZh": "论文提出针对下次就诊诊断预测的多维评估框架，涵盖分布、时间维度及历史深度变化，并对比了基于规则、LLM提示、检索、记忆及多智能体的方法，发现简单重复上次就诊记录的启发式策略表现优于部分复杂方法。",
+    "why": "提供了超越传统聚合指标的临床预测评估视角，揭示了简单启发式策略在特定场景下的优势，对评估智能体记忆系统在时序预测中的实际效用具有参考价值。",
+    "topics": [
+      "evaluation"
+    ],
+    "tags": [
+      "评测与基准"
+    ],
+    "security": {
+      "angles": [
+        "evaluation"
+      ],
+      "note": "规则命中关键词，等待人工复核。"
+    },
+    "evidence": "预印本 · 原文可核验",
+    "score": 86,
+    "curated": false,
+    "collectedAt": "2026-11-04T05:14:42.324Z",
+    "provenance": "arxiv-memory",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.03596",
+    "title": "Spacetime Emergence in the Memory of a Learning Agent",
+    "titleZh": "Spacetime Emergence: 学习智能体记忆中的时空结构涌现",
+    "url": "https://arxiv.org/abs/2611.03596v1",
+    "kind": "paper",
+    "source": "arXiv · 智能体记忆与自进化",
+    "sourceId": "arxiv-memory",
+    "sourceTier": "preprint",
+    "published": "2026-11-02T18:39:52.000Z",
+    "summary": "We show that the causal structure of spacetime can emerge within the memory of a learning agent performing a quantum information task. We train a model-based reinforcement-learning agent to maximize the quantum mutual information between localized quantum probes interacting with a quantum field in Minkowski spacetime, without directly providing it with information regarding the spacetime metric or causal structure. In learning to accomplish this task, the reinforcement-learning agent constructs an internal predictive model whose planner develops the characteristic null structure of spacetime, allowing us to reconstruct the causal structure of the Minkowski metric with high accuracy. Within…",
+    "summaryZh": "研究者展示在缺乏直接时空度规信息的情况下，执行量子信息任务的基于模型强化学习智能体，其内部预测模型的记忆中会涌现出闵可夫斯基时空的因果结构（零结构）。",
+    "why": "从物理视角探索智能体内部记忆表征，证明因果结构可在学习过程中自发涌现，为理解智能体如何构建世界模型提供了新颖的理论依据。",
+    "topics": [
+      "evaluation"
+    ],
+    "tags": [
+      "评测与基准"
+    ],
+    "security": null,
+    "evidence": "预印本 · 原文可核验",
+    "score": 82,
+    "curated": false,
+    "collectedAt": "2026-11-04T05:14:42.324Z",
+    "provenance": "arxiv-memory",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
     "id": "web:https://www.langchain.com/blog/context-engineering-challenges-late-2026",
     "title": "New context engineering challenges in late 2026",
     "titleZh": "LangChain CEO 探讨主动代理兴起带来的上下文工程挑战",
@@ -56,6 +464,60 @@
     "curated": false,
     "collectedAt": "2026-11-03T05:42:57.280Z",
     "provenance": "blog-langchain",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.03289",
+    "title": "Top-$k$ Retrieval Leaves Memory Value Undetermined",
+    "titleZh": "Top-$k$ Retrieval: 检索日志无法确定记忆价值",
+    "url": "https://arxiv.org/abs/2611.03289v1",
+    "kind": "paper",
+    "source": "arXiv · 智能体记忆与自进化",
+    "sourceId": "arxiv-memory",
+    "sourceTier": "preprint",
+    "published": "2026-11-02T15:28:04.000Z",
+    "summary": "A memory-augmented agent must decide which memories to keep, merge and retrieve, and its only evidence of their value is its retrieval log: the memories it retrieved in each episode and whether it succeeded. Existing methods assign every memory a value from this log, even when the log cannot separate one memory's contribution from another's. We treat the log as an experiment that nobody designed and ask which memory values it determines. Two counts answer this before any outcome is observed: how often each memory was retrieved, and how often each pair was retrieved together. From these counts, we prove that top-$k$ retrieval leaves every memory value undetermined, however many episodes are…",
+    "summaryZh": "论文通过理论证明指出，在top-k检索机制下，仅凭检索日志（记忆被检索的频率及共现频率）无法确定单个记忆的具体价值，因为日志无法区分单个记忆的独立贡献。",
+    "why": "指出了当前记忆管理方法中价值评估的根本局限性，为设计更细粒度的记忆价值归因算法提供了理论动机和新的研究方向。",
+    "topics": [
+      "mechanism"
+    ],
+    "tags": [
+      "记忆机制与系统"
+    ],
+    "security": null,
+    "evidence": "预印本 · 原文可核验",
+    "score": 82,
+    "curated": false,
+    "collectedAt": "2026-11-04T05:14:42.324Z",
+    "provenance": "arxiv-memory",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.03219",
+    "title": "Can Coding Agents Sustain Continual Evolution without Forgetting?",
+    "titleZh": "Coding Agents: 持续演化中的灾难性遗忘问题",
+    "url": "https://arxiv.org/abs/2611.03219v1",
+    "kind": "paper",
+    "source": "arXiv · 记忆召回补漏",
+    "sourceId": "arxiv-recall",
+    "sourceTier": "preprint",
+    "published": "2026-11-02T14:43:37.000Z",
+    "summary": "Recently, harness self-evolution has emerged as an important paradigm for improving agent performance. Prior studies show that evolving the agent harness can effectively enhance agent capabilities without modifying the foundation model's parameters. We find that existing approaches largely study agent evolution on a single task. In practice, coding agents may need to handle multiple task types over time. Whether an agent harness can continuously evolve across multiple tasks without suffering from catastrophic forgetting remains an important open question. In this paper, we investigate this open question through a comprehensive empirical study of continual harness self-evolution. We organize…",
+    "summaryZh": "通过实证研究考察编码智能体在多个任务类型上持续自我演化（不修改基础模型参数）时的表现，重点探讨了在不修改底层模型的情况下，智能体框架能否避免灾难性遗忘并持续适应新任务。",
+    "why": "聚焦于智能体框架在跨任务持续学习场景下的稳定性，回应了当前自我演化范式在多任务环境下的关键挑战，对构建长期可用的编码代理具有实践意义。",
+    "topics": [
+      "adjacent"
+    ],
+    "tags": [
+      "相关智能体研究"
+    ],
+    "security": null,
+    "evidence": "预印本 · 原文可核验",
+    "score": 82,
+    "curated": false,
+    "collectedAt": "2026-11-04T05:14:42.324Z",
+    "provenance": "arxiv-recall",
     "summaryZhBasis": "原文摘要"
   },
   {
@@ -238,6 +700,33 @@
     "curated": false,
     "collectedAt": "2026-11-03T06:45:02.473Z",
     "provenance": "arxiv-recall",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.03743",
+    "title": "EvoMemState: Evolving Memory State for Personal Agents",
+    "titleZh": "EvoMemState: 面向个人智能体的演化记忆状态框架",
+    "url": "https://arxiv.org/abs/2611.03743v1",
+    "kind": "paper",
+    "source": "arXiv · 智能体记忆与自进化",
+    "sourceId": "arxiv-memory",
+    "sourceTier": "preprint",
+    "published": "2026-11-02T02:42:04.000Z",
+    "summary": "Long-term memory enables large language model (LLM) agents to provide continuous personalized assistance by retaining user information across interactions. Existing systems support this process through fact extraction, organization, updating, and retrieval, but largely maintain memories as independent facts. This fact-centric paradigm may overlook how new facts update, constrain, or conflict with earlier ones, while leaving their applicability, role, and priority for the current request implicit. In this paper, we introduce EvoMemState, a state-centric framework that augments persistent facts with two complementary states: Relational States that capture how facts remain valid and relate to…",
+    "summaryZh": "该论文提出了 EvoMemState 框架，主张在长期记忆中补充关系状态（Relational States），以显式建模新事实如何更新、约束或冲突于旧事实，并定义其在当前请求中的角色与优先级。",
+    "why": "区别于将记忆视为独立事实集合的现有方法，该文通过引入状态中心视角来处理事实间的交互与时效性，对构建持续个性化助手的记忆架构有参考价值。",
+    "topics": [
+      "personal"
+    ],
+    "tags": [
+      "对话与个性化记忆"
+    ],
+    "security": null,
+    "evidence": "预印本 · 原文可核验",
+    "score": 82,
+    "curated": false,
+    "collectedAt": "2026-11-04T05:14:42.324Z",
+    "provenance": "arxiv-memory",
     "summaryZhBasis": "原文摘要"
   },
   {
@@ -1308,6 +1797,38 @@
     "curated": false,
     "collectedAt": "2026-11-02T04:53:47.317Z",
     "provenance": "arxiv-memory",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2610.41366",
+    "title": "What We Keep of What We Forget: Replacement Operators and Routing Semantics in Training-Free MoE Expert Pruning",
+    "titleZh": "无训练 MoE 专家剪枝中替换算子与路由语义的分析",
+    "url": "https://arxiv.org/abs/2610.41366",
+    "kind": "paper",
+    "source": "Hugging Face · Daily Papers",
+    "sourceId": "hf-daily",
+    "sourceTier": "preprint",
+    "published": "2026-10-30T00:00:00.000Z",
+    "summary": "Training-free expert pruning makes two decisions: which experts to remove, and what the layer computes when its router still selects a removed expert. Published methods change both at once. Holding the mask fixed, we compare replacement operators from three families on OLMoE, DeepSeek-V2-Lite and Moonlight, with Granite as a fourth router, using paired, multiplicity-corrected tests. The largest effect is a choice usually left implicit: the survivors' gate scale. On routers trained without top-k renormalization, renormalizing the survivors' gates, a common implementation choice, costs 0.8-8.5 points and reverses whether rerouting beats MoNE's mean-output replacement; on two routers trained w…",
+    "summaryZh": "该研究在固定剪枝掩码的前提下，对比了 OLMoE、DeepSeek-V2-Lite 等模型中来自三个家族的替换算子，并指出幸存专家的 gate 缩放策略（如是否对 top-k 进行重归一化）是常被忽略但对性能影响显著（文中提及成本 0.8-8.5 分）的隐式变量。",
+    "why": "将通常被同时决定但未被独立分析的“移除哪些专家”与“路由失效后的计算语义”解耦，揭示了实施细节（如 gate 缩放）对剪枝效果的量化影响，为无训练剪枝提供更精确的实验依据。",
+    "topics": [
+      "adjacent"
+    ],
+    "tags": [
+      "相关智能体研究"
+    ],
+    "security": {
+      "angles": [
+        "evaluation"
+      ],
+      "note": "规则命中关键词，等待人工复核。"
+    },
+    "evidence": "预印本 · 原文可核验",
+    "score": 86,
+    "curated": false,
+    "collectedAt": "2026-11-04T05:14:42.324Z",
+    "provenance": "hf-daily",
     "summaryZhBasis": "原文摘要"
   },
   {
