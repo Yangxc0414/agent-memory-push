@@ -1,5 +1,337 @@
 [
   {
+    "id": "arxiv:2611.08433",
+    "title": "MedGraph: Maintaining Patient State with Graph Memory for Long-Term Medical Dialogue",
+    "titleZh": "MedGraph：基于图记忆的长期医疗对话状态维护",
+    "url": "https://arxiv.org/abs/2611.08433v1",
+    "kind": "paper",
+    "source": "arXiv · 智能体记忆泛检索",
+    "sourceId": "arxiv-broad",
+    "sourceTier": "preprint",
+    "published": "2026-11-05T18:27:20.000Z",
+    "summary": "LLM-based medical assistants that follow a patient across visits need a memory that keeps the patient's clinical state correct as it changes. We examine the errors of five memory systems on longitudinal medical dialogue and find three recurring causes: the retrieved evidence gives an outdated state, includes another person's health facts, or lacks a safety fact the answer depends on. We present MedGraph, a graph memory built for these three cases. Construction extracts dated facts from each session, attributes each fact to the person it describes, and links medication, diagnosis, and measurement records into chains that keep earlier states. Retrieval ranks the patient's chains as units, rea…",
+    "summaryZh": "针对LLM医疗助手在长期对话中出现的过时状态、混淆患者事实及缺失安全事实三类错误，提出MedGraph图记忆系统。该系统通过构建带有日期、归属人物及药物/诊断链条的图结构来维持患者临床状态的正确性。",
+    "why": "提供了针对长期医疗场景下记忆一致性与安全性的特定图结构解决方案，区别于通用记忆检索。",
+    "topics": [
+      "evaluation"
+    ],
+    "tags": [
+      "评测与基准"
+    ],
+    "security": null,
+    "evidence": "预印本 · 原文可核验",
+    "score": 82,
+    "curated": false,
+    "collectedAt": "2026-11-06T05:33:47.508Z",
+    "provenance": "arxiv-broad",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.08363",
+    "title": "StrataFlux: Memory-Hierarchy-Native Low-Bit LLM Inference",
+    "titleZh": "StrataFlux：面向记忆层级原生低比特LLM推理的框架",
+    "url": "https://arxiv.org/abs/2611.08363v1",
+    "kind": "paper",
+    "source": "arXiv · 记忆召回补漏",
+    "sourceId": "arxiv-recall",
+    "sourceTier": "preprint",
+    "published": "2026-11-05T17:42:06.000Z",
+    "summary": "Quantization reduces the memory and bandwidth demands of large language model (LLM) inference but can degrade accuracy; offloading higher-precision data can instead stall generation. We introduce StrataFlux, a framework that challenges this tradeoff by recovering accuracy lost to low-bit weight and key-value (KV) cache quantization while retaining quantization's memory and speed advantages. StrataFlux co-designs refinement representation, selection, and delivery to make host RAM and solid-state drives useful sources of additional precision. Its selective precision streaming reduces transfer volume, overlaps delivery with computation, and reuses fetched precision across decoding steps so gen…",
+    "summaryZh": "提出StrataFlux框架，通过协同设计精化表示、选择与投递机制，利用主机内存和固态驱动器作为额外精度来源，以恢复低比特权量和KV缓存量化导致的精度损失。该方法在保留量化优势的同时通过选择性精度流减少传输量并重叠计算。",
+    "why": "探索了利用异构存储层级（RAM/SSD）在推理时动态补全精度的方法，平衡了量化速度与精度。",
+    "topics": [
+      "tools"
+    ],
+    "tags": [
+      "工具与项目发布"
+    ],
+    "security": {
+      "angles": [
+        "provenance"
+      ],
+      "note": "规则命中关键词，等待人工复核。"
+    },
+    "evidence": "预印本 · 原文可核验",
+    "score": 86,
+    "curated": false,
+    "collectedAt": "2026-11-06T05:33:47.508Z",
+    "provenance": "arxiv-recall",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.08341",
+    "title": "Enhancing Local and Global Structure in Compressed AI Agent Memory",
+    "titleZh": "增强压缩AI智能体记忆中的局部与全局结构",
+    "url": "https://arxiv.org/abs/2611.08341v1",
+    "kind": "paper",
+    "source": "arXiv · 智能体记忆与自进化",
+    "sourceId": "arxiv-memory",
+    "sourceTier": "preprint",
+    "published": "2026-11-05T17:27:08.000Z",
+    "summary": "AI agents store text as embedding vectors and compress them at scale. A compression is accepted when each item's nearest neighbors survive, but agents also consolidate, delete, and compare memories, tasks that depend on which items lie far apart. We evaluate both ends with two label-free fidelities from our prior work: the local fidelity $L$ at 10 neighbors and the global fidelity $G$ at 30 to 50 percent of the memory. At 96 bytes per passage, rescored binary codes reach an $L$ of 0.97 yet move 10.1 percent of passages to another theme; PCA with 8-bit codes, at an $L$ of 0.77, moves 1.7 percent. Rescoring leaves the stored codes, and thus $G$, unchanged. We prove that across the $G$ band, $…",
+    "summaryZh": "研究了AI智能体嵌入向量压缩对局部近邻与全局主题分布的影响。通过局部保真度L和全局保真度G评估不同压缩方法，发现重打分二进制代码虽局部保真度高，但会改变部分段落的主题归属，且存储代码不变导致全局结构未被直接优化。",
+    "why": "揭示了记忆压缩中局部检索精度与全局结构一致性之间的权衡，提供了无标签的保真度评估指标。",
+    "topics": [
+      "evaluation"
+    ],
+    "tags": [
+      "评测与基准"
+    ],
+    "security": {
+      "angles": [
+        "evaluation"
+      ],
+      "note": "规则命中关键词，等待人工复核。"
+    },
+    "evidence": "预印本 · 原文可核验",
+    "score": 86,
+    "curated": false,
+    "collectedAt": "2026-11-06T05:33:47.508Z",
+    "provenance": "arxiv-memory",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.08094",
+    "title": "PersonaAgent: Retrieval-Augmented Transaction Anomaly Scoring with Refreshable Multi-Entity Persona Memory",
+    "titleZh": "PersonaAgent：具有可刷新多实体画像记忆的检索增强交易异常评分",
+    "url": "https://arxiv.org/abs/2611.08094v1",
+    "kind": "paper",
+    "source": "arXiv · 智能体记忆与自进化",
+    "sourceId": "arxiv-memory",
+    "sourceTier": "preprint",
+    "published": "2026-11-05T14:37:16.000Z",
+    "summary": "In large-scale payment networks, entities (card, merchant, etc.) and their interactions play a key role in transaction anomaly detection. However, transaction patterns between different entities usually change more frequently than the production model refresh schedule. Meanwhile, entity embedding tables suffer from high-cardinality and sparse interaction issues. To resolve the above challenges, we present PersonaAgent, an agentic transaction anomaly detection framework which represents the latest entity behavior signals as personas and saves them in a refreshable memory. Offline, a weekly scheduled batch job is used to extract the latest behavior signals and update them in the memory. At in…",
+    "summaryZh": "针对支付网络中实体交互模式高频变化及嵌入表稀疏问题，提出PersonaAgent框架。该框架将最新实体行为信号表示为“画像”并存储在可刷新记忆中，通过离线周度批处理任务更新记忆，以缓解生产模型刷新周期滞后问题。",
+    "why": "将“画像”作为可刷新记忆单元应用于交易异常检测，解决了实体行为动态性与模型静态更新之间的矛盾。",
+    "topics": [
+      "tools"
+    ],
+    "tags": [
+      "工具与项目发布"
+    ],
+    "security": {
+      "angles": [
+        "evaluation"
+      ],
+      "note": "规则命中关键词，等待人工复核。"
+    },
+    "evidence": "预印本 · 原文可核验",
+    "score": 86,
+    "curated": false,
+    "collectedAt": "2026-11-06T05:33:47.508Z",
+    "provenance": "arxiv-memory",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.08092",
+    "title": "Gabor Gabor: E-Gaborformer, a Strictly Causal Speech Recognizer with Gabor-Dictionary Convolutions and Delta-Rule Memory",
+    "titleZh": "E-Gaborformer：结合 Gabor 字典卷积与 Delta-Rule 记忆的严格因果语音识别器",
+    "url": "https://arxiv.org/abs/2611.08092v1",
+    "kind": "paper",
+    "source": "arXiv · 智能体记忆与自进化",
+    "sourceId": "arxiv-memory",
+    "sourceTier": "preprint",
+    "published": "2026-11-05T14:36:34.000Z",
+    "summary": "Real-time voice agents need a speech recognizer that never waits for future audio and whose memory per call does not grow with the length of the call. We present E-Gaborformer, a strictly causal encoder that combines Gated DeltaNet-2 recurrent layers with sliding-window attention in a 3:1 ratio, and builds every temporal convolution from a fixed dictionary of causal Gabor atoms. Its streaming state is constant, about 19 MB per call at production scale including the prediction network, where a causal-attention encoder of the same size accumulates over 1 GB after ten minutes. In a controlled causal study on LibriSpeech, E-Gaborformer leaves the initial plateau earlier, reaches a given accurac…",
+    "summaryZh": "该预印本提出 E-Gaborformer，一种结合 Gated DeltaNet-2 递归层和滑动窗口注意力的严格因果编码器。在受控的因果研究中，作者声称其流式状态保持恒定，约为每次通话 19 MB，而同规模的因果注意力编码器在十分钟后会积累超过 1 GB 的内存。",
+    "why": "提供了一个解决实时语音 Agent 内存随通话长度增长问题的具体架构方案，对比了其在常数内存与因果准确率上的优势。",
+    "topics": [
+      "multimodal"
+    ],
+    "tags": [
+      "多模态与感知记忆"
+    ],
+    "security": null,
+    "evidence": "预印本 · 原文可核验",
+    "score": 82,
+    "curated": false,
+    "collectedAt": "2026-11-06T05:33:47.508Z",
+    "provenance": "arxiv-memory",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.07820",
+    "title": "Axis-LoRA: Probing and Adapting Embedding Models for Personal-Memory Retrieval",
+    "titleZh": "Axis-LoRA：用于个人记忆检索的嵌入模型探测与自适应",
+    "url": "https://arxiv.org/abs/2611.07820v1",
+    "kind": "paper",
+    "source": "arXiv · 记忆召回补漏",
+    "sourceId": "arxiv-recall",
+    "sourceTier": "preprint",
+    "published": "2026-11-05T10:59:23.000Z",
+    "summary": "As LLMs are increasingly asked questions about a user's personal experiences, retrieval must distinguish memories by time, place, person, and event. Current personal-memory pipelines rely on frozen dense embedding models to embed memories for retrieval, but we find that these models do not capture the four axes well. Swapping a memory's date or place barely shifts its embedding, and a trained projection on top of the frozen embedding does not recover the missing signal. The problem lives inside the model, where each axis is encoded by a distinct attention-head pattern. Guided by these findings, we propose Axis-LoRA, a per-axis adapter that places four LoRA branches inside the embedding mode…",
+    "summaryZh": "该预印本指出现有冻结的稠密嵌入模型无法良好捕捉个人记忆在时间、地点、人物和事件四个维度上的信息。为此，作者提出 Axis-LoRA，一种嵌入模型内部的四分支 LoRA 适配器，用于针对每个维度进行特定的探针和适配。",
+    "why": "针对性地解决了 LLM 在处理个人记忆时，基础嵌入模型对时间、地点等特定属性区分度不足的问题，提出了结构化的适配器方案。",
+    "topics": [
+      "personal"
+    ],
+    "tags": [
+      "对话与个性化记忆"
+    ],
+    "security": null,
+    "evidence": "预印本 · 原文可核验",
+    "score": 82,
+    "curated": false,
+    "collectedAt": "2026-11-06T05:33:47.508Z",
+    "provenance": "arxiv-recall",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.07759",
+    "title": "ReConMem: A Graph-Based Dual Memory System for Repository-Oriented Conversations",
+    "titleZh": "ReConMem：面向基于代码仓库对话的图结构双记忆系统",
+    "url": "https://arxiv.org/abs/2611.07759v1",
+    "kind": "paper",
+    "source": "arXiv · 智能体记忆泛检索",
+    "sourceId": "arxiv-broad",
+    "sourceTier": "preprint",
+    "published": "2026-11-05T10:01:54.000Z",
+    "summary": "LLM-based code assistants are increasingly used in iterative repository-level development, where effective assistance requires jointly leveraging evolving conversational history and repository context. Existing memory systems, however, are primarily designed for general-purpose conversations and do not sufficiently coordinate conversational information with the structured code entities to which it refers. We propose ReConMem, a graph-based dual memory system for repository-oriented conversations. ReConMem organizes distilled conversational memories and conversation-relevant code entities into interconnected semantic and structural memory graphs, while maintaining their cross-graph associati…",
+    "summaryZh": "该预印本提出 ReConMem，一个基于图结构的双记忆系统，用于将简化的对话记忆和代码实体组织成相互连接的语义和结构记忆图。该系统旨在维护它们之间的跨图关联，以更好地支持迭代式的仓库级开发。",
+    "why": "将记忆机制从通用对话场景专门化到代码仓库上下文中，强调了将对话历史与结构化代码实体结合的必要性。",
+    "topics": [
+      "personal"
+    ],
+    "tags": [
+      "对话与个性化记忆"
+    ],
+    "security": null,
+    "evidence": "预印本 · 原文可核验",
+    "score": 82,
+    "curated": false,
+    "collectedAt": "2026-11-06T05:33:47.508Z",
+    "provenance": "arxiv-broad",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.07689",
+    "title": "MCPHallu: Benchmarking Reasoning, Execution, and Memory Hallucinations in MCP Agents",
+    "titleZh": "MCPHallu：针对 MCP Agent 推理、执行与记忆幻觉的基准测试",
+    "url": "https://arxiv.org/abs/2611.07689v1",
+    "kind": "paper",
+    "source": "arXiv · 智能体记忆与自进化",
+    "sourceId": "arxiv-memory",
+    "sourceTier": "preprint",
+    "published": "2026-11-05T09:14:26.000Z",
+    "summary": "Large language model agents are increasingly deployed through the Model Context Protocol (MCP), which allows them to discover and invoke tools across multiple servers at runtime. Existing MCP benchmarks primarily measure task completion; where they diagnose failures, they do so after execution rather than building specific reasoning, execution, and memory failure risks into task construction. We introduce MCPHallu, a benchmark for diagnosing hallucination-prone agent failures in MCP environments along three axes: reasoning, execution, and memory. MCPHallu contains 358 tasks across five capability domains and runs on 36 production MCP servers in isolated containers. Each task is designed wit…",
+    "summaryZh": "该预印本引入了 MCPHallu 基准，包含 358 个任务和 36 个生产级 MCP 服务器，专门用于诊断 MCP 环境中因推理、执行和记忆缺陷导致的 Agent 幻觉问题。与主要测量任务完成度的现有基准不同，MCPHallu 将这些具体的失败风险构建到了任务设计中。",
+    "why": "提供了一个专注于推理、执行和记忆三种特定幻觉类型的 Agent 评估基准，填补了现有 MCP 基准缺乏特定失败模式诊断工具的空缺。",
+    "topics": [
+      "evaluation"
+    ],
+    "tags": [
+      "评测与基准"
+    ],
+    "security": {
+      "angles": [
+        "evaluation"
+      ],
+      "note": "规则命中关键词，等待人工复核。"
+    },
+    "evidence": "预印本 · 原文可核验",
+    "score": 86,
+    "curated": false,
+    "collectedAt": "2026-11-06T05:33:47.508Z",
+    "provenance": "arxiv-memory",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.07631",
+    "title": "MEMOIR: A Training-Free Memory Lifecycle for Long-Horizon LLM Agents",
+    "titleZh": "MEMOIR：面向长程LLM智能体的免训练记忆生命周期管理",
+    "url": "https://arxiv.org/abs/2611.07631v1",
+    "kind": "paper",
+    "source": "arXiv · 智能体记忆与自进化",
+    "sourceId": "arxiv-memory",
+    "sourceTier": "preprint",
+    "published": "2026-11-05T08:17:22.000Z",
+    "summary": "Long-horizon LLM agents require memory systems that preserve useful information across sessions and retrieve it when needed. Existing systems treat these as separate problems: memories are written prospectively with static importance scores that are never revised after use. This creates two coupled failure modes: consolidation can silently destroy evidence that future queries require, while retrieval continues to favor stale memories. We propose MEMOIR (Memory Evidence via Merge-certified, Online Importance Revision), a training-free memory lifecycle that unifies judge-gated consolidation with retrospective attribution. Before compressing memory, screening gates test whether answer-relevant…",
+    "summaryZh": "该论文提出MEMOIR，一种无需训练的记忆生命周期方法，通过统一基于裁判门控的巩固机制与回溯归因，解决长程智能体中记忆巩固破坏证据与检索偏向陈旧记忆的问题。",
+    "why": "将记忆巩固与检索修正统一在免训练框架内，为长程智能体记忆管理提供了新的技术路径。",
+    "topics": [
+      "mechanism"
+    ],
+    "tags": [
+      "记忆机制与系统"
+    ],
+    "security": {
+      "angles": [
+        "evaluation"
+      ],
+      "note": "规则命中关键词，等待人工复核。"
+    },
+    "evidence": "预印本 · 原文可核验",
+    "score": 86,
+    "curated": false,
+    "collectedAt": "2026-11-06T05:33:47.508Z",
+    "provenance": "arxiv-memory",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.07554",
+    "title": "The Memory Trap: Language Agents Overgeneralize from Benign Interactions",
+    "titleZh": "记忆陷阱：语言智能体从良性交互中过度泛化",
+    "url": "https://arxiv.org/abs/2611.07554v1",
+    "kind": "paper",
+    "source": "arXiv · 智能体记忆与自进化",
+    "sourceId": "arxiv-memory",
+    "sourceTier": "preprint",
+    "published": "2026-11-05T07:01:59.000Z",
+    "summary": "Language agents increasingly use persistent memory to record user preferences and procedures across sessions. We show that memory from benign interactions can cause unsafe or unreliable behavior on later tasks. We call this failure the memory trap. To study this issue, we compare behavior in sessions with and without memory across six frontier models (including Claude Sonnet, Opus, and Fable models and GPT-5.6). We evaluate these models in a range of settings. First, in autonomy experiments, we find that requests to skip confirmation during low-stakes coding chores lead agents to skip confirmation and verification on simulated high-stakes tasks in both coding and everyday life. We next stud…",
+    "summaryZh": "该研究指出语言智能体在跨会话持久记忆中可能因良性交互导致后续任务出现不安全行为，作者称之为“记忆陷阱”，并在多种场景下对比了有无记忆时六个前沿模型的行为差异。",
+    "why": "揭示了记忆系统在安全性与可靠性方面的潜在风险，提醒开发者关注记忆滥用导致的泛化偏差。",
+    "topics": [
+      "evaluation"
+    ],
+    "tags": [
+      "评测与基准"
+    ],
+    "security": {
+      "angles": [
+        "evaluation"
+      ],
+      "note": "规则命中关键词，等待人工复核。"
+    },
+    "evidence": "预印本 · 原文可核验",
+    "score": 86,
+    "curated": false,
+    "collectedAt": "2026-11-06T05:33:47.508Z",
+    "provenance": "arxiv-memory",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.07493",
+    "title": "Fast and Reliable Open-Vocabulary Object Search with Absence Detection from Robot Memory",
+    "titleZh": "基于机器人记忆的开放词汇物体搜索与缺失检测",
+    "url": "https://arxiv.org/abs/2611.07493v1",
+    "kind": "paper",
+    "source": "arXiv · 具身与多模态记忆",
+    "sourceId": "arxiv-embodied",
+    "sourceTier": "preprint",
+    "published": "2026-11-05T05:57:32.000Z",
+    "summary": "Mobile manipulators deployed in everyday human environments, such as homes for assistive care or flexible automation, often need to locate specific objects on demand from accumulated observations. Equally important, they must reliably determine when a target is absent before committing to navigation or interaction. Existing approaches demand either slow exhaustive re-processing or expensive 3D representations, and are evaluated on recall and accuracy rather than specificity, leaving their ability to abstain on missing targets unmeasured. We find existing systems that search using text or visual embedding almost never abstain on absent objects achieving at most 9\\% specificity. To support ac…",
+    "summaryZh": "针对移动操作机器人在日常环境中按需定位特定物体的需求，该工作强调可靠判断目标缺失的重要性，并指出基于文本或视觉嵌入的现有系统对缺失物体几乎不进行回避（specificity至多9%）。",
+    "why": "针对机器人记忆中的物体搜索任务，特别关注“缺失检测”这一常被忽视的维度，推动记忆系统从单纯召回准确率向特异性方向演进。",
+    "topics": [
+      "embodied"
+    ],
+    "tags": [
+      "具身与空间记忆"
+    ],
+    "security": {
+      "angles": [
+        "evaluation"
+      ],
+      "note": "规则命中关键词，等待人工复核。"
+    },
+    "evidence": "预印本 · 原文可核验",
+    "score": 86,
+    "curated": false,
+    "collectedAt": "2026-11-06T05:33:47.508Z",
+    "provenance": "arxiv-embodied",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
     "id": "arxiv:2611.05386",
     "title": "SRRM: A Retrieval-Reconstruction Benchmark for Evaluating Long-Context Memory in Small Language Models",
     "titleZh": "SRRM：评估小模型长上下文记忆的检索-重建基准",
