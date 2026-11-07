@@ -1,5 +1,38 @@
 [
   {
+    "id": "web:https://www.ithome.com/1/023/613.htm",
+    "title": "Anthropic 研究称 Claude AI 智能体可以靠“做梦”变得更聪明",
+    "titleZh": "Anthropic 发布研究：Claude 引入“做梦”机制优化 Agent 记忆",
+    "url": "https://www.ithome.com/1/023/613.htm",
+    "kind": "news",
+    "source": "IT之家",
+    "sourceId": "news-ithome",
+    "sourceTier": "media",
+    "published": "2026-11-06T23:25:14.000Z",
+    "summary": "IT之家 11 月 7 日消息，Anthropic 昨日（11 月 6 日）发布研究文章《The components of agent memory》，系统拆解 Claude 智能体如何跨会话记忆、筛选、纠错和整理知识。 该研究指出 AI 智能体可借鉴人脑“睡眠整理记忆”的机制 ，在空闲时间反思历史记录、纠错并构建知识结构，从而显著提升长周期任务表现。 该研究将智能体记忆分为会话日志、记忆笔记、知识表征（如 Wiki）和注入上下文四层，并引入“做梦”（dreaming）机制，让模型在两次交互之间的空闲时间回顾日志、修正错误、提炼规则和更新知识库。 研究团队认为，AI 可像人脑在睡眠中巩固记忆一样，将即时经验逐步转化为可复用的长期知识。Claude 会在会话中标记重要事件或写入记忆笔记，但并非所有信息都值得保存，它需要判断哪些内容在未来真正有用。 Anthropic 指出， 记忆本质上是一种对未来的预测，例如记录一条已验证的规则，意味着模型预期未来会再次依赖它 。 在持续学习基准 CL-Bench 的数据库问答任务中，具备记忆能力的 Claude 模型表现明显优于无记忆基线。Claude Opus 5.5 和 Sonnet 5.5 在使用记忆后，平均得分分别达到 0.838 和 0.833，而二者无记忆基线分别为 0.655 和 0.644。更强的模型能够自主形成“失败 — 反思 — 验证 — 总结规则”的学习闭环。 在《宝可梦红》游戏测试中，Anthropic 还发现“少而精”的记忆更有效。Claude Fable 5 仅维护 10 个记忆文件，却获得 4 枚徽章；而 So…",
+    "summaryZh": "据 IT 之家报道，Anthropic 发布研究文章《The components of agent memory》，提出借鉴人脑睡眠机制，让 Claude 在空闲时反思日志、纠错并更新知识库。该研究指出，在 CL-Bench 基准测试中，具备记忆能力的 Claude 模型表现优于无记忆基线。",
+    "why": "揭示了 Anthropic 提出的“做梦”记忆机制及其在长周期任务中的具体应用效果。",
+    "topics": [
+      "security"
+    ],
+    "tags": [
+      "安全与治理"
+    ],
+    "security": {
+      "angles": [
+        "attack",
+        "evaluation"
+      ],
+      "note": "规则命中关键词，等待人工复核。"
+    },
+    "evidence": "媒体报道",
+    "score": 71,
+    "curated": false,
+    "collectedAt": "2026-11-07T05:01:44.705Z",
+    "provenance": "news-ithome",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
     "id": "arxiv:2611.08433",
     "title": "MedGraph: Maintaining Patient State with Graph Memory for Long-Term Medical Dialogue",
     "titleZh": "MedGraph：基于图记忆的长期医疗对话状态维护",
