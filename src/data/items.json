@@ -1,5 +1,94 @@
 [
   {
+    "id": "arxiv:2611.09848",
+    "title": "How far does a hash-only sender go? A pre-registered map of sender memory versus bits for short text messages",
+    "titleZh": null,
+    "url": "https://arxiv.org/abs/2611.09848",
+    "kind": "paper",
+    "source": "arXiv · cs.CL RSS（API 兜底）",
+    "sourceId": "arxiv-rss-cl",
+    "sourceTier": "preprint",
+    "published": "2026-11-09T05:00:00.000Z",
+    "summary": "arXiv:2611.09848v1 Announce Type: cross Abstract: Can a sender that only computes hashes, with a language model only at the receiver, transmit short human text more cheaply than a classical sender trained on the same domain? We answer with one pre-registered run on 1,000 English user utterances from Taskmaster-1. The primary endpoint is the cost per message to deliver 100% of the messages (hash bits, plus a 2-byte negative acknowledgement and the raw text when the first attempt fails), paired against an in-domain PPM order-1 sender. The hash-only sender delivered 857 of 1,000 messages on the first attempt and cost 192.8 bits per message, 18.4 bits more than PPM order 1 (95% bootstrap interv…",
+    "summaryZh": null,
+    "why": "新预印本，主题命中「记忆机制与系统」；摘要已按原文整理，等待人工复核。",
+    "topics": [
+      "mechanism"
+    ],
+    "tags": [
+      "记忆机制与系统"
+    ],
+    "security": null,
+    "evidence": "预印本 · 原文可核验",
+    "score": 82,
+    "curated": false,
+    "collectedAt": "2026-11-09T05:04:26.689Z",
+    "provenance": "arxiv-rss-cl"
+  },
+  {
+    "id": "arxiv:2602.02474",
+    "title": "MemSkill: Learning and Evolving Memory Skills for Self-Evolving Agents",
+    "titleZh": null,
+    "url": "https://arxiv.org/abs/2602.02474",
+    "kind": "paper",
+    "source": "arXiv · cs.CL RSS（API 兜底）",
+    "sourceId": "arxiv-rss-cl",
+    "sourceTier": "preprint",
+    "published": "2026-11-09T05:00:00.000Z",
+    "summary": "arXiv:2602.02474v3 Announce Type: replace Abstract: Most Large Language Model (LLM) agent memory systems rely on a small set of static, hand-designed operations for extracting memory. These fixed procedures hard-code human priors about what to store and how to revise memory, making them rigid under diverse interaction patterns and inefficient on long histories. To this end, we present \\textbf{MemSkill}, which reframes these operations as learnable and evolvable memory skills, structured and reusable routines for extracting, consolidating, and pruning information from interaction traces. Inspired by the design philosophy of agent skills, MemSkill employs a \\emph{controller} that learns to se…",
+    "summaryZh": null,
+    "why": "新预印本，主题命中「记忆机制与系统」；摘要已按原文整理，等待人工复核。",
+    "topics": [
+      "mechanism"
+    ],
+    "tags": [
+      "记忆机制与系统"
+    ],
+    "security": {
+      "angles": [
+        "provenance"
+      ],
+      "note": "规则命中关键词，等待人工复核。"
+    },
+    "evidence": "预印本 · 原文可核验",
+    "score": 86,
+    "curated": false,
+    "collectedAt": "2026-11-09T05:04:26.689Z",
+    "provenance": "arxiv-rss-cl"
+  },
+  {
+    "id": "arxiv:2604.28031",
+    "title": "Models Recall What They Violate: Constraint Adherence in Multi-Turn LLM Ideation",
+    "titleZh": null,
+    "url": "https://arxiv.org/abs/2604.28031",
+    "kind": "paper",
+    "source": "arXiv · cs.CL RSS（API 兜底）",
+    "sourceId": "arxiv-rss-cl",
+    "sourceTier": "preprint",
+    "published": "2026-11-09T05:00:00.000Z",
+    "summary": "arXiv:2604.28031v3 Announce Type: replace Abstract: When researchers refine ideas with large language models over several turns, do the models preserve the original brief's constraints? We introduce DriftBench, a benchmark for constraint adherence in multi-turn LLM-assisted scientific ideation. It pairs 38 research briefs from 24 scientific domains, each with hard constraints and banned moves, with four interaction conditions and seven models from five providers (two open-weight), scored on 2,116 runs. Iterative pressure to improve a proposal raises structural complexity in every model and lowers adherence to the brief's hard constraints. A restatement probe shows that the constraints stay…",
+    "summaryZh": null,
+    "why": "新预印本，主题命中「评测与基准」；摘要已按原文整理，等待人工复核。",
+    "topics": [
+      "evaluation"
+    ],
+    "tags": [
+      "评测与基准"
+    ],
+    "security": {
+      "angles": [
+        "provenance",
+        "evaluation"
+      ],
+      "note": "规则命中关键词，等待人工复核。"
+    },
+    "evidence": "预印本 · 原文可核验",
+    "score": 86,
+    "curated": false,
+    "collectedAt": "2026-11-09T05:04:26.689Z",
+    "provenance": "arxiv-rss-cl"
+  },
+  {
     "id": "web:https://www.ithome.com/1/023/613.htm",
     "title": "Anthropic 研究称 Claude AI 智能体可以靠“做梦”变得更聪明",
     "titleZh": "Anthropic 发布研究：Claude 引入“做梦”机制优化 Agent 记忆",
@@ -30,6 +119,285 @@
     "curated": false,
     "collectedAt": "2026-11-07T05:01:44.705Z",
     "provenance": "news-ithome",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.09807",
+    "title": "Compaction, decay and reinforcement in a two-tier conversational memory: a paired evaluation against retrieval-augmented generation",
+    "titleZh": null,
+    "url": "https://arxiv.org/abs/2611.09807v1",
+    "kind": "paper",
+    "source": "arXiv · 智能体记忆与自进化",
+    "sourceId": "arxiv-memory",
+    "sourceTier": "preprint",
+    "published": "2026-11-06T17:56:37.000Z",
+    "summary": "A conversational agent that remembers has to decide what to keep. Retrieval-augmented generation keeps the transcript and searches it; the alternative is to compact each turn into atomic facts and search those. We compare the two on LoCoMo, with both arms answering all 1,985 questions in one window, against the same stores, with the same generator and judge, and both predictions on one row, which licenses McNemar's exact test on the 512 questions where they disagree. On the four categories comparable work reports, compaction scores 71.4 per cent against 64.6, a lead of 6.8 points (p = 5.5e-08) at 34 per cent fewer prompt tokens. On all five, including the adversarial set comparable work dro…",
+    "summaryZh": null,
+    "why": "新预印本，主题命中「评测与基准」；摘要已按原文整理，等待人工复核。",
+    "topics": [
+      "evaluation"
+    ],
+    "tags": [
+      "评测与基准"
+    ],
+    "security": {
+      "angles": [
+        "evaluation"
+      ],
+      "note": "规则命中关键词，等待人工复核。"
+    },
+    "evidence": "预印本 · 原文可核验",
+    "score": 86,
+    "curated": false,
+    "collectedAt": "2026-11-09T05:04:26.689Z",
+    "provenance": "arxiv-memory"
+  },
+  {
+    "id": "arxiv:2611.09721",
+    "title": "MemoryDojo: Benchmarking Poisoning Through LLM Agent Memory",
+    "titleZh": "MemoryDojo：LLM 智能体记忆投毒基准测试",
+    "url": "https://arxiv.org/abs/2611.09721v1",
+    "kind": "paper",
+    "source": "arXiv · 智能体记忆与自进化",
+    "sourceId": "arxiv-memory",
+    "sourceTier": "preprint",
+    "published": "2026-11-06T17:00:09.000Z",
+    "summary": "LLM agents benefit from using memory systems to improve performance on long-horizon, multi-session tasks. However, memory introduces a critical attack surface. Malicious instructions encountered in one session may be stored and propagated through memory before being retrieved and acted upon in later sessions. Because memory systems differ in how they process and retrieve information, the downstream effects of poisoning can vary significantly across systems. To quantify the effects of poisoning across different memory architectures, we introduce MemoryDojo, a benchmark for tracing the lifecycle of poisoned information through agent memory and measuring its influence on subsequent agent behav…",
+    "summaryZh": "该论文提出 MemoryDojo 基准，用于量化不同记忆架构中恶意指令通过记忆系统存储和检索对后续智能体行为的影响。研究关注单次会话中的恶意指令如何被记忆系统保留并在后续会话中被调用。",
+    "why": "为评估智能体记忆系统的安全性和抗投毒能力提供了量化基准。",
+    "topics": [
+      "security"
+    ],
+    "tags": [
+      "安全与治理"
+    ],
+    "security": {
+      "angles": [
+        "attack",
+        "evaluation"
+      ],
+      "note": "规则命中关键词，等待人工复核。"
+    },
+    "evidence": "预印本 · 原文可核验",
+    "score": 86,
+    "curated": false,
+    "collectedAt": "2026-11-09T05:04:26.689Z",
+    "provenance": "arxiv-memory",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.09625",
+    "title": "Encoding Memory in World Models with Test-Time Model-Based Reinforcement Learning",
+    "titleZh": "TT-MBRL：测试时基于模型强化学习的记忆编码",
+    "url": "https://arxiv.org/abs/2611.09625v1",
+    "kind": "paper",
+    "source": "arXiv · 智能体记忆与自进化",
+    "sourceId": "arxiv-memory",
+    "sourceTier": "preprint",
+    "published": "2026-11-06T15:45:54.000Z",
+    "summary": "Model-based reinforcement learning (MBRL) approaches have demonstrated strong performance across diverse domains in recent years, learning accurate world models from agent trajectories. However, despite this progress, current approaches still struggle to surpass human performance on tasks that require long-term memory and planning. In this work, we address the problem of long-term memory in MBRL by moving beyond the commonly studied paradigm of architecture design. We introduce Test-Time Model-Based Reinforcement Learning (TT-MBRL), using gradient descent at test time to encode the memory of episode observations into world model parameters. This enables the agent to learn a distinct world m…",
+    "summaryZh": "针对模型强化学习中长期记忆不足的问题，本文提出测试时基于模型强化学习（TT-MBRL）。该方法在测试阶段使用梯度下降将 episode 观测记忆编码到世界模型参数中，而非依赖架构设计。",
+    "why": "提出了在测试时动态调整模型参数以编码记忆的新方法，区别于传统的架构层面记忆设计。",
+    "topics": [
+      "mechanism"
+    ],
+    "tags": [
+      "记忆机制与系统"
+    ],
+    "security": {
+      "angles": [
+        "evaluation"
+      ],
+      "note": "规则命中关键词，等待人工复核。"
+    },
+    "evidence": "预印本 · 原文可核验",
+    "score": 86,
+    "curated": false,
+    "collectedAt": "2026-11-09T05:04:26.689Z",
+    "provenance": "arxiv-memory",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.09502",
+    "title": "TimeOmni-Live: Continuous & Live Time Series Understanding with Long-Term Memory",
+    "titleZh": "TimeOmni-Live：基于长期记忆的连续实时时间序列理解",
+    "url": "https://arxiv.org/abs/2611.09502v1",
+    "kind": "paper",
+    "source": "arXiv · 记忆评测",
+    "sourceId": "arxiv-eval",
+    "sourceTier": "preprint",
+    "published": "2026-11-06T14:22:59.000Z",
+    "summary": "Existing time series language models predominantly follow an offline, one-shot paradigm: they process fixed-length inputs independently and do not retain past states. This static approach fundamentally misaligns with the continuous nature of real-world streaming applications and fails to maintain the historical context necessary for cross-window reasoning. To bridge this gap, we introduce Continuous & Live Time Series Understanding (CL-TSU), a novel paradigm that shifts the focus toward maintaining a persistent, stateful understanding over open-ended data streams. To systematically evaluate this paradigm, we present LiveTS-Suite, the first comprehensive data suite tailored for CL-TSU, suppo…",
+    "summaryZh": "该研究提出连续与实时时间序列理解（CL-TSU）范式，旨在处理开放数据流中的持久状态理解。配套发布了 LiveTS-Suite 数据集，以支持对跨窗口推理和长期记忆能力的评估。",
+    "why": "引入了面向实时数据流的持续理解范式及专用评测套件，弥补离线一次性处理模式的局限。",
+    "topics": [
+      "evaluation"
+    ],
+    "tags": [
+      "评测与基准"
+    ],
+    "security": {
+      "angles": [
+        "evaluation"
+      ],
+      "note": "规则命中关键词，等待人工复核。"
+    },
+    "evidence": "预印本 · 原文可核验",
+    "score": 86,
+    "curated": false,
+    "collectedAt": "2026-11-09T05:04:26.689Z",
+    "provenance": "arxiv-eval",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.09355",
+    "title": "HiMEM: Hippocampus-Inspired Memory Consolidation, Pruning, and Composition for Vision-Language-Action Models in 3D Scenes",
+    "titleZh": "HiMEM：面向 VLA 模型的海马体启发式记忆整合",
+    "url": "https://arxiv.org/abs/2611.09355v1",
+    "kind": "paper",
+    "source": "arXiv · 具身与多模态记忆",
+    "sourceId": "arxiv-embodied",
+    "sourceTier": "preprint",
+    "published": "2026-11-06T11:50:36.000Z",
+    "summary": "Memory plays a crucial role in long-horizon task execution and cross-task generalization for Vision-Language-Action (VLA) models operating in complex 3D scenes. However, existing VLA memory mechanisms suffer from memory noise, particularly in complex 3D scenes, as stored episodic memories contain extensive redundant details about scene layouts, object configurations, and robot-specific states, which obscure generalizable manipulation principles and hinder cross-task transfer. To address this challenge, we first introduce a hippocampus-inspired memory consolidation mechanism that synthesizes extensive episodic experiences into a compact set of essential semantic memories, enabling VLA models…",
+    "summaryZh": "该工作提出海马体启发式记忆整合机制，将冗长的 episodic 经验综合为紧凑的语义记忆，并应用于视觉-语言-动作（VLA）模型。旨在解决复杂 3D 场景中记忆噪声导致的跨任务泛化困难问题。",
+    "why": "借鉴神经科学中的记忆整合与修剪原理，为具身智能体在复杂场景中的记忆管理提供了新架构。",
+    "topics": [
+      "embodied"
+    ],
+    "tags": [
+      "具身与空间记忆"
+    ],
+    "security": null,
+    "evidence": "预印本 · 原文可核验",
+    "score": 82,
+    "curated": false,
+    "collectedAt": "2026-11-09T05:04:26.689Z",
+    "provenance": "arxiv-embodied",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.08779",
+    "title": "Jacobian-Causal Memory Control for Persistent Memory in Language Model Systems",
+    "titleZh": "JCMC：基于雅可比因果的记忆控制方法",
+    "url": "https://arxiv.org/abs/2611.08779v1",
+    "kind": "paper",
+    "source": "arXiv · 记忆评测",
+    "sourceId": "arxiv-eval",
+    "sourceTier": "preprint",
+    "published": "2026-11-05T23:02:53.000Z",
+    "summary": "Persistent-memory systems choose not only which records are retrieved but which prior information can alter current inference. We propose Jacobian-causal memory control (JCMC), which represents each authorized memory intervention by a predicted influence signature in a shared behavioral measurement space, selects interventions against a target effect and side-effect budget, and compares predicted with observed effects before retaining or rolling back the intervention. Under explicit smoothness and bounded-estimation assumptions, we prove a quadratic local-approximation bound, characterize the target effects reachable by a set of signatures, bound selection regret under signature error, and…",
+    "summaryZh": "提出 Jacobian-causal memory control (JCMC)，在共享行为测量空间中表征记忆干预的影响签名，在目标效应与副作用预算约束下选择干预，并比对预测与观测效应以决定保留或回滚。",
+    "why": "提出在行为空间进行影响签名匹配与副作用预算控制的机制，区别于仅关注检索内容的记忆系统。",
+    "topics": [
+      "evaluation"
+    ],
+    "tags": [
+      "评测与基准"
+    ],
+    "security": null,
+    "evidence": "预印本 · 原文可核验",
+    "score": 82,
+    "curated": false,
+    "collectedAt": "2026-11-09T05:04:26.689Z",
+    "provenance": "arxiv-eval",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.08721",
+    "title": "Remembering Is Not Enough: Evaluating Timing and Omission in Longitudinal AI Mental Health Support",
+    "titleZh": "记忆与心理支持：纵向交互中的时机与遗漏评估",
+    "url": "https://arxiv.org/abs/2611.08721v1",
+    "kind": "paper",
+    "source": "arXiv · 记忆召回补漏",
+    "sourceId": "arxiv-recall",
+    "sourceTier": "preprint",
+    "published": "2026-11-05T21:14:16.000Z",
+    "summary": "Evaluations of large language models (LLMs) for mental health support commonly focus on the clinical appropriateness of individual responses, potentially overlooking failures that emerge across extended interactions. As AI assistants accumulate memory of users' circumstances and prior disclosures, this raises an accountability question: Do AI chatbots provide appropriate support as users' needs evolve? We investigate by analyzing 14,256 longitudinal simulations grounded in donated chatbot histories from 22 users, examining how a memory-equipped assistant responds to suicidal ideation, self-harm, and anxiety crises across recovery trajectories and communication styles. We introduce the Conte…",
+    "summaryZh": "基于22名用户的聊天机器人历史记录构建14,256个纵向模拟，评估配备记忆的助手在用户自杀意念、自残及焦虑危机情境下，随需求演变提供的支持是否恰当。",
+    "why": "针对纵向心理支持场景，考察记忆系统在时间维度上的响应时机与遗漏，而非单次响应的临床适宜性。",
+    "topics": [
+      "evaluation"
+    ],
+    "tags": [
+      "评测与基准"
+    ],
+    "security": {
+      "angles": [
+        "privacy",
+        "evaluation"
+      ],
+      "note": "规则命中关键词，等待人工复核。"
+    },
+    "evidence": "预印本 · 原文可核验",
+    "score": 86,
+    "curated": false,
+    "collectedAt": "2026-11-09T05:04:26.689Z",
+    "provenance": "arxiv-recall",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.08718",
+    "title": "Memory-Aware Multi-Agent Architecture with LLM-based Orchestration for Conversational Recommendation",
+    "titleZh": "支持对话推荐的记忆感知多智能体架构",
+    "url": "https://arxiv.org/abs/2611.08718v1",
+    "kind": "paper",
+    "source": "arXiv · 智能体记忆与自进化",
+    "sourceId": "arxiv-memory",
+    "sourceTier": "preprint",
+    "published": "2026-11-05T21:14:01.000Z",
+    "summary": "Conversational recommender systems often treat user sessions in isolation, limiting their ability to capture how user intent evolves over time. While large language models (LLMs) have improved semantic understanding, they are typically used as isolated components, without addressing how memory, retrieval, and decision-making should be integrated at the system level. In this work, we propose a memory-aware multi-agent architecture for conversational recommendation, in which LLMs act as orchestration layers that coordinate intent refinement, query construction, and interaction flow. A key design principle is the integration of long-term memory as a first-class component, influencing both rout…",
+    "summaryZh": "提出记忆感知的多智能体架构用于对话推荐，将LLM作为编排层协调意图细化、查询构建和交互流，并将长期记忆作为一级组件。",
+    "why": "强调在系统层面将记忆、检索与决策作为整体集成，而非孤立使用LLM组件。",
+    "topics": [
+      "personal"
+    ],
+    "tags": [
+      "对话与个性化记忆"
+    ],
+    "security": {
+      "angles": [
+        "defense"
+      ],
+      "note": "规则命中关键词，等待人工复核。"
+    },
+    "evidence": "预印本 · 原文可核验",
+    "score": 86,
+    "curated": false,
+    "collectedAt": "2026-11-09T05:04:26.689Z",
+    "provenance": "arxiv-memory",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.08644",
+    "title": "Decision Context: Persistent Behavioral Learning for AI Agents",
+    "titleZh": "Decision Context：面向AI智能体的持久行为学习",
+    "url": "https://arxiv.org/abs/2611.08644v1",
+    "kind": "paper",
+    "source": "arXiv · 智能体记忆泛检索",
+    "sourceId": "arxiv-broad",
+    "sourceTier": "preprint",
+    "published": "2026-11-05T19:48:10.000Z",
+    "summary": "LLM agents do not learn from corrections across sessions. A user fixes the same mistake at the start of every conversation. Existing agent memory systems primarily handle facts, such as preferences, entities, and conversational history, rather than procedural knowledge. We present Forge Decision Context (forge_dc), a system that captures behavioral signals from human corrections and self-assessed tool-call failures, compiles them into imperative RULE directives, and injects them at the decision points where they apply. We evaluate forge_dc alongside four predecessor approaches on DC-Bench, a new benchmark of 71 scenarios across nine behavioral dimensions, built from real executed agent trac…",
+    "summaryZh": "提出 Forge Decision Context (forge_dc) 系统，从人类纠正和工具调用失败中捕获行为信号，编译为规则指令并在相关决策点注入。",
+    "why": "关注程序性知识（行为规则）的学习与注入，弥补现有记忆系统主要处理事实性知识的不足。",
+    "topics": [
+      "evaluation"
+    ],
+    "tags": [
+      "评测与基准"
+    ],
+    "security": {
+      "angles": [
+        "evaluation"
+      ],
+      "note": "规则命中关键词，等待人工复核。"
+    },
+    "evidence": "预印本 · 原文可核验",
+    "score": 86,
+    "curated": false,
+    "collectedAt": "2026-11-09T05:04:26.689Z",
+    "provenance": "arxiv-broad",
     "summaryZhBasis": "原文摘要"
   },
   {
