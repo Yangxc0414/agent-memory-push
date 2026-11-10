@@ -1,42 +1,41 @@
 {
   "version": 1,
-  "checkedAt": "2026-11-09T05:04:26.689Z",
-  "lastSuccessAt": "2026-11-09T05:04:26.689Z",
-  "generatedAt": "2026-11-09T05:04:26.689Z",
+  "checkedAt": "2026-11-10T06:21:48.905Z",
+  "lastSuccessAt": "2026-11-10T06:21:48.905Z",
+  "generatedAt": "2026-11-10T06:21:48.905Z",
   "timezone": "Asia/Shanghai",
-  "date": "2026-11-09",
+  "date": "2026-11-10",
   "seed": false,
-  "added": 12,
-  "updated": 126,
+  "added": 0,
+  "updated": 6,
   "items": 637,
-  "sourcesOk": 22,
+  "sourcesOk": 12,
   "sourcesTotal": 22,
   "llm": {
     "used": true,
-    "error": "Unexpected non-whitespace character after JSON at position 232 (line 6 column 2)"
+    "error": null
   },
-  "addedIds": [
-    "arxiv:2611.09848",
-    "arxiv:2602.02474",
-    "arxiv:2604.28031",
-    "arxiv:2611.09807",
-    "arxiv:2611.09721",
-    "arxiv:2611.09625",
-    "arxiv:2611.09502",
-    "arxiv:2611.09355",
-    "arxiv:2611.08779",
-    "arxiv:2611.08721",
-    "arxiv:2611.08718",
-    "arxiv:2611.08644"
-  ],
+  "addedIds": [],
   "coverage": {
-    "coreComplete": true,
-    "recallOk": true,
-    "fallbackOk": true,
-    "usable": true,
-    "degraded": false,
-    "criticalFailed": [],
-    "supplementalFailed": [],
+    "coreComplete": false,
+    "recallOk": false,
+    "fallbackOk": false,
+    "usable": false,
+    "degraded": true,
+    "criticalFailed": [
+      "arxiv-memory",
+      "arxiv-embodied",
+      "arxiv-security",
+      "arxiv-models",
+      "arxiv-broad",
+      "arxiv-multimodal",
+      "arxiv-eval",
+      "arxiv-personal",
+      "arxiv-survey"
+    ],
+    "supplementalFailed": [
+      "arxiv-recall"
+    ],
     "fallbackFailed": [],
     "optionalFailed": []
   }

@@ -2,7 +2,7 @@
   {
     "id": "arxiv:2611.09848",
     "title": "How far does a hash-only sender go? A pre-registered map of sender memory versus bits for short text messages",
-    "titleZh": null,
+    "titleZh": "哈希发送器与PPM模型短文本传输成本对比",
     "url": "https://arxiv.org/abs/2611.09848",
     "kind": "paper",
     "source": "arXiv · cs.CL RSS（API 兜底）",
@@ -10,8 +10,8 @@
     "sourceTier": "preprint",
     "published": "2026-11-09T05:00:00.000Z",
     "summary": "arXiv:2611.09848v1 Announce Type: cross Abstract: Can a sender that only computes hashes, with a language model only at the receiver, transmit short human text more cheaply than a classical sender trained on the same domain? We answer with one pre-registered run on 1,000 English user utterances from Taskmaster-1. The primary endpoint is the cost per message to deliver 100% of the messages (hash bits, plus a 2-byte negative acknowledgement and the raw text when the first attempt fails), paired against an in-domain PPM order-1 sender. The hash-only sender delivered 857 of 1,000 messages on the first attempt and cost 192.8 bits per message, 18.4 bits more than PPM order 1 (95% bootstrap interv…",
-    "summaryZh": null,
-    "why": "新预印本，主题命中「记忆机制与系统」；摘要已按原文整理，等待人工复核。",
+    "summaryZh": "该研究预注册测试了仅使用哈希值的发送器在Taskmaster-1数据集上的传输效率，结果显示其首次尝试成功率85.7%，每消息成本比PPM模型高18.4比特。",
+    "why": "为发送端与接收端记忆非对称通信场景提供量化成本对比参考。",
     "topics": [
       "mechanism"
     ],
@@ -23,12 +23,13 @@
     "score": 82,
     "curated": false,
     "collectedAt": "2026-11-09T05:04:26.689Z",
-    "provenance": "arxiv-rss-cl"
+    "provenance": "arxiv-rss-cl",
+    "summaryZhBasis": "原文摘要"
   },
   {
     "id": "arxiv:2602.02474",
     "title": "MemSkill: Learning and Evolving Memory Skills for Self-Evolving Agents",
-    "titleZh": null,
+    "titleZh": "MemSkill：可学习且可进化的记忆技能",
     "url": "https://arxiv.org/abs/2602.02474",
     "kind": "paper",
     "source": "arXiv · cs.CL RSS（API 兜底）",
@@ -36,8 +37,8 @@
     "sourceTier": "preprint",
     "published": "2026-11-09T05:00:00.000Z",
     "summary": "arXiv:2602.02474v3 Announce Type: replace Abstract: Most Large Language Model (LLM) agent memory systems rely on a small set of static, hand-designed operations for extracting memory. These fixed procedures hard-code human priors about what to store and how to revise memory, making them rigid under diverse interaction patterns and inefficient on long histories. To this end, we present \\textbf{MemSkill}, which reframes these operations as learnable and evolvable memory skills, structured and reusable routines for extracting, consolidating, and pruning information from interaction traces. Inspired by the design philosophy of agent skills, MemSkill employs a \\emph{controller} that learns to se…",
-    "summaryZh": null,
-    "why": "新预印本，主题命中「记忆机制与系统」；摘要已按原文整理，等待人工复核。",
+    "summaryZh": "MemSkill提出将记忆操作视为可学习和可进化的技能，通过控制器机制动态调整提取、整合与修剪过程。",
+    "why": "提供替代静态手工设计记忆操作的进化式架构思路。",
     "topics": [
       "mechanism"
     ],
@@ -54,12 +55,13 @@
     "score": 86,
     "curated": false,
     "collectedAt": "2026-11-09T05:04:26.689Z",
-    "provenance": "arxiv-rss-cl"
+    "provenance": "arxiv-rss-cl",
+    "summaryZhBasis": "原文摘要"
   },
   {
     "id": "arxiv:2604.28031",
     "title": "Models Recall What They Violate: Constraint Adherence in Multi-Turn LLM Ideation",
-    "titleZh": null,
+    "titleZh": "DriftBench：多轮LLM创意生成约束遵从性基准",
     "url": "https://arxiv.org/abs/2604.28031",
     "kind": "paper",
     "source": "arXiv · cs.CL RSS（API 兜底）",
@@ -67,8 +69,8 @@
     "sourceTier": "preprint",
     "published": "2026-11-09T05:00:00.000Z",
     "summary": "arXiv:2604.28031v3 Announce Type: replace Abstract: When researchers refine ideas with large language models over several turns, do the models preserve the original brief's constraints? We introduce DriftBench, a benchmark for constraint adherence in multi-turn LLM-assisted scientific ideation. It pairs 38 research briefs from 24 scientific domains, each with hard constraints and banned moves, with four interaction conditions and seven models from five providers (two open-weight), scored on 2,116 runs. Iterative pressure to improve a proposal raises structural complexity in every model and lowers adherence to the brief's hard constraints. A restatement probe shows that the constraints stay…",
-    "summaryZh": null,
-    "why": "新预印本，主题命中「评测与基准」；摘要已按原文整理，等待人工复核。",
+    "summaryZh": "DriftBench评估多轮LLM辅助科研创意生成中模型对原始约束的遵从性，发现迭代改进会增加复杂度并降低约束遵从率。",
+    "why": "提供长程交互中约束漂移的量化基准与诊断工具。",
     "topics": [
       "evaluation"
     ],
@@ -86,7 +88,8 @@
     "score": 86,
     "curated": false,
     "collectedAt": "2026-11-09T05:04:26.689Z",
-    "provenance": "arxiv-rss-cl"
+    "provenance": "arxiv-rss-cl",
+    "summaryZhBasis": "原文摘要"
   },
   {
     "id": "web:https://www.ithome.com/1/023/613.htm",
@@ -124,7 +127,7 @@
   {
     "id": "arxiv:2611.09807",
     "title": "Compaction, decay and reinforcement in a two-tier conversational memory: a paired evaluation against retrieval-augmented generation",
-    "titleZh": null,
+    "titleZh": "两层对话记忆的压缩、衰减与强化",
     "url": "https://arxiv.org/abs/2611.09807v1",
     "kind": "paper",
     "source": "arXiv · 智能体记忆与自进化",
@@ -132,8 +135,8 @@
     "sourceTier": "preprint",
     "published": "2026-11-06T17:56:37.000Z",
     "summary": "A conversational agent that remembers has to decide what to keep. Retrieval-augmented generation keeps the transcript and searches it; the alternative is to compact each turn into atomic facts and search those. We compare the two on LoCoMo, with both arms answering all 1,985 questions in one window, against the same stores, with the same generator and judge, and both predictions on one row, which licenses McNemar's exact test on the 512 questions where they disagree. On the four categories comparable work reports, compaction scores 71.4 per cent against 64.6, a lead of 6.8 points (p = 5.5e-08) at 34 per cent fewer prompt tokens. On all five, including the adversarial set comparable work dro…",
-    "summaryZh": null,
-    "why": "新预印本，主题命中「评测与基准」；摘要已按原文整理，等待人工复核。",
+    "summaryZh": "该研究在LoCoMo数据集上对比了事实压缩与检索增强生成两种记忆策略，结果显示压缩策略在准确率与令牌效率上均表现更优。",
+    "why": "为对话系统提供事实化记忆与直接检索的效能量化对比依据。",
     "topics": [
       "evaluation"
     ],
@@ -150,7 +153,8 @@
     "score": 86,
     "curated": false,
     "collectedAt": "2026-11-09T05:04:26.689Z",
-    "provenance": "arxiv-memory"
+    "provenance": "arxiv-memory",
+    "summaryZhBasis": "原文摘要"
   },
   {
     "id": "arxiv:2611.09721",
