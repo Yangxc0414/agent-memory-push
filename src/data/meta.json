@@ -1,32 +1,45 @@
 {
   "version": 1,
-  "checkedAt": "2026-11-12T07:08:03.261Z",
-  "lastSuccessAt": "2026-11-12T07:08:03.261Z",
-  "generatedAt": "2026-11-12T07:08:03.261Z",
+  "checkedAt": "2026-11-13T05:32:11.726Z",
+  "lastSuccessAt": "2026-11-13T05:32:11.726Z",
+  "generatedAt": "2026-11-13T05:32:11.726Z",
   "timezone": "Asia/Shanghai",
-  "date": "2026-11-12",
+  "date": "2026-11-13",
   "seed": false,
-  "added": 0,
-  "updated": 135,
-  "items": 672,
-  "sourcesOk": 21,
+  "added": 14,
+  "updated": 119,
+  "items": 686,
+  "sourcesOk": 22,
   "sourcesTotal": 22,
   "llm": {
     "used": true,
     "error": null
   },
-  "addedIds": [],
+  "addedIds": [
+    "arxiv:2611.16590",
+    "arxiv:2611.16589",
+    "arxiv:2611.16487",
+    "arxiv:2611.16386",
+    "arxiv:2611.16384",
+    "arxiv:2611.16143",
+    "arxiv:2611.15766",
+    "arxiv:2611.15729",
+    "arxiv:2611.15655",
+    "arxiv:2611.15644",
+    "arxiv:2611.15600",
+    "arxiv:2611.15515",
+    "arxiv:2611.15315",
+    "arxiv:2611.15107"
+  ],
   "coverage": {
     "coreComplete": true,
     "recallOk": true,
     "fallbackOk": false,
     "usable": true,
-    "degraded": true,
+    "degraded": false,
     "criticalFailed": [],
     "supplementalFailed": [],
     "fallbackFailed": [],
-    "optionalFailed": [
-      "news-ithome"
-    ]
+    "optionalFailed": []
   }
 }

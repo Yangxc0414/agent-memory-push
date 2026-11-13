@@ -1,5 +1,420 @@
 [
   {
+    "id": "arxiv:2611.16590",
+    "title": "AstroMemBench: A Benchmark for Memory Systems in Embodied Spacecraft Agents",
+    "titleZh": "AstroMemBench：面向载人航天智能体的记忆系统基准测试",
+    "url": "https://arxiv.org/abs/2611.16590v1",
+    "kind": "paper",
+    "source": "arXiv · 智能体记忆与自进化",
+    "sourceId": "arxiv-memory",
+    "sourceTier": "preprint",
+    "published": "2026-11-12T10:23:15.000Z",
+    "summary": "Long-term spacecraft autonomy requires embodied agents to use operational history under communication delays, time-critical operations, environmental uncertainty, complex physical interactions, power and computational constraints, and safety and reliability requirements. We introduce AstroMemBench and a Scenario-Challenge-Capability design method that maps these requirements to executable memory tests. The benchmark covers 16 memory subchallenges through 140 templates and 2240 instances across nine tasks in planetary surface operations, on-orbit servicing, and deep-space exploration. A deterministic environment scores actions for task completion, state changes, safety, and resource use. Abl…",
+    "summaryZh": "该论文提出了AstroMemBench基准测试及场景-挑战-能力设计方法，旨在评估长时程航天自主任务中具身智能体的记忆能力。该基准包含16个记忆子挑战、140个模板和2240个实例，覆盖行星表面操作、在轨服务及深空探索等九项任务，并通过确定性环境对动作进行评分。",
+    "why": "针对航天领域特有的通信延迟、环境不确定性和资源约束场景，提供了首个专门评估具身智能体记忆能力的基准测试框架。",
+    "topics": [
+      "evaluation"
+    ],
+    "tags": [
+      "评测与基准"
+    ],
+    "security": {
+      "angles": [
+        "provenance",
+        "evaluation"
+      ],
+      "note": "规则命中关键词，等待人工复核。"
+    },
+    "evidence": "预印本 · 原文可核验",
+    "score": 86,
+    "curated": false,
+    "collectedAt": "2026-11-13T05:32:11.726Z",
+    "provenance": "arxiv-memory",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.16589",
+    "title": "STVLA: Spatial-aware and Temporal-memory forVision-Language-Action Models",
+    "titleZh": "STVLA：面向视觉-语言-动作模型的空间感知与时序记忆框架",
+    "url": "https://arxiv.org/abs/2611.16589v1",
+    "kind": "paper",
+    "source": "arXiv · 具身与多模态记忆",
+    "sourceId": "arxiv-embodied",
+    "sourceTier": "preprint",
+    "published": "2026-11-12T10:21:49.000Z",
+    "summary": "Robotic manipulation often requires both spatial scene understanding and task history. However, many vision-language-action (VLA) policies rely primarily on current observations, without explicitly integrating spatial structure and task history. Appearance-based memories can be sensitive to occlusion and viewpoint changes, while spatial representations of the current scene alone do not preserve how the scene has changed during task execution. We introduce STVLA, a framework that incorporates features from a pretrained visual geometry foundation model into temporal memory alongside visual representations. This allows the policy to recall past scene structure as context for current action dec…",
+    "summaryZh": "STVLA框架将预训练视觉几何基础模型的特征融入时序记忆与视觉表征中，以增强机器人操作中的空间场景理解和任务历史整合能力。该设计旨在解决基于外观的记忆对遮挡和视角变化敏感的问题，并保留场景在执行过程中的变化信息。",
+    "why": "通过结合视觉几何特征与时序记忆，解决了现有VLA策略缺乏空间结构整合和任务历史保留的问题，提升了机器人在复杂操作任务中的上下文感知能力。",
+    "topics": [
+      "embodied"
+    ],
+    "tags": [
+      "具身与空间记忆"
+    ],
+    "security": null,
+    "evidence": "预印本 · 原文可核验",
+    "score": 82,
+    "curated": false,
+    "collectedAt": "2026-11-13T05:32:11.726Z",
+    "provenance": "arxiv-embodied",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.16487",
+    "title": "HeMeR: Heterogeneous Memory Reconciliation for Embodied Agents via Structured KV Reuse",
+    "titleZh": "HeMeR：基于结构化KV缓存复用的具身智能体异构记忆协调",
+    "url": "https://arxiv.org/abs/2611.16487v1",
+    "kind": "paper",
+    "source": "arXiv · 智能体记忆与自进化",
+    "sourceId": "arxiv-memory",
+    "sourceTier": "preprint",
+    "published": "2026-11-12T08:58:20.000Z",
+    "summary": "Embodied agents make decisions by combining information from heterogeneous memory modules, including declarative memory for explicit knowledge, procedural memory for learned routines, and working memory for current observations. During interaction, the memory contents required for decision making change with the agent's state, goal, and task progress, while many contents remain shared across consecutive decisions. However, existing memory modules are typically accessed through separate interfaces, so each updated memory context is often processed as a new input to the foundation model. This prevents selective key-value (KV) cache reuse for unchanged memory contents and forces full KV cache…",
+    "summaryZh": "HeMeR通过结构化KV缓存复用机制，解决具身智能体在处理陈述性、程序性和工作记忆等异构模块时因上下文频繁更新导致的计算效率低下问题。该方法允许对未变化的记忆内容进行选择性缓存复用，避免每次决策都进行全量处理。",
+    "why": "提出了一种高效的记忆协调机制，通过结构化复用减少基础模型的计算开销，为处理动态变化的异构记忆内容提供了新的优化路径。",
+    "topics": [
+      "embodied"
+    ],
+    "tags": [
+      "具身与空间记忆"
+    ],
+    "security": null,
+    "evidence": "预印本 · 原文可核验",
+    "score": 82,
+    "curated": false,
+    "collectedAt": "2026-11-13T05:32:11.726Z",
+    "provenance": "arxiv-memory",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.16386",
+    "title": "Remember What Changes the Odds: Critic-Gated Event Memory for Long-Horizon Manipulation",
+    "titleZh": "CGEM：基于Critic门控的长时程操作事件记忆",
+    "url": "https://arxiv.org/abs/2611.16386v1",
+    "kind": "paper",
+    "source": "arXiv · 具身与多模态记忆",
+    "sourceId": "arxiv-embodied",
+    "sourceTier": "preprint",
+    "published": "2026-11-12T06:55:11.000Z",
+    "summary": "In long-horizon manipulation, a robot may need to take different actions under identical observations, depending on task progress and the outcomes of earlier attempts. We refer to this ambiguity as decision aliasing. Resolving it requires the policy to maintain memory of its execution history. To reduce the cost of processing full observation histories, recent methods build compact event memories using perceptual, semantic, or kinematic cues. However, these criteria may miss events that matter for task success. We instead propose an outcome-grounded principle: remember events that substantially change the predicted probability of eventual success. Following this principle, we introduce CGEM…",
+    "summaryZh": "CGEM提出了一种基于结果驱动原则的事件记忆方法，仅记录那些显著改变最终成功预测概率的事件，以解决长时程操作中的“决策别名”问题。该方法旨在降低处理完整观测历史的成本，同时保留对任务成功至关重要的信息。",
+    "why": "区别于传统的感知或语义事件记忆，CGEM依据事件对任务成功率的实际影响进行筛选，提供了更精准且高效的长时程机器人操作记忆策略。",
+    "topics": [
+      "embodied"
+    ],
+    "tags": [
+      "具身与空间记忆"
+    ],
+    "security": null,
+    "evidence": "预印本 · 原文可核验",
+    "score": 82,
+    "curated": false,
+    "collectedAt": "2026-11-13T05:32:11.726Z",
+    "provenance": "arxiv-embodied",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.16384",
+    "title": "Beyond Compressing Everything: Contrastive Memory Learning for Selective Context Compression",
+    "titleZh": "CoMem：基于对比记忆学习的查询引导式选择性上下文压缩框架",
+    "url": "https://arxiv.org/abs/2611.16384v1",
+    "kind": "paper",
+    "source": "arXiv · 记忆安全与评测",
+    "sourceId": "arxiv-security",
+    "sourceTier": "preprint",
+    "published": "2026-11-12T06:51:49.000Z",
+    "summary": "As large language models (LLMs) advance toward increasingly long inputs, soft context compression offers a promising approach to efficient inference by converting long inputs into compact memory slots. Under limited memory budgets, effective context compression remains challenging because task-relevant evidence varies substantially across queries, ranging from localized evidence to multiple distant spans or information dispersed throughout the full document. Instead of compressing everything indiscriminately, we propose CoMem, a query-guided selective context compression framework that learns memory representations conditioned on both the document and the query. CoMem develops Contrastive C…",
+    "summaryZh": "该预印本提出 CoMem 框架，针对长输入推理中任务相关证据分布不均的问题，学习基于文档和查询条件的记忆表示，以实现选择性上下文压缩。原文指出该方法旨在解决有限记忆预算下，盲目压缩所有上下文导致的效率与效果挑战。",
+    "why": "提供了一种区别于全量压缩的“查询引导”选择性压缩思路，对优化 LLM 长上下文推理成本具有参考意义。",
+    "topics": [
+      "security"
+    ],
+    "tags": [
+      "安全与治理"
+    ],
+    "security": null,
+    "evidence": "预印本 · 原文可核验",
+    "score": 82,
+    "curated": false,
+    "collectedAt": "2026-11-13T05:32:11.726Z",
+    "provenance": "arxiv-security",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.16143",
+    "title": "Does a Self-Learning Migration Agent Learn? An Audited Evaluation of Evidence-Graded Experience Memory for Oracle-to-PostgreSQL Migration",
+    "titleZh": "对 Oracle 迁移至 PostgreSQL 的自学习 Agent 经验记忆进行审计评估",
+    "url": "https://arxiv.org/abs/2611.16143v1",
+    "kind": "paper",
+    "source": "arXiv · 智能体记忆与自进化",
+    "sourceId": "arxiv-memory",
+    "sourceTier": "preprint",
+    "published": "2026-11-12T01:09:26.000Z",
+    "summary": "Do large language model (LLM) migration agents learn from accumulated experience, or do apparent gains reflect retrieval and reference reuse? We evaluate an evidence-graded agent for Oracle-to-PostgreSQL migration across four studies. On 1,833 documentation-derived source-reference pairs, persistent memory improved reference conformity (RC) over a no-memory baseline by 0.015 [0.004, 0.025], while policy adaptation added no gain (-0.004 [-0.010, 0.001]). An audit found that 264 of 367 held-out units (72%) shared a PostgreSQL reference with training, and the memory effect on the 103 leak-free units fell to 0.002 [-0.008, 0.011]. A model-free nearest-target copy baseline scored RC 0.222, outpe…",
+    "summaryZh": "该预印本通过四项研究评估了一个用于数据库迁移的 LLM Agent，发现其持久记忆对引用一致性有微小提升，但策略自适应无增益。审计发现训练数据存在泄漏，且在无泄漏单元上记忆效应几乎消失，且简单基线模型表现优于该 Agent。",
+    "why": "揭示了当前“自学习 Agent”在经验记忆利用上的局限性，指出表观提升可能源于数据检索复用而非真正学习，为 Agent 记忆评估提供了更严谨的审计视角。",
+    "topics": [
+      "security"
+    ],
+    "tags": [
+      "安全与治理"
+    ],
+    "security": {
+      "angles": [
+        "privacy",
+        "provenance",
+        "evaluation"
+      ],
+      "note": "规则命中关键词，等待人工复核。"
+    },
+    "evidence": "预印本 · 原文可核验",
+    "score": 86,
+    "curated": false,
+    "collectedAt": "2026-11-13T05:32:11.726Z",
+    "provenance": "arxiv-memory",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.15766",
+    "title": "Prior-as-Skill: Remember Outside and Read Inside with On-Policy Self-Distillation for Self-Evolving VLM Agents",
+    "titleZh": "Prior-as-Skill：基于 On-Policy 自蒸馏的自进化视觉语言模型 Agent 记忆方法",
+    "url": "https://arxiv.org/abs/2611.15766v1",
+    "kind": "paper",
+    "source": "arXiv · 智能体记忆与自进化",
+    "sourceId": "arxiv-memory",
+    "sourceTier": "preprint",
+    "published": "2026-11-11T17:44:37.000Z",
+    "summary": "Self-evolving visual agents keep what they learn as skills: key frames with step notes on a task's steps and their order. On-policy self-distillation (OPSD) is now a popular way to train such skills into a vision-language model that matches, on its own answers, a teacher that also reads the written order. At deployment, frames often go missing or show an unusual order, as when a person or a website reorders the steps. Existing internalization methods keep any order they store in the frame-reading weights: trained on full frames, the model guesses when they are missing, and trained with frames withheld, it stores the order, so memory can override what it sees. We propose PriorSplit, which fi…",
+    "summaryZh": "该预印本提出 PriorSplit 方法，旨在解决自进化视觉 Agent 在部署阶段因帧缺失或顺序变化导致的记忆覆盖感知问题。通过 On-Policy 自蒸馏训练视觉语言模型，使其能在内部存储技能记忆的同时，避免记忆主导视觉输入。",
+    "why": "针对多模态 Agent 在动态环境下的记忆稳定性问题，提出了结合自蒸馏与记忆存储的改进方案，有助于提升 VLM Agent 在复杂场景下的鲁棒性。",
+    "topics": [
+      "multimodal"
+    ],
+    "tags": [
+      "多模态与感知记忆"
+    ],
+    "security": null,
+    "evidence": "预印本 · 原文可核验",
+    "score": 82,
+    "curated": false,
+    "collectedAt": "2026-11-13T05:32:11.726Z",
+    "provenance": "arxiv-memory",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.15729",
+    "title": "DISCERN: Preserve at Write, Resolve at Read for Persistent LLM-Agent Memory",
+    "titleZh": "DISCERN：面向持久 LLM Agent 记忆的写入时保留与读取时解析框架",
+    "url": "https://arxiv.org/abs/2611.15729v1",
+    "kind": "paper",
+    "source": "arXiv · 智能体记忆与自进化",
+    "sourceId": "arxiv-memory",
+    "sourceTier": "preprint",
+    "published": "2026-11-11T17:06:07.000Z",
+    "summary": "Enterprise agents accumulate memory across dozens of sessions in which facts contradict, get superseded, and blur as similarly named entities collide in embedding space. The field treats this as a retrieval problem; we show it is not. On ENT-310, a synthetic enterprise sales-agent memory benchmark of 310 queries (210 answerable, 100 unanswerable), a vanilla Retrieval-Augmented Generation (RAG) reader over a memory store already matches strong memory systems on the recall pillars. Retention and currency are near-saturated, roughly 0.93 to 0.98 for every competent system, so recall is essentially solved. What remains unsolved is resolution: which entity a query refers to, which time-state is…",
+    "summaryZh": "该预印本认为企业级 Agent 记忆的核心挑战并非检索召回率，而是实体消歧与时态解析。在合成基准 ENT-310 上，普通 RAG 读取器已能匹配强大记忆系统的召回表现，指出当前系统需重点解决冲突与过时信息的处理。",
+    "why": "重新定义了 Agent 记忆系统的评估重点，从检索召回转向实体解析与时态管理，为企业级 Agent 记忆架构设计提供了新的问题视角。",
+    "topics": [
+      "evaluation"
+    ],
+    "tags": [
+      "评测与基准"
+    ],
+    "security": {
+      "angles": [
+        "evaluation"
+      ],
+      "note": "规则命中关键词，等待人工复核。"
+    },
+    "evidence": "预印本 · 原文可核验",
+    "score": 86,
+    "curated": false,
+    "collectedAt": "2026-11-13T05:32:11.726Z",
+    "provenance": "arxiv-memory",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.15655",
+    "title": "Can Agents Relive Past Experiences? Diagnosing Event-Affect Decoupling in Affective-Episodic Retrospection",
+    "titleZh": "情感-情景回溯：诊断Agent记忆中的事件-情感解耦",
+    "url": "https://arxiv.org/abs/2611.15655v1",
+    "kind": "paper",
+    "source": "arXiv · 智能体记忆与自进化",
+    "sourceId": "arxiv-memory",
+    "sourceTier": "preprint",
+    "published": "2026-11-11T16:04:12.000Z",
+    "summary": "As memory-augmented agents increasingly support long-term and personalized interactions, reliable recall of emotional experiences while preserving their associated affect becomes necessary. However, existing evaluations usually assess emotion accuracy and factual memory grounding separately, overlooking event-affect correspondence. In this work, we formulate Affective-Episodic Retrospection (AER) as a task that explicitly evaluates the recovery of past events, associated affects, and their correspondence, and define Event-Affect Decoupling as a failure mode where the correct emotion is recalled but associated with the wrong episode. To diagnose Event-Affect Decoupling, we propose EM-TRACE,…",
+    "summaryZh": "论文提出Affective-Episodic Retrospection任务，用于评估Agent恢复过去事件、相关情感及其对应关系的能力，并定义了“事件-情感解耦”这一失效模式，即正确召回情感但关联到错误的情景。",
+    "why": "区别于仅评估情感准确性或事实记忆，该工作显式建模事件与情感的对应关系，为诊断情感记忆错位提供了新维度。",
+    "topics": [
+      "evaluation"
+    ],
+    "tags": [
+      "评测与基准"
+    ],
+    "security": {
+      "angles": [
+        "provenance",
+        "evaluation"
+      ],
+      "note": "规则命中关键词，等待人工复核。"
+    },
+    "evidence": "预印本 · 原文可核验",
+    "score": 86,
+    "curated": false,
+    "collectedAt": "2026-11-13T05:32:11.726Z",
+    "provenance": "arxiv-memory",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.15644",
+    "title": "When Agents Need to Consolidate Memories: What RRR Consolidation Explains, and What It Does Not Explain, in Conversation ESAA",
+    "titleZh": "Memory-TCG：基于RRR整合机制的对话检索扩展与评估",
+    "url": "https://arxiv.org/abs/2611.15644v1",
+    "kind": "paper",
+    "source": "arXiv · 智能体记忆与自进化",
+    "sourceId": "arxiv-memory",
+    "sourceTier": "preprint",
+    "published": "2026-11-11T15:55:20.000Z",
+    "summary": "Language-model agents can share conversational history across sessions, but persistence does not guarantee retrieval of current decisions and their provenance. This engineering study presents Memory-TCG, a Conversation ESAA extension inspired by ringing, resonance and renormalization (RRR), and an exploratory synthetic evaluation comparing chronological retrieval, two simplified baselines (B, recency-aware, and B', authority-aware), full RRR, and variants under three output budgets. With 480 facts and 1,024 tokens, full RRR recalled 0.44 of current decisions, versus 0.06 for chronological retrieval and 0.58 for the oracle ceiling; with 4,096 tokens it recalled all of them. B' and the no-res…",
+    "summaryZh": "该工程研究提出受RRR启发的Memory-TCG对话检索扩展，并在合成数据上对比了按时间检索、简化基线、完整RRR等方案在不同输出预算下的当前决策召回表现。",
+    "why": "通过合成评估量化了不同记忆整合策略对当前决策召回率的影响，展示了在特定token预算下不同方法的性能差异。",
+    "topics": [
+      "security"
+    ],
+    "tags": [
+      "安全与治理"
+    ],
+    "security": {
+      "angles": [
+        "defense",
+        "provenance",
+        "evaluation"
+      ],
+      "note": "规则命中关键词，等待人工复核。"
+    },
+    "evidence": "预印本 · 原文可核验",
+    "score": 86,
+    "curated": false,
+    "collectedAt": "2026-11-13T05:32:11.726Z",
+    "provenance": "arxiv-memory",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.15600",
+    "title": "MemCredit: From Relevance to Utility for Decision-Time Memory in Long-Horizon Web Agents",
+    "titleZh": "MemCredit：面向长时域Web Agent的决策效用记忆框架",
+    "url": "https://arxiv.org/abs/2611.15600v1",
+    "kind": "paper",
+    "source": "arXiv · 智能体记忆与自进化",
+    "sourceId": "arxiv-memory",
+    "sourceTier": "preprint",
+    "published": "2026-11-11T15:17:38.000Z",
+    "summary": "Large language model (LLM) agents increasingly operate over long Web interaction histories, making memory management critical for reliable and efficient decision making. Existing methods primarily optimize storage, retrieval, or compression, but the memories most semantically relevant to the current state are not necessarily those that most improve the agent's action. We introduce MemCredit, a decision-centric memory framework that shifts memory selection from semantic relevance to decision utility. MemCredit estimates the state-, reference-context-, and policy-conditional marginal contribution of individual memories through controlled counterfactual interventions, and distills these interv…",
+    "summaryZh": "MemCredit框架将长时域Web Agent的记忆选择标准从语义相关性转向决策效用，通过受控反事实干预估计个体记忆在特定状态和策略条件下的边际贡献。",
+    "why": "强调记忆的选择应服务于即时决策效用而非单纯语义匹配，为长期Web Agent的记忆管理提供了新的优化视角。",
+    "topics": [
+      "tools"
+    ],
+    "tags": [
+      "工具与项目发布"
+    ],
+    "security": null,
+    "evidence": "预印本 · 原文可核验",
+    "score": 82,
+    "curated": false,
+    "collectedAt": "2026-11-13T05:32:11.726Z",
+    "provenance": "arxiv-memory",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.15515",
+    "title": "Incentive-Responsive Agents: A Principal-Agent Framework, Metric Suite, and Runtime Architecture for Long-Lived Personal AI Agents",
+    "titleZh": "激励响应Agent：长期个人AI Agent的主-代理框架与运行时架构",
+    "url": "https://arxiv.org/abs/2611.15515v1",
+    "kind": "paper",
+    "source": "arXiv · 智能体记忆泛检索",
+    "sourceId": "arxiv-broad",
+    "sourceTier": "preprint",
+    "published": "2026-11-11T14:09:13.000Z",
+    "summary": "Personal AI agents now persist: they hold accounts, mailboxes, long-term memory, and open-ended task streams, yet the dominant way to improve them remains capability-side: prompt engineering, larger models, longer thinking, and retrieval. We argue that long-lived agents are missing an incentive layer. We formalize an incentive not as text in a prompt but as a runtime contract over the agent's operating point (model tier, test-time compute, memory budget, tool authority, task priority, verification, and compensation) that the agent's policy must causally consume. We develop a principal-agent model with hidden effort, a contractible operating point, and costly verification. We derive (i) a no…",
+    "summaryZh": "论文提出将激励机制形式化为Agent运行时的契约层，涵盖模型层级、记忆预算、工具权限等参数，并基于主-代理模型开发了相应的度量体系与运行时架构。",
+    "why": "将激励机制作为独立的运行时层而非仅通过提示词实现，为长期存续的个人AI Agent引入了因果消费和成本验证的新设计范式。",
+    "topics": [
+      "evaluation"
+    ],
+    "tags": [
+      "评测与基准"
+    ],
+    "security": {
+      "angles": [
+        "defense",
+        "evaluation"
+      ],
+      "note": "规则命中关键词，等待人工复核。"
+    },
+    "evidence": "预印本 · 原文可核验",
+    "score": 86,
+    "curated": false,
+    "collectedAt": "2026-11-13T05:32:11.726Z",
+    "provenance": "arxiv-broad",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.15315",
+    "title": "MIGRO: A Decoupled and Portable Long-Term Memory System for Language Models",
+    "titleZh": "MIGRO：用于语言模型的解耦长期记忆系统",
+    "url": "https://arxiv.org/abs/2611.15315v1",
+    "kind": "paper",
+    "source": "arXiv · 智能体记忆泛检索",
+    "sourceId": "arxiv-broad",
+    "sourceTier": "preprint",
+    "published": "2026-11-11T10:52:21.000Z",
+    "summary": "Language models evolve, but the observations, revisions, and context accumulated through user interactions should remain usable. Each new model must be able to retrieve past evidence, track revisions, and add new observations. We present MIGRO, a decoupled long-term memory system that treats experience as a persistent state shared across successive language models. MIGRO follows a simple principle: preserve historical evidence exactly, organize it approximately, and decide what to retrieve only when the question is known. We call this asymmetric fidelity with deferred selectivity. A shared semantic index supports retrieval, while exact records retain observations and their historical relati…",
+    "summaryZh": "MIGRO提出一种解耦的长期记忆系统，旨在使跨不同语言模型积累的观察、修订和上下文保持可用，并采用一种原则：精确保留历史证据，近似组织，延迟决策检索时机。该系统包括一个共享的语义索引用于检索，精确记录以保留观察及其历史关系。",
+    "why": "提供了处理跨模型交互记忆的新框架，有助于实现可移植的长期记忆功能。",
+    "topics": [
+      "evaluation"
+    ],
+    "tags": [
+      "评测与基准"
+    ],
+    "security": null,
+    "evidence": "预印本 · 原文可核验",
+    "score": 82,
+    "curated": false,
+    "collectedAt": "2026-11-13T05:32:11.726Z",
+    "provenance": "arxiv-broad",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.15107",
+    "title": "From Seeing to Remembering: Brain-Informed Agentic Text-to-Video Generation for Enhancing Memorability",
+    "titleZh": "MemCrafter：增强文本到视频生成的可记忆性",
+    "url": "https://arxiv.org/abs/2611.15107v1",
+    "kind": "paper",
+    "source": "arXiv · 记忆召回补漏",
+    "sourceId": "arxiv-recall",
+    "sourceTier": "preprint",
+    "published": "2026-11-11T06:34:57.000Z",
+    "summary": "Generating videos that faithfully convey intended semantics while remaining memorable to viewers is valuable for applications such as advertising, education, and storytelling. However, memorability-oriented text-to-video generation remains underexplored, as human memory involves complex neural processes that are difficult to model and translate into generation guidance. In this paper, we propose MemCrafter, brain-informed approach that enhances video memorability through iteratively agentic prompt refinement. The agentic framework contains two key components. First, we construct a cortical region-based neuro-memorability signal that predicts video memorability from estimated neural response…",
+    "summaryZh": "MemCrafter提出一种基于大脑信息的代理框架，通过迭代式代理提示优化来增强视频可记忆性。该框架包括两个关键组件：基于皮层区域的可记忆性神经信号，用于预测视频的可记忆性，以及一个代理系统用于优化提示生成。",
+    "why": "该研究探索了基于大脑机制的视频生成方法，为增强视频内容吸引力提供了新方向。",
+    "topics": [
+      "multimodal"
+    ],
+    "tags": [
+      "多模态与感知记忆"
+    ],
+    "security": null,
+    "evidence": "预印本 · 原文可核验",
+    "score": 82,
+    "curated": false,
+    "collectedAt": "2026-11-13T05:32:11.726Z",
+    "provenance": "arxiv-recall",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
     "id": "web:https://www.ithome.com/1/025/295.htm",
     "title": "成都第五代贡嘎人形机器人发布，宣称拥有“全球最领先人形机器人大脑核心技术”",
     "titleZh": "成都发布第五代贡嘎人形机器人，宣称拥有先进具身智能系统",
