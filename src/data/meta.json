@@ -1,14 +1,14 @@
 {
   "version": 1,
-  "checkedAt": "2026-11-13T05:32:11.726Z",
-  "lastSuccessAt": "2026-11-13T05:32:11.726Z",
-  "generatedAt": "2026-11-13T05:32:11.726Z",
+  "checkedAt": "2026-11-14T05:23:34.018Z",
+  "lastSuccessAt": "2026-11-14T05:23:34.018Z",
+  "generatedAt": "2026-11-14T05:23:34.018Z",
   "timezone": "Asia/Shanghai",
-  "date": "2026-11-13",
+  "date": "2026-11-14",
   "seed": false,
-  "added": 14,
-  "updated": 119,
-  "items": 686,
+  "added": 3,
+  "updated": 120,
+  "items": 689,
   "sourcesOk": 22,
   "sourcesTotal": 22,
   "llm": {
@@ -16,20 +16,9 @@
     "error": null
   },
   "addedIds": [
-    "arxiv:2611.16590",
-    "arxiv:2611.16589",
-    "arxiv:2611.16487",
-    "arxiv:2611.16386",
-    "arxiv:2611.16384",
-    "arxiv:2611.16143",
-    "arxiv:2611.15766",
-    "arxiv:2611.15729",
-    "arxiv:2611.15655",
-    "arxiv:2611.15644",
-    "arxiv:2611.15600",
-    "arxiv:2611.15515",
-    "arxiv:2611.15315",
-    "arxiv:2611.15107"
+    "arxiv:2611.17316",
+    "arxiv:2611.17068",
+    "arxiv:2611.16714"
   ],
   "coverage": {
     "coreComplete": true,
