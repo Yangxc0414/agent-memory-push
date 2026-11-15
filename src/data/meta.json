@@ -1,13 +1,13 @@
 {
   "version": 1,
-  "checkedAt": "2026-11-14T05:23:34.018Z",
-  "lastSuccessAt": "2026-11-14T05:23:34.018Z",
-  "generatedAt": "2026-11-14T05:23:34.018Z",
+  "checkedAt": "2026-11-15T05:19:43.073Z",
+  "lastSuccessAt": "2026-11-15T05:19:43.073Z",
+  "generatedAt": "2026-11-15T05:19:43.073Z",
   "timezone": "Asia/Shanghai",
-  "date": "2026-11-14",
+  "date": "2026-11-15",
   "seed": false,
-  "added": 3,
-  "updated": 120,
+  "added": 0,
+  "updated": 116,
   "items": 689,
   "sourcesOk": 22,
   "sourcesTotal": 22,
@@ -15,11 +15,7 @@
     "used": true,
     "error": null
   },
-  "addedIds": [
-    "arxiv:2611.17316",
-    "arxiv:2611.17068",
-    "arxiv:2611.16714"
-  ],
+  "addedIds": [],
   "coverage": {
     "coreComplete": true,
     "recallOk": true,
