@@ -1,5 +1,187 @@
 [
   {
+    "id": "arxiv:2611.18089",
+    "title": "Deep Latents, Long Memory: Latent persistence explains temporal correlations in transformer activations",
+    "titleZh": "潜在持久性解释Transformer激活的时间相关性",
+    "url": "https://arxiv.org/abs/2611.18089",
+    "kind": "paper",
+    "source": "arXiv · cs.CL RSS（API 兜底）",
+    "sourceId": "arxiv-rss-cl",
+    "sourceTier": "preprint",
+    "published": "2026-11-16T05:00:00.000Z",
+    "summary": "arXiv:2611.18089v1 Announce Type: cross Abstract: The hidden layers of Large Language Models (LLMs) are believed to encode representations of the data whose abstraction increases with depth. However, in the absence of an operational notion of abstraction, this statement is hard to test quantitatively. Here, we propose an alternative view, building on the principle that the correlations of a sequence reflect the structure of the process that generated it. We define the autocorrelation function of a layer as the average dot product between its activations at two context positions separated by a lag. Latent variables encoded persistently along the context create slowly decaying tails in the au…",
+    "summaryZh": "论文提出通过层激活的自相关函数来量化LLM隐层中的抽象程度，发现潜在变量沿上下文持久编码会导致自相关尾部缓慢衰减。",
+    "why": "提供量化LLM隐层抽象程度的替代视角，将序列相关性映射到生成过程结构。",
+    "topics": [
+      "mechanism"
+    ],
+    "tags": [
+      "记忆机制与系统"
+    ],
+    "security": {
+      "angles": [
+        "evaluation"
+      ],
+      "note": "规则命中关键词，等待人工复核。"
+    },
+    "evidence": "预印本 · 原文可核验",
+    "score": 86,
+    "curated": false,
+    "collectedAt": "2026-11-16T05:17:39.955Z",
+    "provenance": "arxiv-rss-cl",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2605.25693",
+    "title": "From Facts to Insights: A Persona-Driven Dual Memory Framework and Dataset for Role-Playing Agents",
+    "titleZh": "RoleMem: 角色驱动的双记忆框架与数据集",
+    "url": "https://arxiv.org/abs/2605.25693",
+    "kind": "paper",
+    "source": "arXiv · cs.CL RSS（API 兜底）",
+    "sourceId": "arxiv-rss-cl",
+    "sourceTier": "preprint",
+    "published": "2026-11-16T05:00:00.000Z",
+    "summary": "arXiv:2605.25693v2 Announce Type: replace Abstract: While role-playing agents excel in short-term interactions, long-term conversations overwhelm context windows, motivating external memory frameworks. Current systems typically rely on persona-agnostic summarization, which records facts without persona-specific interpretation, yielding generic responses that compromise persona fidelity. To bridge this gap, we introduce RoleMemo, a dataset featuring four reasoning tasks where the factual fragments must be interpreted through the persona to reach the correct answer. Evaluation on RoleMemo exposes critical limitations of persona-agnostic frameworks. We thus propose DualMem, which decouples mem…",
+    "summaryZh": "针对角色扮演Agent长期对话中上下文窗口溢出及通用摘要损害角色保真度的问题，提出Dataset RoleMemo及解耦记忆的双记忆框架DualMem。",
+    "why": "针对当前记忆系统缺乏角色特定解释的局限，提供专门的角色驱动记忆方案及评测数据集。",
+    "topics": [
+      "evaluation"
+    ],
+    "tags": [
+      "评测与基准"
+    ],
+    "security": {
+      "angles": [
+        "evaluation"
+      ],
+      "note": "规则命中关键词，等待人工复核。"
+    },
+    "evidence": "预印本 · 原文可核验",
+    "score": 86,
+    "curated": false,
+    "collectedAt": "2026-11-16T05:17:39.955Z",
+    "provenance": "arxiv-rss-cl",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.18422",
+    "title": "The State Is Not the Bottleneck: A Paged-State Gated-DeltaNet Tile on a Tri-Mode Multicast Mesh, Bit-Exact from RTL to Silicon",
+    "titleZh": "分页状态在Gated-DeltaNet硬件实现中的开销分析",
+    "url": "https://arxiv.org/abs/2611.18422v1",
+    "kind": "paper",
+    "source": "arXiv · 记忆召回补漏",
+    "sourceId": "arxiv-recall",
+    "sourceTier": "preprint",
+    "published": "2026-11-13T17:01:18.000Z",
+    "summary": "Linear-attention language models replace a growing key-value cache with a recurrent state of fixed size. On an edge FPGA, this state can exceed the on-chip memory and must be paged to external memory. This paper asks whether such paging dominates the cost of decoding (generating tokens). We built a hardware tile that computes one complete layer of a custom 369-million-parameter hybrid Gated DeltaNet model on an Agilex 5 FPGA and pages its recurrent state. The model state needs 6.2 MiB, whereas the device has 0.87 MiB of block memory. Paging adds 26.0 MB of memory traffic per decoded token, at most 11.2 percent of the calculated total. On the board at 75 MHz, with synthetic weights, one toke…",
+    "summaryZh": "研究在边缘FPGA上运行混合Gated-DeltaNet模型时，将递归状态分页至外部内存的成本，实测显示分页仅增加总计算量的11.2%。",
+    "why": "验证了线性注意力模型在硬件边缘部署中，状态分页并非解码瓶颈，支持RTL到硅的比特精确实现。",
+    "topics": [
+      "mechanism"
+    ],
+    "tags": [
+      "记忆机制与系统"
+    ],
+    "security": null,
+    "evidence": "预印本 · 原文可核验",
+    "score": 82,
+    "curated": false,
+    "collectedAt": "2026-11-16T05:17:39.955Z",
+    "provenance": "arxiv-recall",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.18133",
+    "title": "Forget the Lineage: Forward-Secure, Lineage-Complete Cryptographic Erasure for LLM-Agent Memory",
+    "titleZh": "LinEra: LLM Agent记忆的前向安全谱系完整擦除",
+    "url": "https://arxiv.org/abs/2611.18133v1",
+    "kind": "paper",
+    "source": "arXiv · 记忆安全与评测",
+    "sourceId": "arxiv-security",
+    "sourceTier": "preprint",
+    "published": "2026-11-13T13:01:47.000Z",
+    "summary": "Large language model (LLM) agents keep a long-term memory that the model itself writes: summaries, extracted facts and embeddings derived from what users said. Deleting a message is therefore not enough: its derivatives, storage residue and backups survive. We define lineage-complete forward-secure erasure: after a forget request, an adversary that later obtains all storage and the agent's current keys learns nothing about the forgotten input or any memory derived from it. We present LinEra, which encrypts each memory under a key derived from its parents' keys along the derivation graph; source keys come from a puncturable pseudorandom function, so forgetting is a single puncture and every…",
+    "summaryZh": "提出LinEra框架，通过可刺穿伪随机函数密钥派生，实现LLM Agent长期记忆的谱系完整前向安全擦除，确保删除后对手无法获取被遗忘输入及其衍生信息。",
+    "why": "解决了LLM Agent记忆中衍生数据残留的安全问题，定义了基于密钥派生图的单次穿刺擦除机制。",
+    "topics": [
+      "security"
+    ],
+    "tags": [
+      "安全与治理"
+    ],
+    "security": {
+      "angles": [
+        "provenance"
+      ],
+      "note": "规则命中关键词，等待人工复核。"
+    },
+    "evidence": "预印本 · 原文可核验",
+    "score": 86,
+    "curated": false,
+    "collectedAt": "2026-11-16T05:17:39.955Z",
+    "provenance": "arxiv-security",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.17874",
+    "title": "What a Memory Preview Cannot Tell You: Ambiguity in AI Memory Permissions",
+    "titleZh": "记忆规则预览的歧义：自适应测试与显式偏好分析",
+    "url": "https://arxiv.org/abs/2611.17874v1",
+    "kind": "paper",
+    "source": "arXiv · 记忆召回补漏",
+    "sourceId": "arxiv-recall",
+    "sourceTier": "preprint",
+    "published": "2026-11-13T08:04:11.000Z",
+    "summary": "A memory rule states when an assistant may reuse a remembered event, and an editor can confirm a rule by previewing one use it allows and one it blocks. We ask what such a preview lets a person infer about the rule they saved. For an editor with six or twelve valid rules, we enumerate every rule compatible with a preview. Splitting the rules most evenly does not target the question a user cares about. For an explicit preference, two adaptive tests leave all three recommendation scopes open (for a one-off choice the outcome turns on a tie), while one test of transfer to another task settles the question. Weak previews are also the default. Under the intended rule, 36 of 39 possible allowed/b…",
+    "summaryZh": "该预印本探讨了编辑器如何通过预览允许和阻止的案例来确认记忆规则，并枚举了与预览兼容的所有规则。研究发现，对于显式偏好，自适应测试未能确定推荐范围，而针对任务迁移的测试可以解决该问题；同时指出弱预览是默认情况。",
+    "why": "揭示了当前记忆权限预览机制在推断用户意图时存在的逻辑盲区，为记忆系统交互设计提供理论依据。",
+    "topics": [
+      "personal"
+    ],
+    "tags": [
+      "对话与个性化记忆"
+    ],
+    "security": {
+      "angles": [
+        "evaluation"
+      ],
+      "note": "规则命中关键词，等待人工复核。"
+    },
+    "evidence": "预印本 · 原文可核验",
+    "score": 86,
+    "curated": false,
+    "collectedAt": "2026-11-16T05:17:39.955Z",
+    "provenance": "arxiv-recall",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.17864",
+    "title": "Disentangling Forgetting from Utility: Lightweight LLM Unlearning via Orthogonal Null-Space Projection",
+    "titleZh": "UUE：基于正交零空间投影的轻量级 LLM 遗忘方法",
+    "url": "https://arxiv.org/abs/2611.17864v1",
+    "kind": "paper",
+    "source": "arXiv · 记忆召回补漏",
+    "sourceId": "arxiv-recall",
+    "sourceTier": "preprint",
+    "published": "2026-11-13T07:50:56.000Z",
+    "summary": "Large Language Models (LLMs) pose significant security risks by retaining private or hazardous information, creating an urgent need for unlearning techniques that excise specific knowledge without compromising general utility. However, prevailing fine-tuning-based unlearning methods struggle to achieve this balance, often suffering from computational inefficiency and unintended utility degradation due to the entangled nature of knowledge within model parameters. To disentangle forgetting from utility, we propose UUE, a theoretically grounded framework that reformulates unlearning as controllable model editing. First, UUE projects parameter updates into the orthogonal left null space of reta…",
+    "summaryZh": "该预印本提出了 UUE 框架，将模型遗忘重构为可控模型编辑，通过将参数更新投影到保留知识的正交左零空间，旨在分离遗忘与效用，解决现有微调方法效率低且损害通用能力的问题。",
+    "why": "提出了一种不同于传统微调的轻量级遗忘技术方案，尝试从理论上解决知识保留与删除之间的权衡难题。",
+    "topics": [
+      "security"
+    ],
+    "tags": [
+      "安全与治理"
+    ],
+    "security": null,
+    "evidence": "预印本 · 原文可核验",
+    "score": 82,
+    "curated": false,
+    "collectedAt": "2026-11-16T05:17:39.955Z",
+    "provenance": "arxiv-recall",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
     "id": "arxiv:2611.17316",
     "title": "CoReMem: Cost-Internalizing Memory for Successive Coding Tasks with Prospective Valuation",
     "titleZh": "CoReMem：面向连续编码任务的成本内化记忆框架",
