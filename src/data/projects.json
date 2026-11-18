@@ -1,6 +1,6 @@
 {
-  "checkedAt": "2026-11-18T06:21:45.357Z",
-  "starsCheckedAt": "2026-11-18T06:21:45.357Z",
+  "checkedAt": "2026-11-18T07:25:43.134Z",
+  "starsCheckedAt": "2026-11-18T07:25:43.134Z",
   "note": "Stars 是 GitHub 快照，不是热度结论；只收录与 Agent 记忆直接相关或构成其检索基础设施的项目。",
   "projects": [
     {
@@ -9,11 +9,11 @@
       "url": "https://github.com/public-apis/public-apis",
       "descriptionZh": "A collective list of free APIs",
       "why": "GitHub Search 自动收录；等待人工确认其是否为完整记忆系统。",
-      "stars": 499917,
+      "stars": 499935,
       "language": "Python",
       "license": "MIT",
-      "updatedAt": "2026-11-18T06:29:13Z",
-      "starsCheckedAt": "2026-11-18T06:21:45.357Z",
+      "updatedAt": "2026-11-18T07:17:03Z",
+      "starsCheckedAt": "2026-11-18T07:25:43.134Z",
       "category": "社区项目"
     },
     {
@@ -22,11 +22,11 @@
       "url": "https://github.com/openclaw/openclaw",
       "descriptionZh": "The AI that really does things. Any OS. Any Platform. The lobster way. 🦞 ",
       "why": "GitHub Search 自动收录；等待人工确认其是否为完整记忆系统。",
-      "stars": 394700,
+      "stars": 394701,
       "language": "TypeScript",
       "license": "MIT",
-      "updatedAt": "2026-11-18T06:27:11Z",
-      "starsCheckedAt": "2026-11-18T06:21:45.357Z",
+      "updatedAt": "2026-11-18T07:17:07Z",
+      "starsCheckedAt": "2026-11-18T07:25:43.134Z",
       "category": "社区项目"
     },
     {
@@ -35,11 +35,11 @@
       "url": "https://github.com/awesome-selfhosted/awesome-selfhosted",
       "descriptionZh": "A list of Free Software network services and web applications which can be hosted on your own servers",
       "why": "GitHub Search 自动收录；等待人工确认其是否为完整记忆系统。",
-      "stars": 338177,
+      "stars": 338187,
       "language": "",
       "license": "NOASSERTION",
-      "updatedAt": "2026-11-18T06:28:33Z",
-      "starsCheckedAt": "2026-11-18T06:21:45.357Z",
+      "updatedAt": "2026-11-18T07:17:41Z",
+      "starsCheckedAt": "2026-11-18T07:25:43.134Z",
       "category": "社区项目"
     },
     {
@@ -48,11 +48,11 @@
       "url": "https://github.com/vinta/awesome-python",
       "descriptionZh": "The definitive list that answers \"I want to do X in Python, which tool should I use?\"",
       "why": "GitHub Search 自动收录；等待人工确认其是否为完整记忆系统。",
-      "stars": 335541,
+      "stars": 335552,
       "language": "Python",
       "license": "NOASSERTION",
-      "updatedAt": "2026-11-18T06:29:00Z",
-      "starsCheckedAt": "2026-11-18T06:21:45.357Z",
+      "updatedAt": "2026-11-18T07:21:12Z",
+      "starsCheckedAt": "2026-11-18T07:25:43.134Z",
       "category": "社区项目"
     },
     {
@@ -61,11 +61,11 @@
       "url": "https://github.com/affaan-m/ECC",
       "descriptionZh": "The agent harness performance optimization system. Skills, instincts, memory, security, and research-first development for Claude Code, Codex, Opencode, Cursor and beyond.",
       "why": "GitHub Search 自动收录；等待人工确认其是否为完整记忆系统。",
-      "stars": 305776,
+      "stars": 305841,
       "language": "JavaScript",
       "license": "MIT",
-      "updatedAt": "2026-11-18T06:29:00Z",
-      "starsCheckedAt": "2026-11-18T06:21:45.357Z",
+      "updatedAt": "2026-11-18T07:24:42Z",
+      "starsCheckedAt": "2026-11-18T07:25:43.134Z",
       "category": "社区项目"
     },
     {
@@ -74,11 +74,11 @@
       "url": "https://github.com/NousResearch/hermes-agent",
       "descriptionZh": "The agent that grows with you",
       "why": "GitHub Search 自动收录；等待人工确认其是否为完整记忆系统。",
-      "stars": 264295,
+      "stars": 264306,
       "language": "Python",
       "license": "MIT",
-      "updatedAt": "2026-11-18T06:29:50Z",
-      "starsCheckedAt": "2026-11-18T06:21:45.357Z",
+      "updatedAt": "2026-11-18T07:16:13Z",
+      "starsCheckedAt": "2026-11-18T07:25:43.134Z",
       "category": "社区项目"
     },
     {
@@ -87,11 +87,11 @@
       "url": "https://github.com/trimstray/the-book-of-secret-knowledge",
       "descriptionZh": "A collection of inspiring lists, manuals, cheatsheets, blogs, hacks, one-liners, cli/web tools and more.",
       "why": "GitHub Search 自动收录；等待人工确认其是否为完整记忆系统。",
-      "stars": 259379,
+      "stars": 259381,
       "language": "",
       "license": "MIT",
-      "updatedAt": "2026-11-18T06:29:11Z",
-      "starsCheckedAt": "2026-11-18T06:21:45.357Z",
+      "updatedAt": "2026-11-18T07:02:58Z",
+      "starsCheckedAt": "2026-11-18T07:25:43.134Z",
       "category": "社区项目"
     },
     {
@@ -100,11 +100,11 @@
       "url": "https://github.com/avelino/awesome-go",
       "descriptionZh": "A curated list of awesome Go frameworks, libraries and software",
       "why": "GitHub Search 自动收录；等待人工确认其是否为完整记忆系统。",
-      "stars": 194541,
+      "stars": 194544,
       "language": "Go",
       "license": "MIT",
-      "updatedAt": "2026-11-18T06:29:10Z",
-      "starsCheckedAt": "2026-11-18T06:21:45.357Z",
+      "updatedAt": "2026-11-18T07:25:47Z",
+      "starsCheckedAt": "2026-11-18T07:25:43.134Z",
       "category": "社区项目"
     },
     {
@@ -113,11 +113,11 @@
       "url": "https://github.com/ollama/ollama",
       "descriptionZh": "Get up and running with Kimi, GLM, MiniMax, DeepSeek, gpt-oss, Qwen, Gemma and other models.",
       "why": "GitHub Search 自动收录；等待人工确认其是否为完整记忆系统。",
-      "stars": 187473,
+      "stars": 187477,
       "language": "Go",
       "license": "MIT",
-      "updatedAt": "2026-11-18T06:30:10Z",
-      "starsCheckedAt": "2026-11-18T06:21:45.357Z",
+      "updatedAt": "2026-11-18T07:01:32Z",
+      "starsCheckedAt": "2026-11-18T07:25:43.134Z",
       "category": "社区项目"
     },
     {
@@ -126,11 +126,11 @@
       "url": "https://github.com/msitarzewski/agency-agents",
       "descriptionZh": "A complete AI agency at your fingertips - From frontend wizards to Reddit community ninjas, from whimsy injectors to reality checkers. Each agent is a specialized expert with personality, processes, and proven deliverables.",
       "why": "GitHub Search 自动收录；等待人工确认其是否为完整记忆系统。",
-      "stars": 169064,
+      "stars": 169070,
       "language": "Shell",
       "license": "MIT",
-      "updatedAt": "2026-11-18T06:29:09Z",
-      "starsCheckedAt": "2026-11-18T06:21:45.357Z",
+      "updatedAt": "2026-11-18T07:15:00Z",
+      "starsCheckedAt": "2026-11-18T07:25:43.134Z",
       "category": "社区项目"
     },
     {
@@ -143,7 +143,7 @@
       "language": "",
       "license": "",
       "updatedAt": "2026-11-18T06:03:23Z",
-      "starsCheckedAt": "2026-11-18T06:21:45.357Z",
+      "starsCheckedAt": "2026-11-18T07:25:43.134Z",
       "category": "社区项目"
     },
     {
@@ -165,11 +165,11 @@
       "url": "https://github.com/farion1231/cc-switch",
       "descriptionZh": "A cross-platform desktop All-in-One assistant for Claude Code, Codex, OpenCode, OpenClaw, Grok Build & Hermes Agent. Only official website: ccswitch.io",
       "why": "GitHub Search 自动收录；等待人工确认其是否为完整记忆系统。",
-      "stars": 155339,
+      "stars": 155362,
       "language": "Rust",
       "license": "MIT",
-      "updatedAt": "2026-11-18T06:29:27Z",
-      "starsCheckedAt": "2026-11-18T06:21:45.357Z",
+      "updatedAt": "2026-11-18T07:24:14Z",
+      "starsCheckedAt": "2026-11-18T07:25:43.134Z",
       "category": "社区项目"
     },
     {
@@ -178,11 +178,11 @@
       "url": "https://github.com/Graphify-Labs/graphify",
       "descriptionZh": "Turn any codebase, with its docs, SQL schemas, configs, and PDFs, into a queryable knowledge graph. A /graphify skill for Claude Code, Cursor, Codex, and Gemini CLI: local deterministic AST parsing, every edge explained, no vector store.",
       "why": "GitHub Search 自动收录；等待人工确认其是否为完整记忆系统。",
-      "stars": 149777,
+      "stars": 149802,
       "language": "Python",
       "license": "Apache-2.0",
-      "updatedAt": "2026-11-18T06:25:54Z",
-      "starsCheckedAt": "2026-11-18T06:21:45.357Z",
+      "updatedAt": "2026-11-18T07:25:24Z",
+      "starsCheckedAt": "2026-11-18T07:25:43.134Z",
       "category": "社区项目"
     },
     {
@@ -191,11 +191,11 @@
       "url": "https://github.com/Shubhamsaboo/awesome-llm-apps",
       "descriptionZh": "100+ AI Agents, Agent Skills and RAG Apps - Free and Open Source.",
       "why": "GitHub Search 自动收录；等待人工确认其是否为完整记忆系统。",
-      "stars": 144986,
+      "stars": 144987,
       "language": "Python",
       "license": "Apache-2.0",
-      "updatedAt": "2026-11-18T06:20:20Z",
-      "starsCheckedAt": "2026-11-18T06:21:45.357Z",
+      "updatedAt": "2026-11-18T07:21:14Z",
+      "starsCheckedAt": "2026-11-18T07:25:43.134Z",
       "category": "社区项目"
     },
     {
@@ -204,11 +204,11 @@
       "url": "https://github.com/ripienaar/free-for-dev",
       "descriptionZh": "A list of SaaS, PaaS and IaaS offerings that have free tiers of interest to devops and infradev",
       "why": "GitHub Search 自动收录；等待人工确认其是否为完整记忆系统。",
-      "stars": 143094,
+      "stars": 143098,
       "language": "HTML",
       "license": "",
-      "updatedAt": "2026-11-18T06:04:37Z",
-      "starsCheckedAt": "2026-11-18T06:21:45.357Z",
+      "updatedAt": "2026-11-18T07:06:49Z",
+      "starsCheckedAt": "2026-11-18T07:25:43.134Z",
       "category": "社区项目"
     },
     {
@@ -217,11 +217,11 @@
       "url": "https://github.com/garrytan/gstack",
       "descriptionZh": "Use Garry Tan's exact Claude Code setup: 23 opinionated tools that serve as CEO, Designer, Eng Manager, Release Manager, Doc Engineer, and QA",
       "why": "GitHub Search 自动收录；等待人工确认其是否为完整记忆系统。",
-      "stars": 141950,
+      "stars": 141955,
       "language": "TypeScript",
       "license": "MIT",
-      "updatedAt": "2026-11-18T06:10:09Z",
-      "starsCheckedAt": "2026-11-18T06:21:45.357Z",
+      "updatedAt": "2026-11-18T07:25:44Z",
+      "starsCheckedAt": "2026-11-18T07:25:43.134Z",
       "category": "社区项目"
     },
     {
@@ -230,11 +230,11 @@
       "url": "https://github.com/TauricResearch/TradingAgents",
       "descriptionZh": "TradingAgents: Multi-Agents LLM Financial Trading Framework",
       "why": "GitHub Search 自动收录；等待人工确认其是否为完整记忆系统。",
-      "stars": 122999,
+      "stars": 123009,
       "language": "Python",
       "license": "Apache-2.0",
-      "updatedAt": "2026-11-18T06:27:02Z",
-      "starsCheckedAt": "2026-11-18T06:21:45.357Z",
+      "updatedAt": "2026-11-18T07:24:17Z",
+      "starsCheckedAt": "2026-11-18T07:25:43.134Z",
       "category": "社区项目"
     },
     {
@@ -243,11 +243,11 @@
       "url": "https://github.com/JuliusBrussee/caveman",
       "descriptionZh": "🪨 why use many token when few token do trick. Viral skill + proxy for coding agents that cuts 65% of tokens by talking like a caveman.",
       "why": "GitHub Search 自动收录；等待人工确认其是否为完整记忆系统。",
-      "stars": 121132,
+      "stars": 121141,
       "language": "Go",
       "license": "Apache-2.0",
-      "updatedAt": "2026-11-18T06:28:14Z",
-      "starsCheckedAt": "2026-11-18T06:21:45.357Z",
+      "updatedAt": "2026-11-18T07:21:49Z",
+      "starsCheckedAt": "2026-11-18T07:25:43.134Z",
       "category": "社区项目"
     },
     {
@@ -256,11 +256,11 @@
       "url": "https://github.com/jaywcjlove/awesome-mac",
       "descriptionZh": " This project is dedicated to collecting high-quality macOS software and organizing them systematically by different categories for easy search and use.",
       "why": "GitHub Search 自动收录；等待人工确认其是否为完整记忆系统。",
-      "stars": 118785,
+      "stars": 118790,
       "language": "Swift",
       "license": "CC0-1.0",
-      "updatedAt": "2026-11-18T06:30:25Z",
-      "starsCheckedAt": "2026-11-18T06:21:45.357Z",
+      "updatedAt": "2026-11-18T07:20:12Z",
+      "starsCheckedAt": "2026-11-18T07:25:43.134Z",
       "category": "社区项目"
     },
     {
@@ -269,11 +269,11 @@
       "url": "https://github.com/thedotmack/claude-mem",
       "descriptionZh": "自动捕获编程 Agent 的会话活动，压缩后在未来任务中注入相关上下文，支持多种编程工具。",
       "why": "把“会话结束后的记忆”做成编程 Agent 的默认能力，是 coding memory 的代表项目。",
-      "stars": 118065,
+      "stars": 118072,
       "language": "TypeScript",
       "license": "Apache-2.0",
-      "updatedAt": "2026-11-18T06:29:28Z",
-      "starsCheckedAt": "2026-11-18T06:21:45.357Z",
+      "updatedAt": "2026-11-18T07:17:56Z",
+      "starsCheckedAt": "2026-11-18T07:25:43.134Z",
       "category": "编程记忆"
     },
     {
@@ -282,11 +282,11 @@
       "url": "https://github.com/paperclipai/paperclip",
       "descriptionZh": "The open-source app everyone uses to manage agents at work",
       "why": "GitHub Search 自动收录；等待人工确认其是否为完整记忆系统。",
-      "stars": 114637,
+      "stars": 114645,
       "language": "TypeScript",
       "license": "MIT",
-      "updatedAt": "2026-11-18T06:29:24Z",
-      "starsCheckedAt": "2026-11-18T06:21:45.357Z",
+      "updatedAt": "2026-11-18T07:22:18Z",
+      "starsCheckedAt": "2026-11-18T07:25:43.134Z",
       "category": "社区项目"
     },
     {
@@ -295,11 +295,11 @@
       "url": "https://github.com/nexu-io/open-design",
       "descriptionZh": "The 1st Collaborative AI Design Agent Workspace. Local-first and open source. Create motion, prototypes, websites, apps, dashboards, presentations, images, and videos with your team and AI agents. Share work, exchange feedback, and iterate together in one workspace.",
       "why": "GitHub Search 自动收录；等待人工确认其是否为完整记忆系统。",
-      "stars": 108165,
+      "stars": 108171,
       "language": "TypeScript",
       "license": "Apache-2.0",
-      "updatedAt": "2026-11-18T06:23:02Z",
-      "starsCheckedAt": "2026-11-18T06:21:45.357Z",
+      "updatedAt": "2026-11-18T07:18:52Z",
+      "starsCheckedAt": "2026-11-18T07:25:43.134Z",
       "category": "社区项目"
     },
     {
@@ -308,11 +308,11 @@
       "url": "https://github.com/ruvnet/RuView",
       "descriptionZh": "π RuView turns commodity WiFi signals into real-time spatial intelligence, vital sign monitoring, and presence detection — all without a single pixel of video.",
       "why": "GitHub Search 自动收录；等待人工确认其是否为完整记忆系统。",
-      "stars": 104545,
+      "stars": 104546,
       "language": "Rust",
       "license": "MIT",
-      "updatedAt": "2026-11-18T06:29:07Z",
-      "starsCheckedAt": "2026-11-18T06:21:45.357Z",
+      "updatedAt": "2026-11-18T07:24:50Z",
+      "starsCheckedAt": "2026-11-18T07:25:43.134Z",
       "category": "社区项目"
     },
     {
@@ -321,11 +321,11 @@
       "url": "https://github.com/D4Vinci/Scrapling",
       "descriptionZh": "🕷️ The BEST Web Scraping framework that handles everything from a single request to a full-scale crawl! Don't be shy, join here: https://discord.gg/EMgGbDceNQ and follow here for daily tips and tricks: https://x.com/Scrapling_dev",
       "why": "GitHub Search 自动收录；等待人工确认其是否为完整记忆系统。",
-      "stars": 104014,
+      "stars": 104023,
       "language": "Python",
       "license": "BSD-3-Clause",
-      "updatedAt": "2026-11-18T06:25:25Z",
-      "starsCheckedAt": "2026-11-18T06:21:45.357Z",
+      "updatedAt": "2026-11-18T07:21:32Z",
+      "starsCheckedAt": "2026-11-18T07:25:43.134Z",
       "category": "社区项目"
     },
     {
@@ -334,11 +334,11 @@
       "url": "https://github.com/punkpeye/awesome-mcp-servers",
       "descriptionZh": "A collection of MCP servers.",
       "why": "GitHub Search 自动收录；等待人工确认其是否为完整记忆系统。",
-      "stars": 97831,
+      "stars": 97834,
       "language": "",
       "license": "MIT",
-      "updatedAt": "2026-11-18T05:39:15Z",
-      "starsCheckedAt": "2026-11-18T06:21:45.357Z",
+      "updatedAt": "2026-11-18T07:25:20Z",
+      "starsCheckedAt": "2026-11-18T07:25:43.134Z",
       "category": "社区项目"
     },
     {
@@ -347,11 +347,11 @@
       "url": "https://github.com/odysseus-dev/odysseus",
       "descriptionZh": "Self-hosted AI workspace. ",
       "why": "GitHub Search 自动收录；等待人工确认其是否为完整记忆系统。",
-      "stars": 95785,
+      "stars": 95787,
       "language": "Python",
       "license": "AGPL-3.0",
-      "updatedAt": "2026-11-18T06:21:20Z",
-      "starsCheckedAt": "2026-11-18T06:21:45.357Z",
+      "updatedAt": "2026-11-18T06:51:42Z",
+      "starsCheckedAt": "2026-11-18T07:25:43.134Z",
       "category": "社区项目"
     },
     {
@@ -360,11 +360,11 @@
       "url": "https://github.com/PaddlePaddle/PaddleOCR",
       "descriptionZh": "Turn any PDF or image document into structured data for your AI. A powerful, lightweight OCR toolkit that bridges the gap between images/PDFs and LLMs. Supports 100+ languages.",
       "why": "GitHub Search 自动收录；等待人工确认其是否为完整记忆系统。",
-      "stars": 92840,
+      "stars": 92843,
       "language": "Python",
       "license": "Apache-2.0",
-      "updatedAt": "2026-11-18T06:12:07Z",
-      "starsCheckedAt": "2026-11-18T06:21:45.357Z",
+      "updatedAt": "2026-11-18T06:49:21Z",
+      "starsCheckedAt": "2026-11-18T07:25:43.134Z",
       "category": "社区项目"
     },
     {
@@ -373,11 +373,11 @@
       "url": "https://github.com/modelcontextprotocol/servers",
       "descriptionZh": "Model Context Protocol Servers",
       "why": "GitHub Search 自动收录；等待人工确认其是否为完整记忆系统。",
-      "stars": 92078,
+      "stars": 92077,
       "language": "TypeScript",
       "license": "NOASSERTION",
-      "updatedAt": "2026-11-18T06:09:27Z",
-      "starsCheckedAt": "2026-11-18T06:21:45.357Z",
+      "updatedAt": "2026-11-18T06:48:57Z",
+      "starsCheckedAt": "2026-11-18T07:25:43.134Z",
       "category": "社区项目"
     },
     {

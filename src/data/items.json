@@ -177,6 +177,425 @@
     "summaryZhBasis": "原文摘要"
   },
   {
+    "id": "arxiv:2611.23010",
+    "title": "PhysScope: Agentic Multimodal Physics Reasoning with Grounded Visual Memory",
+    "titleZh": "PhysScope: 支持视觉记忆与自我纠正的多模态物理推理框架",
+    "url": "https://arxiv.org/abs/2611.23010v1",
+    "kind": "paper",
+    "source": "arXiv · 智能体记忆与自进化",
+    "sourceId": "arxiv-memory",
+    "sourceTier": "preprint",
+    "published": "2026-11-17T16:22:21.000Z",
+    "summary": "Vision-language models (VLMs) can correctly interpret physics diagrams yet apply constraints outside the states or conditions in which they hold, causing premise errors to propagate through subsequent calculations. We introduce PhysScope, an inference-time visual harness that supports self-correction of these scope mismatches without updating model weights. PhysScope enables the model to link physical scopes directly to its visual observations and explicitly constructs derived views to support reasoning. The harness imposes explicit constraints on state distinctions, conditions, and physical scopes during model reasoning, and checks agent-proposed revisions against sources and scopes. Accep…",
+    "summaryZh": "该研究提出了一种名为PhysScope的推理时视觉框架，通过显式构建视觉记忆并链接物理适用范围，支持模型在权重更新前后自我纠正前提错误。",
+    "why": "提供了一种推理时视觉记忆框架，可用于增强多模态模型在物理推理中的自我纠正能力。",
+    "topics": [
+      "multimodal"
+    ],
+    "tags": [
+      "多模态与感知记忆"
+    ],
+    "security": {
+      "angles": [
+        "provenance"
+      ],
+      "note": "规则命中关键词，等待人工复核。"
+    },
+    "evidence": "预印本 · 原文可核验",
+    "score": 86,
+    "curated": false,
+    "collectedAt": "2026-11-18T07:25:43.134Z",
+    "provenance": "arxiv-memory",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.22697",
+    "title": "Remembered as Brief: Stored Preferences SilentlyRemove Decision-Critical Information",
+    "titleZh": "Remembered as Brief: 存储偏好如何悄然移除对决策至关重要的信息",
+    "url": "https://arxiv.org/abs/2611.22697v1",
+    "kind": "paper",
+    "source": "arXiv · 记忆召回补漏",
+    "sourceId": "arxiv-recall",
+    "sourceTier": "preprint",
+    "published": "2026-11-17T12:40:42.000Z",
+    "summary": "People increasingly learn what they need for decisions about health, money, law and safety from AI assistants, and what an assistant leaves out the user never sees. An answer with a warning removed can be true in every sentence, so fact-checks pass it, and an assistant with memory applies a preference stored once to later questions the user never had in mind. We introduce \\bench{}, an Inspect benchmark of 100 everyday decisions across 25 domains in which only the assistant's memory of the user varies: the user states a belief, the model infers it from a remark, or a web page the user asked to summarise plants it. Testing five models, we find three effects. First, after summarising a page wi…",
+    "summaryZh": "该研究提出了一种基准，用于测试AI助手的长期记忆在应用用户偏好时，是否会悄无声息地移除对决策至关重要的信息。",
+    "why": "揭示了AI助手长期记忆应用用户偏好时可能带来的信息损失风险，为记忆召回与偏好管理提供参考。",
+    "topics": [
+      "evaluation"
+    ],
+    "tags": [
+      "评测与基准"
+    ],
+    "security": {
+      "angles": [
+        "evaluation"
+      ],
+      "note": "规则命中关键词，等待人工复核。"
+    },
+    "evidence": "预印本 · 原文可核验",
+    "score": 86,
+    "curated": false,
+    "collectedAt": "2026-11-18T07:25:43.134Z",
+    "provenance": "arxiv-recall",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.22608",
+    "title": "PlaceTally: A Test-Time Memory Model for Constructing Place Graphs",
+    "titleZh": "PlaceTally: 用于构建地点图的测试时记忆模型",
+    "url": "https://arxiv.org/abs/2611.22608v1",
+    "kind": "paper",
+    "source": "arXiv · 记忆召回补漏",
+    "sourceId": "arxiv-recall",
+    "sourceTier": "preprint",
+    "published": "2026-11-17T11:23:50.000Z",
+    "summary": "Counting distinct objects in a video is hard when the camera returns to places it has seen. A vision-language model that reads the whole video answers with a few small numbers, and one that reads it in parts counts an object again in every part that shows it. Object trackers need the category before the video is read, or a fixed vocabulary. We observe that a memory for counting does not need to know what it is looking for, only where it has been: objects rarely leave a room between visits, so parts of a video grouped by place share almost no objects, and a place can be recognised before any question is asked. Building on this, we introduce PlaceTally, a question-blind test-time memory model…",
+    "summaryZh": "该模型通过一种不依赖目标类别的测试时记忆机制，将视频中的地点进行分组，从而在视频计数任务中避免重复计算。",
+    "why": "提出了一种通过“地点”记忆来优化视频对象计数任务的新方法，有助于处理视觉重复问题。",
+    "topics": [
+      "multimodal"
+    ],
+    "tags": [
+      "多模态与感知记忆"
+    ],
+    "security": {
+      "angles": [
+        "evaluation"
+      ],
+      "note": "规则命中关键词，等待人工复核。"
+    },
+    "evidence": "预印本 · 原文可核验",
+    "score": 86,
+    "curated": false,
+    "collectedAt": "2026-11-18T07:25:43.134Z",
+    "provenance": "arxiv-recall",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.22470",
+    "title": "Escaping Latent Traps by Remembering: Training-Free Episodic Kernel Repulsion for World-Model Planning",
+    "titleZh": "通过记忆逃离潜在陷阱：用于世界模型规划的训练免费情景核斥力",
+    "url": "https://arxiv.org/abs/2611.22470v1",
+    "kind": "paper",
+    "source": "arXiv · 智能体记忆与自进化",
+    "sourceId": "arxiv-memory",
+    "sourceTier": "preprint",
+    "published": "2026-11-17T09:30:07.000Z",
+    "summary": "Latent world models plan towards a goal image by minimising the distance between predicted and goal latents. This distance is not geodesic: it has local minima, latent traps, behind walls, at corners and in dead ends, and memoryless receding-horizon replanning keeps the agent in them, revisiting states far from the goal. We propose Episodic Kernel Repulsion (EKR), a training-free cost term that penalises candidate plans by a top-$k$ Gaussian kernel to a novelty-gated memory of the latents the agent has actually visited, rescaled by the current base cost so that its strength is comparable across models. Across two JEPA world models and four benchmarks, EKR raises average success from 31.8% t…",
+    "summaryZh": "该研究提出了一种名为EKR的训练免费方法，利用记忆机制为已访问状态添加斥力项，从而在基于潜在世界模型的规划任务中避免局部最小值。",
+    "why": "提供了一种利用情景记忆改进世界模型规划路径的方法，有助于解决无记忆重规划导致的局部陷阱问题。",
+    "topics": [
+      "evaluation"
+    ],
+    "tags": [
+      "评测与基准"
+    ],
+    "security": {
+      "angles": [
+        "evaluation"
+      ],
+      "note": "规则命中关键词，等待人工复核。"
+    },
+    "evidence": "预印本 · 原文可核验",
+    "score": 86,
+    "curated": false,
+    "collectedAt": "2026-11-18T07:25:43.134Z",
+    "provenance": "arxiv-memory",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.22321",
+    "title": "Beyond Episodic Recall: Experience-to-Knowledge Evolution for Lifelong Embodied Navigation",
+    "titleZh": "EvoNav：双时间尺度的终身具身导航记忆框架",
+    "url": "https://arxiv.org/abs/2611.22321v1",
+    "kind": "paper",
+    "source": "arXiv · 智能体记忆与自进化",
+    "sourceId": "arxiv-memory",
+    "sourceTier": "preprint",
+    "published": "2026-11-17T07:18:30.000Z",
+    "summary": "Lifelong embodied navigation requires agents to accumulate experience through continuous interaction and reuse it for subsequent goal searches. Existing memory-enhanced methods typically retain historical observations or construct structured scene representations. However, storing observations or high-dimensional semantic embeddings incurs growing storage costs. Meanwhile, structured representations support retrieval and semantic reasoning but do not explicitly evolve accumulated experience into environment-specific knowledge. To address these limitations, we propose Experience-Evolving Memory (EvoNav), a novel two-timescale memory framework. It organizes semantic observations, spatial rela…",
+    "summaryZh": "该论文提出名为 EvoNav 的双时间尺度记忆框架，旨在将积累的语义观察显式演化为环境特定的知识，以解决传统方法存储成本高且无法显式进化问题。这是基于 arXiv 预印本内容的概括，目前尚无第三方基准验证结果。",
+    "why": "不同于仅存储观察或静态结构表示，该工作强调了从“经验”到“知识”的显式演化过程，为终身具身导航中的记忆管理提供了新的架构思路。",
+    "topics": [
+      "embodied"
+    ],
+    "tags": [
+      "具身与空间记忆"
+    ],
+    "security": null,
+    "evidence": "预印本 · 原文可核验",
+    "score": 82,
+    "curated": false,
+    "collectedAt": "2026-11-18T07:25:43.134Z",
+    "provenance": "arxiv-memory",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.22299",
+    "title": "Harnesses That Improve Themselves: A Unifying Framework for Self-Improving Agent Harnesses",
+    "titleZh": "自我改进的智能体框架：统一自优化 Agent Harness 的设计范式",
+    "url": "https://arxiv.org/abs/2611.22299v1",
+    "kind": "paper",
+    "source": "arXiv · 智能体记忆泛检索",
+    "sourceId": "arxiv-broad",
+    "sourceTier": "preprint",
+    "published": "2026-11-17T06:55:41.000Z",
+    "summary": "Whether a foundation model succeeds as an autonomous agent depends as much on its runtime software as on its weights. This runtime, the agent harness, manages context and memory, steers multi-turn control, executes tool actions in sandboxes, and verifies work before stopping. Because models differ in how they use tools and how they fail, a static harness tuned for one model or task often stalls, wastes tokens, or regresses on another. This bottleneck has driven a shift from prompt tuning to self-improving agent harnesses: systems that inspect their own execution traces, separate runtime bugs from model limits, and rewrite their own code. We present a unifying architectural and design framew…",
+    "summaryZh": "论文提出一种统一的架构和设计框架，用于构建能够自我检查执行轨迹、区分运行时错误与模型局限并重写代码的自改进智能体运行时（Harness）。该工作基于 arXiv 预印本，未提供具体的量化对比数据。",
+    "why": "从静态提示词调优转向可自我修改代码的运行时框架，有助于解决不同模型间运行时表现不稳定的问题，为智能体系统的可维护性提供了新的工程视角。",
+    "topics": [
+      "tools"
+    ],
+    "tags": [
+      "工具与项目发布"
+    ],
+    "security": {
+      "angles": [
+        "provenance"
+      ],
+      "note": "规则命中关键词，等待人工复核。"
+    },
+    "evidence": "预印本 · 原文可核验",
+    "score": 86,
+    "curated": false,
+    "collectedAt": "2026-11-18T07:25:43.134Z",
+    "provenance": "arxiv-broad",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.22294",
+    "title": "Perception into Imagination: Executable Memory for World Models",
+    "titleZh": "EPM：支持世界模型的可执行感知记忆框架",
+    "url": "https://arxiv.org/abs/2611.22294v1",
+    "kind": "paper",
+    "source": "arXiv · 智能体记忆与自进化",
+    "sourceId": "arxiv-memory",
+    "sourceTier": "preprint",
+    "published": "2026-11-17T06:52:02.000Z",
+    "summary": "Physical agents must use what they previously saw or touched after visibility or contact is lost. Their actions change the implications of these remembered facts. We introduce executable perceptual memory (EPM), a world-model framework that advances explicit perceptual state alongside neural latent dynamics during imagination. Its evolving read-out informs reward prediction, value estimation and policy learning. We align reward inputs with the transitions that produced them and supervise the reward head on open-loop rollouts of recorded actions. On Memory Maze $13\\times13$, EPM reaches 30.37 return at 1M interactions, compared with 23.37 when the same evolving read-out informs only policy a…",
+    "summaryZh": "提出可执行感知记忆（EPM）框架，在想象过程中推进显式感知状态与神经潜在动态，并通过演化的读出层指导奖励预测和价值估计。根据原文数据，在 Memory Maze 任务中，EPM 达到 30.37 的回报，高于仅用该读出指导策略学习时的 23.37。",
+    "why": "将显式感知状态与世界模型动态结合，并用于监督奖励头，提供了在可见性丢失后利用过往感知的具体方法，且提供了特定基准下的性能对比数据。",
+    "topics": [
+      "tools"
+    ],
+    "tags": [
+      "工具与项目发布"
+    ],
+    "security": null,
+    "evidence": "预印本 · 原文可核验",
+    "score": 82,
+    "curated": false,
+    "collectedAt": "2026-11-18T07:25:43.134Z",
+    "provenance": "arxiv-memory",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.22274",
+    "title": "GuardAgent: A Memory-Augmented Agentic Framework for Adaptive Detection of Adversarial Promotions in LLM-Based Recommendation",
+    "titleZh": "GuardAgent：检测 LLM 推荐系统中对抗性推广的记忆增强框架",
+    "url": "https://arxiv.org/abs/2611.22274v1",
+    "kind": "paper",
+    "source": "arXiv · 智能体记忆与自进化",
+    "sourceId": "arxiv-memory",
+    "sourceTier": "preprint",
+    "published": "2026-11-17T06:20:53.000Z",
+    "summary": "In traditional recommender systems (RSs), textual information typically serves as auxiliary signals for representation learning. In contrast, in LLM-based RSs, textual information becomes the primary medium for recommendation generation through semantic understanding and reasoning. This shift fundamentally changes the attack surface, making promotion-driven manipulations more feasible, effective, and harder to detect. However, effectively detecting such attacks remains largely unexplored. To fill this gap, we present the first systematic study on detecting promotion-driven attacks against LLM-based RSs, aiming to safeguard next-generation recommendation platforms. Specifically, we propose G…",
+    "summaryZh": "针对 LLM 推荐系统中文本成为主要交互介质带来的新攻击面，提出 GuardAgent 框架以检测由推广驱动的对抗性操纵。作者称其为针对该领域的“首个系统性研究”，但基于 arXiv 预印本，尚无独立验证。",
+    "why": "聚焦于 LLM 推荐系统中特有的文本语义攻击面，利用记忆增强机制检测推广驱动的攻击，填补了该细分领域安全研究的空白。",
+    "topics": [
+      "security"
+    ],
+    "tags": [
+      "安全与治理"
+    ],
+    "security": {
+      "angles": [
+        "attack",
+        "defense"
+      ],
+      "note": "规则命中关键词，等待人工复核。"
+    },
+    "evidence": "预印本 · 原文可核验",
+    "score": 86,
+    "curated": false,
+    "collectedAt": "2026-11-18T07:25:43.134Z",
+    "provenance": "arxiv-memory",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.22245",
+    "title": "Multi-Agent Memory Inconsistency: Where Factual Conflicts Disappear in LLM Agents",
+    "titleZh": "多智能体记忆不一致性基准与证据流剖析",
+    "url": "https://arxiv.org/abs/2611.22245v1",
+    "kind": "paper",
+    "source": "arXiv · 智能体记忆与自进化",
+    "sourceId": "arxiv-memory",
+    "sourceTier": "preprint",
+    "published": "2026-11-17T05:47:01.000Z",
+    "summary": "Multi-agent delegation lets LLM systems distribute evidence collection across workers with separate contexts. This creates a consistency challenge: facts retrieved by workers may be missing from the evidence available to the lead for a joint conclusion. We introduce a benchmark and evidence-flow profiler for studying multi-agent memory inconsistency through controlled factual conflicts in Harvey LAB document-review tasks. Pooled across three models with comparable generation spending, requiring delegation increases retrieval of both conflicting claims from 50.2% to 68.7% relative to single-agent execution, yet conflict detection falls from 16.2% to 13.2%. Within this setting, workers report…",
+    "summaryZh": "该研究提出了针对多智能体系统中事实冲突的基准与证据流剖析工具，发现使用委托机制虽提升了冲突主张的检索率，但冲突检测率反而下降。",
+    "why": "量化了多智能体委托模式下的记忆一致性问题，揭示了检索率与冲突检测率之间的权衡关系。",
+    "topics": [
+      "evaluation"
+    ],
+    "tags": [
+      "评测与基准"
+    ],
+    "security": {
+      "angles": [
+        "evaluation"
+      ],
+      "note": "规则命中关键词，等待人工复核。"
+    },
+    "evidence": "预印本 · 原文可核验",
+    "score": 86,
+    "curated": false,
+    "collectedAt": "2026-11-18T07:25:43.134Z",
+    "provenance": "arxiv-memory",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.22179",
+    "title": "RAG in a Trenchcoat: When Minimal Memory Is Enough for Agentic Systems, and When It Isn't",
+    "titleZh": "BRIDGE：极简RAG记忆与复杂基线性能对比",
+    "url": "https://arxiv.org/abs/2611.22179v1",
+    "kind": "paper",
+    "source": "arXiv · 智能体记忆与自进化",
+    "sourceId": "arxiv-memory",
+    "sourceTier": "preprint",
+    "published": "2026-11-17T04:16:34.000Z",
+    "summary": "Agentic memory research has accumulated extraction, supersession, reflection, and graph synthesis on top of retrieval-augmented generation. However, we found that almost none of those primitives earn their cost in our tested memory benchmarks: we show this with BRIDGE, a deliberately minimal RAG memory with chained observation notes, hybrid BM25 with cosine retrieval, and chronological rendering, which reaches parity within bootstrap CI with the prior SOTA on LongMemEval-S and BEAM, and beats the best memory baseline on EverMemBench by 5.7-6.3 points at matched reader. It runs at ~5-7K reader-prompt tokens per query, using a single LLM call for each ingestion or query. We argue that this pa…",
+    "summaryZh": "研究者测试表明，采用极简设计的BRAG RAG记忆在部分基准测试中可达到或超过先验SOTA记忆系统，同时显著降低token消耗。",
+    "why": "挑战了当前对复杂记忆原语必要性的假设，提供了低资源场景下记忆架构设计的简化参考。",
+    "topics": [
+      "evaluation"
+    ],
+    "tags": [
+      "评测与基准"
+    ],
+    "security": {
+      "angles": [
+        "evaluation"
+      ],
+      "note": "规则命中关键词，等待人工复核。"
+    },
+    "evidence": "预印本 · 原文可核验",
+    "score": 86,
+    "curated": false,
+    "collectedAt": "2026-11-18T07:25:43.134Z",
+    "provenance": "arxiv-memory",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.22113",
+    "title": "RegimeCouncil: Paired-Evidence Routing For Memory Conflict Governance In LLM Agents",
+    "titleZh": "RegimeCouncil：基于双证据路由的记忆冲突治理",
+    "url": "https://arxiv.org/abs/2611.22113v1",
+    "kind": "paper",
+    "source": "arXiv · 智能体记忆与自进化",
+    "sourceId": "arxiv-memory",
+    "sourceTier": "preprint",
+    "published": "2026-11-17T02:56:43.000Z",
+    "summary": "Language agents rely on long-term memory to personalize responses across extended interactions, yet stored facts quietly go stale as the world changes, and an agent often learns that using memory hurt only through delayed feedback after acting on an outdated record. Before the memory store is updated, how far should that negative feedback propagate: should it suppress memory use only on future queries for that same fact (a local policy), or also across other stored facts (a global policy)? Existing memory systems implicitly fix one of these two sharing scopes at design time. We formulate this online scope choice under hidden validity and delayed feedback as memory conflict governance, and p…",
+    "summaryZh": "该工作将记忆冲突治理建模为在线范围选择问题，探讨延迟负反馈应在局部还是全局范围内抑制记忆使用，并提出了相应的路由机制。",
+    "why": "针对记忆系统中事实过时的隐性问题，提供了在线动态调整记忆共享范围的治理策略。",
+    "topics": [
+      "personal"
+    ],
+    "tags": [
+      "对话与个性化记忆"
+    ],
+    "security": null,
+    "evidence": "预印本 · 原文可核验",
+    "score": 82,
+    "curated": false,
+    "collectedAt": "2026-11-18T07:25:43.134Z",
+    "provenance": "arxiv-memory",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.22102",
+    "title": "EvoDisco: Strategy Discovery for Evolving Agent Memory",
+    "titleZh": "EvoDisco：基于进化策略发现的智能体记忆演化",
+    "url": "https://arxiv.org/abs/2611.22102v1",
+    "kind": "paper",
+    "source": "arXiv · 智能体记忆与自进化",
+    "sourceId": "arxiv-memory",
+    "sourceTier": "preprint",
+    "published": "2026-11-17T02:37:56.000Z",
+    "summary": "Large language model agents accumulate experience in memory, and how that memory evolves during interaction is as important as what it stores. Recent methods update memory online, yet both the operators that transform memory and the rules that select them remain fixed by design. We propose EvoDisco, which formulates agent memory evolution as evolutionary strategy discovery: the agent must discover which operator to apply, when to apply it, and how to instantiate it, rather than rewriting memory under a static operator schedule. A learnable policy conditions on the current memory state and recent task history, then selects and instantiates one of four semantic operators---Abstract, Refine, B…",
+    "summaryZh": "该方法将记忆演化形式化为进化策略发现过程，通过学习策略动态选择并实例化语义算子，而非使用固定的算子调度规则。",
+    "why": "将静态的记忆更新算子升级为动态发现机制，增强了智能体在交互过程中适应记忆状态变化的能力。",
+    "topics": [
+      "mechanism"
+    ],
+    "tags": [
+      "记忆机制与系统"
+    ],
+    "security": null,
+    "evidence": "预印本 · 原文可核验",
+    "score": 82,
+    "curated": false,
+    "collectedAt": "2026-11-18T07:25:43.134Z",
+    "provenance": "arxiv-memory",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.21998",
+    "title": "KV-LTM: Persistent Per-Session KV Caches as Long-Term Memory for Personal Assistants",
+    "titleZh": "KV-LTM：作为个人助手长期记忆的持久化会话级KV缓存",
+    "url": "https://arxiv.org/abs/2611.21998v1",
+    "kind": "paper",
+    "source": "arXiv · 记忆召回补漏",
+    "sourceId": "arxiv-recall",
+    "sourceTier": "preprint",
+    "published": "2026-11-16T23:30:00.000Z",
+    "summary": "Personal assistants accumulate months of conversations, but today's long-term memory stacks put derivation or selection between a question and its evidence. In a system-level comparison on LongMemEval, two commercial assistants scored well below the same model reading the history offline [1], consistent with, but not isolating, content loss between write and read. We propose KV-LTM: a memory tier storing each session's raw text plus its KV cache under a fixed reader model, answering by restoring cached sessions and appending the question. KV-LTM is complementary to, not a replacement for, retrieval and indexing. Text is the memory of record; the cache is a recompute-free prefill accelerator…",
+    "summaryZh": "该论文提出KV-LTM方法，将每个会话的原始文本及其KV缓存作为固定读者模型下的记忆层，通过恢复缓存会话并追加问题来回答问题。作者在LongMemEval系统级对比中指出，两个商业助手的表现低于同一模型离线阅读历史记录的结果，这一现象与写入和读取之间的内容丢失一致，但未能孤立验证该原因。",
+    "why": "该方法明确定位为检索和索引的互补手段而非替代，提出以缓存作为免重算的预填充加速器，为个人助手的长期记忆系统设计提供了新的系统级视角。",
+    "topics": [
+      "personal"
+    ],
+    "tags": [
+      "对话与个性化记忆"
+    ],
+    "security": null,
+    "evidence": "预印本 · 原文可核验",
+    "score": 82,
+    "curated": false,
+    "collectedAt": "2026-11-18T07:25:43.134Z",
+    "provenance": "arxiv-recall",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.21920",
+    "title": "KVUse: Reusable-KV User Memory for Efficient LLM Recommenders",
+    "titleZh": "KVUse：用于高效LLM推荐器的可重用KV用户记忆",
+    "url": "https://arxiv.org/abs/2611.21920v1",
+    "kind": "paper",
+    "source": "arXiv · 记忆召回补漏",
+    "sourceId": "arxiv-recall",
+    "sourceTier": "preprint",
+    "published": "2026-11-16T21:32:01.000Z",
+    "summary": "Memory-augmented recommenders built on large language models (LLMs) maintain a natural-language profile of each user. These profiles are updated by a user profile update path that revises the profile as new interactions arrive and are consumed by downstream task paths like ranking. Because these user profiles are stored as text in the user memory, every ranking LLM call that consumes them must splice them in the prompt and calculate the KV cache of them during the prefill phase. Given these ranking LLM calls are prefill heavy (long prompt but short decoded output) and repeatedly called, these repeated prefill of user profile text dominates the serving. Prefix caching cannot remove it, becau…",
+    "summaryZh": "针对基于LLM的记忆增强推荐器中，用户文本配置文件在预填充阶段反复计算KV缓存导致服务主导开销的问题，该论文提出利用可重用KV的用户记忆方案。原文指出由于推荐调用具有高预填充特性且前缀缓存无法消除该开销，该方案旨在优化此过程。",
+    "why": "针对LLM推荐场景中用户配置文件预填充计算开销这一具体痛点，提出了可重用KV的优化路径，对构建高效记忆增强推荐系统具有直接工程参考价值。",
+    "topics": [
+      "personal"
+    ],
+    "tags": [
+      "对话与个性化记忆"
+    ],
+    "security": null,
+    "evidence": "预印本 · 原文可核验",
+    "score": 82,
+    "curated": false,
+    "collectedAt": "2026-11-18T07:25:43.134Z",
+    "provenance": "arxiv-recall",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
     "id": "arxiv:2611.21598",
     "title": "Mitigating Catastrophic Forgetting with Physics-Indexed Specialist Memory: the Evolutionary Neuroplastic Agent",
     "titleZh": "ENA：基于物理索引专家记忆的进化神经可塑性智能体",
