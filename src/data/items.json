@@ -1,5 +1,182 @@
 [
   {
+    "id": "arxiv:2611.21648",
+    "title": "Can an LLM dream? Testing the overfitted brain hypothesis on an agent with text memory",
+    "titleZh": "LLM梦境假设测试：基于文本记忆的过拟合检验",
+    "url": "https://arxiv.org/abs/2611.21648",
+    "kind": "paper",
+    "source": "arXiv · cs.CL RSS（API 兜底）",
+    "sourceId": "arxiv-rss-cl",
+    "sourceTier": "preprint",
+    "published": "2026-11-18T05:00:00.000Z",
+    "summary": "arXiv:2611.21648v1 Announce Type: new Abstract: Hoel (2021) proposed that dreams distort replayed experience so that the brain does not overfit to recent events. We test this hypothesis on an LLM agent (Claude Opus 5.5) that stores what it learns in a text memory and rewrites that memory each night from the day's conversation transcript. The agent goes through ten simulated days of conversation built from LongMemEval. We corrupt 5, 10, 20 or 40 percent of the transcript's turns before each nightly rewrite in one of two ways. Detail corruption changes one or two details in a turn to plausible wrong ones, or replaces the turn with one by the same speaker from an earlier day. Random-text corru…",
+    "summaryZh": "该论文在Claude Opus 5.5上测试了Hoel（2021）提出的“梦境扭曲重放以防止过拟合”假设。实验让Agent每晚基于当天的对话日志重写文本记忆，并在重写前对日志进行5%-40%的扰动（细节损坏或随机文本），以观察其对LongMemEval等基准任务的效果。",
+    "why": "将认知科学中“梦境防止过拟合”的理论假设立足于LLM Agent的文本记忆管理，提供了一个跨学科的实证测试视角。",
+    "topics": [
+      "personal"
+    ],
+    "tags": [
+      "对话与个性化记忆"
+    ],
+    "security": {
+      "angles": [
+        "evaluation"
+      ],
+      "note": "规则命中关键词，等待人工复核。"
+    },
+    "evidence": "预印本 · 原文可核验",
+    "score": 86,
+    "curated": false,
+    "collectedAt": "2026-11-18T06:21:45.357Z",
+    "provenance": "arxiv-rss-cl",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.22425",
+    "title": "LMMR: Learned Multigranular Memory Retrieval for Small Language Model Agents",
+    "titleZh": "LMMR：面向小语言模型的多粒度记忆检索方法",
+    "url": "https://arxiv.org/abs/2611.22425",
+    "kind": "paper",
+    "source": "arXiv · cs.CL RSS（API 兜底）",
+    "sourceId": "arxiv-rss-cl",
+    "sourceTier": "preprint",
+    "published": "2026-11-18T05:00:00.000Z",
+    "summary": "arXiv:2611.22425v1 Announce Type: new Abstract: Small language model agents have limited space to read the memory needed for multi-hop questions. Relevant facts are often scattered across records whose surrounding text consumes much of that space. We propose LMMR, a learned multigranular memory retrieval method that selects both the next source and how much of it to read. LMMR links paragraphs and sentence fragments to their original sources and pairs views that supply the same missing support during training. Relevant distractors and repeated information provide contrasting examples. At inference, the reranker scores what each candidate adds to an anchor passage, and a selector chooses the…",
+    "summaryZh": "针对小语言模型在读取多跳问题所需记忆时空间受限的问题，论文提出了LMMR方法。LMMR通过链接段落和句子片段，并在推理时使用重排序器评分候选片段对锚点文本的补充程度，以实现多粒度的记忆检索。",
+    "why": "在资源受限的小模型场景下，提供了细粒度且动态的检索策略，有助于降低上下文长度压力。",
+    "topics": [
+      "mechanism"
+    ],
+    "tags": [
+      "记忆机制与系统"
+    ],
+    "security": {
+      "angles": [
+        "provenance"
+      ],
+      "note": "规则命中关键词，等待人工复核。"
+    },
+    "evidence": "预印本 · 原文可核验",
+    "score": 86,
+    "curated": false,
+    "collectedAt": "2026-11-18T06:21:45.357Z",
+    "provenance": "arxiv-rss-cl",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.23106",
+    "title": "Natural Language Programming: Rethinking Language, Memory, and Cognition in the Era of Generative AI",
+    "titleZh": "自然语言编程：生成式AI时代的语言、记忆与认知重构",
+    "url": "https://arxiv.org/abs/2611.23106",
+    "kind": "paper",
+    "source": "arXiv · cs.CL RSS（API 兜底）",
+    "sourceId": "arxiv-rss-cl",
+    "sourceTier": "preprint",
+    "published": "2026-11-18T05:00:00.000Z",
+    "summary": "arXiv:2611.23106v1 Announce Type: new Abstract: Generative Artificial Intelligence is transforming the role of natural language in computational systems. In classical Natural Language Processing (NLP), language was treated as an object of computation: something to analyse, classify, translate, or generate. Large Language Models (LLMs) challenge this perspective, enabling natural language to function increasingly as an executable cognitive medium through which humans structure reasoning, orchestrate problem solving, and regulate hybrid human/AI workflows. This paper introduces Natural Language Programming (NLPg) as a theoretical and epistemological extension of traditional NLP. Rather than f…",
+    "summaryZh": "该论文提出“自然语言编程”（NLPg）概念，认为生成式AI将自然语言从被分析的计算客体转变为可执行的认知媒介。它探讨了语言在混合人机工作流中结构化推理和调节问题的新角色。",
+    "why": "提供了从理论认知层面反思LLM如何改变人类计算与语言交互方式的宏观视角，而非局限于具体的工程实现。",
+    "topics": [
+      "mechanism"
+    ],
+    "tags": [
+      "记忆机制与系统"
+    ],
+    "security": null,
+    "evidence": "预印本 · 原文可核验",
+    "score": 82,
+    "curated": false,
+    "collectedAt": "2026-11-18T06:21:45.357Z",
+    "provenance": "arxiv-rss-cl",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.22017",
+    "title": "SkillBuffBench: Measuring What Agent Skills Contribute across Harnesses, Models, Skill Access Modes and Memory",
+    "titleZh": "SkillBuffBench：Agent技能跨环境、模型与记忆的贡献基准",
+    "url": "https://arxiv.org/abs/2611.22017",
+    "kind": "paper",
+    "source": "arXiv · cs.CL RSS（API 兜底）",
+    "sourceId": "arxiv-rss-cl",
+    "sourceTier": "preprint",
+    "published": "2026-11-18T05:00:00.000Z",
+    "summary": "arXiv:2611.22017v1 Announce Type: cross Abstract: Agent Skills, file-based packages of procedural knowledge that a coding agent can discover and load on demand, are now shipped by every major agent harness, yet the evidence for how much they help comes almost entirely from settings in which the right Skill is hand-picked for the task and the agent starts from a blank slate. Neither holds in deployment, where an agent chooses from whatever library happens to be installed and frequently carries memory from earlier work. We present SkillBuffBench, a benchmark and paired evaluation protocol that treats Skill access as a three-level factor (no Skill, a curated Skill, and automatic invocation fro…",
+    "summaryZh": "针对Agent技能通常基于人工挑选和空白环境评估的局限，论文提出了SkillBuffBench。该基准将技能访问设为包含无技能、精选技能和自动调用的三级变量，并结合了模型和记忆的交叉影响，以评估技能在实际部署环境中的真实贡献。",
+    "why": "构建了更贴近实际部署环境的评估协议，量化了自动发现技能（而非人工指定）在有状态（含记忆）Agent中的真实价值。",
+    "topics": [
+      "evaluation"
+    ],
+    "tags": [
+      "评测与基准"
+    ],
+    "security": {
+      "angles": [
+        "evaluation"
+      ],
+      "note": "规则命中关键词，等待人工复核。"
+    },
+    "evidence": "预印本 · 原文可核验",
+    "score": 86,
+    "curated": false,
+    "collectedAt": "2026-11-18T06:21:45.357Z",
+    "provenance": "arxiv-rss-cl",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2609.23466",
+    "title": "RPMem: Learning Long-Term Recurrent Parametric Memory Across Sessions for LLM Agents",
+    "titleZh": "RPMem: 面向LLM代理的跨会话长期递归参数记忆学习",
+    "url": "https://arxiv.org/abs/2609.23466",
+    "kind": "paper",
+    "source": "arXiv · cs.CL RSS（API 兜底）",
+    "sourceId": "arxiv-rss-cl",
+    "sourceTier": "preprint",
+    "published": "2026-11-18T05:00:00.000Z",
+    "summary": "arXiv:2609.23466v3 Announce Type: replace Abstract: Long-running LLM agents require memory that persists and evolves across sessions. Text-based memory retrieves and reconstructs past interactions at every query, making long-horizon performance increasingly dependent on retrieval quality and contextual reasoning as histories grow. Parametric memory encodes experience directly into model computation, but existing approaches provide limited support for cross-session memory evolution. Their coupling to a specific backbone further restricts memory reuse after model replacement. We introduce RPMem, a two-stage architecture that compiles each session into a model-independent latent memory through…",
+    "summaryZh": "该论文提出RPMem架构，通过将每个会话编译为模型无关的潜在记忆，旨在解决现有参数记忆在跨会话演化支持及模型更换后记忆复用方面的限制。这是预印本，原文可核验。",
+    "why": "提出了一种模型无关的潜在记忆编译方法，解决了参数记忆与特定骨干网络耦合导致的新旧模型切换难题，对长期运行的Agent记忆系统设计具有参考价值。",
+    "topics": [
+      "evaluation"
+    ],
+    "tags": [
+      "评测与基准"
+    ],
+    "security": null,
+    "evidence": "预印本 · 原文可核验",
+    "score": 82,
+    "curated": false,
+    "collectedAt": "2026-11-18T06:21:45.357Z",
+    "provenance": "arxiv-rss-cl",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2609.01852",
+    "title": "The Memory Trust Gap: Reliance on Stale Evidence Across Model Scales in LLM Agents",
+    "titleZh": "记忆信任鸿沟：LLM代理中不同模型规模对陈旧证据的依赖",
+    "url": "https://arxiv.org/abs/2609.01852",
+    "kind": "paper",
+    "source": "arXiv · cs.CL RSS（API 兜底）",
+    "sourceId": "arxiv-rss-cl",
+    "sourceTier": "preprint",
+    "published": "2026-11-18T05:00:00.000Z",
+    "summary": "arXiv:2609.01852v2 Announce Type: replace-cross Abstract: Persistent-memory agents can follow stale information despite current authoritative evidence. We study stale-evidence reliance across Qwen3 0.6/1.7/4/8B checkpoints using two controlled, action-scored suites: a Benefit suite requiring stored information and a Safety suite providing current evidence as static prompt text. We distinguish stale-value reliance from net accuracy loss relative to no memory. Benefit-suite reliance is 0.92-1.00 across checkpoints. In the Safety suite, larger checkpoints resist a plain stale note but incur substantial harm when it appears newer. A full $2\\times2\\times2\\times2$ factorial manipulates label, rec…",
+    "summaryZh": "该研究使用两套控制套件测试Qwen3不同参数规模（0.6B/1.7B/4B/8B）的代理，发现它们在存在权威当前证据时仍可能依赖陈旧的持久记忆信息。这是预印本，原文可核验。",
+    "why": "量化了不同规模模型在“利益套件”与“安全套件”下对陈旧记忆的依赖差异，为理解LLM代理在持久记忆场景下的信任校准与安全性评估提供了实证数据。",
+    "topics": [
+      "mechanism"
+    ],
+    "tags": [
+      "记忆机制与系统"
+    ],
+    "security": null,
+    "evidence": "预印本 · 原文可核验",
+    "score": 82,
+    "curated": false,
+    "collectedAt": "2026-11-18T06:21:45.357Z",
+    "provenance": "arxiv-rss-cl",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
     "id": "arxiv:2611.21598",
     "title": "Mitigating Catastrophic Forgetting with Physics-Indexed Specialist Memory: the Evolutionary Neuroplastic Agent",
     "titleZh": "ENA：基于物理索引专家记忆的进化神经可塑性智能体",
