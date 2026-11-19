@@ -1,5 +1,97 @@
 [
   {
+    "id": "arxiv:2611.24058",
+    "title": "MIRAGE: A Framework for Multi-hop Reasoning under Dynamic Knowledge Injection",
+    "titleZh": "MIRAGE：动态知识注入下的多跳推理框架",
+    "url": "https://arxiv.org/abs/2611.24058",
+    "kind": "paper",
+    "source": "arXiv · cs.CL RSS（API 兜底）",
+    "sourceId": "arxiv-rss-cl",
+    "sourceTier": "preprint",
+    "published": "2026-11-19T05:00:00.000Z",
+    "summary": "arXiv:2611.24058v1 Announce Type: new Abstract: Multi-hop Question Answering (MQA) requires large language models (LLMs) to retrieve and synthesize multiple pieces of evidence into a coherent reasoning path, which is essential for complex tasks. However, prior work on knowledge updating for MQA has largely focused on simple fact edits, overlooking a more challenging and realistic setting---\\emph{Knowledge Injection}---in which the model must simultaneously accommodate both conflicting updates and entirely novel information. Under this setting, a hop-level answer is often wrong simply because the model trusts the wrong knowledge source: it clings to outdated parametric memory when the inject…",
+    "summaryZh": "该论文提出MIRAGE框架，针对多跳问答（MQA）中知识注入的挑战，即模型需同时处理冲突更新和全新信息。研究指出，在此设定下，模型常因固守过时的参数化记忆而导致推理路径错误。",
+    "why": "区别于以往仅关注简单事实编辑的研究，该工作聚焦于更现实的“知识注入”场景（包含冲突与新颖信息），对理解Agent在动态环境下的记忆更新机制具有参考价值。",
+    "topics": [
+      "security"
+    ],
+    "tags": [
+      "安全与治理"
+    ],
+    "security": {
+      "angles": [
+        "attack",
+        "provenance"
+      ],
+      "note": "规则命中关键词，等待人工复核。"
+    },
+    "evidence": "预印本 · 原文可核验",
+    "score": 86,
+    "curated": false,
+    "collectedAt": "2026-11-19T06:23:25.782Z",
+    "provenance": "arxiv-rss-cl",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2601.16823",
+    "title": "Disentangling generalization and memorization in large language models using chess",
+    "titleZh": "借助国际象棋解耦LLM的泛化与记忆能力",
+    "url": "https://arxiv.org/abs/2601.16823",
+    "kind": "paper",
+    "source": "arXiv · cs.CL RSS（API 兜底）",
+    "sourceId": "arxiv-rss-cl",
+    "sourceTier": "preprint",
+    "published": "2026-11-19T05:00:00.000Z",
+    "summary": "arXiv:2601.16823v4 Announce Type: replace Abstract: Large Language Models (LLMs) exhibit remarkable capabilities, yet it remains unclear to what extent these reflect sophisticated recall or genuine reasoning ability. We introduce chess as a controlled testbed aimed at disentangling these faculties. Leveraging the game's structure and scalable engine evaluations, we construct a taxonomy of positions varying in density of relevant priors -- ranging from common states solvable by memorization to completely novel ones requiring generalization. Crucially, our approach achieves this distinction without requiring explicit knowledge of the models' training data. Applying this taxonomy, we combine a…",
+    "summaryZh": "研究者引入国际象棋作为受控测试平台，构建了一种根据先验知识密度变化的棋局分类体系，旨在区分模型是依靠记忆还是泛化能力解决问题。该方法无需明确知晓模型训练数据即可实现这一区分。",
+    "why": "提供了在不需要访问模型训练数据的前提下，量化区分LLM“回忆”与“推理/泛化”能力的实验方法论，有助于厘清当前模型能力的真实来源。",
+    "topics": [
+      "survey"
+    ],
+    "tags": [
+      "综述与研究全景"
+    ],
+    "security": {
+      "angles": [
+        "evaluation"
+      ],
+      "note": "规则命中关键词，等待人工复核。"
+    },
+    "evidence": "预印本 · 原文可核验",
+    "score": 86,
+    "curated": false,
+    "collectedAt": "2026-11-19T06:23:25.782Z",
+    "provenance": "arxiv-rss-cl",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.21478",
+    "title": "Jetriever: Shifting Agent Memory Retrieval from Similarity to Utility",
+    "titleZh": "Jetriever：将Agent记忆检索从相似度转向效用",
+    "url": "https://arxiv.org/abs/2611.21478",
+    "kind": "paper",
+    "source": "arXiv · cs.CL RSS（API 兜底）",
+    "sourceId": "arxiv-rss-cl",
+    "sourceTier": "preprint",
+    "published": "2026-11-19T05:00:00.000Z",
+    "summary": "arXiv:2611.21478v2 Announce Type: replace Abstract: Whether a stored memory helps answer a user's question often depends on world knowledge rather than surface similarity. Jetriever replaces similarity search with full-pool utility scoring: given a query, it uses Jev, an LLM-derived System One decision model, to score every stored memory for the probability that it is useful to the answer, ranking the memory pool directly by those probabilities. On InMind's 125 indirect-query tasks, Jetriever places the gold exchange first in 84.8% of cases (versus 1.6% for BM25 and 0.0% for MiniLM with user-turn indexing) and reaches 76.0% end-to-end Application, compared with at most 16.0% across publishe…",
+    "summaryZh": "Jetriever框架使用LLM导出的决策模型（Jev）对存储的记忆池进行全池效用评分，取代传统的相似度搜索。在InMind的125个间接查询任务上，该方法在关键交换排名和端到端应用指标上优于BM25和MiniLM等基线。",
+    "why": "提出了基于“效用”而非“表面相似度”的记忆检索新范式，通过量化记忆对回答问题的潜在帮助概率，解决了因世界知识依赖导致的检索偏差问题。",
+    "topics": [
+      "mechanism"
+    ],
+    "tags": [
+      "记忆机制与系统"
+    ],
+    "security": null,
+    "evidence": "预印本 · 原文可核验",
+    "score": 82,
+    "curated": false,
+    "collectedAt": "2026-11-19T06:23:25.782Z",
+    "provenance": "arxiv-rss-cl",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
     "id": "arxiv:2611.21648",
     "title": "Can an LLM dream? Testing the overfitted brain hypothesis on an agent with text memory",
     "titleZh": "LLM梦境假设测试：基于文本记忆的过拟合检验",
