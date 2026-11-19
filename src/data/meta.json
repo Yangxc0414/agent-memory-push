@@ -1,45 +1,42 @@
 {
   "version": 1,
-  "checkedAt": "2026-11-19T06:23:25.782Z",
-  "lastSuccessAt": "2026-11-19T06:23:25.782Z",
-  "generatedAt": "2026-11-19T06:23:25.782Z",
+  "checkedAt": "2026-11-19T07:22:25.789Z",
+  "lastSuccessAt": "2026-11-19T07:22:25.789Z",
+  "generatedAt": "2026-11-19T07:22:25.789Z",
   "timezone": "Asia/Shanghai",
   "date": "2026-11-19",
   "seed": false,
-  "added": 3,
-  "updated": 4,
-  "items": 740,
-  "sourcesOk": 12,
+  "added": 12,
+  "updated": 114,
+  "items": 752,
+  "sourcesOk": 22,
   "sourcesTotal": 22,
   "llm": {
     "used": true,
     "error": null
   },
   "addedIds": [
-    "arxiv:2611.24058",
-    "arxiv:2601.16823",
-    "arxiv:2611.21478"
+    "arxiv:2611.24422",
+    "arxiv:2611.24294",
+    "arxiv:2611.24247",
+    "arxiv:2611.24165",
+    "arxiv:2611.24155",
+    "arxiv:2611.23963",
+    "arxiv:2611.23844",
+    "arxiv:2611.23731",
+    "arxiv:2611.23648",
+    "arxiv:2611.23588",
+    "arxiv:2611.23476",
+    "arxiv:2611.23346"
   ],
   "coverage": {
-    "coreComplete": false,
-    "recallOk": false,
+    "coreComplete": true,
+    "recallOk": true,
     "fallbackOk": true,
     "usable": true,
-    "degraded": true,
-    "criticalFailed": [
-      "arxiv-memory",
-      "arxiv-embodied",
-      "arxiv-security",
-      "arxiv-models",
-      "arxiv-broad",
-      "arxiv-multimodal",
-      "arxiv-eval",
-      "arxiv-personal",
-      "arxiv-survey"
-    ],
-    "supplementalFailed": [
-      "arxiv-recall"
-    ],
+    "degraded": false,
+    "criticalFailed": [],
+    "supplementalFailed": [],
     "fallbackFailed": [],
     "optionalFailed": []
   }

@@ -92,6 +92,173 @@
     "summaryZhBasis": "原文摘要"
   },
   {
+    "id": "arxiv:2611.24422",
+    "title": "Resolution as Attention for Efficient Agent Memory Perception",
+    "titleZh": "RAA：利用视觉分辨率作为智能体记忆感知机制",
+    "url": "https://arxiv.org/abs/2611.24422v1",
+    "kind": "paper",
+    "source": "arXiv · 智能体记忆与自进化",
+    "sourceId": "arxiv-memory",
+    "sourceTier": "preprint",
+    "published": "2026-11-18T13:43:16.000Z",
+    "summary": "LLM-based agents accumulate extensive interaction histories when solving complex, long-horizon tasks, making efficient memory management critical to their performance and scalability. While existing memory management methods primarily focus on what to retain or retrieve, they often overlook how much perceptual detail should be allocated to individual past interactions. We posit that effective agent memory depends not only on the information preserved, but also on the granularity at which each past interaction is perceived. Motivated by this insight, we propose Resolution as Attention (RAA), a memory perception mechanism that uses visual resolution as a means of attention allocation across i…",
+    "summaryZh": "该论文提出 Resolution as Attention (RAA) 机制，主张智能体记忆的有效性不仅取决于保留的信息，还取决于对过往交互的感知粒度。该方法利用视觉分辨率来分配注意力，以优化长程任务中的记忆管理。",
+    "why": "引入了“感知粒度/分辨率”作为记忆管理的新维度，区别于传统仅关注“保留/检索什么”的方法。",
+    "topics": [
+      "multimodal"
+    ],
+    "tags": [
+      "多模态与感知记忆"
+    ],
+    "security": null,
+    "evidence": "预印本 · 原文可核验",
+    "score": 82,
+    "curated": false,
+    "collectedAt": "2026-11-19T07:22:25.789Z",
+    "provenance": "arxiv-memory",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.24294",
+    "title": "KnowledgeClaw: Towards Agentic Knowledge Engineering via Omnimodal Hypergraphs",
+    "titleZh": "KnowledgeClaw：基于全模态超图的智能体知识工程系统",
+    "url": "https://arxiv.org/abs/2611.24294v1",
+    "kind": "paper",
+    "source": "arXiv · 智能体记忆泛检索",
+    "sourceId": "arxiv-broad",
+    "sourceTier": "preprint",
+    "published": "2026-11-18T12:06:06.000Z",
+    "summary": "Knowledge engineering (KE) turns raw files into a reasoning-ready knowledge base, a task now within reach of LLM agents. KE has progressed from chunk and graph retrieval-augmented generation (RAG) to memory agents, agentic KE and multimodal KE. However, a live knowledge base needs omnimodality, a closed-loop lifecycle and multi-granular application at once, yet existing systems meet at most two and no benchmark measures all three. We formalize Omnimodal Knowledge Engineering (OmniKE) and release OmniKE-Bench, six tasks with 1,829 model-free items over 3,960 real files in five modalities. We further propose KnowledgeClaw, an agentic system that builds an omnimodal typed hypergraph, keeps it…",
+    "summaryZh": "该工作形式化了全模态知识工程（OmniKE），并提出了基于全模态类型化超图的智能体系统 KnowledgeClaw，支持闭环生命周期和多粒度应用。同时发布了包含 1,829 个无模型题目的 OmniKE-Bench 基准测试。",
+    "why": "提出了兼顾全模态、闭环生命周期和多粒度应用的统一框架及基准，填补了现有系统在多需求同时满足上的不足。",
+    "topics": [
+      "evaluation"
+    ],
+    "tags": [
+      "评测与基准"
+    ],
+    "security": {
+      "angles": [
+        "evaluation"
+      ],
+      "note": "规则命中关键词，等待人工复核。"
+    },
+    "evidence": "预印本 · 原文可核验",
+    "score": 86,
+    "curated": false,
+    "collectedAt": "2026-11-19T07:22:25.789Z",
+    "provenance": "arxiv-broad",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.24247",
+    "title": "Allocentric Memory, Egocentric Acting: A Dual-Frame VLA for Urban Aerial Navigation",
+    "titleZh": "CityNav-VLA：面向城市空中导航的双帧视觉-语言-动作模型",
+    "url": "https://arxiv.org/abs/2611.24247v1",
+    "kind": "paper",
+    "source": "arXiv · 具身与多模态记忆",
+    "sourceId": "arxiv-embodied",
+    "sourceTier": "preprint",
+    "published": "2026-11-18T11:24:13.000Z",
+    "summary": "Language-goal aerial navigation requires a UAV to reach a destination specified in natural language using observations collected during flight. A key challenge is linking changing egocentric perception with spatial evidence anchored to stable locations for long-range navigation. We propose CityNav-VLA, a dual-frame vision-language-action model for urban navigation integrating dynamic egocentric context with persistent allocentric spatial memory. The UAV incrementally accumulates visual observations on a fixed north-up map initialized with geographic and landmark priors, preserving evidence across viewpoint changes. A dynamic query conditioned on the instruction, current observations, UAV st…",
+    "summaryZh": "该模型通过整合动态的自我中心（egocentric）上下文与持久的自我中心空间记忆（allocentric spatial memory，此处原文为allocentric，即以固定地图为中心的空间记忆），帮助无人机在飞行中增量积累视觉观察并保留跨视角的空间证据，以实现语言目标导航。",
+    "why": "展示了在具身导航场景中，如何通过双帧结构（动态感知+固定空间记忆）解决长期导航中视角变化导致的证据丢失问题。",
+    "topics": [
+      "embodied"
+    ],
+    "tags": [
+      "具身与空间记忆"
+    ],
+    "security": null,
+    "evidence": "预印本 · 原文可核验",
+    "score": 82,
+    "curated": false,
+    "collectedAt": "2026-11-19T07:22:25.789Z",
+    "provenance": "arxiv-embodied",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.24165",
+    "title": "MemoSync: Co-Managing Developer-Agent Metamemory Across Contexts",
+    "titleZh": "MemoSync：跨上下文的开发者-智能体元记忆协同管理系统",
+    "url": "https://arxiv.org/abs/2611.24165v1",
+    "kind": "paper",
+    "source": "arXiv · 智能体记忆泛检索",
+    "sourceId": "arxiv-broad",
+    "sourceTier": "preprint",
+    "published": "2026-11-18T10:06:51.000Z",
+    "summary": "AI coding agents increasingly manage what context carries across sessions and projects, but developers have limited visibility into what these agents store, retrieve, and apply. This opacity creates a metamemory problem: the developer's meta-level judgments about what should be remembered are separated from the agent's object-level memory operations, disrupting the monitoring and control that keep the two levels aligned. We conducted a formative study with 12 developers and identified what they want to monitor and control across four dimensions of agent memory use. Based on these findings, we designed MemoSync, a co-management system that treats agent memory as a shared, operable representa…",
+    "summaryZh": "针对 AI 编码智能体记忆操作不透明导致的“元记忆”问题，该工作基于 12 名开发者的探索性研究，设计了 MemoSync 系统，将智能体记忆视为共享且可操作的表现形式，支持开发者与智能体在四个维度上的协同监控与控制。",
+    "why": "从人机协同视角出发，解决开发者对智能体记忆缺乏可见性和控制权的问题，提出了具体的协同管理框架。",
+    "topics": [
+      "mechanism"
+    ],
+    "tags": [
+      "记忆机制与系统"
+    ],
+    "security": null,
+    "evidence": "预印本 · 原文可核验",
+    "score": 82,
+    "curated": false,
+    "collectedAt": "2026-11-19T07:22:25.789Z",
+    "provenance": "arxiv-broad",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.24155",
+    "title": "BEV-Diffusion: Camera-Only Traversability Navigation with BEV Memory and Efficient Cross-Robot Adaptation",
+    "titleZh": "BEV-Diffusion：基于BEV记忆与扩散去噪的纯相机可通行性导航",
+    "url": "https://arxiv.org/abs/2611.24155v1",
+    "kind": "paper",
+    "source": "arXiv · 具身与多模态记忆",
+    "sourceId": "arxiv-embodied",
+    "sourceTier": "preprint",
+    "published": "2026-11-18T09:58:54.000Z",
+    "summary": "Robot navigation requires both an understanding of the scene and an efficient adaptation to new robots, yet current methods rely on expensive LiDAR sensors, long mapping and modular pipelines. We present BEV-Diffusion, a camera-only model that learns a bird's-eye view (BEV) traversability map, its uncertainty and the path in a single network. A frozen DINOv2 backbone encodes consecutive RGB frames, which inverse perspective mapping and Bayesian fusion lift into the BEV, and a ranking loss keeps outdoor traversability graded rather than binary, separating asphalt from grass (median 0.94 vs. 0.75). On this map, a transformer denoiser generates polar waypoints in a few DDIM steps, and uncertai…",
+    "summaryZh": "该方法提出BEV-Diffusion，利用冻结的DINOv2骨干网络和贝叶斯融合将RGB帧映射到鸟瞰图（BEV），学习可通行性地图及不确定性，并通过Transformer去噪器生成路径。原文指出该方法旨在降低对昂贵LiDAR的依赖，并提及在户外场景中可区分柏油路与草地。",
+    "why": "展示了如何仅用相机数据构建BEV记忆并应用扩散模型进行导航，提供了替代传统LiDAR建图流程的新思路。",
+    "topics": [
+      "embodied"
+    ],
+    "tags": [
+      "具身与空间记忆"
+    ],
+    "security": null,
+    "evidence": "预印本 · 原文可核验",
+    "score": 82,
+    "curated": false,
+    "collectedAt": "2026-11-19T07:22:25.789Z",
+    "provenance": "arxiv-embodied",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.23963",
+    "title": "CoRA-VTLA: Contact-Guided Attention and Queryable Response Memory for Tactile Post-Training",
+    "titleZh": "CoRA-VTLA：接触引导注意力与可查询响应记忆用于触觉后训练",
+    "url": "https://arxiv.org/abs/2611.23963v1",
+    "kind": "paper",
+    "source": "arXiv · 具身与多模态记忆",
+    "sourceId": "arxiv-embodied",
+    "sourceTier": "preprint",
+    "published": "2026-11-18T06:57:52.000Z",
+    "summary": "In precision manipulation, small errors in alignment or force can cause jamming or deformation, making contact feedback essential for adapting pretrained vision-language-action (VLA) models to these tasks. A single tactile observation leaves the response to recent actions ambiguous. Direct tactile fusion during post-training can also disperse the action expert's visual attention and reduce the share it allocates to contact regions. To address these challenges, CoRA-VTLA augments pretrained VLAs with lightweight tactile modules. A queryable action-response memory retrieves recent contact responses so that the action expert can combine them with immediate tactile feedback. Contact-guided gaze…",
+    "summaryZh": "针对VLA模型在精密操作中的对齐误差问题，CoRA-VTLA引入轻量级触觉模块，包括可查询的动作-响应记忆和接触引导注意力机制。原文表明该方法旨在帮助动作专家结合即时触觉反馈与近期接触响应，以解决直接融合触觉信号导致的视觉注意力分散问题。",
+    "why": "探索了将触觉记忆与视觉语言行动模型结合的具体架构，解决了单一触觉观测模糊性及注意力分散的技术痛点。",
+    "topics": [
+      "embodied"
+    ],
+    "tags": [
+      "具身与空间记忆"
+    ],
+    "security": null,
+    "evidence": "预印本 · 原文可核验",
+    "score": 82,
+    "curated": false,
+    "collectedAt": "2026-11-19T07:22:25.789Z",
+    "provenance": "arxiv-embodied",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
     "id": "arxiv:2611.21648",
     "title": "Can an LLM dream? Testing the overfitted brain hypothesis on an agent with text memory",
     "titleZh": "LLM梦境假设测试：基于文本记忆的过拟合检验",
@@ -269,6 +436,162 @@
     "summaryZhBasis": "原文摘要"
   },
   {
+    "id": "arxiv:2611.23844",
+    "title": "Weighing the Envelope: Component Weight and Arbitration in Envelope-Layer Defenses for a Single LLM Agent",
+    "titleZh": "Weighing the Envelope：单LLM智能体中记忆与工具共存时的防御权重分析",
+    "url": "https://arxiv.org/abs/2611.23844v1",
+    "kind": "paper",
+    "source": "arXiv · 智能体记忆泛检索",
+    "sourceId": "arxiv-broad",
+    "sourceTier": "preprint",
+    "published": "2026-11-18T04:50:08.000Z",
+    "summary": "The envelope layer is the channel through which malicious content enters an LLM agent. Prior work established label and memory effects on multi-agent A2A envelopes, but the weight structure when MCP tools and memory coexist in a single agent remains unclear. Our threat model assumes an attacker pre-plants a malicious tool and poisons long-term memory; a benign user request inadvertently triggers it, and the attacker never enters the conversation. Following GDA Measurement and A/B/C/D, we measure how labels, memory, tool roles, and the backend shape invocation decisions across label-memory conflict, tool roles, robustness, and tool generalization. A tool-side forced-verification label substa…",
+    "summaryZh": "该研究假设攻击者预置恶意工具并污染长期记忆，测量在MCP工具和记忆共存于单智能体的情况下，标签、记忆、工具角色及后端如何影响调用决策。原文指出在标签-记忆冲突场景下，工具侧的强制验证标签具有显著影响。",
+    "why": "从安全防御角度量化了智能体内部记忆与工具交互时的权重结构，填补了单智能体多模态防御机制分析的研究空白。",
+    "topics": [
+      "security"
+    ],
+    "tags": [
+      "安全与治理"
+    ],
+    "security": {
+      "angles": [
+        "attack",
+        "defense"
+      ],
+      "note": "规则命中关键词，等待人工复核。"
+    },
+    "evidence": "预印本 · 原文可核验",
+    "score": 86,
+    "curated": false,
+    "collectedAt": "2026-11-19T07:22:25.789Z",
+    "provenance": "arxiv-broad",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.23731",
+    "title": "RecallFlow: Episodic Memory as the Source Distribution of Generative Robot Policies",
+    "titleZh": "RecallFlow：将情景记忆作为生成式机器人策略的源分布",
+    "url": "https://arxiv.org/abs/2611.23731v1",
+    "kind": "paper",
+    "source": "arXiv · 具身与多模态记忆",
+    "sourceId": "arxiv-embodied",
+    "sourceTier": "preprint",
+    "published": "2026-11-18T02:43:12.000Z",
+    "summary": "Diffusion and flow-matching policies have become a standard choice for visuomotor imitation learning, owing to their ability to model multimodal action distributions. In memory-dependent manipulation, the robot must act on information that is no longer visible. Existing methods feed the observation history to the policy as an additional condition, while action generation still starts from Gaussian noise. However, the policy must then pick out the relevant target from a long and redundant history, leading to spurious correlations and unreliable decisions as the memory load grows. Additionally, the initial noise carries no information about what the robot has seen, leaving generation without…",
+    "summaryZh": "现有方法将观测历史作为额外条件输入，但动作生成仍从高斯噪声开始，导致长历史下出现虚假相关。RecallFlow将情景记忆作为生成式策略的源分布，使动作生成过程能够基于机器人已见信息进行初始化，而非无信息噪声。",
+    "why": "改进了基于扩散/流匹配策略的记忆依赖机制，通过改变噪声源结构来解决长历史依赖中的冗余和不可靠决策问题。",
+    "topics": [
+      "embodied"
+    ],
+    "tags": [
+      "具身与空间记忆"
+    ],
+    "security": {
+      "angles": [
+        "provenance"
+      ],
+      "note": "规则命中关键词，等待人工复核。"
+    },
+    "evidence": "预印本 · 原文可核验",
+    "score": 86,
+    "curated": false,
+    "collectedAt": "2026-11-19T07:22:25.789Z",
+    "provenance": "arxiv-embodied",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.23648",
+    "title": "Toaster: Nonlinear Memory from Cascaded Linear Memories and Target Propagation",
+    "titleZh": "Toaster：级联线性记忆实现非线性记忆",
+    "url": "https://arxiv.org/abs/2611.23648v1",
+    "kind": "paper",
+    "source": "arXiv · 记忆召回补漏",
+    "sourceId": "arxiv-recall",
+    "sourceTier": "preprint",
+    "published": "2026-11-18T00:14:27.000Z",
+    "summary": "Recurrent memories let language models process long sequences with a fixed-size state. Linear memories such as DeltaNet and KDA store one matrix and take one delta-rule step per token. The product of a chunk of such steps has an exact WY form, so they train fast. Deep memories such as TTT-MLP and Titans store a small MLP, which can hold maps that no matrix can, but their update has no WY form. Toaster bridges the two by building on a known fact: a gradient step on a linear layer is a delta-rule write. It builds a two-layer nonlinear memory from two linear memories with an activation between them. We use target propagation to give the hidden memory its values by projecting the output error b…",
+    "summaryZh": "预印本提出Toaster，通过两个线性记忆加中间激活构建两层非线性记忆，并利用目标传播为隐藏记忆赋予值，以连接具有WY形式的线性记忆与深度记忆。",
+    "why": "提供了一种在不改变线性记忆快速训练特性的前提下引入非线性映射能力的架构方案。",
+    "topics": [
+      "mechanism"
+    ],
+    "tags": [
+      "记忆机制与系统"
+    ],
+    "security": null,
+    "evidence": "预印本 · 原文可核验",
+    "score": 82,
+    "curated": false,
+    "collectedAt": "2026-11-19T07:22:25.789Z",
+    "provenance": "arxiv-recall",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.23588",
+    "title": "ARISE: Practical Self-Evolving Memory for Accurate and Cost-Efficient Enterprise Agents",
+    "titleZh": "ARISE：企业智能体的实用自进化记忆架构",
+    "url": "https://arxiv.org/abs/2611.23588v1",
+    "kind": "paper",
+    "source": "arXiv · 智能体记忆与自进化",
+    "sourceId": "arxiv-memory",
+    "sourceTier": "preprint",
+    "published": "2026-11-17T22:38:58.000Z",
+    "summary": "Enterprise LLM agents operate in dynamic environments where foundation models evolve rapidly, workflows update frequently, and deployments need to satisfy accuracy and cost requirements. We propose ARISE (Agent Refinement through Iterative Self-Evaluation), a practical memory architecture in which the agent's memory evolves from its own failures without updating model weights, tools, or workflow logic. ARISE uses the model itself or a teacher model to attribute the failures and propose corrections. Then, ARISE keeps the corrections as retrievable micro memory, consolidates them into macro rules, and accepts a rule update only if held-out accuracy rises. Across 14 enterprise-workflow domains…",
+    "summaryZh": "预印本提出ARISE，在不更新模型权重、工具或工作流逻辑的情况下，利用模型自身或教师模型将失败归因并转化为可检索的微记忆与宏观规则，仅在留出集准确率提升时接受规则更新。",
+    "why": "提供了一种不依赖模型参数更新、通过迭代自评估实现记忆自进化的企业级落地架构。",
+    "topics": [
+      "evaluation"
+    ],
+    "tags": [
+      "评测与基准"
+    ],
+    "security": {
+      "angles": [
+        "evaluation"
+      ],
+      "note": "规则命中关键词，等待人工复核。"
+    },
+    "evidence": "预印本 · 原文可核验",
+    "score": 86,
+    "curated": false,
+    "collectedAt": "2026-11-19T07:22:25.789Z",
+    "provenance": "arxiv-memory",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.23476",
+    "title": "GUARD: Stabilizing Recursive Self-Improvement with Regret Guidance",
+    "titleZh": "GUARD：基于遗憾指导稳定递归自我改进",
+    "url": "https://arxiv.org/abs/2611.23476v1",
+    "kind": "paper",
+    "source": "arXiv · 记忆召回补漏",
+    "sourceId": "arxiv-recall",
+    "sourceTier": "preprint",
+    "published": "2026-11-17T20:26:34.000Z",
+    "summary": "Autonomous AI agents pair a frozen base model with an editable harness of prompts, skills, tool rules, and memory. Recursive self-improvement (RSI) adapts this harness from experience without weight updates, yet self-editing without external graders often backfires: reflection and scalar scores conflate what an edit newly broke with what remains unsolved, causing local regressions, skill forgetting, and memory bloat. We introduce GUARD (Grader-free Unsupervised Environment Design [UED] with Adaptive Rule Distillation), a closed-loop framework for reference-free continual harness evolution. Our key insight is to decompose each task into pre-execution self-checks and guide harness updates via…",
+    "summaryZh": "预印本提出无评分器非监督环境设计（GUARD）框架，通过分解任务为执行前自检并指导智能体harness更新，以缓解无外部评估器时因混淆新破坏与未解决问题导致的局部退化、技能遗忘及记忆膨胀。",
+    "why": "提供了在无外部评分器场景下稳定智能体harness递归自我改进的闭环机制，避免记忆膨胀与技能退化。",
+    "topics": [
+      "tools"
+    ],
+    "tags": [
+      "工具与项目发布"
+    ],
+    "security": {
+      "angles": [
+        "defense"
+      ],
+      "note": "规则命中关键词，等待人工复核。"
+    },
+    "evidence": "预印本 · 原文可核验",
+    "score": 86,
+    "curated": false,
+    "collectedAt": "2026-11-19T07:22:25.789Z",
+    "provenance": "arxiv-recall",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
     "id": "arxiv:2611.23010",
     "title": "PhysScope: Agentic Multimodal Physics Reasoning with Grounded Visual Memory",
     "titleZh": "PhysScope: 支持视觉记忆与自我纠正的多模态物理推理框架",
@@ -362,6 +685,40 @@
     "curated": false,
     "collectedAt": "2026-11-18T07:25:43.134Z",
     "provenance": "arxiv-recall",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.23346",
+    "title": "Securing and Auditing Long-Horizon LLM Agents: State-Transfer Auditing and Controls in the Agent Harness",
+    "titleZh": "长程LLM智能体：Agent Harness中的状态转移审计与控制",
+    "url": "https://arxiv.org/abs/2611.23346v1",
+    "kind": "paper",
+    "source": "arXiv · 智能体记忆泛检索",
+    "sourceId": "arxiv-broad",
+    "sourceTier": "preprint",
+    "published": "2026-11-17T10:36:04.000Z",
+    "summary": "Long-horizon LLM agents across codebases, web browsers, and enterprise infrastructure rely on an execution harness to move state between the working context, session history, persistent memory, and external environment. While conventional execution traces log model prompts and tool calls, critical security and reliability failures occur during state transfers: a transfer can admit unchecked content (indirect prompt injections, unverified memory writes), rewrite state lossily (context compaction dropping user constraints, memory consolidation stripping source authority), or restore state incompletely (workspace rollbacks leaving aborted KV state active on the inference server). Because curre…",
+    "summaryZh": "预印本指出长程LLM智能体的执行框架中，状态在工作上下文、会话历史、持久记忆及外部环境间转移时易引发安全问题，如间接提示注入、未验证记忆写入及有损状态重写，并探讨了相应的审计与控制措施。",
+    "why": "聚焦智能体执行框架中状态转移环节的安全与可靠性审计，填补了传统执行日志未覆盖的安全漏洞。",
+    "topics": [
+      "security"
+    ],
+    "tags": [
+      "安全与治理"
+    ],
+    "security": {
+      "angles": [
+        "attack",
+        "defense",
+        "provenance"
+      ],
+      "note": "规则命中关键词，等待人工复核。"
+    },
+    "evidence": "预印本 · 原文可核验",
+    "score": 86,
+    "curated": false,
+    "collectedAt": "2026-11-19T07:22:25.789Z",
+    "provenance": "arxiv-broad",
     "summaryZhBasis": "原文摘要"
   },
   {
