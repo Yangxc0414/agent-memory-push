@@ -1,59 +1,33 @@
 {
   "version": 1,
-  "checkedAt": "2026-11-20T06:08:17.360Z",
-  "lastSuccessAt": "2026-11-20T06:08:17.360Z",
-  "generatedAt": "2026-11-20T06:08:17.360Z",
+  "checkedAt": "2026-11-20T07:12:38.065Z",
+  "lastSuccessAt": "2026-11-20T07:12:38.065Z",
+  "generatedAt": "2026-11-20T07:12:38.065Z",
   "timezone": "Asia/Shanghai",
   "date": "2026-11-20",
   "seed": false,
-  "added": 17,
-  "updated": 70,
-  "items": 769,
-  "sourcesOk": 14,
+  "added": 2,
+  "updated": 127,
+  "items": 771,
+  "sourcesOk": 22,
   "sourcesTotal": 22,
   "llm": {
     "used": true,
     "error": null
   },
   "addedIds": [
-    "arxiv:2605.12426",
-    "arxiv:2605.18565",
-    "web:https://www.ithome.com/1/029/795.htm",
-    "arxiv:2611.26427",
-    "arxiv:2611.26361",
-    "arxiv:2611.26007",
-    "arxiv:2611.25925",
-    "arxiv:2611.25889",
-    "arxiv:2611.25861",
-    "arxiv:2611.25855",
-    "arxiv:2611.25705",
-    "arxiv:2611.25703",
-    "arxiv:2611.25587",
-    "arxiv:2611.25407",
-    "arxiv:2611.25369",
-    "arxiv:2611.25235",
-    "arxiv:2611.25123"
+    "arxiv:2611.25583",
+    "arxiv:2611.25461"
   ],
   "coverage": {
-    "coreComplete": false,
-    "recallOk": false,
+    "coreComplete": true,
+    "recallOk": true,
     "fallbackOk": true,
     "usable": true,
-    "degraded": true,
-    "criticalFailed": [
-      "arxiv-memory",
-      "arxiv-embodied",
-      "arxiv-security",
-      "arxiv-models",
-      "arxiv-broad",
-      "arxiv-multimodal"
-    ],
-    "supplementalFailed": [
-      "arxiv-recall"
-    ],
+    "degraded": false,
+    "criticalFailed": [],
+    "supplementalFailed": [],
     "fallbackFailed": [],
-    "optionalFailed": [
-      "news-qbit"
-    ]
+    "optionalFailed": []
   }
 }

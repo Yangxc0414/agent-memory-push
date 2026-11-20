@@ -366,6 +366,38 @@
     "summaryZhBasis": "原文摘要"
   },
   {
+    "id": "arxiv:2611.25583",
+    "title": "DriftGuard: Online Memory-Drift Detection via Causal Attribution for LLM Agents",
+    "titleZh": "DriftGuard：基于因果归因的在线LLM Agent记忆漂移检测",
+    "url": "https://arxiv.org/abs/2611.25583v1",
+    "kind": "paper",
+    "source": "arXiv · 智能体记忆与自进化",
+    "sourceId": "arxiv-memory",
+    "sourceTier": "preprint",
+    "published": "2026-11-19T06:26:57.000Z",
+    "summary": "Large language model (LLM) agents rely on persistent memory to plan tool calls and complete multi-step tasks, which exposes them to memory drift: an adversarial or misleading memory alters the execution path and final outcome. In this work, we investigate online memory-drift detection, which estimates each retrieved memory's causal contribution to potential drift at serving time. We identify two fundamental challenges. (1) Content-level features are insufficient for causal memory-drift attribution, as perplexity or retrieval relevance alone cannot determine which retrieved memory would change agent behavior if neutralized; (2) Counterfactual attribution is prohibitively expensive for online…",
+    "summaryZh": "该预印本提出DriftGuard框架，旨在在线检测LLM Agent中的记忆漂移。它通过因果归因法估算检索记忆对潜在漂移的贡献，解决了内容级特征不足和反事实归因在线成本过高的问题。",
+    "why": "提供了一种在推理时（serving time）通过因果归因来评估记忆影响的在线检测方法，关注解决在线检测的效率与特征有效性问题。",
+    "topics": [
+      "mechanism"
+    ],
+    "tags": [
+      "记忆机制与系统"
+    ],
+    "security": {
+      "angles": [
+        "defense"
+      ],
+      "note": "规则命中关键词，等待人工复核。"
+    },
+    "evidence": "预印本 · 原文可核验",
+    "score": 86,
+    "curated": false,
+    "collectedAt": "2026-11-20T07:12:38.065Z",
+    "provenance": "arxiv-memory",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
     "id": "arxiv:2611.24058",
     "title": "MIRAGE: A Framework for Multi-hop Reasoning under Dynamic Knowledge Injection",
     "titleZh": "MIRAGE：动态知识注入下的多跳推理框架",
@@ -455,6 +487,33 @@
     "curated": false,
     "collectedAt": "2026-11-19T06:23:25.782Z",
     "provenance": "arxiv-rss-cl",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.25461",
+    "title": "ActMem: From Latent Memory Reasoning to Grounded Robotic Action",
+    "titleZh": "ActMem：从潜在记忆推理到基于视觉-语言框架的机器人动作",
+    "url": "https://arxiv.org/abs/2611.25461v1",
+    "kind": "paper",
+    "source": "arXiv · 具身与多模态记忆",
+    "sourceId": "arxiv-embodied",
+    "sourceTier": "preprint",
+    "published": "2026-11-19T03:46:39.000Z",
+    "summary": "Vision-Language-Action (VLA) models have shown promising results in real-world long-horizon manipulation, where memory plays a crucial role. However, existing memory-augmented VLAs either retrieve past observations without reasoning about what they imply, or reason over the full history in a shared context where it crowds out current perception. Cognitive science treats them as distinct systems: memory reconstructs past experience to decide what to do, while perception guides how to act. We therefore propose ActMem, an in-context memory framework that decouples memory reasoning from perceptual grounding within a single vision-language backbone. Built on a vision-language model with native v…",
+    "summaryZh": "该预印本提出ActMem框架，旨在解决现有增强VLA模型的记忆检索缺乏推理或上下文拥挤问题。该方法在单一视觉语言骨干网络内，将记忆推理与感知定位解耦。",
+    "why": "引入了解耦记忆推理与感知定位的机制，针对现有记忆增强模型在长程操作任务中的上下文拥挤或推理不足问题提供新的框架设计。",
+    "topics": [
+      "embodied"
+    ],
+    "tags": [
+      "具身与空间记忆"
+    ],
+    "security": null,
+    "evidence": "预印本 · 原文可核验",
+    "score": 82,
+    "curated": false,
+    "collectedAt": "2026-11-20T07:12:38.065Z",
+    "provenance": "arxiv-embodied",
     "summaryZhBasis": "原文摘要"
   },
   {
