@@ -1,5 +1,278 @@
 [
   {
+    "id": "arxiv:2611.26863",
+    "title": "LLMs Memorize Their Own Hallucinations During Post-Training",
+    "titleZh": "LLMs Memorize Their Own Hallucinations During Post-Training：后训练阶段幻觉记忆化研究",
+    "url": "https://arxiv.org/abs/2611.26863",
+    "kind": "paper",
+    "source": "arXiv · cs.CL RSS（API 兜底）",
+    "sourceId": "arxiv-rss-cl",
+    "sourceTier": "preprint",
+    "published": "2026-11-23T05:00:00.000Z",
+    "summary": "arXiv:2611.26863v1 Announce Type: new Abstract: Reasoning domains have shaped the post-training recipes of frontier models even though they are trained and deployed in domains beyond math and code. In this paper, we study the consequences of directly adopting reasoning-centric training recipes, e.g., the use of outcome-based rewards for reinforcement learning (RL), injection of \"cognitive\" behaviors such as proposing and backtracking from hypotheses in reasoning chains, etc., for knowledge tasks. We hypothesize that these decisions, while useful for reasoning, inadvertently encourage models to memorize hallucinations they themselves generate in their long reasoning chains when trained on kn…",
+    "summaryZh": "该预印本研究了在推理主导的后训练配方（如基于结果的强化学习奖励、注入认知行为）下，模型在知识任务中是否会因此记住自己在长推理链中生成的幻觉。",
+    "why": "揭示了当前前沿模型后训练中推理导向的方法可能带来的副作用，即对知识任务产生负面影响，为理解模型记忆机制和训练策略提供新视角。",
+    "topics": [
+      "security"
+    ],
+    "tags": [
+      "安全与治理"
+    ],
+    "security": {
+      "angles": [
+        "attack"
+      ],
+      "note": "规则命中关键词，等待人工复核。"
+    },
+    "evidence": "预印本 · 原文可核验",
+    "score": 86,
+    "curated": false,
+    "collectedAt": "2026-11-23T06:17:02.385Z",
+    "provenance": "arxiv-rss-cl",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.27233",
+    "title": "LongCat Recall Sparse Attention: Co-Designing Key Organization and Retrieval for Long-Context Inference",
+    "titleZh": "LongCat Recall Sparse Attention: 长上下文推理中键组织与检索协同设计",
+    "url": "https://arxiv.org/abs/2611.27233",
+    "kind": "paper",
+    "source": "arXiv · cs.CL RSS（API 兜底）",
+    "sourceId": "arxiv-rss-cl",
+    "sourceTier": "preprint",
+    "published": "2026-11-23T05:00:00.000Z",
+    "summary": "arXiv:2611.27233v1 Announce Type: new Abstract: Retrieval-based sparse attention, exemplified by DeepSeek Sparse Attention (DSA), reduces attention computation by selecting a small subset of key-value entries. However, selecting these entries can still require searching the entire visible history. For long sequences, retrieval becomes a major bottleneck, limiting the efficiency gains from sparse attention. To address this problem, we propose LongCat Recall Sparse Attention (LRSA), which combines fine-grained representatives with paged retrieval in an incrementally maintained index. LRSA partitions the sequence into time buckets that can be indexed independently as new keys arrive, without r…",
+    "summaryZh": "该预印本提出了LongCat Recall Sparse Attention (LRSA)，通过结合细粒度代表元和页式检索，在增量维护的索引中解决长序列稀疏注意力中检索开销大的问题。",
+    "why": "针对现有检索式稀疏注意力在长上下文中检索瓶颈的痛点，提出了一种新的架构设计，有助于提升长上下文推理的效率。",
+    "topics": [
+      "mechanism"
+    ],
+    "tags": [
+      "记忆机制与系统"
+    ],
+    "security": null,
+    "evidence": "预印本 · 原文可核验",
+    "score": 82,
+    "curated": false,
+    "collectedAt": "2026-11-23T06:17:02.385Z",
+    "provenance": "arxiv-rss-cl",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "web:https://www.qbitai.com/2026/11/511841.html",
+    "title": "8万条群聊消息做成考卷：腾讯元宝×KCL发布首个基于群聊构建的Agent记忆基准",
+    "titleZh": "腾讯元宝×KCL发布基于群聊构建的Agent记忆基准",
+    "url": "https://www.qbitai.com/2026/11/511841.html",
+    "kind": "news",
+    "source": "量子位",
+    "sourceId": "news-qbit",
+    "sourceTier": "media",
+    "published": "2026-11-21T11:40:11.000Z",
+    "summary": "",
+    "summaryZh": "据量子位报道，腾讯元宝与KCL合作，基于8万条群聊消息构建了Agent记忆基准测试。",
+    "why": "这是由媒体公布的基于真实社交场景（群聊）构建的Agent记忆评估基准，为Agent记忆能力研究提供了新的测试集来源。",
+    "topics": [
+      "evaluation"
+    ],
+    "tags": [
+      "评测与基准"
+    ],
+    "security": {
+      "angles": [
+        "evaluation"
+      ],
+      "note": "规则命中关键词，等待人工复核。"
+    },
+    "evidence": "媒体报道",
+    "score": 71,
+    "curated": false,
+    "collectedAt": "2026-11-23T06:17:02.385Z",
+    "provenance": "news-qbit",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.27973",
+    "title": "MemOnce: A Scalable Memory Architecture for Large Language Models",
+    "titleZh": "MemOnce: A Scalable Memory Architecture for Large Language Models",
+    "url": "https://arxiv.org/abs/2611.27973v1",
+    "kind": "paper",
+    "source": "arXiv · 记忆召回补漏",
+    "sourceId": "arxiv-recall",
+    "sourceTier": "preprint",
+    "published": "2026-11-20T18:51:29.000Z",
+    "summary": "Deploying large language models (LLMs) in long-horizon and continual interactions requires maintaining reusable memory states for future inference, posing challenges for existing architectures. Standard Transformers accumulate layer-wise, token-level KV caches, incurring linear GPU memory growth and quadratic computational complexity as the context expands. In contrast, linear-time architectures compress history into fixed-size states, but struggle to retain fine-grained details. We introduce MemOnce, a foundation architecture that learns scalable memory states for language models. MemOnce is based on two core designs: (a) Memory encoder-decoder: it caches only a small subset of final-layer…",
+    "summaryZh": "该预印本提出了MemOnce，一种基于记忆编码器-解码器架构的可扩展记忆机制，旨在解决标准Transformer线性内存增长和二次方计算复杂度，以及线性时间架构难以保留细粒度细节的问题。",
+    "why": "探索了面向长时程和持续交互场景的LLM可扩展记忆架构，为克服现有内存管理瓶颈提供了新的基础架构设计思路。",
+    "topics": [
+      "mechanism"
+    ],
+    "tags": [
+      "记忆机制与系统"
+    ],
+    "security": null,
+    "evidence": "预印本 · 原文可核验",
+    "score": 82,
+    "curated": false,
+    "collectedAt": "2026-11-23T06:17:02.385Z",
+    "provenance": "arxiv-recall",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.27689",
+    "title": "Embodied-Harness: Towards Recursive Self-Improvement for Robotic Manipulation",
+    "titleZh": "Embodied-Harness：面向机器人操作的递归自我改进框架",
+    "url": "https://arxiv.org/abs/2611.27689v1",
+    "kind": "paper",
+    "source": "arXiv · 记忆召回补漏",
+    "sourceId": "arxiv-recall",
+    "sourceTier": "preprint",
+    "published": "2026-11-20T14:55:07.000Z",
+    "summary": "Vision-language model (VLM)-based agents offer a promising approach to robotic manipulation, yet remain limited by inadequate memory organization, uncertain failure attribution, and limited reuse of execution experience. We propose Embodied-Harness, a dual-agent framework that improves manipulation by refining the execution harness without updating model parameters. The Actor interacts with the environment through a robot-control interface, while the Reflector converts execution evidence into reusable operational guidance. Hierarchical Memory Architecture maintains short-term execution context and long-term experiential knowledge to support execution and reflection. Evidence-based Experienc…",
+    "summaryZh": "该文提出双智能体框架Embodied-Harness，通过分层记忆架构维护短期执行上下文和长期经验知识，利用Actor与Reflector在不更新模型参数的情况下优化执行机制以改进机器人操作。",
+    "why": "该工作展示了通过外部执行机制和分层记忆而非参数更新来实现机器人自我改进的新路径，为具身智能体的记忆与经验复用提供了新参考。",
+    "topics": [
+      "embodied"
+    ],
+    "tags": [
+      "具身与空间记忆"
+    ],
+    "security": null,
+    "evidence": "预印本 · 原文可核验",
+    "score": 82,
+    "curated": false,
+    "collectedAt": "2026-11-23T06:17:02.385Z",
+    "provenance": "arxiv-recall",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.27381",
+    "title": "VMSA: Video Memory Skill Agent for Long Video Understanding",
+    "titleZh": "VMSA：长视频理解的视频记忆技能智能体",
+    "url": "https://arxiv.org/abs/2611.27381v1",
+    "kind": "paper",
+    "source": "arXiv · 智能体记忆与自进化",
+    "sourceId": "arxiv-memory",
+    "sourceTier": "preprint",
+    "published": "2026-11-20T09:46:06.000Z",
+    "summary": "Long-video question answering requires retrieving and integrating relevant evidence from videos spanning hours or even days. Recent agentic approaches organize video information into external memories and iteratively retrieve evidence to answer questions. However, effective retrieval and reasoning remain challenging, as agents must determine what information to search for, which memory sources to access, and how to connect evidence across distant temporal intervals. To address these challenges, we propose Video Memory Skill Agent (VMSA), a framework that jointly designs structured video memories and memory skills for long-video understanding. VMSA constructs three complementary memory compo…",
+    "summaryZh": "该文提出Video Memory Skill Agent（VMSA），联合设计结构化视频记忆与记忆技能，通过三类互补记忆组件应对长视频问答中检索与推理的挑战，以提升跨时间间隔证据的整合能力。",
+    "why": "该框架通过系统化的视频记忆与技能设计，为长视频理解场景下的智能体证据检索与推理提供了结构化方法，有助于解决现有方法中证据连接不足的问题。",
+    "topics": [
+      "multimodal"
+    ],
+    "tags": [
+      "多模态与感知记忆"
+    ],
+    "security": {
+      "angles": [
+        "provenance"
+      ],
+      "note": "规则命中关键词，等待人工复核。"
+    },
+    "evidence": "预印本 · 原文可核验",
+    "score": 86,
+    "curated": false,
+    "collectedAt": "2026-11-23T06:17:02.385Z",
+    "provenance": "arxiv-memory",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.27219",
+    "title": "NavTTT: Adaptive Parametric Memory via Hierarchical Test-Time Training for Vision-and-Language Navigation",
+    "titleZh": "NavTTT：面向视觉语言导航的层级测试时训练自适应参数记忆",
+    "url": "https://arxiv.org/abs/2611.27219v1",
+    "kind": "paper",
+    "source": "arXiv · 智能体记忆与自进化",
+    "sourceId": "arxiv-memory",
+    "sourceTier": "preprint",
+    "published": "2026-11-20T07:14:55.000Z",
+    "summary": "Vision-and-language navigation (VLN) demands that agents accumulate and reason over streaming visual observations throughout long navigation episodes. Existing approaches struggle to maintain long-term history, constrained by the finite context capacity of transformer architectures. To solve the problem, fast-weight test-time training (TTT) provides a mechanism for encoding streaming observations into an evolving parameter state. However, existing TTT does not distinguish informative observations from repetitive visual content, allowing redundant tokens to interfere with the retention of information needed for subsequent decisions. We propose Navigation-Conditioned Test-Time Training (NavTT…",
+    "summaryZh": "该文提出Navigation-Conditioned Test-Time Training（NavTTT），通过层级测试时训练机制将流式视觉观测编码为演化的参数状态，并区分信息量高的观测与冗余内容，以解决Transformer有限上下文限制。",
+    "why": "该工作将快权重测试时训练技术引入视觉语言导航，通过自适应参数记忆机制改善了长期历史信息的保持，为流式具身任务的记忆处理提供了新方向。",
+    "topics": [
+      "evaluation"
+    ],
+    "tags": [
+      "评测与基准"
+    ],
+    "security": {
+      "angles": [
+        "evaluation"
+      ],
+      "note": "规则命中关键词，等待人工复核。"
+    },
+    "evidence": "预印本 · 原文可核验",
+    "score": 86,
+    "curated": false,
+    "collectedAt": "2026-11-23T06:17:02.385Z",
+    "provenance": "arxiv-memory",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.27166",
+    "title": "Mem-X: A Memory-Dependent Cross-Episode Benchmark for Vision-and-Language Navigation",
+    "titleZh": "Mem-X：记忆依赖型跨回合视觉语言导航基准",
+    "url": "https://arxiv.org/abs/2611.27166v1",
+    "kind": "paper",
+    "source": "arXiv · 智能体记忆与自进化",
+    "sourceId": "arxiv-memory",
+    "sourceTier": "preprint",
+    "published": "2026-11-20T05:51:31.000Z",
+    "summary": "Long-term memory enables embodied agents to reuse past observations across tasks. However, existing cross-episode vision-and-language navigation (VLN) benchmarks often leave it unclear whether successful navigation relies on historical memory or current exploration. We introduce Mem-X, a benchmark designed to evaluate memory-dependent cross-episode VLN. Mem-X organizes episodes into sessions in which subsequent instructions refer to objects or routes encountered in earlier episodes. Its three levels evaluate historical-object recall, in-memory localization and episodic indexing, and off-memory relocalization and historical-route reproduction. For the latter two levels, agents receive episod…",
+    "summaryZh": "该文提出基准Mem-X，通过将导航回合组织为会话并在后续指令中引用先前回合中的物体或路线，评估智能体在历史物体召回、记忆定位和路线复现等层级的记忆依赖能力。",
+    "why": "该基准明确了记忆与当前探索在导航成功中的区分，为评估具身智能体跨回合长期记忆的实际贡献提供了可量化的测试框架。",
+    "topics": [
+      "evaluation"
+    ],
+    "tags": [
+      "评测与基准"
+    ],
+    "security": {
+      "angles": [
+        "evaluation"
+      ],
+      "note": "规则命中关键词，等待人工复核。"
+    },
+    "evidence": "预印本 · 原文可核验",
+    "score": 86,
+    "curated": false,
+    "collectedAt": "2026-11-23T06:17:02.385Z",
+    "provenance": "arxiv-memory",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.27138",
+    "title": "Double counting in LLM evidence fusion: exact posteriors separate rule compliance from posterior gain",
+    "titleZh": "LLM证据融合中的双重计数：基于精确后验的依赖层级参考基准",
+    "url": "https://arxiv.org/abs/2611.27138v1",
+    "kind": "paper",
+    "source": "arXiv · 智能体记忆泛检索",
+    "sourceId": "arxiv-broad",
+    "sourceTier": "preprint",
+    "published": "2026-11-20T05:19:40.000Z",
+    "summary": "Language models fuse reports in retrieval, multi-agent consensus and agent memory, where treating shared-source reports as independent can double count evidence. A common remedy is an instruction to count each source once. Its value depends on the receiver's raw baseline. Pricing it needs an exact reference. We build the graded-dependence exact reference: binary worlds with single-report reliability 0.65 and four dependence levels, whose disclosed parameters give every world an exact posterior and every rule a target risk. The paired gain protocol scores raw and instructed answers of four configurations on 2,976 worlds. Agreement and gain separate in both directions. At $δ$ = 0, claude-opus…",
+    "summaryZh": "研究构建了包含四级依赖关系的精确参考基准，通过配对增益协议评估四种配置下原始回答与指令引导回答的表现，指出共享来源报告在LLM证据融合中常被误视为独立证据导致双重计数。",
+    "why": "为量化LLM在记忆融合中处理来源依赖性的准确性提供了精确的后验参考和评估协议，有助于区分规则合规性与实际增益。",
+    "topics": [
+      "mechanism"
+    ],
+    "tags": [
+      "记忆机制与系统"
+    ],
+    "security": {
+      "angles": [
+        "provenance"
+      ],
+      "note": "规则命中关键词，等待人工复核。"
+    },
+    "evidence": "预印本 · 原文可核验",
+    "score": 86,
+    "curated": false,
+    "collectedAt": "2026-11-23T06:17:02.385Z",
+    "provenance": "arxiv-broad",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
     "id": "arxiv:2605.12426",
     "title": "Geometric Factual Recall in Transformers",
     "titleZh": "Transformer中的几何事实回忆",
@@ -59,6 +332,40 @@
     "summaryZhBasis": "原文摘要"
   },
   {
+    "id": "arxiv:2611.26983",
+    "title": "Privacy Protection in Self-Evolving Personal Agents: Persistent Memory and Cross-Carrier Transfer",
+    "titleZh": "自进化个人智能体的隐私保护：持久记忆与跨载体迁移综述",
+    "url": "https://arxiv.org/abs/2611.26983v1",
+    "kind": "paper",
+    "source": "arXiv · 智能体记忆与自进化",
+    "sourceId": "arxiv-memory",
+    "sourceTier": "preprint",
+    "published": "2026-11-20T02:03:15.000Z",
+    "summary": "Personal agents carry private experience into later decisions through persistent memory. This thematic survey compares memory admission, maintenance, release, and withdrawal by protected change, observer, and validation setting. Direct evidence in the screened corpus comes from controlled memory workflows. Three worked scenarios follow one private fact through booking, feedback-driven learning, and withdrawal. We show when prompt revision and memory reads compose, when skills inherit a private head's bound, and why reader non-use does not establish cleanup of learned state. Diagnostic experiments measure the utility costs of wider label protection and broad memory deletion, and test how mis…",
+    "summaryZh": "该主题综述通过受控记忆工作流比较了隐私保护在记忆准入、维护、释放及撤回场景下的表现，指出读者未使用信息并不等同于清除已学习状态，并测试了误分类的影响。",
+    "why": "系统梳理了个人智能体在自进化过程中隐私数据流转与清理的边界，揭示了传统“非使用即清理”认知的局限性。",
+    "topics": [
+      "security"
+    ],
+    "tags": [
+      "安全与治理"
+    ],
+    "security": {
+      "angles": [
+        "defense",
+        "privacy",
+        "evaluation"
+      ],
+      "note": "规则命中关键词，等待人工复核。"
+    },
+    "evidence": "预印本 · 原文可核验",
+    "score": 86,
+    "curated": false,
+    "collectedAt": "2026-11-23T06:17:02.385Z",
+    "provenance": "arxiv-memory",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
     "id": "web:https://www.ithome.com/1/029/795.htm",
     "title": "育碧成立 Motherbrain 专注于游戏 AI，半年员工人数减少近 1100 人",
     "titleZh": "育碧成立Motherbrain子公司专注游戏AI",
@@ -83,6 +390,97 @@
     "curated": false,
     "collectedAt": "2026-11-20T06:08:17.360Z",
     "provenance": "news-ithome",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.26910",
+    "title": "AstronautBench: Measuring Agent Self-Improvement Across Episodes Through Knowledge, Evidence, and Progress",
+    "titleZh": "AstronautBench：基于知识、证据与进度多维度的智能体自改进评估基准",
+    "url": "https://arxiv.org/abs/2611.26910v1",
+    "kind": "paper",
+    "source": "arXiv · 智能体记忆与自进化",
+    "sourceId": "arxiv-memory",
+    "sourceTier": "preprint",
+    "published": "2026-11-19T23:48:39.000Z",
+    "summary": "LLM agents are expected to improve themselves from their own experience across episodes, with fixed weights. Self-improvement in an embodied world cannot be read from one measure. Existing benchmarks measure task progress, world-knowledge question answering (QA), and episodic memory, but a correct answer does not show that the agent ever observed the evidence for it, and progress does not show what the agent learned. We introduce AstronautBench, which measures one agent's self-improvement through three views on the same run: what it knows, whether its own evidence supports that knowledge, and how far it gets in the world. It is built on the game Outer Wilds, where each episode is a 22-minut…",
+    "summaryZh": "基于游戏Outer Wilds构建了评估智能体自改进能力的基准，通过知识掌握、自身证据支持及任务进度三个视角在同一运行中进行测量，以解决单一指标无法反映学习过程的问题。",
+    "why": "提出了针对具身环境智能体跨回合自改进能力的多维评估框架，弥补了现有基准仅关注任务进度或问答而无法验证证据获取过程的不足。",
+    "topics": [
+      "evaluation"
+    ],
+    "tags": [
+      "评测与基准"
+    ],
+    "security": {
+      "angles": [
+        "evaluation"
+      ],
+      "note": "规则命中关键词，等待人工复核。"
+    },
+    "evidence": "预印本 · 原文可核验",
+    "score": 86,
+    "curated": false,
+    "collectedAt": "2026-11-23T06:17:02.385Z",
+    "provenance": "arxiv-memory",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.26902",
+    "title": "Perceive Once, Escalate on Demand: Handing Off Visual KV Memory from Small to Large VLMs",
+    "titleZh": "Baton：从视觉KV缓存实现小模型到大VLM的按需升级",
+    "url": "https://arxiv.org/abs/2611.26902v1",
+    "kind": "paper",
+    "source": "arXiv · 智能体记忆与自进化",
+    "sourceId": "arxiv-memory",
+    "sourceTier": "preprint",
+    "published": "2026-11-19T23:32:52.000Z",
+    "summary": "An embodied agent cannot afford a large vision-language model (VLM) at every step of a long video, so a cascade runs a small VLM continuously and escalates only uncertain decisions to a large one. Each escalation, however, forces the large model to re-encode a history the small model has already perceived, and this dominates its cost. We present Baton, which hands the large model the small model's visual memory, its key-value (KV) cache over the history. Baton rests on one finding: the large model needs a usable memory, not a faithful copy of its own. A map trained to reproduce the large model's cache matches it most closely, yet brings no gain over the small model alone. Baton instead dist…",
+    "summaryZh": "提出Baton方法，在级联系统中将小视觉语言模型的视觉KV缓存传递给大模型以处理不确定决策，研究发现大模型需要的是可用记忆而非其自身缓存的忠实复制。",
+    "why": "通过直接传递KV缓存而非重新编码历史，显著降低了大模型在长视频处理中的升级成本，为具身智能体的视觉记忆高效流转提供了新机制。",
+    "topics": [
+      "embodied"
+    ],
+    "tags": [
+      "具身与空间记忆"
+    ],
+    "security": null,
+    "evidence": "预印本 · 原文可核验",
+    "score": 82,
+    "curated": false,
+    "collectedAt": "2026-11-23T06:17:02.385Z",
+    "provenance": "arxiv-memory",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.26745",
+    "title": "MomentMem: Memorizing Key Moments for Robot Manipulation",
+    "titleZh": "MomentMem：用于机器人操作的关键时刻记忆",
+    "url": "https://arxiv.org/abs/2611.26745v1",
+    "kind": "paper",
+    "source": "arXiv · 具身与多模态记忆",
+    "sourceId": "arxiv-embodied",
+    "sourceTier": "preprint",
+    "published": "2026-11-19T19:42:27.000Z",
+    "summary": "Robotic manipulation often requires remembering visual information that is no longer observable, such as the original location of an object. Existing approaches typically rely on full observation histories, which become redundant over long horizons, or text summaries, which may omit precise visual details. We study visual moment memory, the ability to retain such details from key moments for subsequent manipulation. To support this study, we introduce VMBench, a suite of long-horizon manipulation tasks requiring memory of spatial locations, visual appearances, and their associations. We further propose MomentMem, a hierarchical architecture in which a VLM-based memorizer selects keyframes a…",
+    "summaryZh": "该研究提出了视觉关键时刻记忆（visual moment memory），旨在保留操作过程中已不可见的视觉信息。论文引入了长时程操作任务基准 VMBench，并提出了基于 VLM 的层级架构 MomentMem，用于选取关键帧。",
+    "why": "提供了针对机器人长时程操作中视觉细节记忆的新架构（MomentMem）和对应的评估基准（VMBench），有助于解决传统全量历史或文本摘要在视觉精确性上的局限。",
+    "topics": [
+      "embodied"
+    ],
+    "tags": [
+      "具身与空间记忆"
+    ],
+    "security": {
+      "angles": [
+        "provenance"
+      ],
+      "note": "规则命中关键词，等待人工复核。"
+    },
+    "evidence": "预印本 · 原文可核验",
+    "score": 86,
+    "curated": false,
+    "collectedAt": "2026-11-23T06:17:02.385Z",
+    "provenance": "arxiv-embodied",
     "summaryZhBasis": "原文摘要"
   },
   {
