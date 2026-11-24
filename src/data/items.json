@@ -1,5 +1,394 @@
 [
   {
+    "id": "arxiv:2611.28374",
+    "title": "Taking the PULSE of Enterprise Workflows: Evaluating Persistent Project-State Understanding",
+    "titleZh": "PULSE：评估企业工作流中持续项目状态理解的基准",
+    "url": "https://arxiv.org/abs/2611.28374",
+    "kind": "paper",
+    "source": "arXiv · cs.CL RSS（API 兜底）",
+    "sourceId": "arxiv-rss-cl",
+    "sourceTier": "preprint",
+    "published": "2026-11-24T05:00:00.000Z",
+    "summary": "arXiv:2611.28374v1 Announce Type: new Abstract: Enterprise agents must maintain an up-to-date understanding of work distributed across heterogeneous artifacts, evolving over time, and unevenly visible to different collaborators. We formulate this challenge as persistent project-state understanding (PPSU) and introduce PULSE, a benchmark of 1,573 questions over 30 enterprise project histories. PULSE constructs deterministic, time-indexed project state and documented collaborator views from source-linked records, and evaluates three families of questions: open loops, project evolution, and view gaps. Across retrieval agents, graph- and memory-augmented retrieval, long-context, and oracle cond…",
+    "summaryZh": "该论文提出持续项目状态理解（PPSU）任务，并引入包含1,573个问题的PULSE基准。基准基于30个企业项目历史构建确定性、时间索引的项目状态及协作者视图，用于评估检索代理、图/记忆增强检索及长上下文等模型在处理开放循环、项目演变和视图差距方面的表现。",
+    "why": "针对企业Agent需实时理解分散且动态变化的工作流这一痛点，提供了专门评测“持续项目状态理解”能力的基准与问题框架。",
+    "topics": [
+      "evaluation"
+    ],
+    "tags": [
+      "评测与基准"
+    ],
+    "security": {
+      "angles": [
+        "provenance",
+        "evaluation"
+      ],
+      "note": "规则命中关键词，等待人工复核。"
+    },
+    "evidence": "预印本 · 原文可核验",
+    "score": 86,
+    "curated": false,
+    "collectedAt": "2026-11-24T08:51:47.109Z",
+    "provenance": "arxiv-rss-cl",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.30181",
+    "title": "Retrieval-Augmented Generation in the Agentic Era: Tradition, Present, and Prospect",
+    "titleZh": "Agentic Era下的RAG综述：从索引到编排的生命周期视角",
+    "url": "https://arxiv.org/abs/2611.30181",
+    "kind": "paper",
+    "source": "arXiv · cs.CL RSS（API 兜底）",
+    "sourceId": "arxiv-rss-cl",
+    "sourceTier": "preprint",
+    "published": "2026-11-24T05:00:00.000Z",
+    "summary": "arXiv:2611.30181v1 Announce Type: new Abstract: Retrieval-augmented generation (RAG) couples frozen language models with external, updatable knowledge, so that generation is grounded in retrieved evidence rather than in parametric memory alone. This work maps RAG in the agentic era by joining them on a single lifecycle axis, from offline indexing through pre-retrieval, retrieval, post-retrieval, and orchestration over these stages. It treats indexing and orchestration as first-class components and agentic workflows as a paradigm of their own, and it covers the agentic work that has appeared since those reviews. Beyond these components, it covers evaluation, applications, and the questions t…",
+    "summaryZh": "该工作映射了代理时代检索增强生成（RAG）的研究现状，将索引与编排视为一级组件，并涵盖自相关综述以来出现的代理工作。文章从离线索引、检索前后处理及编排阶段，结合评估与应用，梳理了RAG在代理工作流中的演变。",
+    "why": "在RAG领域提供了面向“代理时代”的最新综述，将索引和编排提升至核心组件地位，填补了近期代理工作流中RAG应用的系统性梳理。",
+    "topics": [
+      "evaluation"
+    ],
+    "tags": [
+      "评测与基准"
+    ],
+    "security": {
+      "angles": [
+        "evaluation"
+      ],
+      "note": "规则命中关键词，等待人工复核。"
+    },
+    "evidence": "预印本 · 原文可核验",
+    "score": 86,
+    "curated": false,
+    "collectedAt": "2026-11-24T08:51:47.109Z",
+    "provenance": "arxiv-rss-cl",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.29238",
+    "title": "GameAnything: From Any Inspirations to Playable Game Worlds",
+    "titleZh": "GameAnything：将多模态灵感转化为可玩游戏世界的开源Agent平台",
+    "url": "https://arxiv.org/abs/2611.29238",
+    "kind": "paper",
+    "source": "arXiv · cs.CL RSS（API 兜底）",
+    "sourceId": "arxiv-rss-cl",
+    "sourceTier": "preprint",
+    "published": "2026-11-24T05:00:00.000Z",
+    "summary": "arXiv:2611.29238v1 Announce Type: cross Abstract: AI-driven game development holds the potential to transform diverse human inspirations into interactive experiences. However, existing systems and benchmarks primarily focus on explicit development specifications, with limited support for adapting multimodal references and evaluating actual gameplay experiences. We introduce GameAnything, an open-source agentic platform that transforms multimodal inspirations into playable extensions of existing games through iterative development. GameAnything integrates coding agents with an independent playtesting critic, persistent development state, and reusable experience memory to support continuous r…",
+    "summaryZh": "GameAnything是一个开源代理平台，通过迭代开发将多模态灵感转化为现有游戏的可玩扩展。平台集成了编码代理、独立试玩批评家、持久开发状态及可重用经验记忆，以支持持续研发。",
+    "why": "区别于仅关注明确开发规范的现有系统，该平台强调通过多模态参考和可重用经验记忆来适应AI游戏开发，并引入试玩批评家机制。",
+    "topics": [
+      "evaluation"
+    ],
+    "tags": [
+      "评测与基准"
+    ],
+    "security": {
+      "angles": [
+        "provenance",
+        "evaluation"
+      ],
+      "note": "规则命中关键词，等待人工复核。"
+    },
+    "evidence": "预印本 · 原文可核验",
+    "score": 86,
+    "curated": false,
+    "collectedAt": "2026-11-24T08:51:47.109Z",
+    "provenance": "arxiv-rss-cl",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2601.20465",
+    "title": "BMAM: Brain-inspired Multi-Agent Memory Framework",
+    "titleZh": "BMAM：受脑启发的多智能体记忆框架",
+    "url": "https://arxiv.org/abs/2601.20465",
+    "kind": "paper",
+    "source": "arXiv · cs.CL RSS（API 兜底）",
+    "sourceId": "arxiv-rss-cl",
+    "sourceTier": "preprint",
+    "published": "2026-11-24T05:00:00.000Z",
+    "summary": "arXiv:2601.20465v2 Announce Type: replace Abstract: Language-model-based agents operating over extended interaction horizons face persistent challenges in preserving temporally grounded information and maintaining behavioral consistency across sessions, a failure mode we term soul erosion. We present BMAM (Brain-inspired Multi-Agent Memory), a general-purpose memory architecture that models agent memory as a set of functionally specialized subsystems rather than a single unstructured store. Inspired by cognitive memory systems, BMAM decomposes memory into episodic, semantic, salience-aware, and control-oriented components that operate at complementary time scales, organised as a six-phase m…",
+    "summaryZh": "针对长交互场景中信息保持与行为一致性的“灵魂侵蚀”问题，BMAM将代理记忆建模为功能专门化的子系统集合。框架借鉴认知记忆系统，将记忆分解为情景、语义、显著性感知和控制导向组件，并在互补的时间尺度上组织为六阶段流程。",
+    "why": "提出了一种通用的多智能体记忆架构，通过模仿脑认知系统将记忆分解为不同时间尺度的专门化子系统，解决了单一非结构化存储导致的长期一致性失效。",
+    "topics": [
+      "tools"
+    ],
+    "tags": [
+      "工具与项目发布"
+    ],
+    "security": null,
+    "evidence": "预印本 · 原文可核验",
+    "score": 82,
+    "curated": false,
+    "collectedAt": "2026-11-24T08:51:47.109Z",
+    "provenance": "arxiv-rss-cl",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2605.17789",
+    "title": "SocialMemBench: Are AI Memory Systems Ready for Social Group Settings?",
+    "titleZh": "SocialMemBench：面向社交群体场景的AI记忆系统基准",
+    "url": "https://arxiv.org/abs/2605.17789",
+    "kind": "paper",
+    "source": "arXiv · cs.CL RSS（API 兜底）",
+    "sourceId": "arxiv-rss-cl",
+    "sourceTier": "preprint",
+    "published": "2026-11-24T05:00:00.000Z",
+    "summary": "arXiv:2605.17789v2 Announce Type: replace Abstract: Memory systems for AI assistants were built for single-user dialogue, a design mismatched to multi-party social group settings. This matters for the social assistants being built today: group-acting agents in chat platforms, and proactive personal assistants whose model of a user must include their social context. Existing memory benchmarks evaluate dyadic or workplace dialogue; none targets social groups, where memory must anchor facts in shared history rather than professional roles, separate group norms from individual exceptions, and attribute correctly even after a member leaves. We introduce SocialMemBench, a benchmark of human-verif…",
+    "summaryZh": "该预印本提出SocialMemBench基准，专门评估AI记忆系统在多方社交群体设置中的表现，包括区分群体规范与个体例外以及成员退出后的事实归因。现有基准多针对双人或职场对话，未覆盖社交群体中基于共享历史而非职业角色的记忆锚定需求。",
+    "why": "填补了记忆基准在社交群体多主体交互场景下的测试空白，针对群体规范与个体例外的区分能力进行评估。",
+    "topics": [
+      "evaluation"
+    ],
+    "tags": [
+      "评测与基准"
+    ],
+    "security": {
+      "angles": [
+        "evaluation"
+      ],
+      "note": "规则命中关键词，等待人工复核。"
+    },
+    "evidence": "预印本 · 原文可核验",
+    "score": 86,
+    "curated": false,
+    "collectedAt": "2026-11-24T08:51:47.109Z",
+    "provenance": "arxiv-rss-cl",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2607.06974",
+    "title": "MILES: Modular Instruction Memory with Learnable Selection for Self-Improving LLM Reasoning",
+    "titleZh": "MILES：支持自改进LLM推理的模块化指令记忆与可学习选择",
+    "url": "https://arxiv.org/abs/2607.06974",
+    "kind": "paper",
+    "source": "arXiv · cs.CL RSS（API 兜底）",
+    "sourceId": "arxiv-rss-cl",
+    "sourceTier": "preprint",
+    "published": "2026-11-24T05:00:00.000Z",
+    "summary": "arXiv:2607.06974v2 Announce Type: replace Abstract: Large language models (LLMs) increasingly improve their reasoning at test time via additional computation, yet most existing works treat each problem in isolation. When problems arrive sequentially, accumulating reusable experience across them can further improve performance. Existing memory-based methods either store whole-solution templates that generalize poorly to novel problems or use heuristic step-level selection that is not optimized for final-answer correctness. Learning selection policies requires large-scale training data and fixed action spaces, making such approaches unsuitable for test-time settings where memory expands incre…",
+    "summaryZh": "该预印本提出MILES方法，通过模块化指令记忆和可学习的选择策略，在测试时利用序列问题间积累的可复用经验来改进LLM推理。该方法避免了存储完整解题模板泛化性差的问题，也克服了启发式步骤选择未针对最终答案正确性优化的缺陷。",
+    "why": "提出针对测试时序列推理的记忆累积方法，通过优化选择策略而非仅存储模板来提升跨问题经验复用效果。",
+    "topics": [
+      "mechanism"
+    ],
+    "tags": [
+      "记忆机制与系统"
+    ],
+    "security": {
+      "angles": [
+        "defense",
+        "evaluation"
+      ],
+      "note": "规则命中关键词，等待人工复核。"
+    },
+    "evidence": "预印本 · 原文可核验",
+    "score": 86,
+    "curated": false,
+    "collectedAt": "2026-11-24T08:51:47.109Z",
+    "provenance": "arxiv-rss-cl",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2608.19920",
+    "title": "Learning how to Forget: Fine-tuning for Long-Context Sparse Attention",
+    "titleZh": "Learning how to Forget：长上下文稀疏注意力的微调方法",
+    "url": "https://arxiv.org/abs/2608.19920",
+    "kind": "paper",
+    "source": "arXiv · cs.CL RSS（API 兜底）",
+    "sourceId": "arxiv-rss-cl",
+    "sourceTier": "preprint",
+    "published": "2026-11-24T05:00:00.000Z",
+    "summary": "arXiv:2608.19920v3 Announce Type: replace Abstract: A lot of prior work addressed key-value (KV) cache selection and compression by sparse attention to enable long-context inference for transformer language models without excessive hardware budgets. We provide a new method for fine-tuning models with sparse attention. It works for any KV cache policy, runs on a moderate hardware budget (e.g., a single Nvidia A100 GPU with 40 GB RAM), and allows the model to co-adapt with the policy, often outperforming models trained with exact attention (sequence parallelism). We also provide an efficient implementation of H2O sparse attention (the leading policy in our experiments) with dedicated scaled d…",
+    "summaryZh": "该预印本提出一种适用于任意KV缓存策略的稀疏注意力微调方法，能在单张Nvidia A100 GPU的硬件预算下运行，并让模型与策略共同适应。实验表明该方法常优于使用精确注意力训练的模型，并提供了H2O稀疏注意力的高效实现。",
+    "why": "提供低硬件成本的稀疏注意力微调方案，实现模型与KV缓存策略的协同适应，优于传统精确注意力训练。",
+    "topics": [
+      "mechanism"
+    ],
+    "tags": [
+      "记忆机制与系统"
+    ],
+    "security": null,
+    "evidence": "预印本 · 原文可核验",
+    "score": 82,
+    "curated": false,
+    "collectedAt": "2026-11-24T08:51:47.109Z",
+    "provenance": "arxiv-rss-cl",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2610.26865",
+    "title": "AutoTerm-SST: Adaptive Terminology Memory with Zero Session-Time Setup for Streaming Speech Translation",
+    "titleZh": "AutoTerm-SST：流式语音翻译中零会话时设置的自适应术语记忆",
+    "url": "https://arxiv.org/abs/2610.26865",
+    "kind": "paper",
+    "source": "arXiv · cs.CL RSS（API 兜底）",
+    "sourceId": "arxiv-rss-cl",
+    "sourceTier": "preprint",
+    "published": "2026-11-24T05:00:00.000Z",
+    "summary": "arXiv:2610.26865v2 Announce Type: replace Abstract: Retrieval-augmented speech translation improves rare terminology, yet systems such as Retrieval-Augmented Simultaneous Speech Translation, or RASST, expect a user glossary before each session. Merging all domains into one glossary removes this step, but fixed retrieval and prompt budgets let irrelevant and conflicting entries crowd out useful terms as the catalog grows. We present AutoTerm-SST, an interactive streaming speech translator without glossary upload or domain selection. It partitions an offline terminology catalog into topic slices. A small language model scores each slice against recent partial translations. A sticky topic filt…",
+    "summaryZh": "该预印本提出AutoTerm-SST，一种无需用户上传词汇表或选择领域的交互式流式语音翻译器。系统通过离线术语目录的主题切片，利用小语言模型评分和粘性主题过滤器，在固定检索预算下解决无关和冲突术语干扰问题。",
+    "why": "解决检索增强流式语音翻译中预设词汇表带来的干扰问题，实现零会话时设置的自适应术语管理。",
+    "topics": [
+      "mechanism"
+    ],
+    "tags": [
+      "记忆机制与系统"
+    ],
+    "security": null,
+    "evidence": "预印本 · 原文可核验",
+    "score": 82,
+    "curated": false,
+    "collectedAt": "2026-11-24T08:51:47.109Z",
+    "provenance": "arxiv-rss-cl",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2601.21702",
+    "title": "Beyond Forgetting: Representation Misdirection Elicits Controllable Side Behaviors and Capabilities",
+    "titleZh": "基于表示误导（RM）的可控行为引导与目标向量探索",
+    "url": "https://arxiv.org/abs/2601.21702",
+    "kind": "paper",
+    "source": "arXiv · cs.CL RSS（API 兜底）",
+    "sourceId": "arxiv-rss-cl",
+    "sourceTier": "preprint",
+    "published": "2026-11-24T05:00:00.000Z",
+    "summary": "arXiv:2601.21702v5 Announce Type: replace-cross Abstract: We consider Representation Misdirection (RM), a simple unlearning mechanism for large language models (LLMs) that achieves unlearning by redirecting the latent representations of forget samples toward a target vector. Despite being important, the role of the target vector used in RM remains insufficiently explored. Here, we approach and revisit RM through the lens of the Linear Representation Hypothesis (LRH). Specifically, if one can identify a one-dimensional representation corresponding to a high-level concept, the LRH enables linear operations on this concept vector within the representation space of the forget samples. From this…",
+    "summaryZh": "该预印本研究大型语言模型中的表示误导（Representation Misdirection, RM）遗忘机制，通过线性表示假设（LRH）重新审视目标向量的作用，探讨如何利用线性操作引导潜在表示以实现可控的副作用与能力释放。",
+    "why": "从线性表示假设角度深化了对RM机制中目标向量角色的理论理解，为可控遗忘与行为引导提供了新的分析视角。",
+    "topics": [
+      "security"
+    ],
+    "tags": [
+      "安全与治理"
+    ],
+    "security": null,
+    "evidence": "预印本 · 原文可核验",
+    "score": 82,
+    "curated": false,
+    "collectedAt": "2026-11-24T08:51:47.109Z",
+    "provenance": "arxiv-rss-cl",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.30900",
+    "title": "GlanceNav: Efficient Vision-and-Language Navigation with Streaming Memory and Counterfactual Rewind",
+    "titleZh": "GlanceNav：基于流式记忆与反事实回溯的高效视觉语言导航",
+    "url": "https://arxiv.org/abs/2611.30900v1",
+    "kind": "paper",
+    "source": "arXiv · 记忆召回补漏",
+    "sourceId": "arxiv-recall",
+    "sourceTier": "preprint",
+    "published": "2026-11-23T16:02:19.000Z",
+    "summary": "Multimodal large language models (MLLMs) have become strong policies for vision-and-language navigation (VLN). However, most of them encode a sample of past frames again at every decision and are trained on isolated decisions, so computation is redundant and the usable history is short. They also learn from their own mistakes through outcome rewards that give one scalar to a whole episode. We ask whether a navigator can encode each frame only once, at a constant cost per step, and still remember what matters and learn efficiently from its mistakes. We present GlanceNav, a streaming navigator built on a hybrid MLLM. Its Gated DeltaNet layers carry a recurrent state through the whole episode,…",
+    "summaryZh": "该预印本提出GlanceNav导航器，采用混合多模态大语言模型与Gated DeltaNet层，旨在以每步恒定成本单次编码帧数据，并通过流式记忆解决传统方法中历史可用短及计算冗余的问题。",
+    "why": "针对视觉语言导航中每步重新编码历史帧导致的高计算冗余痛点，提出单次编码与流式状态更新的架构改进，提升了导航效率与历史记忆能力。",
+    "topics": [
+      "embodied"
+    ],
+    "tags": [
+      "具身与空间记忆"
+    ],
+    "security": null,
+    "evidence": "预印本 · 原文可核验",
+    "score": 82,
+    "curated": false,
+    "collectedAt": "2026-11-24T08:51:47.109Z",
+    "provenance": "arxiv-recall",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.30287",
+    "title": "MMMem: Self-Improving Agents with Task-Aware Multimodal Experience Consolidation",
+    "titleZh": "MMMem：任务感知的多模态经验巩固自改进智能体框架",
+    "url": "https://arxiv.org/abs/2611.30287v1",
+    "kind": "paper",
+    "source": "arXiv · 智能体记忆与自进化",
+    "sourceId": "arxiv-memory",
+    "sourceTier": "preprint",
+    "published": "2026-11-23T08:44:23.000Z",
+    "summary": "AI agents accumulate conversations, images, and documents through long-term interactions with users. Answering later questions often requires connecting evidence across these records, yet the resulting understanding is rarely retained, allowing mistakes to recur on related questions. Existing multimodal memory methods largely focus on storing and retrieving records, with limited mechanisms for learning from completed tasks and consolidating task-specific experience. We therefore propose MMMem, a task-aware multimodal memory framework that extracts and consolidates experience from completed tasks through four complementary strategies. First, source-linked multi-view memory organizes original…",
+    "summaryZh": "该预印本提出MMMem框架，通过四种互补策略从已完成任务中提取和巩固任务特定的多模态经验，以解决现有方法在存储检索后缺乏从任务结果中学习并避免重复错误的问题。",
+    "why": "弥补了现有多模态记忆方法侧重存取而忽视从完成任务中经验巩固与自改进的短板，增强了智能体在长期交互中的知识保留与错误纠正能力。",
+    "topics": [
+      "multimodal"
+    ],
+    "tags": [
+      "多模态与感知记忆"
+    ],
+    "security": {
+      "angles": [
+        "provenance"
+      ],
+      "note": "规则命中关键词，等待人工复核。"
+    },
+    "evidence": "预印本 · 原文可核验",
+    "score": 86,
+    "curated": false,
+    "collectedAt": "2026-11-24T08:51:47.109Z",
+    "provenance": "arxiv-memory",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.30230",
+    "title": "Composing Independently Distilled Memory and Retrieval Policies for Long-Term Agents",
+    "titleZh": "独立蒸馏的记忆与检索策略组合用于长期智能体",
+    "url": "https://arxiv.org/abs/2611.30230v1",
+    "kind": "paper",
+    "source": "arXiv · 智能体记忆与自进化",
+    "sourceId": "arxiv-memory",
+    "sourceTier": "preprint",
+    "published": "2026-11-23T08:01:29.000Z",
+    "summary": "Long-lived Web assistants require effective memory and retrieval mechanisms to access information from past user interactions. While these capabilities can be learned through specialized policies, it remains unclear whether specialists trained independently in different environments can be effectively composed without joint optimization. This paper investigates compositional transfer through policy distillation. Memory-writing and sequential retrieval policies are independently distilled from frontier-model action trajectories into 3B models and combined with a fixed answer generator without downstream training. On a LongMemEval-based benchmark, the distilled composition achieves 73.1% accu…",
+    "summaryZh": "该预印本研究了通过策略蒸馏将独立训练的记忆写入与顺序检索策略组合的效果，实验表明在LongMemEval基准上，这种无需下游联合优化的组合策略达到了73.1%的准确率。",
+    "why": "验证了独立蒸馏的记忆与检索策略可以直接组合使用而无需联合优化，为长期智能体的模块化构建提供了简化训练流程的证据。",
+    "topics": [
+      "evaluation"
+    ],
+    "tags": [
+      "评测与基准"
+    ],
+    "security": {
+      "angles": [
+        "evaluation"
+      ],
+      "note": "规则命中关键词，等待人工复核。"
+    },
+    "evidence": "预印本 · 原文可核验",
+    "score": 86,
+    "curated": false,
+    "collectedAt": "2026-11-24T08:51:47.109Z",
+    "provenance": "arxiv-memory",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.30148",
+    "title": "STMemoLLM: A Spatial-Temporal Memory-Augmented LLM for Robust Traffic Forecasting",
+    "titleZh": "STMemoLLM：时空记忆增强的大语言模型交通预测",
+    "url": "https://arxiv.org/abs/2611.30148v1",
+    "kind": "paper",
+    "source": "arXiv · 记忆召回补漏",
+    "sourceId": "arxiv-recall",
+    "sourceTier": "preprint",
+    "published": "2026-11-23T06:50:31.000Z",
+    "summary": "Traffic forecasting is essential for intelligent transportation systems. However, traditional deep-learning models often rely heavily on high-quality observations. Recent LLM-based approaches incorporate pretrained knowledge to improve forecasting, but they remain sensitive to input perturbations and struggle to preserve long-term patterns. To address this, we propose STMemoLLM, a spatial-temporal memory-augmented LLM for robust traffic forecasting. STMemoLLM introduces memory prototypes to compress inputs into compact summary tokens while extracting reliable dynamics from residual signals, achieving a balance between stability and variability. Specifically, a memory-enhanced tokenizer enco…",
+    "summaryZh": "该论文提出STMemoLLM，通过引入记忆原型将输入压缩为紧凑摘要令牌，并从残差信号中提取动态，以解决现有基于LLM的交通预测模型对输入扰动敏感且难以保留长期模式的问题。",
+    "why": "探索了利用记忆机制压缩输入与提取动态以增强LLM在交通预测任务中鲁棒性的新路径。",
+    "topics": [
+      "embodied"
+    ],
+    "tags": [
+      "具身与空间记忆"
+    ],
+    "security": null,
+    "evidence": "预印本 · 原文可核验",
+    "score": 82,
+    "curated": false,
+    "collectedAt": "2026-11-24T08:51:47.109Z",
+    "provenance": "arxiv-recall",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
     "id": "arxiv:2611.26863",
     "title": "LLMs Memorize Their Own Hallucinations During Post-Training",
     "titleZh": "LLMs Memorize Their Own Hallucinations During Post-Training：后训练阶段幻觉记忆化研究",
@@ -59,6 +448,250 @@
     "summaryZhBasis": "原文摘要"
   },
   {
+    "id": "arxiv:2611.30047",
+    "title": "RoboLiveMem: Is Robot Memory Solved When the World Does Not Wait?",
+    "titleZh": "RoboLiveMem：动态环境下的机器人记忆基准测试",
+    "url": "https://arxiv.org/abs/2611.30047v1",
+    "kind": "paper",
+    "source": "arXiv · 智能体记忆与自进化",
+    "sourceId": "arxiv-memory",
+    "sourceTier": "preprint",
+    "published": "2026-11-23T04:52:41.000Z",
+    "summary": "Robot agents built on frontier vision-language models now solve most robot memory benchmarks. Does this mean they can remember what they need in a home, where people and machines keep moving things? Existing memory benchmarks cannot answer this question, because they pause the simulator while the model thinks: nothing can change during a decision, so whatever the robot remembers is still true when it acts. We introduce RoboLiveMem, a benchmark that runs the same memory tasks twice, once with the world paused while the model thinks and once with the world running. It contains 29 task families in three tiers, from 16 realistic BEHAVIOR-1K scenes of homes, workshops and a restaurant to control…",
+    "summaryZh": "现有机器人记忆基准在模型思考时暂停模拟，无法反映真实世界物体移动的情况。该工作引入RoboLiveMem基准，包含29个任务家族，通过在模型思考时保持世界运行来评估机器人在动态环境中的记忆能力。",
+    "why": "指出了现有基准在模型决策期间环境静态化的局限性，提供了在动态真实场景下评估机器人记忆能力的测试集。",
+    "topics": [
+      "evaluation"
+    ],
+    "tags": [
+      "评测与基准"
+    ],
+    "security": {
+      "angles": [
+        "evaluation"
+      ],
+      "note": "规则命中关键词，等待人工复核。"
+    },
+    "evidence": "预印本 · 原文可核验",
+    "score": 86,
+    "curated": false,
+    "collectedAt": "2026-11-24T08:51:47.109Z",
+    "provenance": "arxiv-memory",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.29912",
+    "title": "SuperNav-1.5: Structured Spatial Memory For Agentic Navigation Systems",
+    "titleZh": "SuperNav-1.5：用于智能体导航系统的结构化空间记忆",
+    "url": "https://arxiv.org/abs/2611.29912v1",
+    "kind": "paper",
+    "source": "arXiv · 智能体记忆与自进化",
+    "sourceId": "arxiv-memory",
+    "sourceTier": "preprint",
+    "published": "2026-11-23T02:10:43.000Z",
+    "summary": "This paper addresses the challenge of scene-level memory design for efficient navigation across sessions and successive object goals. Recent methods commonly represent a scene using scene graphs or image--text records. However, dense scene-graph representations impose substantial reasoning and context overhead on multimodal large language models, while image--text records cannot be directly converted into executable geometric routes. To address these limitations, we propose SuperNav-1.5, an agentic navigation system equipped with a structured spatial memory constructed by the agent. The memory consists of an area-segmented occupancy map annotated with agent-maintained, map-grounded memory n…",
+    "summaryZh": "针对场景图推理开销大和图文记录难以转化为可执行几何路径的问题，SuperNav-1.5 提出一种由智能体构建的结构化空间记忆，由分区占用地图及基于地图的记忆节点组成，用于跨会话导航。",
+    "why": "提出了比稠密场景图开销更低、比图文记录更具几何可执行性的结构化空间记忆方案，适用于跨会话导航系统。",
+    "topics": [
+      "evaluation"
+    ],
+    "tags": [
+      "评测与基准"
+    ],
+    "security": null,
+    "evidence": "预印本 · 原文可核验",
+    "score": 82,
+    "curated": false,
+    "collectedAt": "2026-11-24T08:51:47.109Z",
+    "provenance": "arxiv-memory",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.29818",
+    "title": "How Should a Home Robot Update Its Memories When Human Routines Change?",
+    "titleZh": "家用机器人在人类日常习惯变化时的记忆更新机制",
+    "url": "https://arxiv.org/abs/2611.29818v1",
+    "kind": "paper",
+    "source": "arXiv · 记忆召回补漏",
+    "sourceId": "arxiv-recall",
+    "sourceTier": "preprint",
+    "published": "2026-11-22T22:50:11.000Z",
+    "summary": "A home robot that helps with chores needs to know where objects are, but people move objects according to routines that change and later change back. The robot's memory must adapt to the new routine without erasing experience that may become useful again. One approach is to have a language model maintain written summaries of the home from the robot's own observations, but existing evaluations of such memories use static worlds. We explore simulated households where a resident gets sick, recovers, and later gets sick again. We compare a rule that keeps every room an object has been seen in, language-model memories that store only written summaries, and language-model memories that can also r…",
+    "summaryZh": "在模拟居民生病、康复及再次生病的动态家庭场景中，比较了保留所有观测房间规则、仅存储文本摘要的语言模型记忆以及可检索记忆在应对习惯改变时的表现，探讨如何在不擦除有用经验的前提下适应新习惯。",
+    "why": "研究了动态变化的家庭环境中，机器人记忆如何在适应新习惯与保留旧经验之间取得平衡。",
+    "topics": [
+      "evaluation"
+    ],
+    "tags": [
+      "评测与基准"
+    ],
+    "security": {
+      "angles": [
+        "evaluation"
+      ],
+      "note": "规则命中关键词，等待人工复核。"
+    },
+    "evidence": "预印本 · 原文可核验",
+    "score": 86,
+    "curated": false,
+    "collectedAt": "2026-11-24T08:51:47.109Z",
+    "provenance": "arxiv-recall",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.29804",
+    "title": "FORGETMENOT: Auditing Memory Driven Privacy Risks in Commercial AI Agents",
+    "titleZh": "FORGETMENOT：商用AI Agent记忆隐私风险审计框架",
+    "url": "https://arxiv.org/abs/2611.29804v1",
+    "kind": "paper",
+    "source": "arXiv · 智能体记忆与自进化",
+    "sourceId": "arxiv-memory",
+    "sourceTier": "preprint",
+    "published": "2026-11-22T22:10:40.000Z",
+    "summary": "Commercial AI agents increasingly incorporate long-term memory (both persistent and chat-history) to enable more accurate and personalized responses, raises significant privacy and policy concerns. Yet little is known about user privacy risks associated with memory behavior, in particular, about memory storage, disclosure, transparency and deletion control. To bridge this gap, we propose FORGETMENOT, an auditing framework for analyzing the privacy risks of long term memory in commercial AI agents. Using our framework, we collect around 3800 multi-turn sessions comprising around 6M tokens across five popular AI agents. Our results show that agents store a wide range of personal attributes, i…",
+    "summaryZh": "该论文提出FORGETMENOT框架，用于分析商用AI Agent长期记忆在存储、披露及删除控制等方面的隐私风险。研究收集了约3800个多轮会话及600万token数据，对五个流行AI Agent进行了审计。",
+    "why": "针对商用Agent记忆隐私风险缺乏系统性量化评估的现状，提供了具体的审计框架与实证数据。",
+    "topics": [
+      "security"
+    ],
+    "tags": [
+      "安全与治理"
+    ],
+    "security": {
+      "angles": [
+        "privacy",
+        "provenance"
+      ],
+      "note": "规则命中关键词，等待人工复核。"
+    },
+    "evidence": "预印本 · 原文可核验",
+    "score": 86,
+    "curated": false,
+    "collectedAt": "2026-11-24T08:51:47.109Z",
+    "provenance": "arxiv-memory",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.29588",
+    "title": "How Multi-Timescale Memory Cools Optimization: Theory and Evidence from AdEMAMix",
+    "titleZh": "多时间尺度记忆如何冷却优化：AdEMAMix的理论证据",
+    "url": "https://arxiv.org/abs/2611.29588v1",
+    "kind": "paper",
+    "source": "arXiv · 记忆召回补漏",
+    "sourceId": "arxiv-recall",
+    "sourceTier": "preprint",
+    "published": "2026-11-22T16:20:31.000Z",
+    "summary": "Augmenting AdamW with multiple momentum timescales improves large language model pretraining, yet the mechanism driving these gains remains poorly understood. We identify an interaction between multi-timescale optimizer memory and the geometry of normalized networks: memory changes parameter norms and thereby controls how fast parameters rotate. Starting from exact norm dynamics under decoupled weight decay, we show that the parameter norm depends on the temporal correlation of the updates, with weight decay controlling how long these correlations influence optimization. We show how an independently weighted slow momentum can substantially increase the norm of parameters, while contributing…",
+    "summaryZh": "该文分析了多时间尺度优化器记忆与大语言模型预训练增益之间的机制，指出记忆通过改变参数范数来控制参数旋转速度。研究基于解耦权重衰减下的范数动力学，论证了独立加权慢动量对参数范数的影响。",
+    "why": "从理论层面解释了多时间尺度记忆改善LLM预训练性能的内在机制，即通过参数范数动态影响优化过程。",
+    "topics": [
+      "mechanism"
+    ],
+    "tags": [
+      "记忆机制与系统"
+    ],
+    "security": null,
+    "evidence": "预印本 · 原文可核验",
+    "score": 82,
+    "curated": false,
+    "collectedAt": "2026-11-24T08:51:47.109Z",
+    "provenance": "arxiv-recall",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.29303",
+    "title": "From Vanishing Gradients to Recursive Self-Improvement: Evaluating the Most Influential Papers in Large Language Model Evolution (1997-2026)",
+    "titleZh": "从消失梯度到递归自我改进：LLM演进中22篇最具影响力论文的评估",
+    "url": "https://arxiv.org/abs/2611.29303v1",
+    "kind": "paper",
+    "source": "arXiv · 智能体记忆泛检索",
+    "sourceId": "arxiv-broad",
+    "sourceTier": "preprint",
+    "published": "2026-11-22T07:49:18.000Z",
+    "summary": "The rapid proliferation of Large Language Model (LLM) research makes it increasingly difficult to distinguish incremental refinements from true paradigm shifts. This review evaluates 22 of the most influential publications spanning nearly three decades (1997-2026), organized through a causal, chronologically anchored taxonomy centered on the author's birth year (1999). Beginning \"before 1999\" with how recurrent neural networks (RNNs) forgot earlier context (much like forgetting Chapter 1 by the time a reader reaches Chapter 9), we trace how Long Short-Term Memory (LSTM) networks introduced a \"bouncer\" mechanism of forget, input, and output gates to selectively preserve long-term memory. We…",
+    "summaryZh": "该综述评估了1997-2026年间22篇对LLM演进最具影响力的论文，通过因果分类体系梳理了从RNN到LSTM等记忆机制的演变。文章区分了增量式改进与范式转移，追溯了长短期记忆网络如何解决长期上下文遗忘问题。",
+    "why": "提供了一份跨近三十年的LLM关键文献因果分类清单，帮助读者区分范式转移与常规优化，理解记忆机制在模型演进中的核心作用。",
+    "topics": [
+      "survey"
+    ],
+    "tags": [
+      "综述与研究全景"
+    ],
+    "security": {
+      "angles": [
+        "provenance",
+        "evaluation"
+      ],
+      "note": "规则命中关键词，等待人工复核。"
+    },
+    "evidence": "预印本 · 原文可核验",
+    "score": 86,
+    "curated": false,
+    "collectedAt": "2026-11-24T08:51:47.109Z",
+    "provenance": "arxiv-broad",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.29255",
+    "title": "NoeVera: Can Knowledge Guide Experiments and Experiments Refine Knowledge?",
+    "titleZh": "NoeVera：知识与实验相互引导的Agentic Second Brain",
+    "url": "https://arxiv.org/abs/2611.29255v1",
+    "kind": "paper",
+    "source": "arXiv · 智能体记忆与自进化",
+    "sourceId": "arxiv-memory",
+    "sourceTier": "preprint",
+    "published": "2026-11-22T05:49:43.000Z",
+    "summary": "With the growing demand for large language model (LLM) services, optimizing LLM serving systems is becoming increasingly complex, and the bottleneck is no longer predicting how a given configuration will perform. The harder problem is deciding what to investigate: which mechanisms matter for a workload, which configurations are worth testing, and what evidence a decision still needs. In this work, we present NoeVera, an agentic Second Brain that goes beyond just one-shot retrieval by turning papers, code, benchmarks, and experimental results into a persistent, provenance-preserving knowledge base with three planes: source evidence, reusable synthesis, and agent memory. Decision-aware retrie…",
+    "summaryZh": "该文提出NoeVera，一个将论文、代码和实验结果转化为持久化知识基地的Agentic Second Brain，旨在解决LLM服务优化中“决定调查什么”的难题。系统包含源证据、可复用综合和Agent记忆三个平面，支持决策感知检索。",
+    "why": "展示了如何构建保留溯源的持久化Agent记忆库，并实现知识引导实验设计与实验反哺知识更新的闭环，区别于单次检索模式。",
+    "topics": [
+      "security"
+    ],
+    "tags": [
+      "安全与治理"
+    ],
+    "security": {
+      "angles": [
+        "provenance",
+        "evaluation"
+      ],
+      "note": "规则命中关键词，等待人工复核。"
+    },
+    "evidence": "预印本 · 原文可核验",
+    "score": 86,
+    "curated": false,
+    "collectedAt": "2026-11-24T08:51:47.109Z",
+    "provenance": "arxiv-memory",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.29155",
+    "title": "ContextFact: Remembering Facts in Context for Long-Term Conversational Agents",
+    "titleZh": "ContextFact：面向长期对话智能体的上下文事实记忆",
+    "url": "https://arxiv.org/abs/2611.29155v1",
+    "kind": "paper",
+    "source": "arXiv · 记忆召回补漏",
+    "sourceId": "arxiv-recall",
+    "sourceTier": "preprint",
+    "published": "2026-11-22T02:25:07.000Z",
+    "summary": "Agents built on large language models must maintain continuity across repeated interactions with users. However, long-term conversations scatter facts across turns and sessions, making it difficult to retrieve the right evidence with enough context. Memory for such conversations must therefore preserve facts with their context while keeping evidence selectively accessible. We first study how memory construction and retrieval-unit boundaries affect answerability and evidence access. Reading the entire memory bank reveals gaps that cannot be resolved by retrieval selection alone, showing that some context must be preserved during memory construction. Adjacent-turn grouping improves evidence a…",
+    "summaryZh": "论文指出仅靠检索难以解决长期对话中散落的事实问题，提出在构建记忆阶段保留上下文的必要性，并研究了记忆构建与检索单元边界对证据可访问性的影响。这是基于预印本的原文内容。",
+    "why": "提供了从记忆构建而非单纯检索角度解决长期对话事实召回问题的系统性分析视角。",
+    "topics": [
+      "personal"
+    ],
+    "tags": [
+      "对话与个性化记忆"
+    ],
+    "security": null,
+    "evidence": "预印本 · 原文可核验",
+    "score": 82,
+    "curated": false,
+    "collectedAt": "2026-11-24T08:51:47.109Z",
+    "provenance": "arxiv-recall",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
     "id": "web:https://www.qbitai.com/2026/11/511841.html",
     "title": "8万条群聊消息做成考卷：腾讯元宝×KCL发布首个基于群聊构建的Agent记忆基准",
     "titleZh": "腾讯元宝×KCL发布基于群聊构建的Agent记忆基准",
@@ -88,6 +721,248 @@
     "curated": false,
     "collectedAt": "2026-11-23T06:17:02.385Z",
     "provenance": "news-qbit",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.28666",
+    "title": "RecallWorld: Episodic Memory for Persistent Embodied Video World Models",
+    "titleZh": "RecallWorld：面向持续具身视频世界模型的 episodic memory",
+    "url": "https://arxiv.org/abs/2611.28666v1",
+    "kind": "paper",
+    "source": "arXiv · 智能体记忆与自进化",
+    "sourceId": "arxiv-memory",
+    "sourceTier": "preprint",
+    "published": "2026-11-21T08:46:31.000Z",
+    "summary": "Video world models generate plausible novel views but often lack persistent memory, failing to preserve a place's geometry and appearance when an agent revisits a scene. A central challenge is how previous views should be effectively used for creating memory. Reconstructing them independently underutilizes geometric constraints between nearby views, while repeatedly reconstructing a growing history can propagate later prediction errors into earlier geometry. We introduce RecallWorld, a persistent embodied video world model that jointly reconstructs short multi-view episodes into Scenelets while keeping geometry independent across episodes. Starting from a single source image, camera-aware r…",
+    "summaryZh": "该工作提出 RecallWorld，将短多视图片段联合重构为 Scenelet 并保持跨片段几何独立，以解决视频世界模型在重访场景时缺乏持续记忆、几何与外观易失效的问题。这是基于预印本的原文内容。",
+    "why": "在具身视频模型领域探索了如何在场景重现中利用历史视图进行记忆构建的机制设计。",
+    "topics": [
+      "evaluation"
+    ],
+    "tags": [
+      "评测与基准"
+    ],
+    "security": {
+      "angles": [
+        "provenance"
+      ],
+      "note": "规则命中关键词，等待人工复核。"
+    },
+    "evidence": "预印本 · 原文可核验",
+    "score": 86,
+    "curated": false,
+    "collectedAt": "2026-11-24T08:51:47.109Z",
+    "provenance": "arxiv-memory",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.28613",
+    "title": "Internalized Experience: How Training Data Shapes Memory Formation in LLMs",
+    "titleZh": "FSMem：训练数据如何塑造 LLM 内部记忆形成",
+    "url": "https://arxiv.org/abs/2611.28613v1",
+    "kind": "paper",
+    "source": "arXiv · 记忆召回补漏",
+    "sourceId": "arxiv-recall",
+    "sourceTier": "preprint",
+    "published": "2026-11-21T06:54:36.000Z",
+    "summary": "Parametric memory enables large language models (LLMs) to retain information from past experience and reuse it in subsequent tasks. Yet how training data supports the internalization of reusable task rules remains unclear. We introduce FSMem (Finite-State Machine Memory), a state-transition framework for constructing training data and studying how data content and organization shape memory formation. We evaluate rule reuse across synthetic worlds, classical planning, and code execution through valid-action identification and execution-outcome prediction, complemented by next-operation prediction in code. Our experiments reveal several systematic learning patterns. Under matched training con…",
+    "summaryZh": "论文引入有限状态机记忆框架，研究训练数据的内容与组织方式如何影响大模型将任务规则内化为参数记忆的过程，并在合成规划与代码执行中验证了若干系统性学习模式。这是基于预印本的原文内容。",
+    "why": "将大模型的记忆形成机制与训练数据构造直接关联，为内部化学习过程提供了可分析的框架。",
+    "topics": [
+      "evaluation"
+    ],
+    "tags": [
+      "评测与基准"
+    ],
+    "security": {
+      "angles": [
+        "evaluation"
+      ],
+      "note": "规则命中关键词，等待人工复核。"
+    },
+    "evidence": "预印本 · 原文可核验",
+    "score": 86,
+    "curated": false,
+    "collectedAt": "2026-11-24T08:51:47.109Z",
+    "provenance": "arxiv-recall",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.28574",
+    "title": "EvoViM: Recursively Self-Evolving Visual Agents for Exploration with Deferred Queries",
+    "titleZh": "EvoViM：可延迟查询的递归自演化视觉智能体",
+    "url": "https://arxiv.org/abs/2611.28574v1",
+    "kind": "paper",
+    "source": "arXiv · 记忆召回补漏",
+    "sourceId": "arxiv-recall",
+    "sourceTier": "preprint",
+    "published": "2026-11-21T05:14:15.000Z",
+    "summary": "Multimodal large language model (MLLM) agents have shown promising capabilities in task-oriented environments. However, they still struggle when queries are deferred until after exploration, requiring them to retain visual evidence before knowing which details will matter. We introduce EvoViM, a recursively self-evolving framework in which a frozen multimodal model turns its own interaction experience into one visual program for memory and skills. The program retains images and computes directly on pixels, and its operations decide how this evidence is used in each task. During memory evolution, the same model traces failures in its visual trajectories to the operations that lost or misused…",
+    "summaryZh": "该框架让冻结的多模态大模型将交互经验转化为视觉程序用于记忆与技能，在探索阶段保留图像并直接基于像素运算，并在记忆演化中追溯失败原因以改进后续表现。这是基于预印本的原文内容。",
+    "why": "在“延迟查询”这一较难场景下，将视觉证据保留与自演化技能结合，提供了一条新的视觉智能体记忆路径。",
+    "topics": [
+      "multimodal"
+    ],
+    "tags": [
+      "多模态与感知记忆"
+    ],
+    "security": {
+      "angles": [
+        "provenance"
+      ],
+      "note": "规则命中关键词，等待人工复核。"
+    },
+    "evidence": "预印本 · 原文可核验",
+    "score": 86,
+    "curated": false,
+    "collectedAt": "2026-11-24T08:51:47.109Z",
+    "provenance": "arxiv-recall",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.28573",
+    "title": "MACE: Memory-Augmented Crop-Disease Evaluation of Frozen Vision-Language Models",
+    "titleZh": "MACE：基于记忆增强的冻结视觉语言模型作物病害评估方法",
+    "url": "https://arxiv.org/abs/2611.28573v1",
+    "kind": "paper",
+    "source": "arXiv · 记忆召回补漏",
+    "sourceId": "arxiv-recall",
+    "sourceTier": "preprint",
+    "published": "2026-11-21T05:13:05.000Z",
+    "summary": "In plant phenotyping, crop disease diagnosis has traditionally relied on expert assessment of visible symptoms and on models tailored to specific crops or diseases, and both are difficult to scale across field conditions. Recent methods provide frozen vision-language models with source-grounded knowledge bases that summarize the typical symptoms of each disease but describe little of how symptoms vary across individual cases. We introduce MACE (Memory-Augmented Crop-Disease Evaluation), a training-free method that supplements the knowledge base with a memory of symptom descriptions paired with known disease labels. MACE matches a description of the query image against this memory and retrie…",
+    "summaryZh": "该方法提出了一种无需训练的框架，通过补充包含症状描述与已知病害标签的记忆库，并结合检索机制，来提升冻结视觉语言模型在跨田间条件下诊断作物病害时的表现。",
+    "why": "提供了一类在视觉语言模型上进行无训练记忆增强的具体案例，展示了如何通过记忆库弥补静态知识在个体症状变异上的不足。",
+    "topics": [
+      "evaluation"
+    ],
+    "tags": [
+      "评测与基准"
+    ],
+    "security": {
+      "angles": [
+        "provenance",
+        "evaluation"
+      ],
+      "note": "规则命中关键词，等待人工复核。"
+    },
+    "evidence": "预印本 · 原文可核验",
+    "score": 86,
+    "curated": false,
+    "collectedAt": "2026-11-24T08:51:47.109Z",
+    "provenance": "arxiv-recall",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.28563",
+    "title": "Selective ROM Weight Storage for Responsive LLM Control on Edge Robots",
+    "titleZh": "面向边缘机器人LLM控制的混合ROM权重存储架构",
+    "url": "https://arxiv.org/abs/2611.28563v1",
+    "kind": "paper",
+    "source": "arXiv · 记忆召回补漏",
+    "sourceId": "arxiv-recall",
+    "sourceTier": "preprint",
+    "published": "2026-11-21T04:33:57.000Z",
+    "summary": "Edge robots increasingly use large language models (LLMs) for complex tasks, demanding efficient inference alongside timely control. Limited memory capacity constrains model deployment, while repeated weight transfers during decoding compete with activations and KV cache for external bandwidth. Sequential generation of robot actions further delays decisions and periodic control on shared hardware. We present a hybrid memory architecture with heterogeneous scheduling to address these bottlenecks jointly. Banked ROM stores selected fixed weights and supplies a standard compute array through a dedicated datapath. LPDDR retains the remaining weights and mutable state, preserving model flexibili…",
+    "summaryZh": "针对边缘机器人中大语言模型（LLM）部署时的内存瓶颈，该文提出一种混合内存架构，将选定的固定权重存入Banked ROM以提供专用数据路径，同时将剩余权重和可变状态保留在LPDDR中，以解决带宽竞争并支持顺序生成的动作控制。",
+    "why": "将异构混合内存架构与特定的机器人LLM控制场景结合，为边缘设备上的模型部署与实时控制提供了具体的架构层面解决方案。",
+    "topics": [
+      "embodied"
+    ],
+    "tags": [
+      "具身与空间记忆"
+    ],
+    "security": null,
+    "evidence": "预印本 · 原文可核验",
+    "score": 82,
+    "curated": false,
+    "collectedAt": "2026-11-24T08:51:47.109Z",
+    "provenance": "arxiv-recall",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.28356",
+    "title": "Engram: Multi-Stage Memory for Agentic Tuning of Heterogeneous Models",
+    "titleZh": "Engram：用于异构模型智能体调优的多阶段记忆系统",
+    "url": "https://arxiv.org/abs/2611.28356v1",
+    "kind": "paper",
+    "source": "arXiv · 智能体记忆与自进化",
+    "sourceId": "arxiv-memory",
+    "sourceTier": "preprint",
+    "published": "2026-11-20T22:10:05.000Z",
+    "summary": "Large language model (LLM) agents can now tune neural networks, yet without cross-session memory they spend costly trials rediscovering known lessons. Reuse is difficult because production models differ in architecture, training setup and inference budget. We present Engram, a memory system that links past trial outcomes with the hypotheses and rationale behind them and assesses whether this evidence applies to the current model. An online agent curates evidence at the decision points where it is needed: Initial Guidance supplies validated lessons at the start, Session Retrieval supplies related past sessions before each batch of hypotheses is generated, and Trial Candidate Review checks ea…",
+    "summaryZh": "为解决LLM智能体跨会话调优中重复发现已知经验的高成本问题，该文提出Engram系统，将过去的试验结果与假设及理由进行关联，并通过初始引导、会话检索和候选审查等在线决策点，判断这些证据是否适用于当前目标模型。",
+    "why": "针对异构模型调优场景，提出了一种结合验证过的过去经验与当前证据适用性评估的跨会话记忆机制。",
+    "topics": [
+      "mechanism"
+    ],
+    "tags": [
+      "记忆机制与系统"
+    ],
+    "security": null,
+    "evidence": "预印本 · 原文可核验",
+    "score": 82,
+    "curated": false,
+    "collectedAt": "2026-11-24T08:51:47.109Z",
+    "provenance": "arxiv-memory",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.28231",
+    "title": "Evaluating Memanto on DolphinBench for AI Agents",
+    "titleZh": "Memanto在DolphinBench上的AI智能体记忆评估",
+    "url": "https://arxiv.org/abs/2611.28231v1",
+    "kind": "paper",
+    "source": "arXiv · 智能体记忆泛检索",
+    "sourceId": "arxiv-broad",
+    "sourceTier": "preprint",
+    "published": "2026-11-20T19:06:26.000Z",
+    "summary": "Memory benchmarks built on question answering tell an agent which fact to recall. Workplace requests often leave that need implicit: to post an update in the team's channel, an agent must work out which channel from earlier interactions and use it in a tool call. We evaluate Memanto, a memory agent that ranks memories with an information-theoretic relevance score, on DolphinBench, which tests memory through 600 simulated workplace tasks, each validated as requiring memory. Running in the Hermes agent harness with GPT-6-Luna and at most 6 iterations per conversation, Memanto completes 503 tasks (83.83%). The strongest configuration reported by the benchmark's authors, Mem0 with GPT-5.6-Luna…",
+    "summaryZh": "该文使用包含600个模拟职场任务的DolphinBench评估Memanto智能体，该系统利用基于信息论的相关性得分对记忆进行排序，在限制最多6次交互的情况下完成了83.83%的任务，并在该基准上与作者报告的Mem0配置进行了对比。",
+    "why": "展示了通过信息论相关性得分进行记忆排序的方法，在强调隐式需求识别的特定工作场景基准下的具体评估结果。",
+    "topics": [
+      "evaluation"
+    ],
+    "tags": [
+      "评测与基准"
+    ],
+    "security": {
+      "angles": [
+        "evaluation"
+      ],
+      "note": "规则命中关键词，等待人工复核。"
+    },
+    "evidence": "预印本 · 原文可核验",
+    "score": 86,
+    "curated": false,
+    "collectedAt": "2026-11-24T08:51:47.109Z",
+    "provenance": "arxiv-broad",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.28221",
+    "title": "Video-as-Weights: Compiling a Video Once into Parametric and Token Memory",
+    "titleZh": "Video-as-Weights：将视频编译为参数与Token记忆",
+    "url": "https://arxiv.org/abs/2611.28221v1",
+    "kind": "paper",
+    "source": "arXiv · 记忆召回补漏",
+    "sourceId": "arxiv-recall",
+    "sourceTier": "preprint",
+    "published": "2026-11-20T19:00:14.000Z",
+    "summary": "Vision-language models (VLMs) represent videos as thousands of visual tokens, creating a large key-value cache whose memory grows with video length. At the same time, small VLMs that fit on limited hardware understand video far worse than large models. Existing compression methods shorten visual tokens into a brief prompt to save memory, yet the small model still processes them through fixed weights and cannot close this capability gap. To address both challenges, we introduce Video-as-Weights (VaW), which compiles a video once without seeing any question into the parametric and token memory of a frozen interpreter VLM. Specifically, a compiler VLM watches the video, and a single weight dec…",
+    "summaryZh": "该研究提出Video-as-Weights方法，通过编译器VLM将视频一次性编译为冻结解释器VLM的参数和Token记忆，旨在解决小模型理解视频能力不足及视觉Token缓存随视频长度增长导致内存开销大的问题。",
+    "why": "提出了一种不依赖固定权重处理压缩提示的新机制，通过一次性编译视频至模型参数和记忆，针对小VLM的硬件限制和视频理解能力缺口提供了新的技术路径。",
+    "topics": [
+      "evaluation"
+    ],
+    "tags": [
+      "评测与基准"
+    ],
+    "security": null,
+    "evidence": "预印本 · 原文可核验",
+    "score": 82,
+    "curated": false,
+    "collectedAt": "2026-11-24T08:51:47.109Z",
+    "provenance": "arxiv-recall",
     "summaryZhBasis": "原文摘要"
   },
   {
@@ -329,6 +1204,38 @@
     "curated": false,
     "collectedAt": "2026-11-20T06:08:17.360Z",
     "provenance": "arxiv-rss-cl",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.28167",
+    "title": "VideoJSON: A Minimal Harness Beats Purpose-Built Memory for Ultra-Long Video Understanding",
+    "titleZh": "VideoJSON：极简框架挑战专用记忆系统",
+    "url": "https://arxiv.org/abs/2611.28167v1",
+    "kind": "paper",
+    "source": "arXiv · 智能体记忆与自进化",
+    "sourceId": "arxiv-memory",
+    "sourceTier": "preprint",
+    "published": "2026-11-20T02:38:38.000Z",
+    "summary": "Answering questions over days or weeks of video requires searching for scattered clues across long timelines. Existing video agents rely on complex memory graphs and fixed retrieval pipelines, which restrict how the agent can search. We propose VideoJSON, a minimal harness for ultra-long video understanding that keeps the memory simple and lets a coding agent write its own search programs. During indexing, a vision-language model turns each minute of video into a single JSON record containing a dense caption and structured fields such as events, entities, places, and speech transcripts. At query time, the agent writes Python or Bash programs in a sandboxed container to filter, link, and rea…",
+    "summaryZh": "作者提出VideoJSON框架，将视频分钟级内容转为包含密集描述和结构化字段的JSON记录，允许编码智能体在沙箱中编写Python或Bash程序进行搜索，以替代复杂的记忆图和固定检索管线。",
+    "why": "主张用极简的记忆结构和由智能体自生成搜索程序的方式，替代现有的复杂视频代理记忆系统，展示了在处理超长时间视频理解时，灵活编程搜索相对于固定管线的潜在优势。",
+    "topics": [
+      "multimodal"
+    ],
+    "tags": [
+      "多模态与感知记忆"
+    ],
+    "security": {
+      "angles": [
+        "defense"
+      ],
+      "note": "规则命中关键词，等待人工复核。"
+    },
+    "evidence": "预印本 · 原文可核验",
+    "score": 86,
+    "curated": false,
+    "collectedAt": "2026-11-24T08:51:47.109Z",
+    "provenance": "arxiv-memory",
     "summaryZhBasis": "原文摘要"
   },
   {
@@ -1713,6 +2620,33 @@
     "score": 82,
     "curated": false,
     "collectedAt": "2026-11-18T07:25:43.134Z",
+    "provenance": "arxiv-memory",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.28093",
+    "title": "VTree: Question-Driven Growth of Hierarchical Memory for Agentic Long-Video Understanding",
+    "titleZh": "VTree：问题驱动的视频层级记忆生长机制",
+    "url": "https://arxiv.org/abs/2611.28093v1",
+    "kind": "paper",
+    "source": "arXiv · 智能体记忆与自进化",
+    "sourceId": "arxiv-memory",
+    "sourceTier": "preprint",
+    "published": "2026-11-17T07:16:51.000Z",
+    "summary": "Long videos spanning tens of minutes to hours far exceed the context window of today's vision-language models, and the standard remedy of sparse uniform frame sampling discards exactly the fine-grained evidence that specific questions depend on. Existing video agents explore on demand but re-explore from scratch for every question and discard their exploration state once an answer is produced, so per-question cost scales with video length. Hierarchical-memory methods instead fix the scope of each depth in advance and deepen along a pre-committed pyramid rather than toward the question. We observe that a video's coarse structure (where its scenes and topics begin and end) is question-indepen…",
+    "summaryZh": "针对长视频超出VLM上下文窗口及现有方法重复探索或预设固定层级的问题，VTree利用视频宏观结构独立于问题的特性，实现由具体问题驱动的层级记忆生长，而非沿预先承诺的金字塔结构加深。",
+    "why": "指出了现有视频智能体在每个问题上从零开始探索或固定层级深化的局限性，提出基于问题驱动的记忆生长策略，旨在降低随视频长度增加而扩高的单问题处理成本。",
+    "topics": [
+      "multimodal"
+    ],
+    "tags": [
+      "多模态与感知记忆"
+    ],
+    "security": null,
+    "evidence": "预印本 · 原文可核验",
+    "score": 76,
+    "curated": false,
+    "collectedAt": "2026-11-24T08:51:47.109Z",
     "provenance": "arxiv-memory",
     "summaryZhBasis": "原文摘要"
   },
