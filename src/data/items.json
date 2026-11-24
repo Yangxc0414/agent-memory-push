@@ -389,6 +389,33 @@
     "summaryZhBasis": "原文摘要"
   },
   {
+    "id": "arxiv:2611.30145",
+    "title": "RMR-VLA: Recurrent Memory Reasoning for Vision-Language-Action Models",
+    "titleZh": "RMR-VLA：视觉-语言-动作模型中的循环记忆推理",
+    "url": "https://arxiv.org/abs/2611.30145v1",
+    "kind": "paper",
+    "source": "arXiv · 具身与多模态记忆",
+    "sourceId": "arxiv-embodied",
+    "sourceTier": "preprint",
+    "published": "2026-11-23T06:49:35.000Z",
+    "summary": "Long-horizon, history-dependent robotic manipulation often requires acting on visual cues that have disappeared, such as an object indicated earlier or a target hidden under a moving cup. The key challenge is to maintain what past evidence means for the next action as the scene changes. We introduce Recurrent Memory Reasoning (RMR), an explicit reasoning step that connects memory to action inside a vision-language-action model (VLA), with no external reasoning model. At each update, the VLA first infers an event from visual evidence, then revises the task state and grounds a subgoal in the current scene to guide action generation. Carrying the state and subgoal across updates lets remembere…",
+    "summaryZh": "论文提出 RMR 方法，在 VLA 内部引入显式推理步骤，将记忆与动作连接，无需外部推理模型，通过更新任务状态和子目标来指导动作生成。",
+    "why": "该工作展示了在不依赖外部推理模型的情况下，将记忆推理直接集成到 VLA 中的新路径。",
+    "topics": [
+      "embodied"
+    ],
+    "tags": [
+      "具身与空间记忆"
+    ],
+    "security": null,
+    "evidence": "预印本 · 原文可核验",
+    "score": 82,
+    "curated": false,
+    "collectedAt": "2026-11-24T09:52:08.106Z",
+    "provenance": "arxiv-embodied",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
     "id": "arxiv:2611.26863",
     "title": "LLMs Memorize Their Own Hallucinations During Post-Training",
     "titleZh": "LLMs Memorize Their Own Hallucinations During Post-Training：后训练阶段幻觉记忆化研究",
@@ -689,6 +716,33 @@
     "curated": false,
     "collectedAt": "2026-11-24T08:51:47.109Z",
     "provenance": "arxiv-recall",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.28943",
+    "title": "SANA-Robot: Efficient World Action Model with Hybrid Memory",
+    "titleZh": "SANA-Robot：具有混合记忆的高效世界动作模型",
+    "url": "https://arxiv.org/abs/2611.28943v1",
+    "kind": "paper",
+    "source": "arXiv · 具身与多模态记忆",
+    "sourceId": "arxiv-embodied",
+    "sourceTier": "preprint",
+    "published": "2026-11-21T17:23:39.000Z",
+    "summary": "World action models (WAMs) leverage the world knowledge of video generation models to improve action generation by aligning visual prediction with action prediction. However, their prediction overhead prevents real-time deployment on edge devices, and they usually lack an effective long-term memory. We introduce SANA-Robot, a 4.5B WAM with minute-level memory that runs in real time on edge devices, built on the following core designs: (1) hybrid memory at constant cost: our WAM relies on linear attention to maintain a global memory with a fixed-size state, and on sliding window softmax attention layers that propagate previous information, enabling high success rates on tasks requiring whole…",
+    "summaryZh": "论文提出 SANA-Robot，一个 4.5B 的世界动作模型，采用线性注意力与滑动窗口机制构建混合记忆，旨在实现边缘设备上的实时运行。",
+    "why": "重点解决世界动作模型在边缘设备上的实时部署与长期记忆保持问题。",
+    "topics": [
+      "embodied"
+    ],
+    "tags": [
+      "具身与空间记忆"
+    ],
+    "security": null,
+    "evidence": "预印本 · 原文可核验",
+    "score": 82,
+    "curated": false,
+    "collectedAt": "2026-11-24T09:52:08.106Z",
+    "provenance": "arxiv-embodied",
     "summaryZhBasis": "原文摘要"
   },
   {
@@ -2496,6 +2550,38 @@
     "curated": false,
     "collectedAt": "2026-11-18T07:25:43.134Z",
     "provenance": "arxiv-recall",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.28102",
+    "title": "VideoGym: An Adaptive RL Environment for Long-Video Agents",
+    "titleZh": "VideoGym：面向长视频智能体的自适应 RL 环境",
+    "url": "https://arxiv.org/abs/2611.28102v1",
+    "kind": "paper",
+    "source": "arXiv · 记忆专用模型",
+    "sourceId": "arxiv-models",
+    "sourceTier": "preprint",
+    "published": "2026-11-17T12:12:53.000Z",
+    "summary": "Reinforcement learning (RL) trains video agents to locate sparse evidence for long-video question answering through structured memory retrieval and temporal re-observation. This training, however, faces a long-tail modality distribution in the data. In our source pool, text-heavy questions account for 58% of samples, compared with 15% graph-heavy, 17% visual-heavy, and 10% time-range questions. Fixed-distribution RL therefore allocates fewer rollouts to underperforming question types. Reweighting these types could increase their sampling frequency but repeatedly reuses the same finite banks of original questions. To solve this problem, we introduce VideoGym, a curriculum-based RL environmen…",
+    "summaryZh": "论文介绍 VideoGym，一个课程式强化学习环境，通过自适应调整采样频率来解决长视频问答中不同问题类型（文本、图表、视觉、时间）分布不均的训练难题。",
+    "why": "针对多模态长视频 RL 训练中的数据长尾分布问题提出了具体的环境设计解决方案。",
+    "topics": [
+      "mechanism"
+    ],
+    "tags": [
+      "记忆机制与系统"
+    ],
+    "security": {
+      "angles": [
+        "provenance"
+      ],
+      "note": "规则命中关键词，等待人工复核。"
+    },
+    "evidence": "预印本 · 原文可核验",
+    "score": 86,
+    "curated": false,
+    "collectedAt": "2026-11-24T09:52:08.106Z",
+    "provenance": "arxiv-models",
     "summaryZhBasis": "原文摘要"
   },
   {
