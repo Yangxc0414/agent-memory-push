@@ -1,5 +1,380 @@
 [
   {
+    "id": "arxiv:2611.31265",
+    "title": "SD-Cache: Learnable Memory Consolidation with State-Guided Dynamic Caching",
+    "titleZh": "SD-Cache：基于状态引导动态缓存的可学习记忆整合",
+    "url": "https://arxiv.org/abs/2611.31265",
+    "kind": "paper",
+    "source": "arXiv · cs.CL RSS（API 兜底）",
+    "sourceId": "arxiv-rss-cl",
+    "sourceTier": "preprint",
+    "published": "2026-11-25T05:00:00.000Z",
+    "summary": "arXiv:2611.31265v1 Announce Type: new Abstract: Large language models (LLMs) are increasingly deployed as persistent services that must reason over large volumes of external knowledge. Retrieval-augmented generation (RAG) grounds model responses in relevant documents, but the retrieved content must still be encoded and stored in the key-value (KV) cache. As this content accumulates, the cache grows linearly, increasing memory consumption and inference cost. Existing memory-compression methods address this problem either by retaining a subset of cached states or by learning context compressors that map documents to compact latent representations. Despite these advances, consolidating informa…",
+    "summaryZh": "这篇预印本提出 SD-Cache，旨在解决 RAG 场景下 KV 缓存随检索内容累积导致的内存消耗增长问题，通过状态引导的动态缓存机制实现可学习的记忆整合。",
+    "why": "针对 RAG 系统中缓存线性增长的痛点，提供了不同于子集保留或上下文压缩的新视角。",
+    "topics": [
+      "mechanism"
+    ],
+    "tags": [
+      "记忆机制与系统"
+    ],
+    "security": null,
+    "evidence": "预印本 · 原文可核验",
+    "score": 82,
+    "curated": false,
+    "collectedAt": "2026-11-25T07:28:07.109Z",
+    "provenance": "arxiv-rss-cl",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.33124",
+    "title": "SAG-Mem-1.0 Technical Report",
+    "titleZh": null,
+    "url": "https://arxiv.org/abs/2611.33124v1",
+    "kind": "paper",
+    "source": "arXiv · 记忆召回补漏",
+    "sourceId": "arxiv-recall",
+    "sourceTier": "preprint",
+    "published": "2026-11-24T18:51:29.000Z",
+    "summary": "Long-term conversational memory requires retrieving complementary facts scattered across dialogue sessions, including intermediate evidence with limited similarity to the original question. Existing approaches often rely on derived memory representations or persistent relational structures, introducing construction costs and potentially losing source details. We present SAG-Mem, a conversational memory framework that preserves complete dialogue messages in non-overlapping chunks and discovers complementary evidence through query-time lexical expansion. Memory construction requires no model inference, using a lexical index without LLM-based extraction, summarization, or semantic relation con…",
+    "summaryZh": null,
+    "why": "新预印本，主题命中「对话与个性化记忆」；摘要已按原文整理，等待人工复核。",
+    "topics": [
+      "personal"
+    ],
+    "tags": [
+      "对话与个性化记忆"
+    ],
+    "security": {
+      "angles": [
+        "provenance"
+      ],
+      "note": "规则命中关键词，等待人工复核。"
+    },
+    "evidence": "预印本 · 原文可核验",
+    "score": 86,
+    "curated": false,
+    "collectedAt": "2026-11-25T07:28:07.109Z",
+    "provenance": "arxiv-recall"
+  },
+  {
+    "id": "arxiv:2611.33005",
+    "title": "Leto: Utility-Centric Agent Memory",
+    "titleZh": "Leto：以效用为中心的 LLM 智能体记忆系统",
+    "url": "https://arxiv.org/abs/2611.33005v1",
+    "kind": "paper",
+    "source": "arXiv · 智能体记忆与自进化",
+    "sourceId": "arxiv-memory",
+    "sourceTier": "preprint",
+    "published": "2026-11-24T17:30:06.000Z",
+    "summary": "Large language model (LLM) agents rely on external memory to retain and reuse information across interactions. Existing memory systems treat memory as a record of the past and evaluate it by fidelity to the conversation. However, the value of memory lies in whether it improves the agent's response. A memory system decides what to memorize and what to serve before that response exists, and fidelity checks neither decision against it. Faithful memory can therefore fail to improve the response. We instead view memory as a prediction problem and present \\textbf{\\emph{\\leto{}}}, a memory system for LLM agents that focuses on the utility of memory to the future rather than on its fidelity to the…",
+    "summaryZh": "Leto 将记忆视为预测问题，关注记忆对未来响应的效用而非对过往对话的忠实度，旨在解决现有记忆系统在存储和提供服务决策上缺乏对响应改进验证的问题。",
+    "why": "转换了记忆系统的评估标准，从“忠实性”转向“效用性”，为智能体记忆的优化提供了新方向。",
+    "topics": [
+      "evaluation"
+    ],
+    "tags": [
+      "评测与基准"
+    ],
+    "security": {
+      "angles": [
+        "evaluation"
+      ],
+      "note": "规则命中关键词，等待人工复核。"
+    },
+    "evidence": "预印本 · 原文可核验",
+    "score": 86,
+    "curated": false,
+    "collectedAt": "2026-11-25T07:28:07.109Z",
+    "provenance": "arxiv-memory",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.32969",
+    "title": "Eliciting the Recall Capacity of Linear Attention",
+    "titleZh": "Eliciting the Recall Capacity：线性注意力模型召回能力研究",
+    "url": "https://arxiv.org/abs/2611.32969v1",
+    "kind": "paper",
+    "source": "arXiv · 记忆召回补漏",
+    "sourceId": "arxiv-recall",
+    "sourceTier": "preprint",
+    "published": "2026-11-24T17:07:06.000Z",
+    "summary": "Linear attention models exhibit a disproportionate deficit relative to softmax attention in associative recall (AR) in language modeling. We investigate this gap through natural language evaluations, synthetic recall tasks, and targeted training interventions. Using a synthetic setting, we quantify the role of state-size in how many items can be recalled from memory and find a similar empirical scaling across the tested linear-attention architectures. Testing this relationship reveals that even a single layer at scale can learn to retrieve thousands of associations across long distances. Yet, standard language model training does not reliably teach a linear model to copy from context, where…",
+    "summaryZh": "研究通过合成任务量化了线性注意力模型中状态大小对联想回忆数量的影响，发现单层大规模模型可学习检索数千个长距离关联，但标准语言模型训练难以让线性模型可靠地从上下文中复制信息。",
+    "why": "揭示了线性注意力在联想回忆任务上的具体局限性与潜在扩展能力，为架构设计提供实证参考。",
+    "topics": [
+      "evaluation"
+    ],
+    "tags": [
+      "评测与基准"
+    ],
+    "security": {
+      "angles": [
+        "evaluation"
+      ],
+      "note": "规则命中关键词，等待人工复核。"
+    },
+    "evidence": "预印本 · 原文可核验",
+    "score": 86,
+    "curated": false,
+    "collectedAt": "2026-11-25T07:28:07.109Z",
+    "provenance": "arxiv-recall",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.32876",
+    "title": "MemHand: Memory-Enhanced World-Space Hand Motion Reconstruction from Egocentric Videos",
+    "titleZh": "MemHand: 基于记忆的世界空间双手运动重建",
+    "url": "https://arxiv.org/abs/2611.32876v1",
+    "kind": "paper",
+    "source": "arXiv · 具身与多模态记忆",
+    "sourceId": "arxiv-embodied",
+    "sourceTier": "preprint",
+    "published": "2026-11-24T16:12:13.000Z",
+    "summary": "Recovering the continuous world-space motion of both hands from egocentric video is essential for applications such as human-to-robot policy transfer and augmented reality. Achieving this goes beyond reconstructing the hands from each individual frame, as the context that a frame needs is often spread over time, especially around occlusions or when a hand moves out of sight. Recent works have explored how to exploit temporal context, yet they mostly draw it from fixed-length windows. Such windows cannot guarantee that every frame has the context required to reconstruct the hands in world space with accurate poses and metric scale. To address this limitation, we introduce MemHand, a memory-e…",
+    "summaryZh": "该论文提出MemHand，一种通过记忆机制处理长时上下文遮挡和视野外移动问题的方法，用于从第一人称视频恢复世界空间中的双手连续运动，以支持人-机器人策略迁移和增强现实等应用。",
+    "why": "针对固定长度窗口方法在遮挡等复杂场景下的上下文不足问题，提出了记忆增强的解决方案，对时序数据重建有直接参考价值。",
+    "topics": [
+      "embodied"
+    ],
+    "tags": [
+      "具身与空间记忆"
+    ],
+    "security": null,
+    "evidence": "预印本 · 原文可核验",
+    "score": 82,
+    "curated": false,
+    "collectedAt": "2026-11-25T07:28:07.109Z",
+    "provenance": "arxiv-embodied",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.32564",
+    "title": "MXI-MemICL: Towards In-Context Robot Manipulation through Self-Retrieved Interaction Memory",
+    "titleZh": "MXI-MemICL: 通过自检索交互记忆实现上下文机器人操作",
+    "url": "https://arxiv.org/abs/2611.32564v1",
+    "kind": "paper",
+    "source": "arXiv · 具身与多模态记忆",
+    "sourceId": "arxiv-embodied",
+    "sourceTier": "preprint",
+    "published": "2026-11-24T13:12:01.000Z",
+    "summary": "In-context learning (ICL) offers robots a way to acquire new skills from a single demonstration without parameter updates. However, existing robotic ICL methods either rely on large-scale pretraining constrained by scarce, costly robot interaction data or require additional annotations yet struggle to generalize across tasks. To bridge this gap, we propose MXI-MemICL, a framework for memory-guided ICL in vision-language-action (VLA) models. By treating demonstrations as retrievable memory, MXI-MemICL enables in-context manipulation without additional large-scale pretraining or specialized annotations. Specifically, a visual-action causal encoder turns actions and their observed effects in d…",
+    "summaryZh": "该论文提出MXI-MemICL框架，将演示视为可检索的记忆，使视觉-语言-动作（VLA）模型能够在不依赖大规模预训练或额外标注的情况下，通过记忆引导的上下文学习获得新的操作技能。",
+    "why": "探索了在资源有限（缺乏昂贵交互数据）条件下，通过记忆检索机制提升机器人上下文学习泛化能力的可行性，提供了一种替代大规模预训练的路径。",
+    "topics": [
+      "embodied"
+    ],
+    "tags": [
+      "具身与空间记忆"
+    ],
+    "security": null,
+    "evidence": "预印本 · 原文可核验",
+    "score": 82,
+    "curated": false,
+    "collectedAt": "2026-11-25T07:28:07.109Z",
+    "provenance": "arxiv-embodied",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.32496",
+    "title": "Assessing Robustness to Catastrophic Forgetting in Continual Deep Reinforcement Learning for Cyber-Physical Systems",
+    "titleZh": "评估持续深度强化学习中灾难性遗忘的鲁棒性",
+    "url": "https://arxiv.org/abs/2611.32496v1",
+    "kind": "paper",
+    "source": "arXiv · 记忆召回补漏",
+    "sourceId": "arxiv-recall",
+    "sourceTier": "preprint",
+    "published": "2026-11-24T12:27:52.000Z",
+    "summary": "As the use of reinforcement learning (RL) becomes more widespread in cyber-physical systems, it becomes increasingly important to design RL agents that are able to adapt to changes in their environments in order to maintain safety and reliability. This paper addresses the question of whether different classes of RL algorithm are more robust against forgetting previously learned behaviours, a critical issue in continual learning, in non-stationary environments. We evaluate the robustness of representative examples of three important classes of RL algorithm in a non-stationary autonomous parking environment. These are Proximal Policy Optimization (PPO), which is a model-free on-policy algorit…",
+    "summaryZh": "该论文评估了三类代表性强化学习算法（PPO、DQN、SAC）在非平稳自动驾驶环境中对灾难性遗忘的鲁棒性，旨在为需要适应环境变化的赛博物理系统的安全和可靠性设计提供参考。",
+    "why": "聚焦于强化学习在持续学习中的遗忘问题，为需要长期适应变化的智能系统（如自动驾驶）的算法选型和稳定性提供了评估维度。",
+    "topics": [
+      "evaluation"
+    ],
+    "tags": [
+      "评测与基准"
+    ],
+    "security": {
+      "angles": [
+        "evaluation"
+      ],
+      "note": "规则命中关键词，等待人工复核。"
+    },
+    "evidence": "预印本 · 原文可核验",
+    "score": 86,
+    "curated": false,
+    "collectedAt": "2026-11-25T07:28:07.109Z",
+    "provenance": "arxiv-recall",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.32445",
+    "title": "A Mesh to Remember: Persistent Appearance for Interactive Video Worlds",
+    "titleZh": "网格记忆：交互视频世界中的持久外观",
+    "url": "https://arxiv.org/abs/2611.32445v1",
+    "kind": "paper",
+    "source": "arXiv · 记忆召回补漏",
+    "sourceId": "arxiv-recall",
+    "sourceTier": "preprint",
+    "published": "2026-11-24T11:42:48.000Z",
+    "summary": "Video world models synthesize photorealistic observations in response to user actions but struggle to remain consistent over long interactions. Coding agents and text-to-3D models instead generate explicit 3D worlds whose geometry and state persist by construction, but whose appearance falls far short of photorealism. Recent methods combine the strengths of both by rendering such worlds into coarse proxies that guide a video model. However, since these proxies only specify where things are, the renderer must invent what they look like as the world is explored, and anything it forgets is reinvented when a surface reappears. Our key insight is that a mesh identifies which surface each pixel s…",
+    "summaryZh": "该论文指出视频世界模型在长交互中保持一致性的挑战，提出利用网格（mesh）识别像素所属表面来引导视频模型生成外观，解决因渲染器“遗忘”导致的视觉不连贯问题。",
+    "why": "将网格几何信息与视频生成模型结合，为提升交互式虚拟环境中外观的一致性和持久性提供了新的技术思路。",
+    "topics": [
+      "multimodal"
+    ],
+    "tags": [
+      "多模态与感知记忆"
+    ],
+    "security": null,
+    "evidence": "预印本 · 原文可核验",
+    "score": 82,
+    "curated": false,
+    "collectedAt": "2026-11-25T07:28:07.109Z",
+    "provenance": "arxiv-recall",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.32347",
+    "title": "Beyond Hard Tokens: Predictive Memory for Multimodal Protein Generation",
+    "titleZh": "Beyond Hard Tokens：用于多模态蛋白生成的预测记忆",
+    "url": "https://arxiv.org/abs/2611.32347v1",
+    "kind": "paper",
+    "source": "arXiv · 智能体记忆与自进化",
+    "sourceId": "arxiv-memory",
+    "sourceTier": "preprint",
+    "published": "2026-11-24T10:25:16.000Z",
+    "summary": "Multimodal protein language models unify sequence and discrete structural tokens via iterative masked decoding, offering a promising paradigm for joint protein design. However, standard decoders rely on a memoryless mask reset at each iteration: only a sparse subset of newly committed hard tokens is carried forward, while all remaining unresolved sites are reset to an identical [MASK] embedding. In open-ended co-generation where neither modality provides a fixed external anchor, this stateless transition limits single-step refinement depth and deprives both tracks of stable cross-step soft anchors, leading to slow convergence or degenerative repetitive collapse. Observing that uncommitted p…",
+    "summaryZh": "该论文提出一种针对多模态蛋白语言模型的预测记忆机制，旨在解决标准解码器在迭代掩码解码中因状态无记忆性导致的收敛慢或重复坍缩问题，通过保留未提交的软锚点来增强单步精化深度。",
+    "why": "指出多模态生成中“无记忆掩码重置”的局限，并提出基于预测记忆的改进方法，为提升蛋白生成收敛性提供新思路。",
+    "topics": [
+      "multimodal"
+    ],
+    "tags": [
+      "多模态与感知记忆"
+    ],
+    "security": null,
+    "evidence": "预印本 · 原文可核验",
+    "score": 82,
+    "curated": false,
+    "collectedAt": "2026-11-25T07:28:07.109Z",
+    "provenance": "arxiv-memory",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.32255",
+    "title": "TimeTravelContainer: A Live Forking Sandbox for Stateful Agent Exploration",
+    "titleZh": "TimeTravelContainer：有状态智能体探索的实时分叉沙箱",
+    "url": "https://arxiv.org/abs/2611.32255v1",
+    "kind": "paper",
+    "source": "arXiv · 记忆召回补漏",
+    "sourceId": "arxiv-recall",
+    "sourceTier": "preprint",
+    "published": "2026-11-24T09:29:45.000Z",
+    "summary": "LLM agents that drive stateful tools (e.g., interactive shells, design environments, simulation engines) frequently need to clone, backtrack, and parallelize live sessions to support exploration. However, cloning a live session today requires serializing the tool's in-memory state to disk or relaunching from scratch, both prohibitively slow for interactive exploration. Existing agent sandboxes based on microVMs or kernel patches either serialize full guest memory to storage or require privileged deployment, limiting use on shared compute farms, personal computers, and other restricted environments. We present TimeTravelContainer (TTC), a rootless container runtime that live-forks an entire…",
+    "summaryZh": "该论文提出 TimeTravelContainer (TTC)，一种无 root 权限的容器运行时，支持对包含交互式 shell、设计环境等有状态工具的实时会话进行分叉、回溯和并行化，避免了传统方法序列化内存或重启的高延迟。",
+    "why": "解决了有状态智能体在共享或受限计算环境中克隆实时会话速度慢的痛点，提供了一种无需特权部署的沙箱方案。",
+    "topics": [
+      "personal"
+    ],
+    "tags": [
+      "对话与个性化记忆"
+    ],
+    "security": null,
+    "evidence": "预印本 · 原文可核验",
+    "score": 82,
+    "curated": false,
+    "collectedAt": "2026-11-25T07:28:07.109Z",
+    "provenance": "arxiv-recall",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.32209",
+    "title": "XMind: Thinking Twice via Cross-Memory Reasoning for LLM-Based Autonomous Driving",
+    "titleZh": "XMind：基于跨记忆推理的 LLM 自动驾驶“双重思考”框架",
+    "url": "https://arxiv.org/abs/2611.32209v1",
+    "kind": "paper",
+    "source": "arXiv · 智能体记忆与自进化",
+    "sourceId": "arxiv-memory",
+    "sourceTier": "preprint",
+    "published": "2026-11-24T08:55:02.000Z",
+    "summary": "Memory-augmented large language model (LLM) driving agents can reuse past experience, yet previously learned corrections often fail to transfer when traffic conditions change. A key limitation is that existing memories mainly record observed outcomes, providing little evidence about alternative actions. We introduce XMind, a training-free framework that enables LLM-based driving to \"Think Twice\" through cross-memory reasoning. XMind integrates working memory of recent traffic states with episodic memory of critical risk events. The agent first makes an initial decision from the current context and then cross-checks it against retrieved historical experience. If a conflict arises, it makes a…",
+    "summaryZh": "该论文提出 XMind 框架，通过整合近期交通状态的工作记忆与关键风险事件的长时记忆，让 LLM 驾驶智能体在做出初步决策后，利用检索到的历史经验进行冲突检查和二次推理，以提升对变化交通条件的适应性。",
+    "why": "针对现有记忆仅记录结果缺乏替代动作证据的局限，提出无需训练的跨记忆推理机制，增强智能体在动态环境中的决策鲁棒性。",
+    "topics": [
+      "tools"
+    ],
+    "tags": [
+      "工具与项目发布"
+    ],
+    "security": null,
+    "evidence": "预印本 · 原文可核验",
+    "score": 82,
+    "curated": false,
+    "collectedAt": "2026-11-25T07:28:07.109Z",
+    "provenance": "arxiv-memory",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.32119",
+    "title": "CoverMem: Coverage-Constrained Visual Memory for Budgeted Embodied Question Answering",
+    "titleZh": "CoverMem：用于预算受限具身问答的覆盖约束视觉记忆",
+    "url": "https://arxiv.org/abs/2611.32119v1",
+    "kind": "paper",
+    "source": "arXiv · 智能体记忆与自进化",
+    "sourceId": "arxiv-memory",
+    "sourceTier": "preprint",
+    "published": "2026-11-24T07:36:40.000Z",
+    "summary": "Episodic-memory embodied question answering enables agents to answer questions based on previously recorded visual observations of the surrounding scenes. However, growing observation histories, varying observation quality across viewpoints, and limited computational resources make it challenging to construct and maintain compact visual memories while retrieving sufficient evidence for question answering. To address these challenges, we introduce CoverMem, which incorporates three key components: (1) a coverage-constrained memory construction method that selects a compact set of informative full frames satisfying object-quality and representative-scene coverage requirements; (2) a coverage-…",
+    "summaryZh": "该论文提出 CoverMem 方法，通过构建满足物体质量与场景代表性的紧凑全帧集合，并在检索阶段施加覆盖约束，解决具身问答中观察历史增长、质量不均及计算资源有限导致的视觉记忆构建与维护难题。",
+    "why": "在计算预算受限的背景下，提出了基于覆盖约束的视觉记忆构建与检索策略，提升了具身问答对证据检索的准确性。",
+    "topics": [
+      "embodied"
+    ],
+    "tags": [
+      "具身与空间记忆"
+    ],
+    "security": {
+      "angles": [
+        "provenance"
+      ],
+      "note": "规则命中关键词，等待人工复核。"
+    },
+    "evidence": "预印本 · 原文可核验",
+    "score": 86,
+    "curated": false,
+    "collectedAt": "2026-11-25T07:28:07.109Z",
+    "provenance": "arxiv-memory",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.32081",
+    "title": "KeyMemVLA: Subtask-Guided Key Memory for Long-Horizon Robotic Manipulation",
+    "titleZh": "KeyMemVLA：面向长时程操作的子任务引导关键记忆框架",
+    "url": "https://arxiv.org/abs/2611.32081v1",
+    "kind": "paper",
+    "source": "arXiv · 具身与多模态记忆",
+    "sourceId": "arxiv-embodied",
+    "sourceTier": "preprint",
+    "published": "2026-11-24T07:03:55.000Z",
+    "summary": "Memory-dependent long-horizon manipulation requires vision-language-action (VLA) policies to infer task progress and recall evidence absent from current observations. Under a limited memory budget, the challenge is to retain history that resolves stage ambiguity and supports subsequent decisions. We present KeyMemVLA, a subtask-guided key memory framework based on progress indication and decision-evidence retention. A two-level annotation process selects subtasks satisfying either criterion and labels their final frames as keyframes to supervise online memory writes. A shared vision-language backbone jointly learns subtask, action, and keyframe prediction. At inference, the policy first pre…",
+    "summaryZh": "该论文提出KeyMemVLA，一种基于进度指示和决策证据保留的关键记忆框架，用于解决视觉-语言-动作（VLA）策略在长时程操作中因当前观测缺乏证据导致的阶段歧义问题。",
+    "why": "该工作通过两级标注选择关键帧并联合学习子任务预测，提供了一种在有限记忆预算下保留解决歧义所需历史信息的机制，对长时程操作中的记忆管理具有参考价值。",
+    "topics": [
+      "embodied"
+    ],
+    "tags": [
+      "具身与空间记忆"
+    ],
+    "security": null,
+    "evidence": "预印本 · 原文可核验",
+    "score": 82,
+    "curated": false,
+    "collectedAt": "2026-11-25T07:28:07.109Z",
+    "provenance": "arxiv-embodied",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
     "id": "arxiv:2611.28374",
     "title": "Taking the PULSE of Enterprise Workflows: Evaluating Persistent Project-State Understanding",
     "titleZh": "PULSE：评估企业工作流中持续项目状态理解的基准",
@@ -268,6 +643,92 @@
     "curated": false,
     "collectedAt": "2026-11-24T08:51:47.109Z",
     "provenance": "arxiv-rss-cl",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.31922",
+    "title": "TANDEM: Temporal Anchor Densification With Reliability-Aware Memory for Lightweight Sparse Depth Completion in Endoscopic Robotic Navigation",
+    "titleZh": "TANDEM：内窥镜机器人导航中基于可靠性感知记忆的光源稀疏深度补全",
+    "url": "https://arxiv.org/abs/2611.31922v1",
+    "kind": "paper",
+    "source": "arXiv · 具身与多模态记忆",
+    "sourceId": "arxiv-embodied",
+    "sourceTier": "preprint",
+    "published": "2026-11-24T04:28:01.000Z",
+    "summary": "For endoscopic robotic surgery, accurate dense depth perception serves as a foundational capability, which enables navigation, instrument localization, and tissue interaction. However, endoscopic video lacks reliable metric depth, while metric measurements obtained via tracking, time-of-flight sensing, or instrument contact only cover a small fraction of pixels in each frame, rendering sparse depth completion an urgent and unsolved challenge. In this work, we propose Temporal Anchor Densification with Reliability-Aware Memory (TANDEM), a causal sparse depth completion framework for endoscopic video. It adopts a lightweight design and leverages the video stream: past measurements re-projecte…",
+    "summaryZh": "针对内窥镜视频缺乏可靠度量深度且仅覆盖少量像素的问题，论文提出了TANDEM，一个轻量级的因果稀疏深度补全框架，利用视频流中过去测量值的重投影进行深度补全。",
+    "why": "该框架专门针对内窥镜手术场景，通过利用时间锚点致密化和可靠性感知记忆，解决了该特定领域内稀疏深度补全这一紧迫且未解决的挑战。",
+    "topics": [
+      "embodied"
+    ],
+    "tags": [
+      "具身与空间记忆"
+    ],
+    "security": null,
+    "evidence": "预印本 · 原文可核验",
+    "score": 82,
+    "curated": false,
+    "collectedAt": "2026-11-25T07:28:07.109Z",
+    "provenance": "arxiv-embodied",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.31733",
+    "title": "MOSAIC: Memory-Organized Search with Anti-Imitation Crossover for Training-Free Microarchitecture Optimization",
+    "titleZh": "MOSAIC：用于无训练微架构优化的记忆组织搜索与反模仿交叉",
+    "url": "https://arxiv.org/abs/2611.31733v1",
+    "kind": "paper",
+    "source": "arXiv · 记忆评测",
+    "sourceId": "arxiv-eval",
+    "sourceTier": "preprint",
+    "published": "2026-11-24T00:38:05.000Z",
+    "summary": "Large language models can generate cache-replacement policies. The central challenge is to retain performance on workloads excluded from the search. In our adaptations of published search methods, generated code resembles established policies, with cosine similarities of 0.78-0.84. The wider comparison also shows held-out harmonic-mean instructions-per-cycle (IPC) losses of 1.0-2.4%. We present MOSAIC, a search controller that improves policies without updating language-model weights. It stores concise lessons from previous evaluations rather than repeatedly copying high-scoring code. When improvement stops, it selects two high-scoring policies whose code embeddings differ and asks the mode…",
+    "summaryZh": "MOSAIC是一种不更新语言模型权重的搜索控制器，它存储来自先前评估的简洁经验而非重复高分代码，并在改进停滞时选择代码嵌入不同的两个高分策略进行交叉。",
+    "why": "相比已发布的搜索方法生成的代码与既定策略高度相似且存在留出集性能损失，MOSAIC通过存储经验而非复制代码，并在停滞时利用反模仿交叉机制，旨在提升对搜索中未包含工作负载的性能保留。",
+    "topics": [
+      "evaluation"
+    ],
+    "tags": [
+      "评测与基准"
+    ],
+    "security": {
+      "angles": [
+        "evaluation"
+      ],
+      "note": "规则命中关键词，等待人工复核。"
+    },
+    "evidence": "预印本 · 原文可核验",
+    "score": 86,
+    "curated": false,
+    "collectedAt": "2026-11-25T07:28:07.109Z",
+    "provenance": "arxiv-eval",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.31543",
+    "title": "Reproducible Social Structure Emerges From Free-Form Interaction Among LLM Agents",
+    "titleZh": "可重现的社会结构：来自LLM智能体自由形式互动的涌现",
+    "url": "https://arxiv.org/abs/2611.31543v1",
+    "kind": "paper",
+    "source": "arXiv · 智能体记忆泛检索",
+    "sourceId": "arxiv-broad",
+    "sourceTier": "preprint",
+    "published": "2026-11-23T20:51:57.000Z",
+    "summary": "Multi-agent LLM simulations are increasingly used as models of social systems, but most published findings are anecdotal, i.e., drawn from a single run. It is therefore unclear which observed phenomena are robust findings of the simulated system itself, and which were random events in one particular run. Here, we introduce a repeatable, goal-free, proactive multi-agent framework in which fifty persona-conditioned agents with persistent memory choose whether, with whom, and how to communicate across three social platforms. The framework supports non-perturbative measurements across temporal snapshots and repetitions. Running the same world ten times from identical initial conditions for a to…",
+    "summaryZh": "该研究介绍了一个可重复、无目标的主动多智能体框架，其中五十个具有持久记忆的人格条件智能体在三个社交平台上选择沟通对象与方式。",
+    "why": "针对现有多智能体LLM模拟结果多为单次运行轶事且难以区分系统稳健现象与随机事件的问题，该框架支持跨时间快照和重复的非扰动测量，有助于识别可重现的社会结构涌现。",
+    "topics": [
+      "tools"
+    ],
+    "tags": [
+      "工具与项目发布"
+    ],
+    "security": null,
+    "evidence": "预印本 · 原文可核验",
+    "score": 82,
+    "curated": false,
+    "collectedAt": "2026-11-25T07:28:07.109Z",
+    "provenance": "arxiv-broad",
     "summaryZhBasis": "原文摘要"
   },
   {
@@ -623,6 +1084,38 @@
     "curated": false,
     "collectedAt": "2026-11-24T08:51:47.109Z",
     "provenance": "arxiv-recall",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.31307",
+    "title": "When Successful Collaboration Becomes an Attack Surface: Insider Memory Poisoning in Multi-Agent Systems",
+    "titleZh": "MIMPA：多智能体系统中通过共享记忆实施内部人员投毒攻击",
+    "url": "https://arxiv.org/abs/2611.31307v1",
+    "kind": "paper",
+    "source": "arXiv · 智能体记忆与自进化",
+    "sourceId": "arxiv-memory",
+    "sourceTier": "preprint",
+    "published": "2026-11-22T12:18:13.000Z",
+    "summary": "Recent Multi-Agent Systems (MAS) increasingly use shared memory to store and reuse successful collaboration records, enabling teams to improve across tasks. However, this memory introduces a new attack surface for malicious insiders. Unlike existing insider attacks that inject misleading information directly into the current collaboration, misinformation stored in shared memory can later appear as successful team experience and gain greater credibility and influence. We propose MIMPA (Multi-Agent Insider Memory Poisoning Attack), which exploits this vulnerability using only normal participation privileges, without direct memory access. During an earlier task, the malicious agent embeds a ta…",
+    "summaryZh": "该论文提出MIMPA方法，探讨多智能体系统（MAS）在共享记忆中存储协作记录时引入的新攻击面。与现有攻击直接注入当前协作中的误导信息不同，该攻击利用普通参与权限，将虚假信息嵌入早期任务的记忆中，使其在后续任务中作为成功的团队经验出现，从而获得更高的可信度和影响力。",
+    "why": "揭示了多智能体系统中共享记忆机制的新安全漏洞，对设计可信的协作智能体系统具有参考价值。",
+    "topics": [
+      "security"
+    ],
+    "tags": [
+      "安全与治理"
+    ],
+    "security": {
+      "angles": [
+        "attack"
+      ],
+      "note": "规则命中关键词，等待人工复核。"
+    },
+    "evidence": "预印本 · 原文可核验",
+    "score": 86,
+    "curated": false,
+    "collectedAt": "2026-11-25T07:28:07.109Z",
+    "provenance": "arxiv-memory",
     "summaryZhBasis": "原文摘要"
   },
   {
