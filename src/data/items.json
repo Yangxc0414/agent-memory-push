@@ -1,5 +1,355 @@
 [
   {
+    "id": "arxiv:2611.33174",
+    "title": "MGMem: An Efficient, Deterministic, and Provenance-Preserving Framework for Long-Horizon Agent Memory",
+    "titleZh": "MGMem：面向长程Agent记忆的高效确定性框架",
+    "url": "https://arxiv.org/abs/2611.33174",
+    "kind": "paper",
+    "source": "arXiv · cs.CL RSS（API 兜底）",
+    "sourceId": "arxiv-rss-cl",
+    "sourceTier": "preprint",
+    "published": "2026-11-26T05:00:00.000Z",
+    "summary": "arXiv:2611.33174v1 Announce Type: new Abstract: Long-horizon Large Language Model (LLM) agents need persistent memory that surfaces the right past interaction at the right time across thousands of turns. Many systems index by invoking generative LLMs to rewrite history into summaries, facts, or knowledge graphs--a step that is (a) costly (thousands of generative calls per build), (b) non-deterministic (undermining reproducibility and giving inconsistent answers across runs), and (c) provenance-erasing (the reader sees synthesized text, not the original turn). We propose MGMem, a framework with no generative indexing calls that replaces this step with a deterministic discriminative-parser pi…",
+    "summaryZh": "该论文提出MGMem框架，通过确定性判别式解析器替代生成式索引调用，旨在解决长程Agent记忆系统中成本高、非确定性以及来源信息丢失的问题。",
+    "why": "针对现有Agent记忆系统依赖生成式模型索引带来的不可复现性与溯源缺失问题，提供了保持来源信息的确定性替代方案。",
+    "topics": [
+      "security"
+    ],
+    "tags": [
+      "安全与治理"
+    ],
+    "security": {
+      "angles": [
+        "provenance"
+      ],
+      "note": "规则命中关键词，等待人工复核。"
+    },
+    "evidence": "预印本 · 原文可核验",
+    "score": 86,
+    "curated": false,
+    "collectedAt": "2026-11-26T07:16:28.562Z",
+    "provenance": "arxiv-rss-cl",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.33184",
+    "title": "Semantic Density Does Not Predict Agent-Memory Collapse",
+    "titleZh": "语义密度无法预测Agent记忆坍缩",
+    "url": "https://arxiv.org/abs/2611.33184",
+    "kind": "paper",
+    "source": "arXiv · cs.CL RSS（API 兜底）",
+    "sourceId": "arxiv-rss-cl",
+    "sourceTier": "preprint",
+    "published": "2026-11-26T05:00:00.000Z",
+    "summary": "arXiv:2611.33184v1 Announce Type: cross Abstract: Persistent textual memory can improve LLM agents, but repeated updates can erode task performance. We ask whether memory-store statistics warn before held-out accuracy declines. We registered mean pairwise cosine similarity ($\\rho$) and 13 additional geometry, retrieval, and graph statistics on 805 snapshots from 13 memory methods across ALFWorld, AppWorld, ScienceWorld, WebShop, and two ARC-AGI settings. These methods store trajectories, rules, workflows, strategies, or linked records, using selective retrieval or whole-store prompting. No such statistic reliably predicted early signs of task accuracy decline, and $\\rho$ had zero median lea…",
+    "summaryZh": "研究在多个基准和13种记忆方法上注册了14项统计指标，结果表明平均成对余弦相似度等语义密度指标无法可靠地预测任务准确率下降的早期迹象。",
+    "why": "挑战了通过语义密度等简单统计指标监控记忆库健康度的常见假设，为Agent记忆评估指标的选取提供了反面证据。",
+    "topics": [
+      "mechanism"
+    ],
+    "tags": [
+      "记忆机制与系统"
+    ],
+    "security": null,
+    "evidence": "预印本 · 原文可核验",
+    "score": 82,
+    "curated": false,
+    "collectedAt": "2026-11-26T07:16:28.562Z",
+    "provenance": "arxiv-rss-cl",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.33302",
+    "title": "Two Timescales of Forgetting in Fine-tuning of Language Models: Fast Behavioral Suppression and Slow Representational Drift",
+    "titleZh": "语言模型微调中的遗忘双时间尺度：快速行为抑制与慢速表征漂移",
+    "url": "https://arxiv.org/abs/2611.33302",
+    "kind": "paper",
+    "source": "arXiv · cs.CL RSS（API 兜底）",
+    "sourceId": "arxiv-rss-cl",
+    "sourceTier": "preprint",
+    "published": "2026-11-26T05:00:00.000Z",
+    "summary": "arXiv:2611.33302v1 Announce Type: cross Abstract: Today, a core pipeline of artificial intelligence systems is pretraining on a broad range of text corpora and then fine-tuning on specific tasks or desired behaviors. Yet we still have limited understanding of how fine-tuning on a restricted data distribution modifies representations acquired during pretraining. In particular, it remains unclear whether surface behavioral suppression happens together with the erasure of latent representations that support it. In this work, we study supervised fine-tuning (SFT) by pretraining transformers on a controlled context-free grammar with hierarchical latent structure, the Random Hierarchy Model (RHM)…",
+    "summaryZh": "通过受控实验研究有监督微调过程，发现表面行为抑制与潜在表征擦除并非同步发生，存在快速的行为抑制和慢速的表征漂移两个时间尺度。",
+    "why": "深入解析了微调过程中行为改变与内部表征改变的时间脱节现象，为理解模型微调后的稳定性与遗忘机制提供了新的视角。",
+    "topics": [
+      "mechanism"
+    ],
+    "tags": [
+      "记忆机制与系统"
+    ],
+    "security": null,
+    "evidence": "预印本 · 原文可核验",
+    "score": 82,
+    "curated": false,
+    "collectedAt": "2026-11-26T07:16:28.562Z",
+    "provenance": "arxiv-rss-cl",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.34915",
+    "title": "Memory Is Not Ground Truth: Revising Navigation Authority under Unreliable VLM Evidence for Persistent Semantic Navigation",
+    "titleZh": "记忆非绝对真理：基于不可靠VLM证据修订导航权限",
+    "url": "https://arxiv.org/abs/2611.34915v1",
+    "kind": "paper",
+    "source": "arXiv · 智能体记忆泛检索",
+    "sourceId": "arxiv-broad",
+    "sourceTier": "preprint",
+    "published": "2026-11-25T18:57:52.000Z",
+    "summary": "Vision-language models (VLMs) enable robots to reason about semantic and spatio-temporal context, verify task-relevant objects, and guide sensing and navigation. Persistent memory can reduce redundant search for field robots, but when should a memory continue to guide behavior? Repeated misses may suggest that a memory is stale. Our experiments show why this evidence can remain ambiguous under VLM-based perception. Using a Boston Dynamics Spot with four fixed cameras and a persistent spatio-temporal visual memory, we measure negative-verification behavior across targets, viewpoints, language queries, and repeated revisits. False-negative rates vary substantially across objects, nearby revis…",
+    "summaryZh": "在Spot机器人实验中发现，基于视觉语言模型（VLM）的重复未命中证据在判断持久记忆是否过期时存在歧义，因为假阴性率随物体和视角显著变化。",
+    "why": "揭示了VLM感知不确定性对机器人持久记忆导航策略的影响，强调了在记忆失效判断中不能简单依赖重复验证结果。",
+    "topics": [
+      "embodied"
+    ],
+    "tags": [
+      "具身与空间记忆"
+    ],
+    "security": {
+      "angles": [
+        "defense"
+      ],
+      "note": "规则命中关键词，等待人工复核。"
+    },
+    "evidence": "预印本 · 原文可核验",
+    "score": 86,
+    "curated": false,
+    "collectedAt": "2026-11-26T07:16:28.562Z",
+    "provenance": "arxiv-broad",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.34907",
+    "title": "Agentic LongLive: Asynchronous Agentic Memory for Long Video Generation",
+    "titleZh": "Agentic LongLive：面向长视频生成的异步智能体记忆框架",
+    "url": "https://arxiv.org/abs/2611.34907v1",
+    "kind": "paper",
+    "source": "arXiv · 智能体记忆与自进化",
+    "sourceId": "arxiv-memory",
+    "sourceTier": "preprint",
+    "published": "2026-11-25T18:54:03.000Z",
+    "summary": "Real-time autoregressive video generators stream minutes of video and accept new prompts on the fly, but struggle to keep people, objects, and places consistent over a long interactive story. Agent systems provide such memory for offline multi-shot generation, yet they read the whole script in advance, plan each shot before generating it, and regenerate failed shots, which a live stream does not allow. We present Agentic LongLive, an asynchronous agentic memory for long video generation. A memory agent on separate GPUs reads only the prompts revealed so far, never the generated video, and keeps a text state and evolving images for every person, object, and scene. From this entity memory it…",
+    "summaryZh": "该论文提出Agentic LongLive框架，通过独立的内存智能体在长视频生成过程中维护实体记忆，仅读取当前已揭示的提示词而不处理已生成的视频流，从而解决实时生成中的一致性挑战。",
+    "why": "针对实时长视频生成中的实体一致性问题，提出异步记忆方案，区别于传统离线多镜头规划方法，适用于动态交互场景。",
+    "topics": [
+      "multimodal"
+    ],
+    "tags": [
+      "多模态与感知记忆"
+    ],
+    "security": null,
+    "evidence": "预印本 · 原文可核验",
+    "score": 82,
+    "curated": false,
+    "collectedAt": "2026-11-26T07:16:28.562Z",
+    "provenance": "arxiv-memory",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.34762",
+    "title": "TASK Memory: Beyond Text-Only Memory with Activation Steering and Knowledge Editing against Memory Hallucination",
+    "titleZh": "TASK Memory：通过激活引导与知识编辑对抗记忆幻觉",
+    "url": "https://arxiv.org/abs/2611.34762v1",
+    "kind": "paper",
+    "source": "arXiv · 智能体记忆与自进化",
+    "sourceId": "arxiv-memory",
+    "sourceTier": "preprint",
+    "published": "2026-11-25T17:30:37.000Z",
+    "summary": "LLM agents increasingly rely on external memory, yet they still hallucinate about what they remember. Often the correct memory is retrieved and placed in the prompt, but the answer contradicts it or the memory is applied to the wrong question. We call these use-time memory hallucinations. Across five open models, we find that they arise from the conflict between parametric knowledge and external memory and take three forms: memory-ignoring, where the model returns to a stale fact in its weights (up to 46% of queries); memory-misapplying, where it attributes the memory to unrelated entities (up to 24%, and 49% when retrieval is combined with weight editing); and version confusion, where 53%…",
+    "summaryZh": "研究指出LLM智能体存在使用外部记忆时的幻觉问题，表现为记忆忽略、错误应用及版本混淆，并提出通过激活引导与知识编辑相结合的解决路径。",
+    "why": "系统分析智能体记忆幻觉的三类具体形式，提出超越纯文本记忆的改进方法，为缓解参数知识与外部记忆冲突提供新视角。",
+    "topics": [
+      "evaluation"
+    ],
+    "tags": [
+      "评测与基准"
+    ],
+    "security": null,
+    "evidence": "预印本 · 原文可核验",
+    "score": 82,
+    "curated": false,
+    "collectedAt": "2026-11-26T07:16:28.562Z",
+    "provenance": "arxiv-memory",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.34624",
+    "title": "HoMe: Toward Practical Harness Optimization of Memory Systems for AI Assistants",
+    "titleZh": "HoMe：面向AI助手的记忆系统测试驱动优化框架",
+    "url": "https://arxiv.org/abs/2611.34624v1",
+    "kind": "paper",
+    "source": "arXiv · 记忆召回补漏",
+    "sourceId": "arxiv-recall",
+    "sourceTier": "preprint",
+    "published": "2026-11-25T16:11:53.000Z",
+    "summary": "The behavior of memory systems for long-running AI assistants is governed by a harness, which consists of the code, prompts, and configurations for memory construction, maintenance, retrieval, and answer generation. However, optimizing the harness of a memory system remains largely manual, and unrestricted editing alone does not ensure structural improvements. In this paper, we introduce HoMe, an evaluation-driven framework that iteratively evaluates candidate harnesses and derives each new candidate from any previously evaluated harness by editing any part of it. HoMe combines session-level memory versioning with execution traces to identify shared failure mechanisms across cases and local…",
+    "summaryZh": "论文提出HoMe框架，通过迭代评估候选系统配置并基于执行痕迹定位失败机制，实现记忆系统构建、维护、检索与生成流程的自动化优化。",
+    "why": "将测试驱动开发理念引入记忆系统配置优化，通过版本控制与失败机制分析降低手动调优成本，提升长期AI助手的记忆可靠性。",
+    "topics": [
+      "evaluation"
+    ],
+    "tags": [
+      "评测与基准"
+    ],
+    "security": {
+      "angles": [
+        "provenance",
+        "evaluation"
+      ],
+      "note": "规则命中关键词，等待人工复核。"
+    },
+    "evidence": "预印本 · 原文可核验",
+    "score": 86,
+    "curated": false,
+    "collectedAt": "2026-11-26T07:16:28.562Z",
+    "provenance": "arxiv-recall",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.34579",
+    "title": "Tune for Retention, Not Just Gain: SFT Forgets Far Less than You Think",
+    "titleZh": "Tune for Retention：SFT遗忘程度与超参数选择的关联研究",
+    "url": "https://arxiv.org/abs/2611.34579v1",
+    "kind": "paper",
+    "source": "arXiv · 记忆召回补漏",
+    "sourceId": "arxiv-recall",
+    "sourceTier": "preprint",
+    "published": "2026-11-25T15:43:38.000Z",
+    "summary": "Catastrophic forgetting, the drastic loss of previously acquired capabilities when learning new ones, is a central challenge in language model fine-tuning. Supervised fine-tuning (SFT) is widely believed to be prone to such forgetting. Recent works have attributed this to the off-policy nature of SFT, arguing that on-policy learning is key to continual learning. In this paper, we challenge this premise. We show that while maximizing new-task performance can induce catastrophic forgetting, alternative hyperparameter choices (lower learning rate and batch size) can yield similar gains with little to no forgetting. With hyperparameters selected jointly for gain and retention, vanilla SFT retai…",
+    "summaryZh": "研究通过实验表明，监督微调（SFT）的灾难性遗忘并非由策略外特性决定，而是受学习率、批大小等超参数选择显著影响，调整这些参数可在获得新任务收益的同时减少遗忘。",
+    "why": "挑战SFT必然导致严重遗忘的既有观点，揭示超参数对知识保留的关键作用，为持续学习场景下的微调实践提供理论依据。",
+    "topics": [
+      "adjacent"
+    ],
+    "tags": [
+      "相关智能体研究"
+    ],
+    "security": null,
+    "evidence": "预印本 · 原文可核验",
+    "score": 82,
+    "curated": false,
+    "collectedAt": "2026-11-26T07:16:28.562Z",
+    "provenance": "arxiv-recall",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.34576",
+    "title": "Procedure Inference as Memory: Learning Recruiter Decision Procedures from OKF-Structured Episodes in Multi-Session Hiring Assistants",
+    "titleZh": "Procedure Inference as Memory: 基于 OKF 索引的多会话招聘助理程序记忆",
+    "url": "https://arxiv.org/abs/2611.34576v1",
+    "kind": "paper",
+    "source": "arXiv · 记忆召回补漏",
+    "sourceId": "arxiv-recall",
+    "sourceTier": "preprint",
+    "published": "2026-11-25T15:41:52.000Z",
+    "summary": "Multi-session hiring assistants must infer evolving recruiter preferences and decision patterns across projects and time. We introduce Open Knowledge Format (OKF)-indexed episodic memory to organize interactions and retrieve related events through their lineage. We also introduce Procedure Memory, which learns reusable decision procedures from these episodes through prompted reflection or reinforcement learning. We compare these approaches with no memory, full-history context, and conversation search, and evaluate Jev-class models for index navigation and GPT-5.6 Luna as a lower-cost alternative to GPT-5.4. In our evaluation, OKF-indexed retrieval achieves low-priority preference F1 scores…",
+    "summaryZh": "该论文提出 OKF 索引的事件记忆与程序记忆，从多会话招聘交互中学习与检索可复用的招聘决策程序。文中对比了无记忆、全历史上下文及对话搜索等基线，并评估了 Jev 类模型与 GPT-5.6 Luna 在索引导航方面的表现。",
+    "why": "针对多会话招聘场景，展示了如何利用结构化事件记忆（OKF）提取可复用的决策程序，而非仅存储对话历史。",
+    "topics": [
+      "evaluation"
+    ],
+    "tags": [
+      "评测与基准"
+    ],
+    "security": {
+      "angles": [
+        "evaluation"
+      ],
+      "note": "规则命中关键词，等待人工复核。"
+    },
+    "evidence": "预印本 · 原文可核验",
+    "score": 86,
+    "curated": false,
+    "collectedAt": "2026-11-26T07:16:28.562Z",
+    "provenance": "arxiv-recall",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.34560",
+    "title": "M$^{2}$AdaptVLA: Multimodal Memory-Augmented Vision-Language-Action Model with Predictive Test-Time Adaptation",
+    "titleZh": "M²AdaptVLA: 融合视觉与力矩记忆及测试时适应的多模态 VLA 模型",
+    "url": "https://arxiv.org/abs/2611.34560v1",
+    "kind": "paper",
+    "source": "arXiv · 智能体记忆与自进化",
+    "sourceId": "arxiv-memory",
+    "sourceTier": "preprint",
+    "published": "2026-11-25T15:32:21.000Z",
+    "summary": "Effective robotic manipulation calls for multimodal memory and rapid adaptation to shifts in contact dynamics. However, many existing policies, which retain either visual or wrench history, may miss key cues from the other modality. Moreover, even with wrench memory, fixed policies can struggle when contact conditions shift at deployment. To this end, we introduce M$^{2}$AdaptVLA, a vision-language-action model that integrates visual and wrench memories with predictive test-time adaptation. For visual memory, the model uses test-time training (TTT) to encode observation history in fast weights. Each entry in the bounded TTT bank combines the corresponding frame's features with a readout fro…",
+    "summaryZh": "该论文提出 M²AdaptVLA，一个视觉-语言-动作模型，整合视觉与力矩记忆，并结合预测性测试时适应以应对部署时接触动力学的变化。其视觉记忆利用测试时训练将观测历史编码到快速权重中。",
+    "why": "解决了现有机器人策略通常只保留视觉或力矩单一模态历史的问题，将双模态记忆与测试时在线适应机制结合。",
+    "topics": [
+      "embodied"
+    ],
+    "tags": [
+      "具身与空间记忆"
+    ],
+    "security": {
+      "angles": [
+        "evaluation"
+      ],
+      "note": "规则命中关键词，等待人工复核。"
+    },
+    "evidence": "预印本 · 原文可核验",
+    "score": 86,
+    "curated": false,
+    "collectedAt": "2026-11-26T07:16:28.562Z",
+    "provenance": "arxiv-memory",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.33822",
+    "title": "MetaDecomp: Adaptive Task Decomposition via Meta-Learned Procedural Memory",
+    "titleZh": "MetaDecomp: 基于元学习程序记忆的自适应任务分解框架",
+    "url": "https://arxiv.org/abs/2611.33822v1",
+    "kind": "paper",
+    "source": "arXiv · 智能体记忆与自进化",
+    "sourceId": "arxiv-memory",
+    "sourceTier": "preprint",
+    "published": "2026-11-25T05:50:46.000Z",
+    "summary": "Reusing past experience in long-horizon tasks requires more than storing successful procedures: Language agents must distinguish which procedures apply and what work remains as execution progresses. We introduce MetaDecomp, an in-context meta-learning framework for adaptive task decomposition that jointly learns a task-relative state space and reusable procedures. Its outer loop builds procedural memory from successful training executions, representing task progress as abstract states and procedures between states as directed acyclic graphs of operations and dependencies. As new progress distinctions are learned, MetaDecomp revisits historical execution evidence to reassess state assignment…",
+    "summaryZh": "该论文提出 MetaDecomp，一个上下文元学习框架，通过从成功的执行中构建程序记忆，联合学习任务相对状态空间与可复用程序。程序以操作的有向无环图形式表示，并在执行过程中动态重新评估状态分配。",
+    "why": "相比仅存储成功程序的智能体，该方法引入了元学习机制来学习任务状态空间与程序之间的映射关系，实现更精细的长程任务分解。",
+    "topics": [
+      "tools"
+    ],
+    "tags": [
+      "工具与项目发布"
+    ],
+    "security": null,
+    "evidence": "预印本 · 原文可核验",
+    "score": 82,
+    "curated": false,
+    "collectedAt": "2026-11-26T07:16:28.562Z",
+    "provenance": "arxiv-memory",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.33819",
+    "title": "MMotion: Collaborative Cross-Scale Memory for Text-to-Motion Generation",
+    "titleZh": "MMotion: 用于文本到动作生成的协作跨尺度记忆框架",
+    "url": "https://arxiv.org/abs/2611.33819v1",
+    "kind": "paper",
+    "source": "arXiv · 智能体记忆与自进化",
+    "sourceId": "arxiv-memory",
+    "sourceTier": "preprint",
+    "published": "2026-11-25T05:48:24.000Z",
+    "summary": "Text-to-motion generation aims to synthesize realistic human motions from natural-language descriptions, enabling applications in animation, virtual avatars, and embodied agents. Despite recent progress, existing methods either retrieve motion exemplars or retain long-range context, but rarely exploit memory to jointly reason about semantics, dynamics, and generation history. In this paper, we propose MMotion, a collaborative multi-scale memory framework that unifies scale-conditioned semantic retrieval, latent dynamics modeling, and causal working memory. Specifically, semantic memory provides motion priors at different generation scales, dynamics memory captures latent state transitions,…",
+    "summaryZh": "该论文提出 MMotion，一个协作多尺度记忆框架，统一了语义检索、潜在动力学建模和因果工作记忆，用于从自然语言描述生成逼真的人类动作。",
+    "why": "将语义、动力学与生成历史三类不同性质的记忆机制统一到多尺度框架中，应用于文本到动作生成任务。",
+    "topics": [
+      "embodied"
+    ],
+    "tags": [
+      "具身与空间记忆"
+    ],
+    "security": null,
+    "evidence": "预印本 · 原文可核验",
+    "score": 82,
+    "curated": false,
+    "collectedAt": "2026-11-26T07:16:28.562Z",
+    "provenance": "arxiv-memory",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
     "id": "arxiv:2611.31265",
     "title": "SD-Cache: Learnable Memory Consolidation with State-Guided Dynamic Caching",
     "titleZh": "SD-Cache：基于状态引导动态缓存的可学习记忆整合",
@@ -27,9 +377,90 @@
     "summaryZhBasis": "原文摘要"
   },
   {
+    "id": "arxiv:2611.33710",
+    "title": "$\\mathrm{M}^{2}$-WAM: Efficient Hierarchical Memory Across Modalities and Timescales for World-Action Models",
+    "titleZh": "M2-WAM：跨模态与时间尺度的分层记忆世界-动作模型",
+    "url": "https://arxiv.org/abs/2611.33710v1",
+    "kind": "paper",
+    "source": "arXiv · 记忆评测",
+    "sourceId": "arxiv-eval",
+    "sourceTier": "preprint",
+    "published": "2026-11-25T03:24:00.000Z",
+    "summary": "Long-horizon robotic manipulation requires historical context, yet retaining extensive visual histories incurs growing storage and retrieval costs, while aggressive compression risks losing fine-grained information needed for subsequent decisions. Moreover, executed action histories capture intermediate behaviors that sparse visual observations may miss. Preserving this complementary context efficiently calls for modality-specific memory mechanisms that balance recent detail with long-term retention. To this end, we introduce $\\mathrm{M}^{2}$-WAM, a world-action model equipped with hierarchical visual and interaction memories. $\\mathrm{M}^{2}$-WAM preserves recent visual observations in den…",
+    "summaryZh": "该论文提出了一种名为 M2-WAM 的世界-动作模型，通过保留近期视觉观察和分层交互记忆来处理长时程机器人操作任务。该模型旨在平衡细节保留与长期存储成本，利用动作历史捕捉稀疏视觉观察可能遗漏的中间行为。",
+    "why": "针对机器人长时程任务中视觉历史存储成本高与激进压缩导致信息丢失的矛盾，提出了结合视觉与交互记忆的分层架构。",
+    "topics": [
+      "evaluation"
+    ],
+    "tags": [
+      "评测与基准"
+    ],
+    "security": null,
+    "evidence": "预印本 · 原文可核验",
+    "score": 82,
+    "curated": false,
+    "collectedAt": "2026-11-26T07:16:28.562Z",
+    "provenance": "arxiv-eval",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.33687",
+    "title": "Read Before You Use: Improving Visual Memory Utilization in Vision-Language Models",
+    "titleZh": "先读后用：改善视觉语言模型中的视觉记忆利用",
+    "url": "https://arxiv.org/abs/2611.33687v1",
+    "kind": "paper",
+    "source": "arXiv · 智能体记忆与自进化",
+    "sourceId": "arxiv-memory",
+    "sourceTier": "preprint",
+    "published": "2026-11-25T02:53:43.000Z",
+    "summary": "Multimodal memory enables long-horizon vision-language agents to preserve and retrieve past experiences. While prior research has focused on memory construction and retrieval, effectively using the provided memory remains a challenge for vision-language models (VLMs). We find that VLMs often fail to answer downstream questions even when sufficient multimodal evidence is provided. To investigate why VLMs struggle, we replace memory images with reference captions and observe substantial performance gains, suggesting difficulties in reading visual evidence directly. However, model-generated captions may omit critical information, limiting this approach in practice. These limitations motivate a…",
+    "summaryZh": "研究发现视觉语言模型（VLMs）即使提供了充分的多模态证据，也常难以有效利用记忆来回答下游问题。通过用参考字幕替换记忆图像可提升性能，表明模型直接读取视觉证据存在困难，而模型生成的字幕可能遗漏关键信息。",
+    "why": "指出了多模态记忆研究中常被忽视的“记忆利用”环节，揭示了 VLMs 直接处理视觉证据的局限性及字幕替代方案的利弊。",
+    "topics": [
+      "multimodal"
+    ],
+    "tags": [
+      "多模态与感知记忆"
+    ],
+    "security": null,
+    "evidence": "预印本 · 原文可核验",
+    "score": 82,
+    "curated": false,
+    "collectedAt": "2026-11-26T07:16:28.562Z",
+    "provenance": "arxiv-memory",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.33612",
+    "title": "Failure Broadens, Success Sharpens: Continual Adaptation of Tool-Use Agents Across Diverse Tasks with Dual-Polarity Memory",
+    "titleZh": "双极性记忆：工具使用智能体在多样化任务中的持续适应",
+    "url": "https://arxiv.org/abs/2611.33612v1",
+    "kind": "paper",
+    "source": "arXiv · 智能体记忆与自进化",
+    "sourceId": "arxiv-memory",
+    "sourceTier": "preprint",
+    "published": "2026-11-25T01:38:15.000Z",
+    "summary": "Large language model agents can self-improve over time by utilizing procedural memory derived from prior task trajectories, yet the distinct utilities of memories derived from local successes and failures remain underexplored. This work studies this question in a realistic setting with heterogeneous streams of multi-domain tool-use tasks and various environment constraints common in real-world scenarios. We develop \\emph{Dual-Polarity Memory with Periodic Maintenance} (DualPM), a simple, retrieval-free memory workflow characterized by (1) customizable reflection and procedural memory generation from both local successes and failures within each trajectory, and (2) periodic memory consolidat…",
+    "summaryZh": "该工作研究了从任务轨迹中的局部成功和失败中提取程序性记忆的作用，提出了带有定期维护的双极性记忆工作流（DualPM）。该工作流无需检索，通过定制化反思和记忆整合，在具有异质多领域工具使用任务流中实现智能体的自我改进。",
+    "why": "区分了成功与失败记忆的不同效用，提出了一种无需检索、包含定期维护机制的双极性记忆工作流，适用于现实世界的多领域工具使用场景。",
+    "topics": [
+      "mechanism"
+    ],
+    "tags": [
+      "记忆机制与系统"
+    ],
+    "security": null,
+    "evidence": "预印本 · 原文可核验",
+    "score": 82,
+    "curated": false,
+    "collectedAt": "2026-11-26T07:16:28.562Z",
+    "provenance": "arxiv-memory",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
     "id": "arxiv:2611.33124",
     "title": "SAG-Mem-1.0 Technical Report",
-    "titleZh": null,
+    "titleZh": "SAG-Mem-1.0：通过查询时词汇扩展发现互补证据的对话记忆框架",
     "url": "https://arxiv.org/abs/2611.33124v1",
     "kind": "paper",
     "source": "arXiv · 记忆召回补漏",
@@ -37,8 +468,8 @@
     "sourceTier": "preprint",
     "published": "2026-11-24T18:51:29.000Z",
     "summary": "Long-term conversational memory requires retrieving complementary facts scattered across dialogue sessions, including intermediate evidence with limited similarity to the original question. Existing approaches often rely on derived memory representations or persistent relational structures, introducing construction costs and potentially losing source details. We present SAG-Mem, a conversational memory framework that preserves complete dialogue messages in non-overlapping chunks and discovers complementary evidence through query-time lexical expansion. Memory construction requires no model inference, using a lexical index without LLM-based extraction, summarization, or semantic relation con…",
-    "summaryZh": null,
-    "why": "新预印本，主题命中「对话与个性化记忆」；摘要已按原文整理，等待人工复核。",
+    "summaryZh": "SAG-Mem 是一种长期对话记忆框架，它将完整对话消息保留在非重叠块中，并在查询时通过词汇扩展发现互补证据。记忆构建无需模型推理，使用词典索引而非基于 LLM 的提取、摘要或语义关系构建，以降低构建成本。",
+    "why": "提出了一种无需 LLM 参与构建过程、仅依赖词典索引的对话记忆方法，通过查询时的词汇扩展来解决中间证据与原始问题相似度低导致的召回难题。",
     "topics": [
       "personal"
     ],
@@ -55,7 +486,8 @@
     "score": 86,
     "curated": false,
     "collectedAt": "2026-11-25T07:28:07.109Z",
-    "provenance": "arxiv-recall"
+    "provenance": "arxiv-recall",
+    "summaryZhBasis": "原文摘要"
   },
   {
     "id": "arxiv:2611.33005",
