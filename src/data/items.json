@@ -145,6 +145,39 @@
     "summaryZhBasis": "原文摘要"
   },
   {
+    "id": "arxiv:2611.34770",
+    "title": "Make the Adversary Spend More: Stateful Deception as a Cost-Exchange Primitive for AI-Era Cyber Defense",
+    "titleZh": "状态欺骗作为AI时代网络防御的成本交换原语",
+    "url": "https://arxiv.org/abs/2611.34770v1",
+    "kind": "paper",
+    "source": "arXiv · 记忆安全与评测",
+    "sourceId": "arxiv-security",
+    "sourceTier": "preprint",
+    "published": "2026-11-25T17:35:27.000Z",
+    "summary": "Large language models (LLMs) are transforming the economics of intrusion by reducing the attacker's cost to scan and adapt, while tempting defenders into unbounded compute. We argue that cyber deception should be judged by the cost exchange it imposes, not by realism or detection, and that the primitive making that exchange favorable is adversary-specific persistent state. Rather than a honeypot that resets or merges sessions, each recognized adversary re-enters the world it believes it has compromised, kept coherent with its own past actions and isolated from every other adversary, while the language model acts only as a constrained renderer of explicit state, never as its store. We formal…",
+    "summaryZh": "论文提出将网络欺骗评估标准从实时性转向成本交换，主张通过为每个特定对手维护持久且一致的状态，使LLM仅作为受限渲染器而非存储介质，以在对抗中保持状态隔离。",
+    "why": "该研究重新定义了AI对抗中欺骗机制的评估维度，提出了针对特定对手的状态隔离架构，为理解LLM在防御性欺骗中的角色提供了新的形式化框架。",
+    "topics": [
+      "security"
+    ],
+    "tags": [
+      "安全与治理"
+    ],
+    "security": {
+      "angles": [
+        "attack",
+        "defense"
+      ],
+      "note": "规则命中关键词，等待人工复核。"
+    },
+    "evidence": "预印本 · 原文可核验",
+    "score": 86,
+    "curated": false,
+    "collectedAt": "2026-11-26T08:14:13.222Z",
+    "provenance": "arxiv-security",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
     "id": "arxiv:2611.34762",
     "title": "TASK Memory: Beyond Text-Only Memory with Activation Steering and Knowledge Editing against Memory Hallucination",
     "titleZh": "TASK Memory：通过激活引导与知识编辑对抗记忆幻觉",
@@ -169,6 +202,38 @@
     "curated": false,
     "collectedAt": "2026-11-26T07:16:28.562Z",
     "provenance": "arxiv-memory",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
+    "id": "arxiv:2611.34745",
+    "title": "How Well Do Vision-Language Scene Graphs Serve as Memory for Embodied Question Answering?",
+    "titleZh": "视觉语言场景图作为具身问答记忆的评估与修复",
+    "url": "https://arxiv.org/abs/2611.34745v1",
+    "kind": "paper",
+    "source": "arXiv · 具身与多模态记忆",
+    "sourceId": "arxiv-embodied",
+    "sourceTier": "preprint",
+    "published": "2026-11-25T17:23:01.000Z",
+    "summary": "Embodied QA needs memory, but answer accuracy mixes retained evidence, reading errors and question priors. For a simulated multi-room scene-graph pipeline we define answerability: the fraction of questions a fixed rule-based reader answers correctly from the graph alone. The baseline recovers 24.1% of visible object types and its room labels flicker. Four targeted repairs double recall, raise answerability from 27.2% to 37.4%, and improve retrained QA from 71.4% to 75.9%, yet better object F1 can lower answerability. A question-type prior beats this reader on every predicted graph. In one real-video test, graph memory lowers accuracy. These exploratory findings favour scoring retained evide…",
+    "summaryZh": "研究在模拟多房间场景图管道中定义“可回答性”指标，通过四种针对性修复将召回率翻倍并提升QA准确率；同时指出问题类型先验可能优于图读取器，且在真实视频测试中图记忆反而降低准确率。",
+    "why": "该工作揭示了场景图作为记忆载体时的具体失效模式（如房间标签闪烁、对象F1与可回答性背离），并强调了在具身记忆评估中区分保留证据与先验知识的重要性。",
+    "topics": [
+      "embodied"
+    ],
+    "tags": [
+      "具身与空间记忆"
+    ],
+    "security": {
+      "angles": [
+        "evaluation"
+      ],
+      "note": "规则命中关键词，等待人工复核。"
+    },
+    "evidence": "预印本 · 原文可核验",
+    "score": 86,
+    "curated": false,
+    "collectedAt": "2026-11-26T08:14:13.222Z",
+    "provenance": "arxiv-embodied",
     "summaryZhBasis": "原文摘要"
   },
   {
