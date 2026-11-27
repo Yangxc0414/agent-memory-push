@@ -1,5 +1,32 @@
 [
   {
+    "id": "web:https://www.qbitai.com/2026/11/513227.html",
+    "title": "刚刚，首个带跨任务空间记忆的原生基模开源！机器人端侧就能跑",
+    "titleZh": "媒体称有开源模型支持跨任务记忆，可在端侧运行",
+    "url": "https://www.qbitai.com/2026/11/513227.html",
+    "kind": "news",
+    "source": "量子位",
+    "sourceId": "news-qbit",
+    "sourceTier": "media",
+    "published": "2026-11-27T07:01:20.000Z",
+    "summary": "地图能随时修，记忆能跨任务用",
+    "summaryZh": "据量子位报道，一款支持地图实时修正和跨任务记忆应用的模型已开源，并具备机器人端侧运行能力。",
+    "why": "关注端侧部署与跨任务记忆结合的最新进展。",
+    "topics": [
+      "embodied"
+    ],
+    "tags": [
+      "具身与空间记忆"
+    ],
+    "security": null,
+    "evidence": "媒体报道",
+    "score": 67,
+    "curated": false,
+    "collectedAt": "2026-11-27T08:27:26.215Z",
+    "provenance": "news-qbit",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
     "id": "web:https://www.qbitai.com/2026/11/513211.html",
     "title": "蚂蚁灵波发布LingBot-Map 2.0，模型自己修正“空间记忆”，把地图画更准",
     "titleZh": "蚂蚁灵波发布LingBot-Map 2.0：流式三维重建模型",
