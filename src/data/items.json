@@ -1,5 +1,32 @@
 [
   {
+    "id": "web:https://www.qbitai.com/2026/11/513211.html",
+    "title": "蚂蚁灵波发布LingBot-Map 2.0，模型自己修正“空间记忆”，把地图画更准",
+    "titleZh": "蚂蚁灵波发布LingBot-Map 2.0：流式三维重建模型",
+    "url": "https://www.qbitai.com/2026/11/513211.html",
+    "kind": "news",
+    "source": "量子位",
+    "sourceId": "news-qbit",
+    "sourceTier": "media",
+    "published": "2026-11-27T04:05:18.000Z",
+    "summary": "11 月 27 日，蚂蚁灵波科技发布流式三维重建模型 LingBot-Map 2.0",
+    "summaryZh": "据量子位报道，蚂蚁灵波科技于11月27日发布了流式三维重建模型LingBot-Map 2.0，该模型具备自我修正空间记忆以优化地图精度的功能。",
+    "why": "展示了Agent在空间记忆构建中从被动记录向主动自我修正演进的技术趋势。",
+    "topics": [
+      "embodied"
+    ],
+    "tags": [
+      "具身与空间记忆"
+    ],
+    "security": null,
+    "evidence": "媒体报道",
+    "score": 67,
+    "curated": false,
+    "collectedAt": "2026-11-27T07:12:45.253Z",
+    "provenance": "news-qbit",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
     "id": "arxiv:2611.33174",
     "title": "MGMem: An Efficient, Deterministic, and Provenance-Preserving Framework for Long-Horizon Agent Memory",
     "titleZh": "MGMem：面向长程Agent记忆的高效确定性框架",
