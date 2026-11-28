@@ -1546,6 +1546,38 @@
     "summaryZhBasis": "原文摘要"
   },
   {
+    "id": "arxiv:2611.30494",
+    "title": "Revisiting LLMs as Context Engineers",
+    "titleZh": "LLM作为上下文工程师的基准测试与对比分析",
+    "url": "https://arxiv.org/abs/2611.30494",
+    "kind": "paper",
+    "source": "Hugging Face · Daily Papers",
+    "sourceId": "hf-daily",
+    "sourceTier": "preprint",
+    "published": "2026-11-23T00:00:00.000Z",
+    "summary": "As large language models (LLMs) are used in more and more new tasks, context engineering becomes a fundamental method to efficiently steer LLMs by constructing instruction prompts or metadata without intensive training. A growing number of LLM context engineering (LCE) approaches automate the task by casting the LLM itself as the engineer that draws generalizable instructions or experiences from offline trials as context. Although these methods resemble how humans learn from experiences, it remains unclear when and how LLMs can engineer effective context from data. To answer the question, we first establish a benchmark composed of datasets with different reasoning patterns. We compared diff…",
+    "summaryZh": "预印本论文探讨LLM在无需大量训练的情况下如何通过构建指令提示或元数据来高效指导任务，并建立了一个包含不同推理模式数据集的基准，用于对比不同LLM上下文工程方法。",
+    "why": "提供LLM上下文工程方法的基准对比，有助于开发者理解和选择适合不同推理任务的高效提示构建策略。",
+    "topics": [
+      "evaluation"
+    ],
+    "tags": [
+      "评测与基准"
+    ],
+    "security": {
+      "angles": [
+        "evaluation"
+      ],
+      "note": "规则命中关键词，等待人工复核。"
+    },
+    "evidence": "预印本 · 原文可核验",
+    "score": 86,
+    "curated": false,
+    "collectedAt": "2026-11-28T06:45:21.767Z",
+    "provenance": "hf-daily",
+    "summaryZhBasis": "原文摘要"
+  },
+  {
     "id": "arxiv:2611.29818",
     "title": "How Should a Home Robot Update Its Memories When Human Routines Change?",
     "titleZh": "家用机器人在人类日常习惯变化时的记忆更新机制",

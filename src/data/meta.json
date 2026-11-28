@@ -1,14 +1,14 @@
 {
   "version": 1,
-  "checkedAt": "2026-11-27T08:27:26.215Z",
-  "lastSuccessAt": "2026-11-27T08:27:26.215Z",
-  "generatedAt": "2026-11-27T08:27:26.215Z",
+  "checkedAt": "2026-11-28T06:45:21.767Z",
+  "lastSuccessAt": "2026-11-28T06:45:21.767Z",
+  "generatedAt": "2026-11-28T06:45:21.767Z",
   "timezone": "Asia/Shanghai",
-  "date": "2026-11-27",
+  "date": "2026-11-28",
   "seed": false,
   "added": 1,
-  "updated": 138,
-  "items": 854,
+  "updated": 133,
+  "items": 855,
   "sourcesOk": 22,
   "sourcesTotal": 22,
   "llm": {
@@ -16,12 +16,12 @@
     "error": null
   },
   "addedIds": [
-    "web:https://www.qbitai.com/2026/11/513227.html"
+    "arxiv:2611.30494"
   ],
   "coverage": {
     "coreComplete": true,
     "recallOk": true,
-    "fallbackOk": true,
+    "fallbackOk": false,
     "usable": true,
     "degraded": false,
     "criticalFailed": [],
